@@ -20,22 +20,199 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Helvetica+Neue:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Helvetica+Neue:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  body { margin: 0; background: oklch(0.98 0.002 90); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: oklch(0.98 0.002 90); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #0B1C30; }
   a { color: oklch(0.45 0.1 240); text-decoration: none; }
   a:hover { color: oklch(0.35 0.12 240); }
+
+  /* ── Cadence-X Main Header Navigation ── */
+  .cx-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    background: rgba(248, 249, 250, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  }
+  .cx-header-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cx-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .cx-logo-box {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+  .cx-logo-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: cx-spin 20s linear infinite;
+  }
+  .cx-logo-center {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  @keyframes cx-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .cx-brand-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    color: #0f172a;
+    transition: color 0.15s ease;
+  }
+  .cx-brand:hover .cx-brand-title {
+    color: #0284c7;
+  }
+  .cx-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .cx-nav-link {
+    font-size: 15px;
+    font-weight: 500;
+    color: #475569;
+    text-decoration: none;
+    padding: 6px 0;
+    transition: color 0.15s ease;
+  }
+  .cx-nav-link:hover {
+    color: #0f172a;
+  }
+  .cx-nav-link-active {
+    color: #0284c7;
+    font-weight: 600;
+  }
+
+  @media (max-width: 640px) {
+    .cx-header-inner {
+      height: 68px;
+      padding: 0 16px;
+    }
+    .cx-nav {
+      gap: 16px;
+    }
+    .cx-nav-link {
+      font-size: 14px;
+    }
+    .cx-brand-title {
+      font-size: 17px;
+    }
+  }
+
+  /* ── Cadence-X Footer ── */
+  .cx-footer {
+    width: 100%;
+    border-top: 1px solid rgba(226, 232, 240, 0.9);
+    background: rgba(255, 255, 255, 0.6);
+    padding: 32px 16px;
+    margin-top: 60px;
+  }
+  .cx-footer-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 12px;
+    color: #64748b;
+  }
+  .cx-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cx-footer-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #0ea5e9;
+    display: inline-block;
+  }
+  .cx-footer-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-weight: 500;
+  }
+  .cx-footer-link {
+    color: #475569;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .cx-footer-link:hover {
+    color: #0f172a;
+  }
+  @media (max-width: 640px) {
+    .cx-footer-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
 </style>
 </helmet>
 
-<div style="min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:60px 24px 60px; box-sizing:border-box;">
-  <a href="index.html" style="font-size:14px; font-weight:600; color:oklch(0.5 0.005 90); margin-bottom:40px; align-self:flex-start; max-width:760px; width:100%;">← Back to Cadence–X</a>
+<!-- Cadence-X Header Navigation -->
+<header class="cx-header">
+  <div class="cx-header-inner">
+    <a href="index.html" class="cx-brand" title="Cadence-X Home">
+      <div class="cx-logo-box">
+        <img src="uploads/cadence-x-outer-ring.png" class="cx-logo-ring" alt="" />
+        <img src="uploads/cadence-x-static.png" class="cx-logo-center" alt="Cadence-X Logo" />
+      </div>
+      <span class="cx-brand-title">CADENCE-X</span>
+    </a>
 
-  <h1 style="font-family:'Archivo Black', sans-serif; font-size:44px; margin:0 0 40px; color:oklch(0.2 0.005 90);">My Apps</h1>
+    <nav class="cx-nav">
+      <a href="index.html#services" class="cx-nav-link">Services</a>
+      <a href="apps.html" class="cx-nav-link cx-nav-link-active">Apps</a>
+      <a href="about.html" class="cx-nav-link">About Me</a>
+    </nav>
+  </div>
+</header>
 
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:28px; margin-top:56px; max-width:1120px; width:100%;">
+<div style="min-height: calc(100vh - 80px); display:flex; flex-direction:column; align-items:center; padding:48px 24px 20px; box-sizing:border-box;">
 
-    <a href="https://roadmap.cadence-x.com/" style="flex:1 1 300px; max-width:340px; display:block; background:white; border-radius:20px; padding:32px 28px; box-shadow:0 1px 3px oklch(0 0 0 / 0.08); border-top:6px solid oklch(0.55 0.12 235); transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-8px) rotate(-1deg); box-shadow:0 20px 40px oklch(0 0 0 / 0.14);">
+  <h1 style="font-family:'Archivo Black', sans-serif; font-size:44px; margin:0 0 20px; color:oklch(0.2 0.005 90);">My Apps</h1>
+  <p style="font-size:16px; color:oklch(0.45 0.005 90); margin:0 0 28px; text-align:center; max-width:600px;">Selected tools, experiments, and playful applications built by Cadence-X.</p>
+
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:28px; margin-top:20px; max-width:1120px; width:100%;">
+
+    <a href="https://roadmap.cadence-x.com/" target="_blank" rel="noopener noreferrer" style="flex:1 1 300px; max-width:340px; display:block; background:white; border-radius:20px; padding:32px 28px; box-shadow:0 1px 3px oklch(0 0 0 / 0.08); border-top:6px solid oklch(0.55 0.12 235); transition:transform 0.25s ease, box-shadow 0.25s ease;">
       <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; color:oklch(0.5 0.12 235); text-transform:uppercase; margin-bottom:10px;">Plan</div>
       <h2 style="font-family:'Archivo Black', sans-serif; font-size:26px; margin:0 0 12px; color:oklch(0.2 0.005 90);">Roadmap</h2>
       <p style="font-size:15px; color:oklch(0.4 0.005 90); line-height:1.55; margin:0 0 16px;">A focused tool for product managers to plan, prioritize, and track their roadmap.</p>
@@ -46,7 +223,7 @@
       <span style="font-size:14px; font-weight:600; color:oklch(0.45 0.12 235);">Open Roadmap →</span>
     </a>
 
-    <a href="https://otisplay.cadence-x.com" style="flex:1 1 300px; max-width:340px; display:block; background:white; border-radius:20px; padding:32px 28px; box-shadow:0 1px 3px oklch(0 0 0 / 0.08); border-top:6px solid oklch(0.72 0.16 55); transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-8px) rotate(1deg); box-shadow:0 20px 40px oklch(0 0 0 / 0.14);">
+    <a href="https://otisplay.cadence-x.com" target="_blank" rel="noopener noreferrer" style="flex:1 1 300px; max-width:340px; display:block; background:white; border-radius:20px; padding:32px 28px; box-shadow:0 1px 3px oklch(0 0 0 / 0.08); border-top:6px solid oklch(0.72 0.16 55); transition:transform 0.25s ease, box-shadow 0.25s ease;">
       <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; color:oklch(0.6 0.16 55); text-transform:uppercase; margin-bottom:10px;">Play</div>
       <h2 style="font-family:'Archivo Black', sans-serif; font-size:26px; margin:0 0 12px; color:oklch(0.2 0.005 90);">Otis Play</h2>
       <p style="font-size:15px; color:oklch(0.4 0.005 90); line-height:1.55; margin:0 0 16px;">A little corner of playable content made for little kids — simple, colorful, and easy to jump into.</p>
@@ -57,7 +234,7 @@
       <span style="font-size:14px; font-weight:600; color:oklch(0.55 0.16 55);">Visit Otis Play →</span>
     </a>
 
-    <a href="https://timer.cadence-x.com/" style="flex:1 1 300px; max-width:340px; display:block; background:white; border-radius:20px; padding:32px 28px; box-shadow:0 1px 3px oklch(0 0 0 / 0.08); border-top:6px solid oklch(0.85 0.07 30); transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-8px) rotate(-1deg); box-shadow:0 20px 40px oklch(0 0 0 / 0.14);">
+    <a href="https://timer.cadence-x.com/" target="_blank" rel="noopener noreferrer" style="flex:1 1 300px; max-width:340px; display:block; background:white; border-radius:20px; padding:32px 28px; box-shadow:0 1px 3px oklch(0 0 0 / 0.08); border-top:6px solid oklch(0.85 0.07 30); transition:transform 0.25s ease, box-shadow 0.25s ease;">
       <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; color:oklch(0.85 0.07 30); text-transform:uppercase; margin-bottom:10px;">Timer</div>
       <h2 style="font-family:'Archivo Black', sans-serif; font-size:26px; margin:0 0 12px; color:oklch(0.2 0.005 90);">Timer App</h2>
       <p style="font-size:15px; color:oklch(0.4 0.005 90); line-height:1.55; margin:0 0 16px;">A simple timer for focus sessions, workouts, or timing anything you need.</p>
@@ -69,8 +246,26 @@
     </a>
 
   </div>
-  <div style="margin-top: 64px; font-size: 13px; color: oklch(0.6 0.005 90); text-align: center">Cadence–X · is a small collection of things but it still costs me time and effort to maintain the apps published here. So if you wish to share your kindness and tip something, you can support me through Buy me a coffee! below.<BR></div>
-  <a href="https://www.buymeacoffee.com/anushkaj" target="_blank" style="margin-top:20px; display:inline-flex; align-items:center; gap:8px; background:#FFDD00; color:#000000; font-weight:700; font-size:16px; padding:12px 24px; border-radius:10px; border:1px solid #000000;">&#9749; Buy me a coffee</a>
+
+  <div style="margin-top: 64px; font-size: 13px; color: oklch(0.6 0.005 90); text-align: center; max-width: 600px;">
+    Cadence–X is a small collection of things, but it still costs time and effort to maintain the apps published here. If you wish to share your kindness and tip something, you can support me through Buy me a coffee below.
+  </div>
+  <a href="https://www.buymeacoffee.com/anushkaj" target="_blank" rel="noopener noreferrer" style="margin-top:20px; display:inline-flex; align-items:center; gap:8px; background:#FFDD00; color:#000000; font-weight:700; font-size:16px; padding:12px 24px; border-radius:10px; border:1px solid #000000;">&#9749; Buy me a coffee</a>
+
+  <!-- Cadence-X Footer -->
+  <footer class="cx-footer">
+    <div class="cx-footer-inner">
+      <div class="cx-footer-left">
+        <span class="cx-footer-dot"></span>
+        <span>&copy; 2026 CADENCE-X &nbsp;·&nbsp; All rights reserved.</span>
+      </div>
+      <div class="cx-footer-right">
+        <a href="index.html#services" class="cx-footer-link">Services</a>
+        <a href="apps.html" class="cx-footer-link">Apps</a>
+        <a href="about.html" class="cx-footer-link">About Me</a>
+      </div>
+    </div>
+  </footer>
 
 </div>
 

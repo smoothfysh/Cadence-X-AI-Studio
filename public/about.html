@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Anushka J — Cadence-X</title>
 <meta name="description" content="About Anushka J — product strategist, engineer, and creator of Cadence-X. 20+ years shipping software.">
 <meta name="keywords" content="personal site, portfolio, product management, Anushka, Cadence-X, about">
 <meta name="rating" content="general">
@@ -20,11 +21,118 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Helvetica+Neue:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Helvetica+Neue:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
-  body { margin: 0; background: oklch(0.98 0.002 90); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: oklch(0.98 0.002 90); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #0B1C30; }
   a { color: oklch(0.45 0.1 240); text-decoration: none; }
   a:hover { color: oklch(0.35 0.12 240); }
+
+  /* ── Cadence-X Main Header Navigation ── */
+  .cx-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    background: rgba(248, 249, 250, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  }
+  .cx-header-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cx-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .cx-logo-box {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+  .cx-logo-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: cx-spin 20s linear infinite;
+  }
+  .cx-logo-center {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  @keyframes cx-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .cx-brand-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    color: #0f172a;
+    transition: color 0.15s ease;
+  }
+  .cx-brand:hover .cx-brand-title {
+    color: #0284c7;
+  }
+  .cx-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .cx-nav-link {
+    font-size: 15px;
+    font-weight: 500;
+    color: #475569;
+    text-decoration: none;
+    padding: 6px 0;
+    transition: color 0.15s ease;
+  }
+  .cx-nav-link:hover {
+    color: #0f172a;
+  }
+  .cx-nav-link-active {
+    color: #0284c7;
+    font-weight: 600;
+  }
+
+  @media (max-width: 640px) {
+    .cx-header-inner {
+      height: 68px;
+      padding: 0 16px;
+    }
+    .cx-nav {
+      gap: 16px;
+    }
+    .cx-nav-link {
+      font-size: 14px;
+    }
+    .cx-brand-title {
+      font-size: 17px;
+    }
+  }
+
+  /* ── Animated Portrait ── */
   @keyframes portrait-cycle {
     0%, 30%   { background-position: 0% 50%; }
     33%, 63%  { background-position: 50% 50%; }
@@ -37,6 +145,7 @@
     overflow: hidden;
     background: url('uploads/Three Portrait Styles in Circles.png') center / 300% 100%;
     animation: portrait-cycle 12s infinite ease-in-out;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   }
   #about-intro h1 { font-family:'Archivo Black', sans-serif; font-size:44px; margin:0 0 8px; color:oklch(0.2 0.005 90); }
   #about-intro p { font-size:17px; line-height:1.6; color:oklch(0.4 0.005 90); margin:0; }
@@ -84,13 +193,82 @@
     .tl-item, .tl-item.tl-left, .tl-item.tl-right { width:100%; margin-left:0; text-align:left; padding:0 0 22px 34px; }
     .tl-item.tl-left::before, .tl-item.tl-right::before { left:9px; right:auto; transform:translateX(-50%); }
   }
+
+  /* ── Cadence-X Footer ── */
+  .cx-footer {
+    width: 100%;
+    border-top: 1px solid rgba(226, 232, 240, 0.9);
+    background: rgba(255, 255, 255, 0.6);
+    padding: 32px 16px;
+    margin-top: 60px;
+  }
+  .cx-footer-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 12px;
+    color: #64748b;
+  }
+  .cx-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cx-footer-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #0ea5e9;
+    display: inline-block;
+  }
+  .cx-footer-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-weight: 500;
+  }
+  .cx-footer-link {
+    color: #475569;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .cx-footer-link:hover {
+    color: #0f172a;
+  }
+  @media (max-width: 640px) {
+    .cx-footer-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
 </style>
 </helmet>
 
-<div style="min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:60px 24px 60px; box-sizing:border-box;">
-  <div style="max-width:1160px; width:100%; margin-bottom:40px;">
-    <a href="index.html" style="font-size:14px; font-weight:600; color:oklch(0.5 0.005 90);">← Back to Cadence–X</a>
+<!-- Cadence-X Header Navigation -->
+<header class="cx-header">
+  <div class="cx-header-inner">
+    <a href="index.html" class="cx-brand" title="Cadence-X Home">
+      <div class="cx-logo-box">
+        <img src="uploads/cadence-x-outer-ring.png" class="cx-logo-ring" alt="" />
+        <img src="uploads/cadence-x-static.png" class="cx-logo-center" alt="Cadence-X Logo" />
+      </div>
+      <span class="cx-brand-title">CADENCE-X</span>
+    </a>
+
+    <nav class="cx-nav">
+      <a href="index.html#services" class="cx-nav-link">Services</a>
+      <a href="apps.html" class="cx-nav-link">Apps</a>
+      <a href="about.html" class="cx-nav-link cx-nav-link-active">About Me</a>
+    </nav>
   </div>
+</header>
+
+<div style="min-height: calc(100vh - 80px); display:flex; flex-direction:column; align-items:center; padding:48px 24px 20px; box-sizing:border-box;">
 
   <div style="display:flex; gap:36px; align-items:center; max-width:1160px; width:100%; flex-wrap:wrap; margin-bottom:56px;">
     <div class="portrait-cycle" role="img" aria-label="Photo of Anushka"></div>
@@ -119,7 +297,20 @@
     </div>
   </div>
 
-
+  <!-- Cadence-X Footer -->
+  <footer class="cx-footer">
+    <div class="cx-footer-inner">
+      <div class="cx-footer-left">
+        <span class="cx-footer-dot"></span>
+        <span>&copy; 2026 CADENCE-X &nbsp;·&nbsp; All rights reserved.</span>
+      </div>
+      <div class="cx-footer-right">
+        <a href="index.html#services" class="cx-footer-link">Services</a>
+        <a href="apps.html" class="cx-footer-link">Apps</a>
+        <a href="about.html" class="cx-footer-link">About Me</a>
+      </div>
+    </div>
+  </footer>
 
 </div>
 
@@ -300,3 +491,4 @@ class Component extends DCLogic {
 }
 </script>
 </body>
+</html>
