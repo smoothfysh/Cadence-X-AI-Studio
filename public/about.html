@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="About Anushka J — product strategist, engineer, and creator of Cadence-X. 20+ years shipping software.">
+<meta name="keywords" content="personal site, portfolio, product management, Anushka, Cadence-X, about">
+<meta name="rating" content="general">
+<meta name="topic" content="Personal website and professional portfolio">
+<meta name="classification" content="personal">
+<meta name="category" content="personal site">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About — Cadence-X">
+<meta property="og:description" content="About Anushka J — product strategist, engineer, and creator of Cadence-X.">
+<link rel="icon" type="image/png" href="uploads/logo_font-Norwester-Lazydog_TransBG.png">
+<script src="./support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Helvetica+Neue:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: oklch(0.98 0.002 90); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  a { color: oklch(0.45 0.1 240); text-decoration: none; }
+  a:hover { color: oklch(0.35 0.12 240); }
+  @keyframes portrait-cycle {
+    0%, 30%   { background-position: 0% 50%; }
+    33%, 63%  { background-position: 50% 50%; }
+    66%, 100% { background-position: 100% 50%; }
+  }
+  .portrait-cycle {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: url('uploads/Three Portrait Styles in Circles.png') center / 300% 100%;
+    animation: portrait-cycle 12s infinite ease-in-out;
+  }
+  #about-intro h1 { font-family:'Archivo Black', sans-serif; font-size:44px; margin:0 0 8px; color:oklch(0.2 0.005 90); }
+  #about-intro p { font-size:17px; line-height:1.6; color:oklch(0.4 0.005 90); margin:0; }
+  #about-card h2 { font-size:13px; font-weight:700; letter-spacing:1.5px; color:oklch(0.5 0.12 235); text-transform:uppercase; margin:0 0 16px; }
+  #about-card p { font-size:15px; line-height:1.75; color:oklch(0.35 0.005 90); margin:0 0 14px; }
+  #about-card p:last-child { margin-bottom:0; }
+  #about-card a { color: oklch(0.45 0.1 240); }
+
+  /* ── Milestones timeline (rendered from milestones.md) ── */
+  #milestones { min-width:0; }
+  .tl-head { text-align:center; margin-bottom:30px; }
+  .tl-title {
+    display:inline-block; font-family:'Archivo Black', sans-serif; font-size:14px;
+    letter-spacing:1.5px; text-transform:uppercase; color:white;
+    background:oklch(0.42 0.1 240); padding:10px 22px; border-radius:10px; margin:0;
+  }
+  .timeline { position:relative; padding:4px 0 8px; }
+  .timeline::before {
+    content:''; position:absolute; top:6px; bottom:6px; left:50%;
+    width:3px; margin-left:-1.5px; border-radius:2px; background:oklch(0.82 0.03 235);
+  }
+  .tl-item { position:relative; width:50%; box-sizing:border-box; padding:0 30px 26px; }
+  .tl-item.tl-left { text-align:right; }
+  .tl-item.tl-right { margin-left:50%; text-align:left; }
+  .tl-item::before {
+    content:''; position:absolute; top:16px; width:14px; height:14px; z-index:1;
+    border-radius:50%; background:white; border:3px solid oklch(0.55 0.12 235);
+  }
+  .tl-item.tl-left::before { right:0; transform:translateX(50%); }
+  .tl-item.tl-right::before { left:0; transform:translateX(-50%); }
+  .tl-item.tl-current::before { background:oklch(61.659% 0.195 261.37); }
+  .tl-card {
+    display:inline-block; text-align:left; background:white; box-sizing:border-box; max-width:100%;
+    border:1px solid oklch(0.92 0.02 235); border-radius:14px; padding:12px 16px;
+    box-shadow:0 1px 3px oklch(0 0 0 / 0.08);
+  }
+  .tl-year { font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:oklch(0.5 0.12 235); margin-bottom:3px; }
+  .tl-company { display:flex; align-items:center; gap:8px; font-family:'Archivo Black', sans-serif; font-size:16px; color:oklch(0.25 0.005 90); }
+  .tl-flag { width:20px; height:auto; border-radius:2px; box-shadow:0 0 0 1px oklch(0 0 0 / 0.1); flex-shrink:0; }
+  .tl-role { font-size:12.5px; line-height:1.45; color:oklch(0.45 0.005 90); margin-top:4px; }
+  .tl-role .tl-country { font-weight:700; font-size:11px; letter-spacing:0.5px; text-transform:uppercase; }
+  .tl-role .tl-sep { color:oklch(0.75 0.01 90); }
+  @media (max-width: 620px) {
+    .timeline::before { left:9px; }
+    .tl-item, .tl-item.tl-left, .tl-item.tl-right { width:100%; margin-left:0; text-align:left; padding:0 0 22px 34px; }
+    .tl-item.tl-left::before, .tl-item.tl-right::before { left:9px; right:auto; transform:translateX(-50%); }
+  }
+</style>
+</helmet>
+
+<div style="min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:60px 24px 60px; box-sizing:border-box;">
+  <div style="max-width:1160px; width:100%; margin-bottom:40px;">
+    <a href="index.html" style="font-size:14px; font-weight:600; color:oklch(0.5 0.005 90);">← Back to Cadence–X</a>
+  </div>
+
+  <div style="display:flex; gap:36px; align-items:center; max-width:1160px; width:100%; flex-wrap:wrap; margin-bottom:56px;">
+    <div class="portrait-cycle" role="img" aria-label="Photo of Anushka"></div>
+    <div id="about-intro" style="flex:1 1 320px;">
+      <h1>Hi, I’m Anushka.</h1>
+      <p>Product person by trade, engineer by training, and the reason a kids’ games site and a roadmap tool share a homepage. Turns out 20+ years of shipping software leaves you with some odd side projects.</p>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:36px; align-items:flex-start; max-width:1160px; width:100%; flex-wrap:wrap;">
+    <div style="flex:1 1 340px; min-width:280px;">
+      <div id="about-card" style="background:white; border-radius:20px; padding:36px 40px; box-shadow:0 1px 3px oklch(0 0 0 / 0.08); margin-bottom:32px; border-top:6px solid oklch(0.55 0.12 235); box-sizing:border-box;">
+        <h2>THE QUICK TL;DR VERSION ABOUT ME</h2>
+        <p style="font-size:15px; line-height:1.75; color:oklch(0.35 0.005 90); margin:0;">Loading…</p>
+      </div>
+
+      <div style="display:flex; gap:20px; justify-content:center; font-size:14px; color:oklch(0.5 0.005 90); margin-top:8px; flex-wrap:wrap;">
+        <a href="mailto:anushka@cadence-x.com">Send this guy an email</a>
+        <span>·</span>
+        <a href="https://www.linkedin.com/in/anushka/" target="_blank">Check out his LinkedIn</a>
+      </div>
+    </div>
+
+    <div id="milestones" style="flex:1 1 460px; min-width:320px;">
+      <p style="font-size:15px; line-height:1.75; color:oklch(0.35 0.005 90); margin:0;">Loading…</p>
+    </div>
+  </div>
+
+
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+// The dc-runtime replaces <x-dc> with a fresh React render of the template,
+// so any DOM written before boot is discarded. Injecting the markdown here —
+// in the component lifecycle, after the real DOM is mounted — makes it stick.
+class Component extends DCLogic {
+  componentDidMount() {
+    this.__renderFromCache();
+    this.__fetchLatest();
+    this.__tlRenderFromCache();
+    this.__tlFetchLatest();
+  }
+
+  componentDidUpdate() {
+    // If a template refresh swapped the card node, re-inject the markdown.
+    this.__renderFromCache();
+    this.__tlRenderFromCache();
+  }
+
+  __renderFromCache() {
+    var card = document.getElementById('about-card');
+    if (!card || card.getAttribute('data-md-rendered') === '1') return;
+    try {
+      var cached = localStorage.getItem('about-md-cache');
+      if (!cached) return;
+      var parsed = JSON.parse(cached);
+      if (parsed && parsed.md) this.__render(parsed.md);
+    } catch (e) { /* ignore */ }
+  }
+
+  __fetchLatest() {
+    var self = this;
+    fetch('about.md')
+      .then(function (res) { return res.ok ? res.text() : null; })
+      .then(function (text) {
+        if (!text) { self.__showError('Could not load about.md.'); return; }
+        self.__render(text);
+        try {
+          localStorage.setItem('about-md-cache', JSON.stringify({ md: text, ts: Date.now() }));
+        } catch (e) { /* ignore */ }
+      })
+      .catch(function () { self.__showError('Could not load about.md.'); });
+  }
+
+  __render(md) {
+    var intro = document.getElementById('about-intro');
+    var card = document.getElementById('about-card');
+    if (!intro || !card) return;
+    if (card.getAttribute('data-md-rendered') === '1' && this.state.__md === md) return;
+    if (typeof marked === 'undefined') {
+      this.__showError('Error: marked.js failed to load (check internet/CDN).');
+      return;
+    }
+
+    var text = md.replace(/\r\n/g, '\n').trim();
+    var lines = text.split('\n');
+    var introLines = [];
+    var cardLines = [];
+    var inCard = false;
+    for (var i = 0; i < lines.length; i++) {
+      if (/^##\s/.test(lines[i])) inCard = true;
+      (inCard ? cardLines : introLines).push(lines[i]);
+    }
+
+    intro.innerHTML = marked.parse(introLines.join('\n'), { breaks: true });
+    card.innerHTML = marked.parse(cardLines.join('\n'), { breaks: true });
+    card.setAttribute('data-md-rendered', '1');
+    this.state.__md = md;
+  }
+
+  __showError(msg) {
+    var card = document.getElementById('about-card');
+    if (!card || card.getAttribute('data-md-rendered') === '1') return;
+    card.innerHTML = '<p style="font-size:15px; line-height:1.75; color:oklch(0.6 0.1 20); margin:0;">' + msg + '</p>';
+  }
+
+  /* ── milestones.md → timeline ───────────────────────────── */
+
+  __tlRenderFromCache() {
+    var host = document.getElementById('milestones');
+    if (!host || host.getAttribute('data-tl-rendered') === '1') return;
+    try {
+      var cached = localStorage.getItem('milestones-md-cache');
+      if (!cached) return;
+      var parsed = JSON.parse(cached);
+      if (parsed && parsed.md) this.__tlRender(parsed.md);
+    } catch (e) { /* ignore */ }
+  }
+
+  __tlFetchLatest() {
+    var self = this;
+    fetch('milestones.md')
+      .then(function (res) { return res.ok ? res.text() : null; })
+      .then(function (text) {
+        if (!text) { self.__tlShowError('Could not load milestones.md.'); return; }
+        self.__tlRender(text);
+        try {
+          localStorage.setItem('milestones-md-cache', JSON.stringify({ md: text, ts: Date.now() }));
+        } catch (e) { /* ignore */ }
+      })
+      .catch(function () { self.__tlShowError('Could not load milestones.md.'); });
+  }
+
+  __tlRender(md) {
+    var host = document.getElementById('milestones');
+    if (!host) return;
+    if (host.getAttribute('data-tl-rendered') === '1' && this.state.__tlmd === md) return;
+
+    // Country name → ISO code (flags served as images so they render on every OS/browser)
+    var FLAG_CODES = {
+      'uk': 'gb', 'united kingdom': 'gb', 'great britain': 'gb', 'england': 'gb',
+      'germany': 'de', 'belgium': 'be', 'croatia': 'hr', 'netherlands': 'nl',
+      'the netherlands': 'nl', 'france': 'fr', 'spain': 'es', 'italy': 'it',
+      'portugal': 'pt', 'austria': 'at', 'switzerland': 'ch', 'ireland': 'ie',
+      'usa': 'us', 'united states': 'us', 'india': 'in'
+    };
+    var esc = function (s) {
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    };
+
+    // Format: "# Title" once, then per entry: "## year | company" + "country | role"
+    var lines = md.replace(/\r\n/g, '\n').split('\n');
+    var title = 'Professional Milestones';
+    var entries = [];
+    var cur = null;
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i].trim();
+      if (!line) continue;
+      var h2 = line.match(/^##\s+(.+)/);
+      var h1 = line.match(/^#(?!#)\s+(.+)/);
+      if (h2) {
+        if (cur) entries.push(cur);
+        var hp = h2[1].split('|');
+        cur = { year: (hp[0] || '').trim(), company: (hp[1] || '').trim(), country: '', role: '' };
+      } else if (h1) {
+        title = h1[1].trim();
+      } else if (cur) {
+        var pipe = line.indexOf('|');
+        var first = (pipe === -1 ? line : line.slice(0, pipe)).trim();
+        var rest = pipe === -1 ? '' : line.slice(pipe + 1).trim();
+        if (!cur.country) { cur.country = first; cur.role = rest; }
+        else if (rest) { cur.role = cur.role ? cur.role + ' ' + line : line; }
+      }
+    }
+    if (cur) entries.push(cur);
+
+    var html = '<div class="tl-head"><h2 class="tl-title">' + esc(title) + '</h2></div><div class="timeline">';
+    for (var j = 0; j < entries.length; j++) {
+      var e = entries[j];
+      var side = j % 2 === 0 ? 'tl-left' : 'tl-right';
+      var isCurrent = /current/i.test(e.year) ? ' tl-current' : '';
+      var code = FLAG_CODES[e.country.toLowerCase()] || '';
+      var flag = code ? '<img class="tl-flag" src="https://flagcdn.com/w80/' + code + '.png" alt="' + esc(e.country) + ' flag" loading="lazy">' : '';
+      html += '<div class="tl-item ' + side + isCurrent + '">'
+        + '<div class="tl-card">'
+        + '<div class="tl-year">' + esc(e.year) + '</div>'
+        + '<div class="tl-company"><span>' + esc(e.company) + '</span>' + flag + '</div>'
+        + '<div class="tl-role">'
+        + (e.country ? '<span class="tl-country">' + esc(e.country) + '</span>' : '')
+        + (e.country && e.role ? ' <span class="tl-sep">|</span> ' : '')
+        + esc(e.role)
+        + '</div></div></div>';
+    }
+    html += '</div>';
+    host.innerHTML = html;
+    host.setAttribute('data-tl-rendered', '1');
+    this.state.__tlmd = md;
+  }
+
+  __tlShowError(msg) {
+    var host = document.getElementById('milestones');
+    if (!host || host.getAttribute('data-tl-rendered') === '1') return;
+    host.innerHTML = '<p style="font-size:15px; line-height:1.75; color:oklch(0.6 0.1 20); margin:0;">' + msg + '</p>';
+  }
+}
+</script>
+</body>
