@@ -19,9 +19,9 @@ export const Header: React.FC = () => {
         {/* Left: Brand Lockup with authentic spinning logo */}
         <a
           href="index.html"
-          className="flex items-center gap-3.5 group select-none"
+          className="flex items-center gap-3.5 group"
         >
-          <SpinningLogo size="sm" interactive={false} className="shrink-0" />
+          <SpinningLogo size="sm" interactive={false} />
           <span className="font-archivo tracking-wider text-xl text-slate-900 group-hover:text-sky-600 transition-colors">
             CADENCE-X
           </span>
