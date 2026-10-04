@@ -188,6 +188,300 @@
       text-align: center;
     }
   }
+  /* ── App Cards & Sections ── */
+  .apps-container {
+    max-width: 1120px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 48px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .apps-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 44px;
+    margin: 0 0 16px;
+    color: #0f172a;
+    text-align: center;
+    letter-spacing: -0.02em;
+  }
+  .apps-subtitle {
+    font-size: 16px;
+    color: #475569;
+    margin: 0 0 44px;
+    text-align: center;
+    max-width: 620px;
+    line-height: 1.6;
+  }
+  .section-divider {
+    width: 100%;
+    max-width: 900px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(226, 232, 240, 0.9), transparent);
+    margin: 48px 0;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 28px;
+    max-width: 640px;
+  }
+  .section-pill {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    margin-bottom: 12px;
+  }
+  .section-heading {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 26px;
+    color: #0f172a;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: #64748b;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .app-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+    width: 100%;
+    max-width: 900px;
+  }
+  .app-card {
+    flex: 1 1 300px;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 32px 28px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 10px 25px -5px rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.12);
+  }
+  .app-card-tag {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .app-card-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 24px;
+    margin: 0 0 12px;
+    color: #0f172a;
+    transition: color 0.15s ease;
+  }
+  .app-card-desc {
+    font-size: 15px;
+    color: #475569;
+    line-height: 1.55;
+    margin: 0 0 16px;
+    flex-grow: 1;
+  }
+  .app-card-features {
+    margin: 0 0 24px;
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+    color: #64748b;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .app-card-link {
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.15s ease;
+  }
+  .app-card:hover .app-card-link {
+    gap: 10px;
+  }
+  /* ── Flagship App Card ── */
+  .app-card-flagship {
+    max-width: 820px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px 36px;
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 20px 25px -5px rgba(15, 23, 42, 0.05);
+    border: 1px solid rgba(226, 232, 240, 0.85);
+    border-top: 6px solid #0284c7;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .app-card-flagship:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 35px -8px rgba(2, 132, 199, 0.15);
+    border-color: #bae6fd;
+  }
+  .flagship-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  .flagship-badge-blue {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0369a1;
+    background: #e0f2fe;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .flagship-badge-green {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #047857;
+    background: #d1fae5;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .flagship-badge-green::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+  }
+  .flagship-badge-purple {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b21a8;
+    background: #f3e8ff;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .flagship-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .flagship-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 32px;
+    color: #0f172a;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+  .flagship-creator-callout {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #0284c7;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 4px 0;
+  }
+  .flagship-creator-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .flagship-creator-desc {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .flagship-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 4px 0 8px;
+  }
+  .flagship-highlight-item {
+    background: #ffffff;
+    border: 1px solid #f1f5f9;
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .flagship-highlight-head {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .flagship-highlight-text {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.5;
+  }
+  .flagship-cta-btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #0284c7;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: 12px;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .app-card-flagship:hover .flagship-cta-btn {
+    background: #0369a1;
+    transform: translateX(4px);
+  }
+  @media (max-width: 640px) {
+    .app-card-flagship {
+      padding: 24px 20px;
+    }
+    .flagship-title {
+      font-size: 26px;
+    }
+    .flagship-cta-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 </style>
 </helmet>
 
@@ -210,69 +504,127 @@
   </div>
 </header>
 
-<div style="min-height: calc(100vh - 80px); display:flex; flex-direction:column; align-items:center; padding:48px 24px 20px; box-sizing:border-box;">
+<main class="apps-container">
 
-  <h1 style="font-family:'Archivo Black', sans-serif; font-size:44px; margin:0 0 20px; color:oklch(0.2 0.005 90);">My Apps</h1>
-  <p style="font-size:16px; color:oklch(0.45 0.005 90); margin:0 0 28px; text-align:center; max-width:600px;">Selected tools, experiments, and playful applications built by Cadence-X.</p>
+  <h1 class="apps-title">Apps</h1>
+  <p class="apps-subtitle">A collection of purpose-built tools, playful experiments, and software products crafted by Cadence-X.</p>
 
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:28px; margin-top:20px; max-width:1120px; width:100%;">
-
-    <a href="https://roadmap.cadence-x.com/" target="_blank" rel="noopener noreferrer" style="flex:1 1 300px; max-width:340px; display:block; background:white; border-radius:20px; padding:32px 28px; box-shadow:0 1px 3px oklch(0 0 0 / 0.08); border-top:6px solid oklch(0.55 0.12 235); transition:transform 0.25s ease, box-shadow 0.25s ease;">
-      <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; color:oklch(0.5 0.12 235); text-transform:uppercase; margin-bottom:10px;">Plan</div>
-      <h2 style="font-family:'Archivo Black', sans-serif; font-size:26px; margin:0 0 12px; color:oklch(0.2 0.005 90);">Roadmap</h2>
-      <p style="font-size:15px; color:oklch(0.4 0.005 90); line-height:1.55; margin:0 0 16px;">A focused tool for product managers to plan, prioritize, and track their roadmap.</p>
-      <ul style="margin:0 0 20px; padding:0; list-style:none; font-size:14px; color:oklch(0.4 0.005 90); display:flex; flex-direction:column; gap:6px;">
-        <li>• Built for PM workflows</li>
-        <li>• Clear, prioritized view</li>
-      </ul>
-      <span style="font-size:14px; font-weight:600; color:oklch(0.45 0.12 235);">Open Roadmap →</span>
-    </a>
-
-    <a href="https://otisplay.cadence-x.com" target="_blank" rel="noopener noreferrer" style="flex:1 1 300px; max-width:340px; display:block; background:white; border-radius:20px; padding:32px 28px; box-shadow:0 1px 3px oklch(0 0 0 / 0.08); border-top:6px solid oklch(0.72 0.16 55); transition:transform 0.25s ease, box-shadow 0.25s ease;">
-      <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; color:oklch(0.6 0.16 55); text-transform:uppercase; margin-bottom:10px;">Play</div>
-      <h2 style="font-family:'Archivo Black', sans-serif; font-size:26px; margin:0 0 12px; color:oklch(0.2 0.005 90);">Otis Play</h2>
-      <p style="font-size:15px; color:oklch(0.4 0.005 90); line-height:1.55; margin:0 0 16px;">A little corner of playable content made for little kids — simple, colorful, and easy to jump into.</p>
-      <ul style="margin:0 0 20px; padding:0; list-style:none; font-size:14px; color:oklch(0.4 0.005 90); display:flex; flex-direction:column; gap:6px;">
-        <li>• Made for young kids</li>
-        <li>• No accounts, no clutter</li>
-      </ul>
-      <span style="font-size:14px; font-weight:600; color:oklch(0.55 0.16 55);">Visit Otis Play →</span>
-    </a>
-
-    <a href="https://timer.cadence-x.com/" target="_blank" rel="noopener noreferrer" style="flex:1 1 300px; max-width:340px; display:block; background:white; border-radius:20px; padding:32px 28px; box-shadow:0 1px 3px oklch(0 0 0 / 0.08); border-top:6px solid oklch(0.85 0.07 30); transition:transform 0.25s ease, box-shadow 0.25s ease;">
-      <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; color:oklch(0.85 0.07 30); text-transform:uppercase; margin-bottom:10px;">Timer</div>
-      <h2 style="font-family:'Archivo Black', sans-serif; font-size:26px; margin:0 0 12px; color:oklch(0.2 0.005 90);">Timer App</h2>
-      <p style="font-size:15px; color:oklch(0.4 0.005 90); line-height:1.55; margin:0 0 16px;">A simple timer for focus sessions, workouts, or timing anything you need.</p>
-      <ul style="margin:0 0 20px; padding:0; list-style:none; font-size:14px; color:oklch(0.4 0.005 90); display:flex; flex-direction:column; gap:6px;">
-        <li>• Clean, distraction-free timer</li>
-        <li>• Works anywhere at timer.cadence-x.com</li>
-      </ul>
-      <span style="font-size:14px; font-weight:600; color:oklch(0.7 0.07 30);">Start Timer →</span>
-    </a>
-
+  <!-- ── Section 1: Flagship Product ── -->
+  <div class="section-header">
+    <span class="section-pill" style="background:#e0f2fe; color:#0369a1;">Flagship Product</span>
+    <h2 class="section-heading">Strategic Roadmapping & Workflow</h2>
+    <p class="section-desc">A fully functional tool built for product, by product — bringing focus, rhythm, and clarity to planning and execution.</p>
   </div>
 
-  <div style="margin-top: 64px; font-size: 13px; color: oklch(0.6 0.005 90); text-align: center; max-width: 600px;">
-    Cadence–X is a small collection of things, but it still costs time and effort to maintain the apps published here. If you wish to share your kindness and tip something, you can support me through Buy me a coffee below.
-  </div>
-  <a href="https://www.buymeacoffee.com/anushkaj" target="_blank" rel="noopener noreferrer" style="margin-top:20px; display:inline-flex; align-items:center; gap:8px; background:#FFDD00; color:#000000; font-weight:700; font-size:16px; padding:12px 24px; border-radius:10px; border:1px solid #000000;">&#9749; Buy me a coffee</a>
+  <a href="https://roadmap.cadence-x.com/" target="_blank" rel="noopener noreferrer" class="app-card-flagship">
+    <div class="flagship-badge-row">
+      <span class="flagship-badge-blue">Roadmap & Strategy</span>
+      <span class="flagship-badge-green">Fully Functional Tool</span>
+      <span class="flagship-badge-purple">Built by a Seasoned Product Leader</span>
+    </div>
 
-  <!-- Cadence-X Footer -->
-  <footer class="cx-footer">
-    <div class="cx-footer-inner">
-      <div class="cx-footer-left">
-        <span class="cx-footer-dot"></span>
-        <span>&copy; 2026 CADENCE-X &nbsp;·&nbsp; All rights reserved.</span>
+    <div class="flagship-title-row">
+      <h2 class="flagship-title">Roadmap</h2>
+      <span style="font-size: 14px; font-weight: 600; color: #0284c7; display: flex; align-items: center; gap: 4px;">
+        roadmap.cadence-x.com ↗
+      </span>
+    </div>
+
+    <!-- Built for product callout -->
+    <div class="flagship-creator-callout">
+      <div class="flagship-creator-title">
+        <span>🎯</span>
+        <span>Built for Product by a Seasoned Product Person</span>
       </div>
-      <div class="cx-footer-right">
-        <a href="index.html#services" class="cx-footer-link">Services</a>
-        <a href="apps.html" class="cx-footer-link">Apps</a>
-        <a href="about.html" class="cx-footer-link">About Me</a>
+      <p class="flagship-creator-desc">
+        Crafted from over two decades of hands-on software delivery experience. It intentionally bypasses the bloat and complexity of enterprise project tools to focus strictly on what drives results: clear priorities, realistic horizons, and shared alignment.
+      </p>
+    </div>
+
+    <!-- Highlights Grid -->
+    <div class="flagship-highlights">
+      <div class="flagship-highlight-item">
+        <span class="flagship-highlight-head">👥 For PMs of Any Seniority</span>
+        <span class="flagship-highlight-text">From associate PMs structuring their first backlog to VPs and CPOs communicating strategic horizons.</span>
+      </div>
+      <div class="flagship-highlight-item">
+        <span class="flagship-highlight-head">⚡ Versatile Across Disciplines</span>
+        <span class="flagship-highlight-text">Equally powerful for founders, engineering leads, designers, and ops professionals planning workflows.</span>
+      </div>
+      <div class="flagship-highlight-item">
+        <span class="flagship-highlight-head">🎯 Plan, Prioritize & Track</span>
+        <span class="flagship-highlight-text">A distraction-free, actionable layout designed to keep teams synchronized without endless overhead.</span>
       </div>
     </div>
-  </footer>
 
-</div>
+    <div class="flagship-cta-btn">
+      <span>Launch Roadmap Tool</span>
+      <span>→</span>
+    </div>
+  </a>
+
+  <!-- Divider -->
+  <div class="section-divider"></div>
+
+  <!-- ── Section 2: Early Days of Vibecoding with AI ── -->
+  <div class="section-header">
+    <span class="section-pill" style="background:#fef3c7; color:#b45309;">AI Experiments</span>
+    <h2 class="section-heading">Early Days of Vibecoding with AI</h2>
+    <p class="section-desc">Playful micro-apps and fun weekend experiments built during the early days of exploring prompt-driven, vibecoding workflows with generative AI.</p>
+  </div>
+
+  <div class="app-grid">
+    <!-- Otis Play -->
+    <a href="https://otisplay.cadence-x.com" target="_blank" rel="noopener noreferrer" class="app-card" style="border-top: 5px solid #ea580c;">
+      <div class="app-card-tag" style="color: #ea580c;">Play & Explore</div>
+      <h2 class="app-card-title">Otis Play</h2>
+      <p class="app-card-desc">A little corner of playable web content made for young kids — simple, colorful, tactile, and immediately fun.</p>
+      <ul class="app-card-features">
+        <li>• Designed for young children</li>
+        <li>• No accounts, no ads, no clutter</li>
+        <li>• One-click instant play</li>
+      </ul>
+      <span class="app-card-link" style="color: #ea580c;">Visit Otis Play →</span>
+    </a>
+
+    <!-- Timer App -->
+    <a href="https://timer.cadence-x.com/" target="_blank" rel="noopener noreferrer" class="app-card" style="border-top: 5px solid #dc2626;">
+      <div class="app-card-tag" style="color: #dc2626;">Focus & Utility</div>
+      <h2 class="app-card-title">Timer App</h2>
+      <p class="app-card-desc">A fast, minimal timer for focus sessions, workouts, presentation rehearsals, or timing anything on the fly.</p>
+      <ul class="app-card-features">
+        <li>• Clean, full-screen distraction-free timer</li>
+        <li>• Quick preset intervals & custom durations</li>
+        <li>• Runs directly in any browser</li>
+      </ul>
+      <span class="app-card-link" style="color: #dc2626;">Start Timer →</span>
+    </a>
+  </div>
+
+  <!-- Support / Tip Section -->
+  <div style="margin-top: 64px; font-size: 13px; color: #64748b; text-align: center; max-width: 600px; line-height: 1.6;">
+    Cadence–X is an independent collection of projects, but it takes ongoing care and hosting to keep everything running smoothly. If you enjoy these apps and would like to support future work, you can buy me a coffee below.
+  </div>
+  <a href="https://www.buymeacoffee.com/anushkaj" target="_blank" rel="noopener noreferrer" style="margin-top: 18px; display: inline-flex; align-items: center; gap: 8px; background: #FFDD00; color: #000000; font-weight: 700; font-size: 15px; padding: 12px 24px; border-radius: 12px; border: 1px solid #e2b714; box-shadow: 0 2px 6px rgba(0,0,0,0.06); text-decoration: none; transition: transform 0.15s ease;">
+    <span>☕</span> Buy me a coffee
+  </a>
+
+</main>
+
+<!-- Cadence-X Footer -->
+<footer class="cx-footer">
+  <div class="cx-footer-inner">
+    <div class="cx-footer-left">
+      <span class="cx-footer-dot"></span>
+      <span>&copy; 2026 CADENCE-X &nbsp;·&nbsp; All rights reserved.</span>
+    </div>
+    <div class="cx-footer-right">
+      <a href="index.html#services" class="cx-footer-link">Services</a>
+      <a href="apps.html" class="cx-footer-link">Apps</a>
+      <a href="about.html" class="cx-footer-link">About Me</a>
+    </div>
+  </div>
+</footer>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{}"></script>
