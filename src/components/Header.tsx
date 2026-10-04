@@ -18,7 +18,7 @@ export const Header: React.FC = () => {
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Left: Brand Lockup with authentic spinning logo */}
         <a
-          href="/"
+          href="index.html"
           className="flex items-center gap-3.5 group"
         >
           <SpinningLogo size="sm" interactive={false} />
