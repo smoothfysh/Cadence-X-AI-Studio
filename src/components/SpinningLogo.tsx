@@ -22,9 +22,9 @@ export const SpinningLogo: React.FC<SpinningLogoProps> = ({
   }[size];
 
   // Primary local files with live fallback
-  const ringPrimary = '/uploads/cadence-x-outer-ring.png';
+  const ringPrimary = './uploads/cadence-x-outer-ring.png';
   const ringFallback = 'https://www.cadence-x.com/uploads/cadence-x-outer-ring.png';
-  const staticPrimary = '/uploads/cadence-x-static.png';
+  const staticPrimary = './uploads/cadence-x-static.png';
   const staticFallback = 'https://www.cadence-x.com/uploads/cadence-x-static.png';
 
   const [ringSrc, setRingSrc] = useState(ringPrimary);
