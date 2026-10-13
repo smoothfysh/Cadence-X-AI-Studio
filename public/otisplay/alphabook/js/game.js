@@ -1,212 +1,352 @@
-function startGame() {
-  state.collected = new Set();
-  saveCollected();
-  const letters = shuffleArray([...LETTERS]).slice(0, GAME_ROUNDS);
-  resetGameState(letters);
-  showView('game');
-  loadRound();
-}
+/**
+ * ABC Animal Stickers — Letter Quest (Animal Match Challenge)
+ * Guided Non-Punitive Preschool Matching Game with Procedural Audio & Inactivity Hints
+ */
 
-function continueGame() {
-  if (state.collected.size >= 26) {
-    showAllComplete();
-    return;
+function safeShuffleArray(arr) {
+  if (typeof shuffleArray === 'function') {
+    return shuffleArray(arr);
   }
-  const remaining = shuffleArray(LETTERS.filter(l => !state.collected.has(l)));
-  const letters = remaining.slice(0, Math.min(GAME_ROUNDS, remaining.length));
-  resetGameState(letters);
-  showView('game');
-  loadRound();
-}
-
-function quitGame() {
-  showView('home');
-}
-
-function loadRound() {
-  if (state.gameIndex >= state.gameLetters.length) {
-    gameComplete();
-    return;
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
-  state.isAdvancing = false;
-  const letter = state.gameLetters[state.gameIndex];
-  document.getElementById('gameLetter').textContent = letter;
-  document.getElementById('gameRound').textContent = `${state.gameIndex + 1} / ${state.gameLetters.length}`;
-  document.getElementById('gameMessage').textContent = '';
+  return a;
+}
 
-  state.gameCorrect = getRandomAnimal(letter);
+function startQuest(fresh = true) {
+  clearInactivityTimer();
 
-  const distractorLetters = LETTERS.filter(l => l !== letter);
+  // Activate view directly without calling showView('quest') recursively
+  state.currentMode = 'quest';
+  const viewAlbum = document.getElementById('viewAlbum');
+  const viewQuest = document.getElementById('viewQuest');
+  const btnModeAlbum = document.getElementById('btnModeAlbum');
+  const btnModeQuest = document.getElementById('btnModeQuest');
+
+  if (viewAlbum) viewAlbum.classList.remove('active');
+  if (viewQuest) viewQuest.classList.add('active');
+  if (btnModeAlbum) btnModeAlbum.classList.remove('active');
+  if (btnModeQuest) btnModeQuest.classList.add('active');
+
+  // If starting fresh or letters not initialized, choose 5 letters
+  if (fresh || !state.questLetters || state.questLetters.length === 0) {
+    let candidatePool = LETTERS.filter(l => !state.collectedLetters.has(l));
+    if (candidatePool.length < 5) {
+      candidatePool = [...LETTERS];
+    }
+    const shuffled = safeShuffleArray(candidatePool);
+    const selectedLetters = shuffled.slice(0, 5);
+    resetQuestState(selectedLetters);
+  }
+
+  renderQuestHeader();
+  loadQuestRound();
+}
+
+function renderQuestHeader() {
+  const roundEl = document.getElementById('questRoundBadge');
+  const starsEl = document.getElementById('questStarsTrack');
+
+  if (roundEl) {
+    roundEl.textContent = `Round ${state.questRound + 1} of ${state.questRoundsTotal}`;
+  }
+
+  if (starsEl) {
+    starsEl.innerHTML = '';
+    for (let i = 0; i < state.questRoundsTotal; i++) {
+      const starSpan = document.createElement('span');
+      starSpan.className = `ab-quest-star ${i < state.questStars ? 'earned' : 'empty'}`;
+      starSpan.textContent = i < state.questStars ? '⭐' : '⚪';
+      starsEl.appendChild(starSpan);
+    }
+  }
+}
+
+function loadQuestRound() {
+  clearInactivityTimer();
+  state.questAdvancing = false;
+
+  const targetLetter = state.questLetters[state.questRound] || 'A';
+  state.questTargetLetter = targetLetter;
+  state.questCorrectAnimal = getRandomAnimal(targetLetter);
+
+  // Pick 2 distractor animals from different letters
+  const distractorLetters = LETTERS.filter(l => l !== targetLetter);
   const distractors = [];
-  const used = new Set();
+  const usedAnimals = new Set();
+  usedAnimals.add(state.questCorrectAnimal);
+
   while (distractors.length < 2) {
-    const dl = distractorLetters[Math.floor(Math.random() * distractorLetters.length)];
-    const da = getRandomAnimal(dl);
-    const key = dl + da;
-    if (!used.has(key)) {
-      used.add(key);
-      distractors.push(da);
+    const randomL = distractorLetters[Math.floor(Math.random() * distractorLetters.length)];
+    const randomA = getRandomAnimal(randomL);
+    if (!usedAnimals.has(randomA)) {
+      usedAnimals.add(randomA);
+      distractors.push(randomA);
     }
   }
 
-  state.gameChoices = shuffleArray([state.gameCorrect, ...distractors]);
+  // Shuffle 3 choices
+  state.questChoices = safeShuffleArray([state.questCorrectAnimal, ...distractors]);
 
-  const container = document.getElementById('gameChoices');
-  container.innerHTML = '';
-  state.gameChoices.forEach(animal => {
-    const el = document.createElement('div');
-    el.className = 'ab-choice';
-    el.dataset.animal = animal;
-    const name = getAnimalName(animal);
-    const choiceLetter = ANIMAL_TO_LETTER[animal];
-    const display = getAnimalImageHtml(choiceLetter, name, getAnimalEmoji(animal));
-    el.innerHTML = `
-      <button class="ab-choice-expand" aria-label="See full size">🔍</button>
-      <div class="ab-choice-sticker">${display}</div>
-      <div class="ab-choice-label">${name}</div>
+  renderQuestHeader();
+
+  // Prompt banner
+  const promptBubble = document.getElementById('questPromptLetter');
+  const promptText = document.getElementById('questPromptText');
+  const formattedLetter = getFormattedLetter(targetLetter, state.caseMode);
+
+  if (promptBubble) {
+    promptBubble.innerHTML = `
+      <span class="ab-quest-target-char">${formattedLetter}</span>
+      <button type="button" class="ab-quest-replay-btn" id="btnReplayPrompt" aria-label="Repeat question">
+        <span>🔊</span>
+      </button>
     `;
-    el.querySelector('.ab-choice-expand').addEventListener('click', (e) => {
-      e.stopPropagation();
-      showImagePreview(animal);
-    });
-    el.addEventListener('click', () => handleChoice(el, animal));
-    container.appendChild(el);
+    const replayBtn = document.getElementById('btnReplayPrompt');
+    if (replayBtn) {
+      replayBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        AlphaAudio.playPop();
+        AlphaSpeech.speakPrompt(targetLetter);
+      });
+    }
+  }
+
+  if (promptText) {
+    promptText.textContent = `Which animal starts with letter ${targetLetter}?`;
+  }
+
+  // Speak prompt
+  AlphaSpeech.speakPrompt(targetLetter);
+
+  // Render choice cards
+  const container = document.getElementById('questChoicesGrid');
+  if (!container) return;
+  container.innerHTML = '';
+
+  state.questChoices.forEach((animalStr) => {
+    const name = getAnimalName(animalStr);
+    const emoji = getAnimalEmoji(animalStr);
+    const letter = ANIMAL_TO_LETTER[animalStr] || targetLetter;
+
+    const card = document.createElement('div');
+    card.className = 'ab-quest-choice-card';
+    card.dataset.animal = animalStr;
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', `Choose ${name}`);
+
+    card.innerHTML = `
+      <button type="button" class="ab-choice-zoom-btn" title="View full size" aria-label="Zoom in on ${name}">
+        <span>🔍</span>
+      </button>
+      <div class="ab-choice-sticker-box">
+        ${getAnimalImageHtml(letter, name, emoji, 'ab-choice-img')}
+      </div>
+      <div class="ab-choice-label-bar">
+        <span class="ab-choice-name">${name}</span>
+      </div>
+    `;
+
+    // Zoom expand handler
+    const zoomBtn = card.querySelector('.ab-choice-zoom-btn');
+    if (zoomBtn) {
+      zoomBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        AlphaAudio.playPop();
+        showImagePreview(animalStr);
+      });
+    }
+
+    // Card tap choice handler
+    card.addEventListener('click', () => handleQuestChoice(card, animalStr));
+
+    container.appendChild(card);
+  });
+
+  // Start 7-second inactivity hint timer
+  startInactivityTimer();
+}
+
+function handleQuestChoice(cardEl, animalStr) {
+  if (state.questAdvancing) return;
+  clearInactivityTimer();
+
+  const isCorrect = animalStr === state.questCorrectAnimal;
+  const animalName = getAnimalName(animalStr);
+  const targetLetter = state.questTargetLetter;
+
+  if (isCorrect) {
+    state.questAdvancing = true;
+    cardEl.classList.add('correct');
+
+    // Stamp progress
+    stampAnimal(targetLetter, animalName);
+    state.questStars++;
+    renderQuestHeader();
+
+    // Multi-sensory rewards
+    AlphaAudio.playChime();
+    AlphaAudio.playSparkle();
+    AlphaSpeech.speakEncouragement(targetLetter, animalName);
+
+    try {
+      const rect = cardEl.getBoundingClientRect();
+      if (window.OtisParticles) {
+        OtisParticles.burst(rect.left + rect.width / 2, rect.top + rect.height / 2, '#FFD700', 20);
+      }
+    } catch (e) {}
+
+    // Advance round
+    setTimeout(() => {
+      if (state.questRound + 1 >= state.questRoundsTotal) {
+        showQuestCompleteCelebration();
+      } else {
+        state.questRound++;
+        loadQuestRound();
+      }
+    }, 1200);
+  } else {
+    // Gentle distractor guidance: harmless wobble, no red penalty
+    cardEl.classList.add('wobble');
+    AlphaAudio.playBoing();
+    AlphaSpeech.speakGentleRetry(animalName, targetLetter);
+
+    setTimeout(() => {
+      cardEl.classList.remove('wobble');
+      startInactivityTimer();
+    }, 600);
+  }
+}
+
+/**
+ * 7-Second Inactivity Hint Assist
+ */
+function startInactivityTimer() {
+  clearInactivityTimer();
+  state.inactivityTimer = setTimeout(() => {
+    // Find the correct card and gently pulse it with a glowing halo
+    const correctCard = document.querySelector(`.ab-quest-choice-card[data-animal="${state.questCorrectAnimal}"]`);
+    if (correctCard && !state.questAdvancing) {
+      correctCard.classList.add('hint-pulse');
+      AlphaSpeech.speak(`Here is letter ${state.questTargetLetter}! Can you find the ${getAnimalName(state.questCorrectAnimal)}?`);
+      setTimeout(() => correctCard.classList.remove('hint-pulse'), 2500);
+    }
+  }, 7000);
+}
+
+function clearInactivityTimer() {
+  if (state.inactivityTimer) {
+    clearTimeout(state.inactivityTimer);
+    state.inactivityTimer = null;
+  }
+}
+
+/**
+ * Quest Complete Victory Celebration
+ */
+function showQuestCompleteCelebration() {
+  clearInactivityTimer();
+  AlphaAudio.playFanfare();
+
+  // Burst confetti fireworks
+  try {
+    if (window.OtisParticles) {
+      OtisParticles.burst(window.innerWidth * 0.3, window.innerHeight * 0.4, '#F59E0B', 24);
+      OtisParticles.burst(window.innerWidth * 0.7, window.innerHeight * 0.4, '#FF7B89', 24);
+    }
+  } catch (e) {}
+
+  const overlay = document.createElement('div');
+  overlay.className = 'ab-celeb-overlay';
+  overlay.innerHTML = `
+    <div class="ab-celeb-card">
+      <div class="ab-celeb-trophy" aria-hidden="true">🏆</div>
+      <h2 class="ab-celeb-title">Hooray! Quest Complete!</h2>
+      <p class="ab-celeb-msg">
+        You earned all <strong>5 Golden Stars</strong>! ⭐⭐⭐⭐⭐
+      </p>
+      <div class="ab-celeb-stats">
+        <span>📖 Total Letters Collected: <strong>${state.collectedLetters.size} / 26</strong></span>
+      </div>
+      <div class="ab-celeb-buttons">
+        <button type="button" class="ab-celeb-btn primary" id="btnCelebPlayAgain">
+          <span>🎯 Play Next Quest</span>
+        </button>
+        <button type="button" class="ab-celeb-btn secondary" id="btnCelebAlbum">
+          <span>📖 Sticker Album</span>
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  overlay.querySelector('#btnCelebPlayAgain').addEventListener('click', () => {
+    overlay.remove();
+    AlphaAudio.playPop();
+    startQuest(true);
+  });
+
+  overlay.querySelector('#btnCelebAlbum').addEventListener('click', () => {
+    overlay.remove();
+    AlphaAudio.playPop();
+    showView('album');
   });
 }
 
-function handleChoice(el, animal) {
-  if (state.isAdvancing) return;
-  const letter = state.gameLetters[state.gameIndex];
+/**
+ * Full Screen Image Preview Overlay
+ */
+function showImagePreview(animalStr) {
+  closeImagePreview();
+  const name = getAnimalName(animalStr);
+  const emoji = getAnimalEmoji(animalStr);
+  const letter = ANIMAL_TO_LETTER[animalStr] || 'A';
+  const soundType = getAnimalSoundType(name);
 
-  if (animal === state.gameCorrect) {
-    state.isAdvancing = true;
-    el.classList.add('correct');
-    state.collected.add(letter);
-    saveCollected();
-    document.getElementById('gameMessage').textContent = '✅ Correct!';
-    try {
-      OtisAudio.playSparkle();
-      OtisSpeech.speak(`${letter} is for ${getAnimalName(animal)}`);
-    } catch(e) {}
-    const rect = el.getBoundingClientRect();
-    try { OtisParticles.burst(rect.left + rect.width / 2, rect.top + rect.height / 2, '#FFD700', 16); } catch(e) {}
+  const overlay = document.createElement('div');
+  overlay.className = 'ab-preview-overlay';
+  overlay.id = 'abImagePreviewOverlay';
+  overlay.innerHTML = `
+    <div class="ab-preview-card" role="dialog" aria-label="${name} preview">
+      <button type="button" class="ab-preview-close" aria-label="Close preview">✕</button>
+      <div class="ab-preview-header">
+        <span class="ab-preview-letter">${letter}</span>
+        <span class="ab-preview-name">${name}</span>
+      </div>
+      <div class="ab-preview-img-box" id="previewImgBox">
+        ${getAnimalImageHtml(letter, name, emoji, 'ab-preview-large-img')}
+      </div>
+      <div class="ab-preview-actions">
+        <button type="button" class="ab-preview-sound-btn" id="btnPreviewSound">
+          <span>🔊 Play Animal Sound</span>
+        </button>
+      </div>
+    </div>
+  `;
 
-    document.querySelectorAll('.ab-choice').forEach(c => c.classList.add('disabled'));
+  document.body.appendChild(overlay);
 
-    setTimeout(() => {
-      state.gameIndex++;
-      loadRound();
-    }, 900);
-  } else {
-    el.classList.add('wrong');
-    document.getElementById('gameMessage').textContent = '❌ Try again!';
-    try { OtisAudio.playWobble(); } catch(e) {}
-    setTimeout(() => {
-      el.classList.remove('wrong');
-      if (!state.isAdvancing) document.getElementById('gameMessage').textContent = '';
-    }, 500);
+  overlay.querySelector('.ab-preview-close').addEventListener('click', closeImagePreview);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeImagePreview();
+  });
+
+  const soundBtn = overlay.querySelector('#btnPreviewSound');
+  if (soundBtn) {
+    soundBtn.addEventListener('click', () => {
+      AlphaAudio.playAnimalSound(soundType);
+      AlphaSpeech.speak(`${letter} is for ${name}`);
+    });
   }
 }
 
 function closeImagePreview() {
-  const overlay = document.querySelector('.ab-preview-overlay');
-  if (overlay) overlay.remove();
-}
-
-function showImagePreview(animal) {
-  const name = getAnimalName(animal);
-  const letter = ANIMAL_TO_LETTER[animal];
-  const display = getAnimalImageHtml(letter, name, getAnimalEmoji(animal));
-
-  const overlay = document.createElement('div');
-  overlay.className = 'ab-preview-overlay';
-  overlay.innerHTML = `
-    <div class="ab-preview-content" id="previewContent">
-      <button class="ab-preview-close">✕</button>
-      <div class="ab-preview-image" id="previewImage"></div>
-      <div class="ab-preview-name">${name}</div>
-    </div>
-  `;
-
-  const vw = window.innerWidth;
-  const vh = window.innerHeight;
-  const imgContainer = overlay.querySelector('#previewImage');
-  const pad = 60;
-  imgContainer.style.width = (vw - pad) + 'px';
-  imgContainer.style.height = (vh - pad) + 'px';
-  imgContainer.innerHTML = display;
-
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closeImagePreview();
-  });
-  overlay.querySelector('.ab-preview-close').addEventListener('click', closeImagePreview);
-  document.addEventListener('keydown', previewKeyHandler);
-  document.getElementById('app').appendChild(overlay);
-}
-
-function previewKeyHandler(e) {
-  if (e.key === 'Escape') {
-    closeImagePreview();
-    document.removeEventListener('keydown', previewKeyHandler);
+  const existing = document.getElementById('abImagePreviewOverlay');
+  if (existing) {
+    existing.remove();
   }
-}
-
-function showAllComplete() {
-  try { OtisAudio.playFanfare(); } catch(e) {}
-  const overlay = document.createElement('div');
-  overlay.className = 'celebration';
-  overlay.style.cssText = 'z-index:100;background:rgba(0,0,0,0.3);';
-  overlay.innerHTML = `
-    <div class="celebration-card" style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;max-width:360px;">
-      <div style="font-size:3rem;animation:bounce 0.6s ease infinite;">🏆</div>
-      <h2 style="color:var(--gold);margin:0;">Amazing!</h2>
-      <p style="margin:0;font-size:1.1rem;line-height:1.5;">You know all 26 letters and their animals!</p>
-      <div style="display:flex;gap:12px;margin-top:8px;">
-        <button class="btn" style="background:var(--coral);color:white;min-width:120px;" id="allDonePlayAgain">Play Again</button>
-        <button class="btn" style="background:var(--lavender);color:var(--text);min-width:120px;" id="allDoneQuit">Quit</button>
-      </div>
-    </div>
-  `;
-  document.getElementById('app').appendChild(overlay);
-  document.getElementById('allDonePlayAgain').addEventListener('click', () => {
-    overlay.remove();
-    startGame();
-  });
-  document.getElementById('allDoneQuit').addEventListener('click', () => {
-    overlay.remove();
-    showView('home');
-  });
-}
-
-function gameComplete() {
-  try { OtisAudio.playFanfare(); } catch(e) {}
-  if (state.collected.size >= 26) {
-    setTimeout(showAllComplete, 500);
-    return;
-  }
-  document.getElementById('gameMessage').textContent = '🎉 Round complete!';
-  setTimeout(() => {
-    const overlay = document.createElement('div');
-    overlay.className = 'celebration';
-    overlay.style.cssText = 'z-index:100;background:rgba(0,0,0,0.3);';
-    overlay.innerHTML = `
-      <div class="celebration-card" style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-        <div class="star" style="font-size:3rem;animation:bounce 0.6s ease infinite;">🎉</div>
-        <h2 style="color:var(--gold);margin:0;">Great job! ${state.collected.size} / 26 stickers!</h2>
-        <div style="display:flex;gap:12px;margin-top:8px;">
-          <button class="btn" style="background:var(--coral);color:white;min-width:120px;" id="celebContinue">Play Again</button>
-          <button class="btn" style="background:var(--lavender);color:var(--text);min-width:120px;" id="celebQuit">Quit</button>
-        </div>
-      </div>
-    `;
-    document.getElementById('app').appendChild(overlay);
-    document.getElementById('celebContinue').addEventListener('click', () => {
-      overlay.remove();
-      continueGame();
-    });
-    document.getElementById('celebQuit').addEventListener('click', () => {
-      overlay.remove();
-      showView('home');
-    });
-  }, 400);
 }

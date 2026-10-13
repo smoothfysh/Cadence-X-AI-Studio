@@ -10,3 +10,4 @@ package-lock.json
 desktop.ini
 .antigravity/
 backups/
+*backup*/

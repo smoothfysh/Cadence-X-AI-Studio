@@ -1,105 +1,76 @@
-# Shape Sorter — Game Spec
+# Shape Sorter — Modernized Game Spec
 
-- **Age Group:** 2-3
-- **File:** `shape-sorter/index.html`
+- **Age Group:** 2–4 (Toddler / Preschool)
+- **Files:** `shape-sorter/index.html`, `shape-sorter/style.css`, `shape-sorter/game.js`
 - **Dependencies:** `../styles/main.css`, `../scripts/shared.js`
 
 ## Description
 
-Drag-and-drop colored shapes onto matching gray shadow outlines. 3 rounds of increasing difficulty (4, 5, then 6 shapes).
+A modern, tactile Montessori-inspired wooden shape sorter game designed specifically for young children (ages 2–4). Players match vibrant, friendly shape characters with kawaii blinking faces into recessed wooden silhouette cutout slots across 3 progressive rounds.
 
-## Visual Design
+## Key Modernizations
 
-- **Theme:** Coral/pink accent (`var(--coral)`)
-- **Shapes:** 6 SVG shapes (circle, square, triangle, star, diamond, hexagon) with 6 pastel colors
-- **Slots:** Dashed-border gray outlines at 50% opacity, highlight coral on hover
-- **Divider:** Vertical `border-right` between shapes + slots on desktop; horizontal `border-bottom` on mobile
+1. **Dual Play Modes (Toddler Ergonomics):**
+   - **Pointer Drag-and-Drop:** Smooth 60fps dragging with `setPointerCapture`, GPU-accelerated transforms, and lifted shadow dynamics.
+   - **Tap-to-Place (Alternative for Little Fingers):** Tap a shape to select it (plays a cute wiggle and audio name pronunciation), then tap the matching cutout slot to watch the shape fly smoothly into place. Enables children with emerging fine motor coordination to play without frustration.
+
+2. **Magnetic Snapping & Forgiving Proximity:**
+   - Detects proximity using Euclidean distance and bounding boxes.
+   - Generous snap radius (~85% of slot dimension) pulls shapes toward matching slots and illuminates them with warm magnetic glow waves.
+
+3. **Tactile Toybox & Wooden Board Aesthetic:**
+   - Soft recessed silhouette slots with realistic inner shadows and dashed silhouette outlines.
+   - White toy shelf bay layout prevents jarring grid reflows when pieces are lifted.
+   - Elastic glide-back animation on missed drops (no abrupt teleportation).
+
+4. **10 Expressive Kawaii Shapes:**
+   - High-DPI SVGs with vibrant candy gradients, specular highlights, blushing cheeks, smiling mouths, and synchronized blinking eyes (`@keyframes eyeBlink`).
+   - Shapes pool: Circle, Square, Triangle, Star, Heart, Diamond, Hexagon, Cloud, Crescent Moon, Oval.
+
+5. **Multi-Sensory Audio & Speech:**
+   - Custom synthesized wooden block snap / clack sound + harmonic chime on correct placement.
+   - Spoken shape pronunciation via `OtisSpeech` (e.g. "Circle!", "Great job!").
+   - Friendly non-punitive wobble on mismatch.
+   - Dedicated Sound (🎵/🔇) and Voice (🗣️/🤫) toggle buttons with `localStorage` memory.
+
+6. **Round Progression & Star Badges:**
+   - Round 1 (Gentle): 4 shapes (`circle`, `square`, `triangle`, `star`)
+   - Round 2 (Exploring): 5 shapes (`circle`, `square`, `triangle`, `heart`, `diamond`)
+   - Round 3 (Mastery): 6 shapes (`star`, `heart`, `hexagon`, `cloud`, `crescent`, `oval`)
+   - 3 interactive golden star badges at bottom track progress.
+   - Joyful victory fanfare and rainbow star celebration overlay at completion.
+
+7. **Inactivity Hint Assist:**
+   - If child is idle for 7 seconds, the next unplaced shape gently wiggles and pulses its target silhouette slot to provide encouraging direction.
 
 ## Layout Structure
 
 ```
 .shape-sorter (100dvh, flex column)
-  .game-header (absolute, top)
-  .ss-title (coral, centered, clamp-sized)
-  .ss-play-area (flex:1, row → column ≤768px)
-    .ss-shapes (flex wrap, left/top) — draggable shapes
-    .ss-slots (flex wrap, right/bottom) — drop targets
-  .ss-score (bottom, centered)
+  .cx-game-nav-container (Cadence-X global header + return bar)
+  .ss-top-bar
+    .ss-title-box (Title + emoji badge + subtitle)
+    .ss-controls-group (Sound, Voice, Reset pill buttons)
+  .ss-play-arena (flex row on desktop, flex column-reverse on mobile)
+    .ss-panel.ss-panel-tray (left/bottom) — Holds .ss-bay > .ss-shape
+    .ss-panel.ss-panel-board (right/top) — Holds recessed .ss-slot targets
+  .ss-bottom-bar
+    .ss-stars-track (.ss-star-badge × 3)
+    .ss-status-msg ("Round N of 3 · Match X shapes!")
+  .game-footer
 ```
 
-## CSS Breakpoints
+## Responsive Breakpoints
 
-| Breakpoint | Shape size | Slot size | Padding | Gap |
+| Breakpoint | Layout | Shape Size | Slot Size | Bay Size |
 |---|---|---|---|---|
-| >768px | 64×64 | 72×72 | 24px 32px | 20px |
-| ≤768px | 56×56 | 64×64 | 16px | 12px |
-| ≤480px | 48×48 | 56×56 | 12px | 10px |
-| ≤360px | 42×42 | 48×48 | 8px | 8px |
+| Desktop (>820px) | Side-by-side row | 86×86px | 96×96px | 92×92px |
+| Tablet (481–820px) | Stacked column | 74×74px | 82×82px | 78×78px |
+| Mobile (361–480px) | Compact stacked | 64×64px | 72×72px | 68×68px |
+| Small Mobile (≤360px) | Micro stacked | 54×54px | 60×60px | 58×58px |
 
-## Key CSS Classes
+## Architectural Integrity & Safety
 
-- `.ss-shape` — draggable shape div (pointer cursor, white bg, rounded, shadow, float animation)
-- `.ss-shape.dragging` — fixed position during drag (scale 1.25, elevated shadow, z-index 100)
-- `.ss-slot` — drop target (dashed border, 50% opacity, centered SVG)
-- `.ss-slot.hover` — hover/active slot (full opacity, coral border, scale 1.1)
-- `.ss-slot.filled` — matched slot (opacity 0, pointer-events none)
-- `.ss-zone-label` — "Shapes" / "Shadow" labels (absolute positioned, uppercase)
-
-## Game Logic
-
-### Data
-
-- **SHAPES:** 6 objects `{ id, path }` with inline SVG path data (all `viewBox="0 0 100 100"`)
-- **COLORS:** 6 hex strings
-- **ROUNDS:** 3 rounds `[{ count: 4 }, { count: 5 }, { count: 6 }]`
-
-### State Variables
-
-| Variable | Type | Purpose |
-|---|---|---|
-| `round` | Number | Current round index (0–2) |
-| `matched` | Number | Matched count in current round |
-| `totalShapes` | Array | Shapes selected for current round |
-| `dragState` | Object/null | Active drag: `{ el, shapeId, offsetX, offsetY }` |
-| `isDragging` | Boolean | Whether pointer is down (not actively used as guard) |
-
-### Functions
-
-- **`shapeToSVG(shape, color, size)`** — Renders shape path into inline SVG string
-- **`startRound()`** — Sets up shapes and slots for current round; resets DOM; handles end condition (`createCelebration`)
-- **`onPointerMove(e)`** — Updates dragged element position; toggles `.hover` on slots under pointer
-- **`onPointerUp(e)`** — Checks drop target; on match: add `.filled`, remove shape, chime sound, particle burst; on miss: wobble sound, reset to flex layout
-
-### Interaction
-
-- **Drag initiation:** `pointerdown` on `.ss-shape` — switches to `position: fixed`, records offset, sets `.dragging`
-- **Drag tracking:** `pointermove` on `document` — follows pointer
-- **Drop:** `pointerup` on `document` — checks collision with unfilled slots by bounding rect
-- **Wrong drop:** Shape returns to flex layout (clears inline fixed styles), float animation resumes
-- **Correct drop:** Shape element removed, slot gets `.filled`, advance `matched`, when `matched >= totalShapes.length` → advance round
-
-### Audio & Feedback
-
-| Event | Sound | Visual |
-|---|---|---|
-| Correct match | `OtisAudio.playChime()` | Gold particle burst at drop point |
-| Wrong match | `OtisAudio.playWobble()` | Shape snaps back |
-| Round complete | `OtisAudio.playFanfare()` | Auto-advance after 800ms |
-| All rounds done | — | `createCelebration()` with rainbow emoji |
-
-## Shared Dependencies (from `shared.js`)
-
-- `shuffleArray()` — Fisher-Yates shuffle
-- `createCelebration()` — Win overlay (takes container, message, emoji, restart callback)
-- `OtisAudio.playChime()`, `.playWobble()`, `.playFanfare()`
-- `OtisParticles.burst(x, y, color, count)`
-
-## Breakage Prevention Notes
-
-- SVG path strings in SHAPES array **must** be properly closed with single quotes (`'.../>'`)
-- Each shape **must** have matching `data-shape-id` on both the draggable element and the slot
-- Slots are shuffled independently from shapes each round — matching relies on `shapeId`, not index
-- Flex layout handles shape positioning when drag ends outside any slot — the `position: ''` clear is critical
-- On pointerdown, the shape is set to `position: fixed` — on pointerup it must be cleared back to `position: ''` (not `position: static`)
-- Adding new shapes: add entry to `SHAPES` array + optionally extend `COLORS` array
-- Adding new rounds: add entry to `ROUNDS` array with desired `count`
+- Non-blocking standalone vanilla JavaScript (`game.js`) requiring zero build steps or bundlers.
+- Complete backwards compatibility with Cadence-X header and Otis Play navigation.
+- Preserves all shared helpers in `shared.js` (`OtisAudio`, `OtisParticles`, `OtisSpeech`, `createCelebration`, `shuffleArray`).

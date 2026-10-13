@@ -502,181 +502,414 @@
       color: #FFFFFF;
     }
 
-    /* ── Games Grid ── */
+    /* ── Games Grid & De-cluttered Pastel Tiles ── */
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
       gap: 24px;
       margin-top: 36px;
     }
     @media (max-width: 640px) {
       .games-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 18px;
       }
     }
 
-    /* Game Card */
+    /* Game Card Base */
     .game-card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 20px;
-      padding: 24px;
+      border-radius: 26px;
+      border: 2px solid transparent;
+      padding: 24px 22px 22px;
       text-decoration: none;
       color: inherit;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      text-align: center;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 18px -4px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
-      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+      box-shadow: 0 4px 18px -4px rgba(15, 23, 42, 0.05);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.2s ease;
       cursor: pointer;
+      user-select: none;
+      min-height: 310px;
     }
     .game-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.10), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
-      border-color: #CBD5E1;
+      transform: translateY(-8px);
     }
     .game-card:active {
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(0.99);
     }
 
-    /* Top Accent Line */
-    .game-card-accent-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 5px;
-    }
-
-    /* Card Header Meta */
-    .game-card-meta-row {
+    /* Card Top Header */
+    .game-card-top {
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
     }
-    .game-age-badge {
+    .game-age-pill {
       display: inline-flex;
       align-items: center;
       gap: 5px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 700;
-      padding: 3px 9px;
+      padding: 4px 12px;
       border-radius: 9999px;
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
-      color: #334155;
+      border: 1.5px solid transparent;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+      letter-spacing: 0.02em;
     }
-    .game-category-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #64748B;
+    .game-card-dot {
+      font-size: 14px;
+      opacity: 0.75;
+      transition: transform 0.25s ease;
+    }
+    .game-card:hover .game-card-dot {
+      transform: rotate(18deg) scale(1.15);
     }
 
-    /* Card Visual Row */
-    .game-visual-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 14px;
+    /* Visual Centerpiece (Hero Bubble) */
+    .game-visual-center {
+      margin: 8px auto 16px;
+      position: relative;
     }
-    .game-icon-box {
-      width: 58px;
-      height: 58px;
-      border-radius: 16px;
+    .game-icon-bubble {
+      width: 84px;
+      height: 84px;
+      border-radius: 26px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
-      flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      transition: transform 0.25s ease;
+      border: 2px solid transparent;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
     }
-    .game-card:hover .game-icon-box {
-      transform: scale(1.1) rotate(4deg);
+    .game-card:hover .game-icon-bubble {
+      transform: scale(1.12) rotate(-3deg);
+    }
+    .game-emoji {
+      font-size: 42px;
+      line-height: 1;
+      display: block;
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
     }
 
-    .game-title-group {
+    /* Content Group (De-cluttered & Clear) */
+    .game-info {
       flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
     }
     .game-title {
       font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 21px;
+      font-size: 22px;
       font-weight: 700;
-      color: #0F172A;
       line-height: 1.25;
-      margin-bottom: 3px;
-      transition: color 0.15s ease;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
     }
-    .game-card:hover .game-title {
-      color: #0284C7;
-    }
-    .game-play-type {
-      font-size: 12.5px;
-      color: #64748B;
-      font-weight: 500;
-    }
-
-    /* Card Description */
-    .game-desc {
+    .game-tagline {
+      font-family: 'Hanken Grotesk', sans-serif;
       font-size: 14px;
-      color: #475569;
-      line-height: 1.55;
-      margin-bottom: 18px;
-      flex: 1;
-    }
-
-    /* Skills Pill Tags */
-    .game-skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 20px;
-    }
-    .game-skill-pill {
-      font-size: 11.5px;
+      line-height: 1.45;
       font-weight: 500;
-      padding: 3px 8px;
-      border-radius: 6px;
-      background: #F1F5F9;
-      color: #475569;
+      max-width: 250px;
     }
 
-    /* CTA Launch Button */
-    .game-cta-btn {
-      display: flex;
+    /* Play CTA Pill Button */
+    .game-cta-pill {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 8px;
       width: 100%;
-      padding: 11px 16px;
-      border-radius: 12px;
-      font-weight: 600;
+      max-width: 210px;
+      padding: 11px 20px;
+      border-radius: 9999px;
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 700;
       font-size: 14px;
-      color: #0F172A;
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
-      transition: all 0.15s ease;
+      border: 1.5px solid transparent;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
       margin-top: auto;
     }
-    .game-card:hover .game-cta-btn {
-      background: #0284C7;
-      border-color: #0284C7;
-      color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
-    }
     .game-cta-arrow {
-      font-size: 16px;
-      transition: transform 0.15s ease;
+      font-size: 13px;
+      transition: transform 0.2s ease;
+      display: inline-block;
     }
     .game-card:hover .game-cta-arrow {
-      transform: translateX(4px);
+      transform: translateX(3px);
+    }
+
+    /* ── Themed Pastel Color Styles (Calming, Soft, Cheerful) ── */
+
+    /* 1. Rose / Strawberry Cream */
+    .game-card.theme-rose {
+      background: linear-gradient(160deg, #FFF5F7 0%, #FFE8EC 100%);
+      border-color: #FECDD6;
+    }
+    .game-card.theme-rose:hover {
+      border-color: #FDA4AF;
+      box-shadow: 0 18px 36px -8px rgba(244, 63, 94, 0.18), 0 6px 14px -2px rgba(244, 63, 94, 0.08);
+    }
+    .game-card.theme-rose .game-age-pill {
+      background: #FFFFFF;
+      color: #BE123C;
+      border-color: #FECDD6;
+    }
+    .game-card.theme-rose .game-icon-bubble {
+      background: #FFFFFF;
+      border-color: #FECDD6;
+      box-shadow: 0 8px 20px -4px rgba(244, 63, 94, 0.14);
+    }
+    .game-card.theme-rose .game-title {
+      color: #881337;
+    }
+    .game-card.theme-rose .game-tagline {
+      color: #9F1239;
+    }
+    .game-card.theme-rose .game-cta-pill {
+      background: #FFFFFF;
+      color: #BE123C;
+      border-color: #FECDD6;
+    }
+    .game-card.theme-rose:hover .game-cta-pill {
+      background: #FB7185;
+      color: #FFFFFF;
+      border-color: #FB7185;
+      box-shadow: 0 6px 18px rgba(251, 113, 133, 0.35);
+    }
+
+    /* 2. Mint / Sage */
+    .game-card.theme-mint {
+      background: linear-gradient(160deg, #F0FDF4 0%, #DCFCE7 100%);
+      border-color: #BBF7D0;
+    }
+    .game-card.theme-mint:hover {
+      border-color: #86EFAC;
+      box-shadow: 0 18px 36px -8px rgba(16, 185, 129, 0.18), 0 6px 14px -2px rgba(16, 185, 129, 0.08);
+    }
+    .game-card.theme-mint .game-age-pill {
+      background: #FFFFFF;
+      color: #047857;
+      border-color: #BBF7D0;
+    }
+    .game-card.theme-mint .game-icon-bubble {
+      background: #FFFFFF;
+      border-color: #BBF7D0;
+      box-shadow: 0 8px 20px -4px rgba(16, 185, 129, 0.14);
+    }
+    .game-card.theme-mint .game-title {
+      color: #064E3B;
+    }
+    .game-card.theme-mint .game-tagline {
+      color: #047857;
+    }
+    .game-card.theme-mint .game-cta-pill {
+      background: #FFFFFF;
+      color: #047857;
+      border-color: #BBF7D0;
+    }
+    .game-card.theme-mint:hover .game-cta-pill {
+      background: #34D399;
+      color: #064E3B;
+      border-color: #34D399;
+      box-shadow: 0 6px 18px rgba(52, 211, 153, 0.35);
+    }
+
+    /* 3. Sky / Powder Blue */
+    .game-card.theme-sky {
+      background: linear-gradient(160deg, #F0F9FF 0%, #E0F2FE 100%);
+      border-color: #BAE6FD;
+    }
+    .game-card.theme-sky:hover {
+      border-color: #7DD3FC;
+      box-shadow: 0 18px 36px -8px rgba(2, 132, 199, 0.18), 0 6px 14px -2px rgba(2, 132, 199, 0.08);
+    }
+    .game-card.theme-sky .game-age-pill {
+      background: #FFFFFF;
+      color: #0284C7;
+      border-color: #BAE6FD;
+    }
+    .game-card.theme-sky .game-icon-bubble {
+      background: #FFFFFF;
+      border-color: #BAE6FD;
+      box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.14);
+    }
+    .game-card.theme-sky .game-title {
+      color: #0C4A6E;
+    }
+    .game-card.theme-sky .game-tagline {
+      color: #0369A1;
+    }
+    .game-card.theme-sky .game-cta-pill {
+      background: #FFFFFF;
+      color: #0284C7;
+      border-color: #BAE6FD;
+    }
+    .game-card.theme-sky:hover .game-cta-pill {
+      background: #38BDF8;
+      color: #FFFFFF;
+      border-color: #38BDF8;
+      box-shadow: 0 6px 18px rgba(56, 189, 248, 0.35);
+    }
+
+    /* 4. Buttercup / Honey Cream */
+    .game-card.theme-butter {
+      background: linear-gradient(160deg, #FFFDF0 0%, #FEF9D9 100%);
+      border-color: #FDE68A;
+    }
+    .game-card.theme-butter:hover {
+      border-color: #FCD34D;
+      box-shadow: 0 18px 36px -8px rgba(245, 158, 11, 0.18), 0 6px 14px -2px rgba(245, 158, 11, 0.08);
+    }
+    .game-card.theme-butter .game-age-pill {
+      background: #FFFFFF;
+      color: #B45309;
+      border-color: #FDE68A;
+    }
+    .game-card.theme-butter .game-icon-bubble {
+      background: #FFFFFF;
+      border-color: #FDE68A;
+      box-shadow: 0 8px 20px -4px rgba(245, 158, 11, 0.14);
+    }
+    .game-card.theme-butter .game-title {
+      color: #78350F;
+    }
+    .game-card.theme-butter .game-tagline {
+      color: #B45309;
+    }
+    .game-card.theme-butter .game-cta-pill {
+      background: #FFFFFF;
+      color: #B45309;
+      border-color: #FDE68A;
+    }
+    .game-card.theme-butter:hover .game-cta-pill {
+      background: #FBBF24;
+      color: #78350F;
+      border-color: #FBBF24;
+      box-shadow: 0 6px 18px rgba(251, 191, 36, 0.35);
+    }
+
+    /* 5. Peach / Apricot */
+    .game-card.theme-peach {
+      background: linear-gradient(160deg, #FFF8F1 0%, #FFEDD5 100%);
+      border-color: #FED7AA;
+    }
+    .game-card.theme-peach:hover {
+      border-color: #FDBA74;
+      box-shadow: 0 18px 36px -8px rgba(249, 115, 22, 0.18), 0 6px 14px -2px rgba(249, 115, 22, 0.08);
+    }
+    .game-card.theme-peach .game-age-pill {
+      background: #FFFFFF;
+      color: #C2410C;
+      border-color: #FED7AA;
+    }
+    .game-card.theme-peach .game-icon-bubble {
+      background: #FFFFFF;
+      border-color: #FED7AA;
+      box-shadow: 0 8px 20px -4px rgba(249, 115, 22, 0.14);
+    }
+    .game-card.theme-peach .game-title {
+      color: #7C2D12;
+    }
+    .game-card.theme-peach .game-tagline {
+      color: #C2410C;
+    }
+    .game-card.theme-peach .game-cta-pill {
+      background: #FFFFFF;
+      color: #C2410C;
+      border-color: #FED7AA;
+    }
+    .game-card.theme-peach:hover .game-cta-pill {
+      background: #FB923C;
+      color: #FFFFFF;
+      border-color: #FB923C;
+      box-shadow: 0 6px 18px rgba(251, 146, 60, 0.35);
+    }
+
+    /* 6. Lavender / Lilac */
+    .game-card.theme-lavender {
+      background: linear-gradient(160deg, #FAF5FF 0%, #F3E8FF 100%);
+      border-color: #E9D5FF;
+    }
+    .game-card.theme-lavender:hover {
+      border-color: #D8B4FE;
+      box-shadow: 0 18px 36px -8px rgba(139, 92, 246, 0.18), 0 6px 14px -2px rgba(139, 92, 246, 0.08);
+    }
+    .game-card.theme-lavender .game-age-pill {
+      background: #FFFFFF;
+      color: #7C3AED;
+      border-color: #E9D5FF;
+    }
+    .game-card.theme-lavender .game-icon-bubble {
+      background: #FFFFFF;
+      border-color: #E9D5FF;
+      box-shadow: 0 8px 20px -4px rgba(139, 92, 246, 0.14);
+    }
+    .game-card.theme-lavender .game-title {
+      color: #581C87;
+    }
+    .game-card.theme-lavender .game-tagline {
+      color: #7C3AED;
+    }
+    .game-card.theme-lavender .game-cta-pill {
+      background: #FFFFFF;
+      color: #7C3AED;
+      border-color: #E9D5FF;
+    }
+    .game-card.theme-lavender:hover .game-cta-pill {
+      background: #A78BFA;
+      color: #FFFFFF;
+      border-color: #A78BFA;
+      box-shadow: 0 6px 18px rgba(167, 139, 250, 0.35);
+    }
+
+    /* 7. Seafoam / Aqua */
+    .game-card.theme-seafoam {
+      background: linear-gradient(160deg, #F0FDFA 0%, #CCFBF1 100%);
+      border-color: #99F6E4;
+    }
+    .game-card.theme-seafoam:hover {
+      border-color: #5EEAD4;
+      box-shadow: 0 18px 36px -8px rgba(20, 184, 166, 0.18), 0 6px 14px -2px rgba(20, 184, 166, 0.08);
+    }
+    .game-card.theme-seafoam .game-age-pill {
+      background: #FFFFFF;
+      color: #0F766E;
+      border-color: #99F6E4;
+    }
+    .game-card.theme-seafoam .game-icon-bubble {
+      background: #FFFFFF;
+      border-color: #99F6E4;
+      box-shadow: 0 8px 20px -4px rgba(20, 184, 166, 0.14);
+    }
+    .game-card.theme-seafoam .game-title {
+      color: #134E4A;
+    }
+    .game-card.theme-seafoam .game-tagline {
+      color: #0F766E;
+    }
+    .game-card.theme-seafoam .game-cta-pill {
+      background: #FFFFFF;
+      color: #0F766E;
+      border-color: #99F6E4;
+    }
+    .game-card.theme-seafoam:hover .game-cta-pill {
+      background: #2DD4BF;
+      color: #115E59;
+      border-color: #2DD4BF;
+      box-shadow: 0 6px 18px rgba(45, 212, 191, 0.35);
     }
 
     /* ── Trust & Parent Info Section ── */
@@ -929,216 +1162,153 @@
       </div>
     </section>
 
-    <!-- ── Interactive Game Cards Grid ── -->
+    <!-- ── Interactive Game Cards Grid (De-cluttered & Pastel Themed) ── -->
     <section class="games-grid" id="games-grid">
       
       <!-- 1. Shape Sorter -->
-      <a href="shape-sorter/index.html" class="game-card" data-age="toddler" style="border-top-color: #FF6B81;">
-        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #FF6B81, #FF8E9E);"></div>
-        <div class="game-card-meta-row">
-          <span class="game-age-badge" style="color:#BE185D; background:#FDF2F8; border-color:#FBCFE8;">⭐ Ages 2–3</span>
-          <span class="game-category-tag">Tactile Logic</span>
+      <a href="shape-sorter/index.html" class="game-card theme-rose" data-age="toddler">
+        <div class="game-card-top">
+          <span class="game-age-pill">⭐ Ages 2–3</span>
+          <span class="game-card-dot" title="Tactile">🧩</span>
         </div>
-        <div class="game-visual-row">
-          <div class="game-icon-box" style="background: #FFE4E8; color: #E11D48;">
-            <span>🔵</span>
-          </div>
-          <div class="game-title-group">
-            <h2 class="game-title">Shape Sorter</h2>
-            <div class="game-play-type">Drag &amp; Match Silhouettes</div>
+        <div class="game-visual-center">
+          <div class="game-icon-bubble">
+            <span class="game-emoji">🧩</span>
           </div>
         </div>
-        <p class="game-desc">
-          Drag and drop vibrant geometric shapes onto matching silhouette shadows with satisfying audio snaps.
-        </p>
-        <div class="game-skills-list">
-          <span class="game-skill-pill">Motor Skills</span>
-          <span class="game-skill-pill">Shape Recognition</span>
-          <span class="game-skill-pill">Spatial Logic</span>
+        <div class="game-info">
+          <h2 class="game-title">Shape Sorter</h2>
+          <p class="game-tagline">Match colorful shapes into shadow silhouettes</p>
         </div>
-        <div class="game-cta-btn">
-          <span>Play Shape Sorter</span>
-          <span class="game-cta-arrow">→</span>
+        <div class="game-cta-pill">
+          <span>Play Now</span>
+          <span class="game-cta-arrow">▶</span>
         </div>
       </a>
 
       <!-- 2. Color Splash -->
-      <a href="color-splash/index.html" class="game-card" data-age="toddler" style="border-top-color: #10B981;">
-        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #10B981, #34D399);"></div>
-        <div class="game-card-meta-row">
-          <span class="game-age-badge" style="color:#047857; background:#ECFDF5; border-color:#A7F3D0;">⭐ Ages 2–3</span>
-          <span class="game-category-tag">Creative Play</span>
+      <a href="color-splash/index.html" class="game-card theme-mint" data-age="toddler">
+        <div class="game-card-top">
+          <span class="game-age-pill">⭐ Ages 2–3</span>
+          <span class="game-card-dot" title="Creative">🎨</span>
         </div>
-        <div class="game-visual-row">
-          <div class="game-icon-box" style="background: #D1FAE5; color: #059669;">
-            <span>🎨</span>
-          </div>
-          <div class="game-title-group">
-            <h2 class="game-title">Color Splash</h2>
-            <div class="game-play-type">Watercolor Tap Canvas</div>
+        <div class="game-visual-center">
+          <div class="game-icon-bubble">
+            <span class="game-emoji">🎨</span>
           </div>
         </div>
-        <p class="game-desc">
-          Tap or click anywhere to splatter bright watercolor splashes on an open canvas with bubbling sounds.
-        </p>
-        <div class="game-skills-list">
-          <span class="game-skill-pill">Color Discovery</span>
-          <span class="game-skill-pill">Sensory Free-Play</span>
-          <span class="game-skill-pill">Finger Tapping</span>
+        <div class="game-info">
+          <h2 class="game-title">Color Splash</h2>
+          <p class="game-tagline">Splatter bright watercolor on open canvas</p>
         </div>
-        <div class="game-cta-btn">
-          <span>Play Color Splash</span>
-          <span class="game-cta-arrow">→</span>
+        <div class="game-cta-pill">
+          <span>Play Now</span>
+          <span class="game-cta-arrow">▶</span>
         </div>
       </a>
 
       <!-- 3. Shape Pop -->
-      <a href="shape-pop/index.html" class="game-card" data-age="toddler" style="border-top-color: #0284C7;">
-        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #0284C7, #38BDF8);"></div>
-        <div class="game-card-meta-row">
-          <span class="game-age-badge" style="color:#0369A1; background:#F0F9FF; border-color:#BAE6FD;">⭐ Ages 2–3</span>
-          <span class="game-category-tag">Hand-Eye Timing</span>
+      <a href="shape-pop/index.html" class="game-card theme-sky" data-age="toddler">
+        <div class="game-card-top">
+          <span class="game-age-pill">⭐ Ages 2–3</span>
+          <span class="game-card-dot" title="Pop">🎈</span>
         </div>
-        <div class="game-visual-row">
-          <div class="game-icon-box" style="background: #E0F2FE; color: #0284C7;">
-            <span>💥</span>
-          </div>
-          <div class="game-title-group">
-            <h2 class="game-title">Shape Pop</h2>
-            <div class="game-play-type">Floating Bubble Popper</div>
+        <div class="game-visual-center">
+          <div class="game-icon-bubble">
+            <span class="game-emoji">🎈</span>
           </div>
         </div>
-        <p class="game-desc">
-          Pop floating geometric balloons and drifting bubbles in mid-air with gentle chime acoustics.
-        </p>
-        <div class="game-skills-list">
-          <span class="game-skill-pill">Reaction Timing</span>
-          <span class="game-skill-pill">Bubble Physics</span>
-          <span class="game-skill-pill">Soft Audio</span>
+        <div class="game-info">
+          <h2 class="game-title">Shape Pop</h2>
+          <p class="game-tagline">Tap and pop floating kawaii balloon bubbles</p>
         </div>
-        <div class="game-cta-btn">
-          <span>Play Shape Pop</span>
-          <span class="game-cta-arrow">→</span>
+        <div class="game-cta-pill">
+          <span>Play Now</span>
+          <span class="game-cta-arrow">▶</span>
         </div>
       </a>
 
       <!-- 4. Count & Drop -->
-      <a href="count-drop/index.html" class="game-card" data-age="toddler" style="border-top-color: #14B8A6;">
-        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #14B8A6, #2DD4BF);"></div>
-        <div class="game-card-meta-row">
-          <span class="game-age-badge" style="color:#0F766E; background:#F0FDFA; border-color:#99F6E4;">⭐ Ages 2–3</span>
-          <span class="game-category-tag">Early Numbers</span>
+      <a href="count-drop/index.html" class="game-card theme-butter" data-age="toddler">
+        <div class="game-card-top">
+          <span class="game-age-pill">⭐ Ages 2–3</span>
+          <span class="game-card-dot" title="Counting">🐱</span>
         </div>
-        <div class="game-visual-row">
-          <div class="game-icon-box" style="background: #CCFBF1; color: #0D9488;">
-            <span>🐱</span>
-          </div>
-          <div class="game-title-group">
-            <h2 class="game-title">Count &amp; Drop</h2>
-            <div class="game-play-type">Tactile Basket Counting</div>
+        <div class="game-visual-center">
+          <div class="game-icon-bubble">
+            <span class="game-emoji">🐱</span>
           </div>
         </div>
-        <p class="game-desc">
-          Drop cute kitten friends into the basket one by one while hearing friendly spoken counts and cheerful chimes.
-        </p>
-        <div class="game-skills-list">
-          <span class="game-skill-pill">Numbers 1 to 5</span>
-          <span class="game-skill-pill">Gentle Physics</span>
-          <span class="game-skill-pill">Audio Phonics</span>
+        <div class="game-info">
+          <h2 class="game-title">Count &amp; Drop</h2>
+          <p class="game-tagline">Drop cute kitten friends into the cozy basket</p>
         </div>
-        <div class="game-cta-btn">
-          <span>Play Count &amp; Drop</span>
-          <span class="game-cta-arrow">→</span>
+        <div class="game-cta-pill">
+          <span>Play Now</span>
+          <span class="game-cta-arrow">▶</span>
         </div>
       </a>
 
       <!-- 5. Otis Bird -->
-      <a href="otisbird/index.html" class="game-card" data-age="preschool" style="border-top-color: #F59E0B;">
-        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #F59E0B, #FBBF24);"></div>
-        <div class="game-card-meta-row">
-          <span class="game-age-badge" style="color:#B45309; background:#FFFBEB; border-color:#FDE68A;">⭐⭐ Ages 4–5</span>
-          <span class="game-category-tag">Arcade Flight</span>
+      <a href="otisbird/index.html" class="game-card theme-peach" data-age="preschool">
+        <div class="game-card-top">
+          <span class="game-age-pill">⭐⭐ Ages 4–5</span>
+          <span class="game-card-dot" title="Flying">🐦</span>
         </div>
-        <div class="game-visual-row">
-          <div class="game-icon-box" style="background: #FEF3C7; color: #D97706;">
-            <span>🐦</span>
-          </div>
-          <div class="game-title-group">
-            <h2 class="game-title">Otis Bird</h2>
-            <div class="game-play-type">Tap-to-Flap Adventure</div>
+        <div class="game-visual-center">
+          <div class="game-icon-bubble">
+            <span class="game-emoji">🐦</span>
           </div>
         </div>
-        <p class="game-desc">
-          Flap Otis the bird gently through sunny skies and fluffy clouds in a friendly, non-punishing tap flight.
-        </p>
-        <div class="game-skills-list">
-          <span class="game-skill-pill">Rhythm &amp; Timing</span>
-          <span class="game-skill-pill">Spatial Sense</span>
-          <span class="game-skill-pill">Sunny Soundtrack</span>
+        <div class="game-info">
+          <h2 class="game-title">Otis Bird</h2>
+          <p class="game-tagline">Flap gently through sunny clouds and skies</p>
         </div>
-        <div class="game-cta-btn">
-          <span>Play Otis Bird</span>
-          <span class="game-cta-arrow">→</span>
+        <div class="game-cta-pill">
+          <span>Play Now</span>
+          <span class="game-cta-arrow">▶</span>
         </div>
       </a>
 
       <!-- 6. Memory Path -->
-      <a href="memory-path/index.html" class="game-card" data-age="preschool" style="border-top-color: #8B5CF6;">
-        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #8B5CF6, #A78BFA);"></div>
-        <div class="game-card-meta-row">
-          <span class="game-age-badge" style="color:#6D28D9; background:#F5F3FF; border-color:#DDD6FE;">⭐⭐ Ages 4–5</span>
-          <span class="game-category-tag">Memory &amp; Focus</span>
+      <a href="memory-path/index.html" class="game-card theme-lavender" data-age="preschool">
+        <div class="game-card-top">
+          <span class="game-age-pill">⭐⭐ Ages 4–5</span>
+          <span class="game-card-dot" title="Music">💎</span>
         </div>
-        <div class="game-visual-row">
-          <div class="game-icon-box" style="background: #EDE9FE; color: #7C3AED;">
-            <span>💎</span>
-          </div>
-          <div class="game-title-group">
-            <h2 class="game-title">Memory Path</h2>
-            <div class="game-play-type">Musical Sequence Memory</div>
+        <div class="game-visual-center">
+          <div class="game-icon-bubble">
+            <span class="game-emoji">💎</span>
           </div>
         </div>
-        <p class="game-desc">
-          Watch sparkling gemstones illuminate in sequence and tap along to replay the soothing musical melody.
-        </p>
-        <div class="game-skills-list">
-          <span class="game-skill-pill">Working Memory</span>
-          <span class="game-skill-pill">Pattern Recall</span>
-          <span class="game-skill-pill">Musical Notes</span>
+        <div class="game-info">
+          <h2 class="game-title">Memory Path</h2>
+          <p class="game-tagline">Follow the glowing musical gemstone melody</p>
         </div>
-        <div class="game-cta-btn">
-          <span>Play Memory Path</span>
-          <span class="game-cta-arrow">→</span>
+        <div class="game-cta-pill">
+          <span>Play Now</span>
+          <span class="game-cta-arrow">▶</span>
         </div>
       </a>
 
       <!-- 7. ABC Animal Stickers -->
-      <a href="alphabook/index.html" class="game-card" data-age="preschool" style="border-top-color: #EA580C;">
-        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #EA580C, #FB923C);"></div>
-        <div class="game-card-meta-row">
-          <span class="game-age-badge" style="color:#C2410C; background:#FFF7ED; border-color:#FED7AA;">⭐⭐ Ages 3–5</span>
-          <span class="game-category-tag">Letters &amp; Phonics</span>
+      <a href="alphabook/index.html" class="game-card theme-seafoam" data-age="preschool">
+        <div class="game-card-top">
+          <span class="game-age-pill">⭐⭐ Ages 3–5</span>
+          <span class="game-card-dot" title="Animals">🦁</span>
         </div>
-        <div class="game-visual-row">
-          <div class="game-icon-box" style="background: #FFEDD5; color: #EA580C;">
-            <span>🐊</span>
-          </div>
-          <div class="game-title-group">
-            <h2 class="game-title">ABC Animal Stickers</h2>
-            <div class="game-play-type">Interactive Alphabet Book</div>
+        <div class="game-visual-center">
+          <div class="game-icon-bubble">
+            <span class="game-emoji">🦁</span>
           </div>
         </div>
-        <p class="game-desc">
-          Discover letters from Alligator to Zebra and paste interactive animal stickers while hearing gentle speech pronunciations.
-        </p>
-        <div class="game-skills-list">
-          <span class="game-skill-pill">Phonics &amp; ABCs</span>
-          <span class="game-skill-pill">Animal Names</span>
-          <span class="game-skill-pill">Speech Audio</span>
+        <div class="game-info">
+          <h2 class="game-title">ABC Animal Stickers</h2>
+          <p class="game-tagline">Discover letters &amp; meet animal friends from A to Z</p>
         </div>
-        <div class="game-cta-btn">
-          <span>Play ABC Stickers</span>
-          <span class="game-cta-arrow">→</span>
+        <div class="game-cta-pill">
+          <span>Play Now</span>
+          <span class="game-cta-arrow">▶</span>
         </div>
       </a>
 
@@ -1212,6 +1382,8 @@
   <script src="scripts/shared.js"></script>
   <script>
     (function() {
+      let soundEnabled = true;
+
       // 1. Smart Navigation links resolution for local testing vs production
       const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
       const isSubfolder = window.location.pathname.includes('/kidsgames');

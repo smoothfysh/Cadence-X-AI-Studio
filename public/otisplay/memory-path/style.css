@@ -1,0 +1,954 @@
+/* ==========================================================================
+   Memory Path — Modernized Stylesheet (Otis Play by Cadence-X)
+   Theme: The Enchanted Crystal Glade (Musical Gemstones & Otis the Star Owl)
+   ========================================================================== */
+
+/* === Root Variables for Memory Path === */
+:root {
+  --mp-bg-deep: #0F172A;
+  --mp-bg-mid: #1E1B4B;
+  --mp-bg-soft: #312E81;
+  --mp-gold: #F59E0B;
+  --mp-gold-glow: rgba(245, 158, 11, 0.55);
+  --mp-teal: #06B6D4;
+  --mp-purple: #8B5CF6;
+  --mp-rose: #FF3366;
+  --mp-emerald: #10B981;
+  --mp-sapphire: #3B82F6;
+  --mp-amber: #F59E0B;
+  --mp-text-light: #F8FAFC;
+  --mp-text-dim: #94A3B8;
+  --mp-card-bg: rgba(255, 255, 255, 0.12);
+  --mp-card-border: rgba(255, 255, 255, 0.22);
+  --mp-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --mp-radius: 20px;
+  --mp-transition: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* === Game Container === */
+.memory-path-game {
+  width: 100%;
+  height: 100dvh;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: radial-gradient(circle at 50% 15%, #241E4F 0%, #131735 55%, #0A0D1E 100%);
+  color: var(--mp-text-light);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* === Ambient Enchanted Forest Fireflies & Star Dust === */
+.mp-ambient-fx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.mp-firefly {
+  position: absolute;
+  border-radius: 50%;
+  background: #FEF08A;
+  box-shadow: 0 0 10px 3px rgba(254, 240, 138, 0.7);
+  animation: fireflyFloat 8s infinite ease-in-out;
+  opacity: 0.6;
+}
+
+.mp-firefly:nth-child(1) { width: 6px; height: 6px; top: 18%; left: 12%; animation-duration: 9s; animation-delay: 0s; }
+.mp-firefly:nth-child(2) { width: 8px; height: 8px; top: 35%; left: 82%; animation-duration: 11s; animation-delay: 1.5s; }
+.mp-firefly:nth-child(3) { width: 5px; height: 5px; top: 65%; left: 20%; animation-duration: 8.5s; animation-delay: 3s; }
+.mp-firefly:nth-child(4) { width: 7px; height: 7px; top: 50%; left: 75%; animation-duration: 12s; animation-delay: 2s; }
+.mp-firefly:nth-child(5) { width: 6px; height: 6px; top: 80%; left: 88%; animation-duration: 10s; animation-delay: 4s; }
+.mp-firefly:nth-child(6) { width: 4px; height: 4px; top: 22%; left: 55%; animation-duration: 7s; animation-delay: 0.5s; }
+
+@keyframes fireflyFloat {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+  25% { transform: translateY(-16px) translateX(12px) scale(1.3); opacity: 0.85; }
+  50% { transform: translateY(-6px) translateX(-14px) scale(0.9); opacity: 0.4; }
+  75% { transform: translateY(-22px) translateX(10px) scale(1.2); opacity: 0.95; }
+}
+
+/* === Cadence-X Game Nav Overrides for Dark/Magical Theme === */
+.cx-game-nav-container {
+  position: relative;
+  width: 100%;
+  z-index: 50;
+  flex-shrink: 0;
+}
+
+.cx-game-header {
+  background: rgba(13, 17, 35, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cx-game-brand-title {
+  color: #FFFFFF !important;
+}
+
+.cx-game-nav-link {
+  color: #94A3B8 !important;
+}
+
+.cx-game-nav-link:hover,
+.cx-game-nav-link.active {
+  color: #FFFFFF !important;
+}
+
+.cx-game-mobile-btn {
+  color: #FFFFFF !important;
+}
+
+.cx-game-subbar {
+  background: rgba(10, 13, 30, 0.8);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cx-game-return-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #F8FAFC !important;
+}
+
+.cx-game-return-btn:hover {
+  background: var(--mp-purple);
+  border-color: var(--mp-purple);
+  color: #FFFFFF !important;
+}
+
+.cx-crumb-link {
+  color: #94A3B8 !important;
+}
+
+.cx-crumb-current {
+  color: #F8FAFC !important;
+}
+
+/* === Game Top Bar (Title & Chunky Controls) === */
+.mp-top-bar {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 18px 4px;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.mp-title-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mp-title-badge {
+  font-size: 1.8rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
+  animation: floatSmall 3s ease-in-out infinite;
+}
+
+.mp-game-title {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: clamp(1.2rem, 3.2vw, 1.65rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.mp-game-subtitle {
+  font-size: clamp(0.72rem, 1.8vw, 0.85rem);
+  color: #A5B4FC;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Chunky Child-Friendly Toolbar Buttons */
+.mp-controls-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.mp-toy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--mp-transition);
+  touch-action: manipulation;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mp-toy-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.mp-toy-btn:active {
+  transform: scale(0.92);
+}
+
+.mp-toy-btn.active {
+  background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+  border-color: #C4B5FD;
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.4);
+}
+
+.mp-toy-btn.muted {
+  opacity: 0.6;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* === Mission Banner: Otis Mascot + Spoken Prompt + Step Pods === */
+.mp-mission-banner {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px 4px;
+  gap: 8px;
+  flex-shrink: 0;
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mp-mascot-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Otis the Star Owl Guide */
+.mp-mascot-wrapper {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.mp-mascot-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 12px rgba(139, 92, 246, 0.35));
+  animation: mascotFloat 4s ease-in-out infinite;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mp-mascot-wrapper:hover .mp-mascot-svg {
+  transform: scale(1.08) rotate(3deg);
+}
+
+.mp-mascot-wrapper:active .mp-mascot-svg {
+  transform: scale(0.92);
+}
+
+.mp-mascot-svg.cheer {
+  animation: mascotCheer 0.6s ease-in-out;
+}
+
+.mp-mascot-svg.wobble {
+  animation: mascotConfused 0.5s ease-in-out;
+}
+
+/* Spoken Prompt Bubble */
+.mp-prompt-bubble {
+  flex: 1;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1.5px solid rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: var(--mp-transition);
+}
+
+.mp-prompt-bubble:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.mp-prompt-bubble:active {
+  transform: scale(0.98);
+}
+
+.mp-prompt-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.mp-prompt-text {
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.25;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Montessori Melody Step Pods (Real-Time Visual Sequence Progress) */
+.mp-step-pods {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 4px 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  min-height: 38px;
+  transition: var(--mp-transition);
+}
+
+.mp-step-pod {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mp-step-pod.active-playing {
+  transform: scale(1.35);
+  box-shadow: 0 0 14px currentColor;
+  border-color: #FFFFFF;
+}
+
+.mp-step-pod.filled {
+  transform: scale(1.15);
+  box-shadow: 0 0 10px currentColor;
+  border-color: #FFFFFF;
+}
+
+.mp-step-pod.filled::after {
+  content: '★';
+  font-size: 11px;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+/* === Main Play Arena & Crystal Pedestal === */
+.mp-stage-arena {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
+
+/* The Pedestal / Glade Platform */
+.mp-glade-platform {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 820px;
+  background: radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246, 0.16) 0%, rgba(30, 27, 75, 0.45) 70%, transparent 100%);
+  border-radius: 36px;
+  padding: 16px 20px 24px;
+}
+
+/* Glow Ring underneath gems */
+.mp-platform-aura {
+  position: absolute;
+  width: 85%;
+  height: 60px;
+  bottom: 12px;
+  background: radial-gradient(ellipse, rgba(139, 92, 246, 0.4) 0%, rgba(6, 182, 212, 0.15) 50%, transparent 80%);
+  filter: blur(20px);
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+/* Gems Grid Container */
+.mp-gems-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 3vw, 24px);
+  width: 100%;
+  flex-wrap: wrap;
+  z-index: 5;
+  padding: 12px 6px;
+}
+
+/* Individual Gem Card */
+.mp-gem-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: clamp(74px, 15vw, 108px);
+  height: clamp(88px, 17vw, 126px);
+  padding: 8px 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 2px 6px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease,
+              border-color 0.25s ease,
+              background 0.25s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mp-gem-card:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.mp-gem-card:active,
+.mp-gem-card.active-tap {
+  transform: translateY(2px) scale(0.93) !important;
+}
+
+/* Gem SVG Graphic */
+.mp-gem-svg-box {
+  width: clamp(52px, 11vw, 76px);
+  height: clamp(52px, 11vw, 76px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mp-gem-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+}
+
+/* Gem Note / Label Badge */
+.mp-gem-badge {
+  margin-top: 6px;
+  font-size: clamp(0.72rem, 1.8vw, 0.85rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.02em;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 2px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: var(--mp-transition);
+}
+
+/* Gem Lit State (When Demonstration Plays or Player Taps) */
+.mp-gem-card.lit {
+  background: rgba(255, 255, 255, 0.32);
+  border-color: #FFFFFF;
+  transform: translateY(-8px) scale(1.12);
+  box-shadow: 0 0 30px var(--gem-glow, #FFD700),
+              0 0 60px var(--gem-glow-soft, rgba(255, 215, 0, 0.4)),
+              inset 0 0 16px rgba(255, 255, 255, 0.6);
+  z-index: 10;
+}
+
+.mp-gem-card.lit .mp-gem-svg-box {
+  transform: scale(1.15) rotate(4deg);
+}
+
+.mp-gem-card.lit .mp-gem-badge {
+  background: var(--gem-color, #F59E0B);
+  color: #FFFFFF;
+  box-shadow: 0 0 12px var(--gem-color, #F59E0B);
+}
+
+/* Visual Target Pointer (👆 / ✨) */
+.mp-gem-pointer {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.6rem;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+  z-index: 20;
+}
+
+.mp-gem-card.lit .mp-gem-pointer {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+  animation: pointerBounce 0.6s ease infinite alternate;
+}
+
+/* Inactivity Hint Pulse */
+.mp-gem-card.hint-shimmer {
+  animation: gemHintPulse 1.2s ease-in-out infinite;
+  border-color: #FDE047;
+}
+
+@keyframes gemHintPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 26px rgba(253, 224, 71, 0.7), 0 0 40px rgba(253, 224, 71, 0.4);
+  }
+}
+
+/* Wobble on Incorrect Tap (Soft, Gentle, Non-Punitive) */
+.mp-gem-card.wobble {
+  animation: gentleWobble 0.5s ease-in-out;
+}
+
+@keyframes gentleWobble {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-10deg) scale(0.96); }
+  40% { transform: rotate(10deg) scale(0.96); }
+  60% { transform: rotate(-6deg) scale(0.98); }
+  80% { transform: rotate(6deg) scale(0.98); }
+}
+
+/* Floating Musical Note on Tap */
+.mp-floating-note {
+  position: fixed;
+  font-size: 1.8rem;
+  pointer-events: none;
+  z-index: 100;
+  animation: noteFloatUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+@keyframes noteFloatUp {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(0.6) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -45px) scale(1.2) rotate(15deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -90px) scale(0.9) rotate(-15deg);
+  }
+}
+
+/* === Action Buttons: Start & Replay === */
+.mp-action-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 52px;
+  margin-top: 10px;
+  z-index: 15;
+}
+
+.mp-start-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 34px;
+  border-radius: 22px;
+  border: none;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: #FFFFFF;
+  font-size: 1.15rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.2);
+  transition: var(--mp-transition);
+  touch-action: manipulation;
+  animation: startPulse 1.8s infinite ease-in-out;
+}
+
+.mp-start-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 26px rgba(16, 185, 129, 0.55);
+}
+
+.mp-start-btn:active {
+  transform: scale(0.94);
+}
+
+.mp-replay-btn {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 26px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #FFFFFF;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.25);
+  transition: var(--mp-transition);
+  touch-action: manipulation;
+  animation: replayPulse 1.6s infinite ease-in-out;
+}
+
+.mp-replay-btn.visible {
+  display: inline-flex;
+}
+
+.mp-replay-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.mp-replay-btn:active {
+  transform: scale(0.94);
+}
+
+@keyframes startPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 8px 28px rgba(16, 185, 129, 0.7); }
+}
+
+@keyframes replayPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4); }
+  50% { transform: scale(1.06); box-shadow: 0 8px 28px rgba(245, 158, 11, 0.7); }
+}
+
+/* === Bottom Bar: Milestone Star Badges & Status Message === */
+.mp-bottom-bar {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px 6px;
+  gap: 4px;
+  flex-shrink: 0;
+  background: rgba(10, 13, 30, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mp-stars-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.mp-star-milestone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  color: #64748B;
+  font-size: 1.1rem;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mp-star-milestone.current {
+  border-color: var(--mp-gold);
+  color: #FEF08A;
+  background: rgba(245, 158, 11, 0.2);
+  transform: scale(1.15);
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.5);
+}
+
+.mp-star-milestone.completed {
+  border-color: #F59E0B;
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #FFFFFF;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
+  transform: scale(1.05);
+}
+
+.mp-status-msg {
+  font-size: clamp(0.78rem, 2vw, 0.9rem);
+  font-weight: 600;
+  color: #CBD5E1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* === Game Footer Overrides === */
+.game-footer {
+  background: transparent !important;
+  border-top: none !important;
+  color: #64748B !important;
+  padding: 4px 16px !important;
+  font-size: 0.72rem !important;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+/* === Keyframe Animations === */
+@keyframes floatSmall {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes mascotFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(2deg); }
+}
+
+@keyframes mascotCheer {
+  0%, 100% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-16px) scale(1.15) rotate(-6deg); }
+  60% { transform: translateY(-8px) scale(1.1) rotate(6deg); }
+}
+
+@keyframes mascotConfused {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+@keyframes pointerBounce {
+  from { transform: translateX(-50%) translateY(0); }
+  to { transform: translateX(-50%) translateY(-6px); }
+}
+
+/* Eye Blink Animation for Otis Mascot */
+.mp-eye-lid {
+  transform-origin: center;
+  animation: eyeBlink 4.5s infinite;
+}
+
+@keyframes eyeBlink {
+  0%, 94%, 100% { transform: scaleY(1); }
+  96%, 98% { transform: scaleY(0.1); }
+}
+
+/* === Responsive Breakpoints === */
+
+/* Tablets & Small Laptops */
+@media (max-width: 768px) {
+  .mp-top-bar {
+    padding: 6px 14px 2px;
+  }
+  .mp-toy-btn {
+    padding: 6px 11px;
+    font-size: 0.8rem;
+  }
+  .mp-mission-banner {
+    padding: 4px 12px;
+  }
+  .mp-mascot-wrapper {
+    width: 62px;
+    height: 62px;
+  }
+  .mp-glade-platform {
+    padding: 12px 14px 18px;
+    border-radius: 28px;
+  }
+  .mp-gems-container {
+    gap: 12px;
+  }
+  .mp-star-milestone {
+    width: 30px;
+    height: 30px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile Screens (Portrait) */
+@media (max-width: 480px) {
+  .mp-top-bar {
+    padding: 4px 10px 2px;
+  }
+  .mp-game-subtitle {
+    display: none;
+  }
+  .mp-controls-group {
+    gap: 5px;
+  }
+  .mp-toy-btn {
+    padding: 5px 9px;
+    font-size: 0.75rem;
+    border-radius: 12px;
+  }
+  .mp-mascot-wrapper {
+    width: 52px;
+    height: 52px;
+  }
+  .mp-prompt-bubble {
+    padding: 8px 12px;
+    border-radius: 14px;
+    gap: 8px;
+  }
+  .mp-prompt-icon {
+    font-size: 1.2rem;
+  }
+  .mp-prompt-text {
+    font-size: 0.92rem;
+  }
+  .mp-step-pods {
+    gap: 8px;
+    min-height: 32px;
+    padding: 3px 10px;
+  }
+  .mp-step-pod {
+    width: 16px;
+    height: 16px;
+  }
+  .mp-step-pod.filled::after {
+    font-size: 9px;
+  }
+  .mp-stage-arena {
+    padding: 4px 10px;
+  }
+  .mp-glade-platform {
+    padding: 10px 8px 14px;
+    border-radius: 22px;
+  }
+  .mp-gems-container {
+    gap: 8px;
+    padding: 8px 2px;
+  }
+  .mp-gem-card {
+    width: clamp(58px, 17vw, 76px);
+    height: clamp(76px, 21vw, 96px);
+    border-radius: 18px;
+    padding: 6px 2px;
+  }
+  .mp-gem-svg-box {
+    width: clamp(42px, 12vw, 54px);
+    height: clamp(42px, 12vw, 54px);
+  }
+  .mp-gem-badge {
+    font-size: 0.7rem;
+    padding: 1px 6px;
+    margin-top: 4px;
+  }
+  .mp-start-btn {
+    padding: 10px 26px;
+    font-size: 1.05rem;
+  }
+  .mp-replay-btn {
+    padding: 8px 20px;
+    font-size: 0.95rem;
+  }
+  .mp-stars-track {
+    gap: 8px;
+  }
+  .mp-star-milestone {
+    width: 26px;
+    height: 26px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Landscape Mode for Mobile Phones (Height <= 520px) */
+@media (max-height: 520px) and (orientation: landscape) {
+  .mp-top-bar {
+    padding: 2px 12px;
+  }
+  .mp-game-subtitle {
+    display: none;
+  }
+  .mp-mission-banner {
+    flex-direction: row;
+    gap: 12px;
+    padding: 2px 10px;
+  }
+  .mp-mascot-wrapper {
+    width: 44px;
+    height: 44px;
+  }
+  .mp-prompt-bubble {
+    padding: 4px 10px;
+  }
+  .mp-step-pods {
+    min-height: 28px;
+    padding: 2px 8px;
+  }
+  .mp-glade-platform {
+    padding: 4px 12px 8px;
+  }
+  .mp-gems-container {
+    gap: 10px;
+    padding: 4px;
+  }
+  .mp-gem-card {
+    height: 72px;
+    width: 66px;
+  }
+  .mp-gem-svg-box {
+    width: 40px;
+    height: 40px;
+  }
+  .mp-action-area {
+    min-height: 38px;
+    margin-top: 4px;
+  }
+  .mp-start-btn {
+    padding: 6px 20px;
+    font-size: 0.95rem;
+  }
+  .mp-replay-btn {
+    padding: 6px 18px;
+    font-size: 0.9rem;
+  }
+  .mp-bottom-bar {
+    padding: 3px 12px 2px;
+  }
+  .game-footer {
+    display: none !important;
+  }
+}

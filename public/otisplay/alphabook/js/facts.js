@@ -1132,3 +1132,7 @@ const ANIMAL_FACTS = {
         }
     ]
 };
+
+if (typeof window !== 'undefined') {
+  window.ANIMAL_FACTS = ANIMAL_FACTS;
+}

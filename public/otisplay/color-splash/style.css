@@ -1,0 +1,645 @@
+/* Color Splash — Modernized Styles
+   Tactile Watercolor Studio Aesthetic for Toddlers & Young Children (Ages 2-4)
+*/
+
+:root {
+  --cs-bg-top: #FFFDF9;
+  --cs-bg-bot: #F5EFEB;
+  --cs-easel-bg: #FFFFFF;
+  --cs-easel-border: #E8DCCF;
+  --cs-easel-shadow: rgba(80, 50, 30, 0.08);
+  --cs-accent: #8B5CF6;
+  --cs-font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --cs-radius: 24px;
+}
+
+/* Container */
+.color-splash {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: radial-gradient(circle at 50% 20%, var(--cs-bg-top) 0%, var(--cs-bg-bot) 100%);
+  overflow: hidden;
+  padding-top: var(--header-h, 96px);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* Background Splatter Canvas — Must NEVER block button clicks! */
+.cs-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* Top Bar: Title & Controls */
+.cs-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 20px;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 12px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.cs-title-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-game-title {
+  font-family: var(--cs-font-display);
+  font-size: clamp(1.35rem, 3.6vw, 2.1rem);
+  font-weight: 800;
+  color: var(--cs-accent);
+  line-height: 1.1;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cs-game-title .cs-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  animation: csGentleBounce 2.5s ease-in-out infinite;
+}
+
+.cs-game-subtitle {
+  font-size: clamp(0.78rem, 1.8vw, 0.95rem);
+  color: var(--text-muted, #64748B);
+  font-weight: 500;
+  margin: 2px 0 0 0;
+}
+
+/* Action Controls (Mode, Sound, Voice, Reset) */
+.cs-controls-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.cs-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1.5px solid #E2E8F0;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 6px var(--shadow, rgba(15, 23, 42, 0.06));
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  touch-action: manipulation;
+  min-height: 36px;
+}
+
+.cs-pill-btn:hover {
+  background: #F8FAFC;
+  border-color: #CBD5E1;
+  transform: translateY(-1px);
+}
+
+.cs-pill-btn:active {
+  transform: scale(0.94);
+}
+
+.cs-pill-btn.muted {
+  opacity: 0.55;
+  background: #F1F5F9;
+  border-color: #E2E8F0;
+}
+
+.cs-pill-btn.active {
+  background: #EDE9FE;
+  border-color: #C4B5FD;
+  color: #6D28D9;
+}
+
+/* Main Play Arena (Easel / Art Canvas) */
+.cs-play-arena {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 0;
+  position: relative;
+  z-index: 10;
+}
+
+/* Easel Stage Frame */
+.cs-easel-card {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid var(--cs-easel-border);
+  border-radius: var(--cs-radius);
+  box-shadow: 0 10px 30px var(--cs-easel-shadow);
+  padding: 16px 20px;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  z-index: 2;
+}
+
+/* Subtle canvas splatter wallpaper behind characters */
+.cs-easel-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    radial-gradient(circle at 15% 25%, rgba(239, 68, 68, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(234, 179, 8, 0.06) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Character Section: Splishy the Paint Droplet */
+.cs-character-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  touch-action: manipulation;
+  margin-top: 4px;
+}
+
+.cs-character-box {
+  width: clamp(130px, 22vw, 175px);
+  height: clamp(140px, 24vw, 190px);
+  position: relative;
+  animation: splishyFloat 3s ease-in-out infinite;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.1));
+}
+
+.cs-character-box:active {
+  transform: scale(0.92);
+}
+
+.cs-character-box.bounce {
+  animation: splishyBounce 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cs-character-box.wobble {
+  animation: csWobble 0.45s ease;
+}
+
+.cs-character-box.giggle {
+  animation: splishyGiggle 0.4s ease;
+}
+
+/* Character SVG */
+.cs-character-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cs-character-svg .cs-eye {
+  transform-origin: center;
+  animation: eyeBlink 4s infinite ease-in-out;
+}
+
+/* Splash Pod Behind Character */
+.cs-aura-glow {
+  position: absolute;
+  width: 150px;
+  height: 60px;
+  bottom: -10px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
+  filter: blur(8px);
+  z-index: 1;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+/* Instruction Prompt */
+.cs-prompt-bubble {
+  margin: 10px 0 14px;
+  padding: 8px 22px;
+  background: #FFFFFF;
+  border-radius: 999px;
+  border: 2px solid #E2E8F0;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  touch-action: manipulation;
+}
+
+.cs-prompt-bubble:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+}
+
+.cs-prompt-bubble:active {
+  transform: scale(0.96);
+}
+
+.cs-prompt-speak-icon {
+  font-size: 1.25rem;
+  animation: csGentleBounce 2s ease-in-out infinite;
+}
+
+.cs-prompt-text {
+  font-family: var(--cs-font-display);
+  font-size: clamp(1.05rem, 2.7vw, 1.45rem);
+  font-weight: 700;
+  color: #1E293B;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.cs-prompt-text .target-highlight {
+  color: var(--cs-accent);
+  position: relative;
+  text-decoration: underline wavy var(--cs-accent);
+  text-underline-offset: 4px;
+}
+
+/* Color Options / Splat Buttons Palette */
+.cs-options-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 3.2vw, 28px);
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 780px;
+  padding: 6px 10px;
+  position: relative;
+  z-index: 20;
+}
+
+/* Individual Paint Splat Button */
+.cs-splat-btn {
+  position: relative;
+  width: clamp(86px, 16vw, 114px);
+  height: clamp(86px, 16vw, 114px);
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
+  z-index: 25;
+  pointer-events: auto;
+}
+
+.cs-splat-btn:hover {
+  transform: scale(1.08) translateY(-4px);
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.18));
+}
+
+.cs-splat-btn:active {
+  transform: scale(0.92);
+}
+
+.cs-splat-btn.wrong {
+  animation: csWobble 0.45s ease;
+}
+
+.cs-splat-btn.hint {
+  animation: csHintPulse 1.2s ease-in-out infinite;
+}
+
+.cs-splat-btn.matched {
+  animation: csSplatBurst 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cs-splat-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.cs-splat-label {
+  position: relative;
+  z-index: 2;
+  font-family: var(--cs-font-display);
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  text-transform: capitalize;
+}
+
+/* Free Splash Studio Mode Layout */
+.cs-free-studio-bar {
+  display: none;
+  width: 100%;
+  max-width: 820px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+  border: 2px solid #E2E8F0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  gap: 12px;
+  z-index: 10;
+  margin-top: 8px;
+}
+
+.cs-free-studio-bar.open {
+  display: flex;
+}
+
+.cs-free-palette-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px;
+  scrollbar-width: none;
+}
+
+.cs-free-palette-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.cs-paint-well {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cs-paint-well:hover {
+  transform: scale(1.15);
+}
+
+.cs-paint-well.active {
+  transform: scale(1.25);
+  border-color: #1E293B;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.4), 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.cs-paint-well.rainbow {
+  background: conic-gradient(#EF4444, #F97316, #FACC15, #22C55E, #06B6D4, #3B82F6, #A855F7, #EC4899, #EF4444);
+}
+
+.cs-clear-canvas-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #FEE2E2;
+  color: #B91C1C;
+  border: 1.5px solid #FCA5A5;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.cs-clear-canvas-btn:active {
+  transform: scale(0.92);
+}
+
+/* Bottom Stars & Status Track */
+.cs-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  flex-shrink: 0;
+  gap: 16px;
+  position: relative;
+  z-index: 10;
+}
+
+.cs-stars-track {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cs-star-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: #CBD5E1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.35s cubic-bezier(0.17, 0.89, 0.32, 1.25);
+}
+
+.cs-star-badge.completed {
+  background: linear-gradient(135deg, #FFF9C4 0%, #FFD54F 100%);
+  border-color: #FFA000;
+  color: #B45309;
+  transform: scale(1.12);
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
+  animation: starPop 0.5s cubic-bezier(0.17, 0.89, 0.32, 1.25);
+}
+
+.cs-status-msg {
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  font-weight: 600;
+  color: #475569;
+  text-align: right;
+  flex: 1;
+}
+
+.cs-status-msg span.highlight {
+  color: var(--cs-accent);
+  font-weight: 700;
+}
+
+/* Animations */
+@keyframes splishyFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-1.5deg); }
+}
+
+@keyframes splishyBounce {
+  0% { transform: scale(0.85) translateY(0); }
+  35% { transform: scale(1.22, 0.8) translateY(-24px); }
+  60% { transform: scale(0.92, 1.15) translateY(-32px) rotate(8deg); }
+  80% { transform: scale(1.08, 0.95) translateY(-6px); }
+  100% { transform: scale(1) translateY(0) rotate(0deg); }
+}
+
+@keyframes splishyGiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-8deg) scale(1.12); }
+  50% { transform: rotate(8deg) scale(1.12); }
+  75% { transform: rotate(-6deg) scale(1.08); }
+}
+
+@keyframes csWobble {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-10deg) scale(0.96); }
+  50% { transform: rotate(10deg) scale(1.04); }
+  75% { transform: rotate(-6deg) scale(0.98); }
+}
+
+@keyframes csHintPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12)); }
+  50% { transform: scale(1.12); filter: drop-shadow(0 0 16px var(--cs-accent)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.2)); }
+}
+
+@keyframes csSplatBurst {
+  0% { transform: scale(0.85); }
+  45% { transform: scale(1.28); }
+  100% { transform: scale(1); }
+}
+
+@keyframes csGentleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes eyeBlink {
+  0%, 46%, 54%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.1); }
+}
+
+@keyframes starPop {
+  0% { transform: scale(0.5); }
+  70% { transform: scale(1.35) rotate(15deg); }
+  100% { transform: scale(1.12) rotate(0deg); }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .cs-play-arena {
+    padding: 6px 12px;
+  }
+  
+  .cs-easel-card {
+    padding: 12px 14px;
+    border-radius: 18px;
+  }
+  
+  .cs-options-container {
+    gap: 12px;
+  }
+  
+  .cs-splat-btn {
+    width: clamp(78px, 20vw, 92px);
+    height: clamp(78px, 20vw, 92px);
+  }
+}
+
+@media (max-width: 480px) {
+  .cs-top-bar {
+    padding: 4px 10px;
+    gap: 8px;
+  }
+  
+  .cs-pill-btn {
+    padding: 5px 8px;
+    font-size: 0.74rem;
+    min-height: 32px;
+    gap: 4px;
+  }
+  
+  .cs-prompt-bubble {
+    padding: 6px 14px;
+    margin: 6px 0 10px;
+  }
+  
+  .cs-prompt-text {
+    font-size: 1.05rem;
+  }
+  
+  .cs-options-container {
+    gap: 8px;
+  }
+  
+  .cs-splat-btn {
+    width: 76px;
+    height: 76px;
+  }
+  
+  .cs-bottom-bar {
+    padding: 4px 12px;
+  }
+  
+  .cs-star-badge {
+    width: 30px;
+    height: 30px;
+    font-size: 0.95rem;
+  }
+  
+  .cs-status-msg {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .cs-splat-btn {
+    width: 68px;
+    height: 68px;
+  }
+  
+  .cs-character-box {
+    width: 110px;
+    height: 120px;
+  }
+}
