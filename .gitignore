@@ -1,0 +1,12 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+package-lock.json
+.env*
+!.env.example
+desktop.ini
+.antigravity/
+backups/

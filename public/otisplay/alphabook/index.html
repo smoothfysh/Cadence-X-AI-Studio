@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>ABC Animal Stickers — Otis Play</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="styles/game.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>🐊</text></svg>">
+</head>
+<body>
+  <div class="ab-wrapper" id="app">
+    <!-- Cadence-X In-Game Header & Dedicated Otis Play Return Navigation -->
+    <div class="cx-game-nav-container">
+      <header class="cx-game-header">
+        <a href="https://cadence-x.com" class="cx-game-brand" id="brand-link" title="Cadence-X Home">
+          <div class="cx-game-logo-box">
+            <img src="../assets/cadence-x-outer-ring.png" onerror="this.src='https://www.cadence-x.com/uploads/cadence-x-outer-ring.png'" class="cx-game-logo-ring" alt="" />
+            <img src="../assets/cadence-x-static.png" onerror="this.src='https://www.cadence-x.com/uploads/cadence-x-static.png'" class="cx-game-logo-center" alt="Cadence-X Logo" />
+          </div>
+          <span class="cx-game-brand-title">CADENCE-X</span>
+        </a>
+
+        <nav class="cx-game-nav">
+          <a href="https://cadence-x.com/#services" id="nav-services" class="cx-game-nav-link">Services</a>
+          <a href="https://cadence-x.com/apps.html" id="nav-apps" class="cx-game-nav-link active">Apps</a>
+          <a href="https://cadence-x.com/about.html" id="nav-about" class="cx-game-nav-link">About Me</a>
+        </nav>
+
+        <button type="button" class="cx-game-mobile-btn" id="game-mobile-btn" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </header>
+
+      <div id="game-mobile-drawer" class="cx-game-mobile-drawer">
+        <a href="https://cadence-x.com/#services" id="mobile-nav-services">Services</a>
+        <a href="https://cadence-x.com/apps.html" id="mobile-nav-apps" class="active">Apps</a>
+        <a href="https://cadence-x.com/about.html" id="mobile-nav-about">About Me</a>
+      </div>
+
+      <!-- Dedicated Return Bar to Otis Play Game Selection -->
+      <div class="cx-game-subbar">
+        <a href="../index.html" class="cx-game-return-btn" id="return-to-otis" onclick="try{OtisAudio.playPop();}catch(e){}" title="Back to Otis Play Game Selection">
+          <span class="cx-return-arrow">←</span>
+          <span class="cx-return-icon">🎮</span>
+          <span>All Games</span>
+        </a>
+
+        <nav class="cx-game-breadcrumb" aria-label="Hierarchy">
+          <a href="https://cadence-x.com/apps.html" id="breadcrumb-apps" class="cx-crumb-link crumb-apps">Apps</a>
+          <span class="cx-crumb-sep sep-apps">/</span>
+          <a href="../index.html" class="cx-crumb-link cx-crumb-play" onclick="try{OtisAudio.playPop();}catch(e){}">Otis Play</a>
+          <span class="cx-crumb-sep">/</span>
+          <span class="cx-crumb-current">ABC Stickers</span>
+        </nav>
+      </div>
+    </div>
+
+    <div class="ab-view ab-home active" id="viewHome">
+      <div class="ab-logo">🐊📖</div>
+      <div class="ab-title">ABC Animal Stickers</div>
+      <div class="ab-subtitle">Learn the alphabet with animals!</div>
+      <div class="ab-home-buttons">
+        <button class="ab-home-btn game-btn" onclick="startGame()">
+          <span class="ab-btn-icon">🎯</span>
+          Start Game
+        </button>
+        <button class="ab-home-btn book-btn" onclick="showView('book')">
+          <span class="ab-btn-icon">📖</span>
+          Sticker Book
+        </button>
+      </div>
+    </div>
+
+    <div class="ab-view ab-book" id="viewBook">
+      <div class="ab-book-header">
+        <button class="ab-book-back" onclick="showView('home')">
+          <span class="arrow">←</span> Back
+        </button>
+        <h2>📖 Sticker Book</h2>
+      </div>
+      <div class="ab-book-grid" id="bookGrid"></div>
+    </div>
+
+    <div class="ab-modal" id="modal">
+      <div class="ab-modal-inner">
+        <button class="ab-modal-close" onclick="closeModal()">✕</button>
+        <div class="ab-modal-letter" id="modalLetter">A</div>
+        <div style="position:relative;display:flex;align-items:center;width:100%;justify-content:center;">
+          <button class="ab-modal-nav prev" onclick="navAnimal(-1)">‹</button>
+          <div class="ab-modal-sticker" id="modalSticker">🐊</div>
+          <button class="ab-modal-nav next" onclick="navAnimal(1)">›</button>
+        </div>
+        <div class="ab-modal-name" id="modalName">Alligator</div>
+        <div class="ab-modal-counter" id="modalCounter">1 / 5</div>
+        <div class="ab-modal-facts" id="modalFacts"></div>
+        <button class="ab-modal-listen" id="modalListen">🔊 Listen</button>
+      </div>
+    </div>
+
+    <div class="ab-view ab-game" id="viewGame">
+      <div class="ab-game-header">
+        <button class="ab-game-back" onclick="quitGame()"><span class="arrow">←</span> Quit</button>
+        <span class="ab-game-round" id="gameRound">1 / 26</span>
+      </div>
+      <div class="ab-game-prompt">
+        <div class="ab-game-letter" id="gameLetter">A</div>
+        <div class="ab-game-arrow">▼</div>
+      </div>
+      <div class="ab-game-choices" id="gameChoices"></div>
+      <div class="ab-game-message" id="gameMessage"></div>
+    </div>
+
+    <div class="game-footer"><span>● &copy; 2026 CADENCE-X &nbsp;·&nbsp; Otis Play</span></div>
+  </div>
+
+  <script src="../scripts/shared.js"></script>
+  <script src="js/facts.js"></script>
+  <script src="js/animals.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/book.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    (function() {
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      if (isLocal) {
+        const update = (id, target) => { const el = document.getElementById(id); if (el) el.setAttribute('href', target); };
+        update('brand-link', '/');
+        update('nav-services', '/#services');
+        update('nav-apps', '/apps.html');
+        update('nav-about', '/about.html');
+        update('breadcrumb-apps', '/apps.html');
+        update('mobile-nav-services', '/#services');
+        update('mobile-nav-apps', '/apps.html');
+        update('mobile-nav-about', '/about.html');
+      }
+      const mb = document.getElementById('game-mobile-btn');
+      const md = document.getElementById('game-mobile-drawer');
+      if (mb && md) mb.addEventListener('click', () => md.classList.toggle('open'));
+    })();
+  </script>
+</body>
+</html>

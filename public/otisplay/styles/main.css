@@ -1,0 +1,402 @@
+/* kidsgames/styles/main.css — Otis Play Shared Styles & Cadence-X Design System */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* === CSS Reset === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body {
+  font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #F8F9FA;
+  color: #0B1C30;
+  touch-action: manipulation;
+  -webkit-user-select: none; user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* === CSS Custom Properties === */
+:root {
+  --bg: #F8F9FA;
+  --pink: #FFB5C2;
+  --mint: #B5EAD7;
+  --lavender: #C9B1FF;
+  --peach: #FFDAB9;
+  --sky: #0284C7;
+  --coral: #FF7B89;
+  --teal: #14B8A6;
+  --violet: #8B5CF6;
+  --gold: #F59E0B;
+  --text: #0B1C30;
+  --text-muted: #64748B;
+  --shadow: rgba(15, 23, 42, 0.08);
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --tap-min: 52px;
+  --radius: 16px;
+  --transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --header-h: 96px; /* Space for Cadence-X header (52px) + dedicated Otis Play subbar (44px) */
+}
+
+/* === Typography === */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+h1 { font-size: clamp(2rem, 6vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
+
+/* === Utility === */
+.screen-reader-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* === Buttons (reusable) === */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: var(--tap-min); min-height: var(--tap-min);
+  padding: 12px 24px; border: none; border-radius: var(--radius);
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 1.05rem; font-weight: 600; cursor: pointer;
+  transition: var(--transition); touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:active { transform: scale(0.94); }
+
+.btn-ghost {
+  background: white; color: var(--text);
+  border: 1.5px solid #CBD5E1; min-width: auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+.btn-ghost:hover {
+  background: #F1F5F9; border-color: #94A3B8;
+}
+
+/* Portal cards — used on homepage */
+.portal-card {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 8px;
+  min-width: 120px; min-height: 120px; padding: 20px;
+  border-radius: 20px; cursor: pointer; text-decoration: none;
+  color: var(--text); font-weight: 600; font-size: 1rem;
+  transition: var(--transition); touch-action: manipulation;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+.portal-card:active { transform: scale(0.94); }
+
+/* === Animations === */
+@keyframes cx-spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes wobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+@keyframes sparkle {
+  0% { opacity: 1; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.5) rotate(180deg); }
+  100% { opacity: 0; transform: scale(2) rotate(360deg); }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(245, 158, 11, 0.3); }
+  50% { box-shadow: 0 0 24px rgba(245, 158, 11, 0.7); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  30% { transform: scale(1.15); }
+  50% { transform: scale(0.95); }
+  70% { transform: scale(1.05); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes confettiFall {
+  0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(100px) rotate(720deg); }
+}
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-bounce { animation: bounce 0.5s ease; }
+.animate-fade { animation: fadeIn 0.5s ease; }
+
+/* === Cadence-X In-Game Top Navigation & Return Subbar === */
+.cx-game-nav-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Primary Top Header (Matching Cadence-X Header.tsx) */
+.cx-game-header {
+  width: 100%;
+  height: 52px;
+  background: rgba(248, 249, 250, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+@media (min-width: 640px) {
+  .cx-game-header { padding: 0 24px; }
+}
+
+.cx-game-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+}
+.cx-game-logo-box {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.cx-game-brand:hover .cx-game-logo-box {
+  transform: scale(1.08);
+}
+.cx-game-logo-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: cx-spin-slow 40s linear infinite;
+}
+.cx-game-logo-center {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.cx-game-brand-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  color: #0F172A;
+  transition: color 0.15s ease;
+}
+.cx-game-brand:hover .cx-game-brand-title {
+  color: #0284C7;
+}
+
+/* Nav links in top header: Services, Apps, About Me (NO Otis Play in top header!) */
+.cx-game-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.cx-game-nav-link {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.cx-game-nav-link:hover {
+  color: #0F172A;
+}
+.cx-game-nav-link.active {
+  color: #0284C7;
+  font-weight: 600;
+}
+
+/* Mobile Hamburger Menu */
+.cx-game-mobile-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  padding: 5px;
+  color: #475569;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.cx-game-mobile-drawer {
+  display: none;
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom: 1px solid #E2E8F0;
+  padding: 10px 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+.cx-game-mobile-drawer.open {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cx-game-mobile-drawer a {
+  font-size: 14px;
+  color: #334155;
+  text-decoration: none;
+  padding: 6px 0;
+  border-bottom: 1px solid #F1F5F9;
+}
+.cx-game-mobile-drawer a.active {
+  color: #0284C7;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .cx-game-nav { display: none; }
+  .cx-game-mobile-btn { display: flex; }
+}
+
+/* Dedicated Return Navigation Sub-Bar (Below Header) */
+.cx-game-subbar {
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+@media (min-width: 640px) {
+  .cx-game-subbar { padding: 0 24px; }
+}
+
+/* Return Button to Otis Play Game Selection */
+.cx-game-return-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  color: #0F172A;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  transition: all 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.cx-game-return-btn:hover {
+  background: #F0F9FF;
+  border-color: #0284C7;
+  color: #0284C7;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.15);
+}
+.cx-game-return-btn:active {
+  transform: scale(0.96);
+}
+.cx-return-arrow {
+  font-size: 14px;
+  transition: transform 0.15s ease;
+}
+.cx-game-return-btn:hover .cx-return-arrow {
+  transform: translateX(-2px);
+}
+.cx-return-icon {
+  font-size: 14px;
+}
+
+/* Breadcrumb hierarchy */
+.cx-game-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #64748B;
+}
+.cx-crumb-link {
+  color: #0284C7;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+.cx-crumb-link:hover {
+  color: #0369A1;
+  text-decoration: underline;
+}
+.cx-crumb-sep {
+  color: #CBD5E1;
+  font-size: 10px;
+}
+.cx-crumb-current {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .cx-crumb-link.crumb-apps,
+  .cx-crumb-sep.sep-apps {
+    display: none; /* Keep clean: "Otis Play / [Game]" */
+  }
+}
+
+/* === Game common layout === */
+.game-wrapper {
+  width: 100%; height: 100dvh;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 16px;
+  position: relative; overflow: hidden;
+  padding-top: var(--header-h);
+}
+
+/* Game footer — shared across games */
+.game-footer {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  text-align: center; padding: 6px 16px; z-index: 10;
+  pointer-events: none;
+}
+.game-footer span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem; opacity: 0.5; color: var(--text);
+  letter-spacing: 0.3px;
+}
+
+/* === Celebration overlay === */
+.celebration {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(4px); animation: fadeIn 0.3s ease;
+}
+.celebration-card {
+  background: white; border-radius: 28px; padding: 36px 32px;
+  text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  border: 1px solid #E2E8F0;
+  animation: slideUp 0.4s ease;
+  max-width: 360px; width: 90%;
+}
+.celebration-card h2 { color: var(--gold); margin-bottom: 12px; font-family: var(--font-display); }
+.celebration-card .star {
+  font-size: 3rem; display: inline-block;
+  animation: bounce 0.6s ease infinite;
+}

@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Simple, colorful, and tactile web games crafted for young kids — zero ads, no accounts, and no clutter. Instant one-click play by Cadence-X.">
+  <meta name="classification" content="play">
+  <meta name="category" content="Play">
+  <meta name="keywords" content="kids games, children games, educational, toddler games, preschool games, ad-free games, Cadence-X">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Otis Play — Kids Games by Cadence-X">
+  <meta property="og:description" content="Simple, colorful, and tactile games made for young kids — no accounts, no ads, no clutter. Instant one-click play.">
+  <meta property="og:url" content="https://www.cadence-x.com/otisplay/">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Otis Play — Kids Games by Cadence-X</title>
+
+  <!-- Google Fonts matching Cadence-X design system -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="assets/logo_font-Norwester-Lazydog_TransBG.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Otis Play",
+    "url": "https://www.cadence-x.com/otisplay/",
+    "description": "A delightful corner of playable web experiences made for little kids — simple, colorful, tactile, and immediately engaging.",
+    "author": {
+      "@type": "Person",
+      "name": "Anushka"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cadence-X",
+      "url": "https://cadence-x.com"
+    },
+    "about": {
+      "@type": "Thing",
+      "description": "Simple, colorful play for young kids. No accounts, no clutter, no tracking."
+    },
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "young children and parents"
+    },
+    "applicationCategory": "GameApplication",
+    "genre": ["Educational", "Casual", "Early Learning"],
+    "isFamilyFriendly": true,
+    "keywords": ["kids games", "children games", "educational play", "toddler games", "preschool games"]
+  }
+  </script>
+
+  <style>
+    /* ── Cadence-X Global Design System Reset & Base ── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: auto !important;
+      min-height: 100vh !important;
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #F8F9FA;
+      color: #0B1C30;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Ambient background gradient glows matching Cadence-X */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .ambient-glow-1 {
+      position: absolute;
+      top: -10%;
+      right: 5%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, rgba(14, 165, 233, 0) 70%);
+      filter: blur(40px);
+    }
+    .ambient-glow-2 {
+      position: absolute;
+      top: 40%;
+      left: -5%;
+      width: 550px;
+      height: 550px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.06) 0%, rgba(244, 63, 94, 0) 70%);
+      filter: blur(50px);
+    }
+    .ambient-glow-3 {
+      position: absolute;
+      bottom: 5%;
+      right: 15%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, rgba(245, 158, 11, 0) 70%);
+      filter: blur(45px);
+    }
+
+    /* ── Cadence-X Main Header Navigation (Pixel-perfect matching Header.tsx) ── */
+    .cx-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      width: 100%;
+      background: rgba(248, 249, 250, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+      transition: background 0.2s ease;
+    }
+    .cx-header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 16px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @media (min-width: 640px) {
+      .cx-header-inner {
+        padding: 0 24px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .cx-header-inner {
+        padding: 0 32px;
+      }
+    }
+
+    /* Brand Lockup */
+    .cx-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+    }
+    .cx-logo-box {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      overflow: hidden;
+      flex-shrink: 0;
+      user-select: none;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .cx-logo-box:hover {
+      transform: scale(1.08);
+    }
+    .cx-logo-ring {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: cx-spin-slow 40s linear infinite;
+      will-change: transform;
+      transition: animation-duration 0.3s ease;
+    }
+    .cx-logo-box:hover .cx-logo-ring {
+      animation-duration: 10s;
+    }
+    .cx-logo-center {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    @keyframes cx-spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .cx-brand-text-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .cx-brand-title {
+      font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      letter-spacing: 0.05em;
+      color: #0F172A;
+      font-weight: 400;
+      transition: color 0.15s ease;
+    }
+    .cx-brand:hover .cx-brand-title {
+      color: #0284C7;
+    }
+    .cx-sub-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      background: #FEF3C7;
+      color: #B45309;
+      border: 1px solid #FDE68A;
+    }
+    .cx-sub-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #F59E0B;
+      display: inline-block;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    /* Navigation */
+    .cx-nav-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .cx-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .cx-nav-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: #475569;
+      text-decoration: none;
+      padding: 6px 0;
+      transition: color 0.15s ease;
+      cursor: pointer;
+    }
+    .cx-nav-link:hover {
+      color: #0F172A;
+    }
+    .cx-nav-link-active {
+      color: #0284C7 !important;
+      font-weight: 600;
+      position: relative;
+    }
+    .cx-nav-link-active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #0284C7;
+      border-radius: 2px;
+    }
+
+    /* Breadcrumb Trail */
+    .cx-breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: #64748B;
+      margin-bottom: 14px;
+    }
+    .cx-breadcrumb-link {
+      color: #0284C7;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.15s ease;
+    }
+    .cx-breadcrumb-link:hover {
+      color: #0369A1;
+      text-decoration: underline;
+    }
+    .cx-breadcrumb-sep {
+      color: #CBD5E1;
+      font-size: 11px;
+    }
+    .cx-breadcrumb-current {
+      color: #0F172A;
+      font-weight: 700;
+    }
+
+    /* Mobile Hamburger Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 8px;
+      color: #334155;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease;
+    }
+    .mobile-menu-btn:hover {
+      background: #E2E8F0;
+    }
+    .mobile-drawer {
+      display: none;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid #E2E8F0;
+      padding: 16px 20px 20px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+    }
+    .mobile-drawer.open {
+      display: block;
+    }
+    .mobile-drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mobile-nav-link {
+      font-size: 16px;
+      font-weight: 500;
+      color: #334155;
+      text-decoration: none;
+      padding: 8px 0;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .mobile-nav-link:hover, .mobile-nav-link.active {
+      color: #0284C7;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .cx-nav {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: flex;
+      }
+      .cx-brand-title {
+        font-size: 1.1rem;
+      }
+      .cx-sub-badge {
+        font-size: 10px;
+        padding: 2px 7px;
+      }
+    }
+
+    /* ── Main Layout Container ── */
+    .main-content {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      max-width: 1240px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+    @media (min-width: 640px) {
+      .main-content {
+        padding: 44px 24px 80px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .main-content {
+        padding: 52px 32px 96px;
+      }
+    }
+
+    /* ── Hero / Header Banner Section ── */
+    .hero-section {
+      text-align: center;
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #0369A1;
+      background: #E0F2FE;
+      border: 1px solid #BAE6FD;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      color: #0F172A;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .hero-title-accent {
+      background: linear-gradient(135deg, #0284C7 0%, #0EA5E9 40%, #F59E0B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      color: #475569;
+      max-width: 680px;
+      line-height: 1.6;
+      margin: 0 auto 32px;
+    }
+
+    /* Interactive Filter Bar */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: #FFFFFF;
+      padding: 6px;
+      border-radius: 14px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.05);
+      max-width: 580px;
+      width: 100%;
+    }
+    .filter-btn {
+      flex: 1;
+      min-width: 140px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #475569;
+      background: transparent;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+    .filter-btn:hover {
+      color: #0F172A;
+      background: #F1F5F9;
+    }
+    .filter-btn.active {
+      color: #0284C7;
+      background: #E0F2FE;
+      box-shadow: 0 1px 3px rgba(2, 132, 199, 0.15);
+    }
+    .filter-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      background: rgba(15, 23, 42, 0.06);
+      color: #334155;
+    }
+    .filter-btn.active .filter-count {
+      background: #0284C7;
+      color: #FFFFFF;
+    }
+
+    /* ── Games Grid ── */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 36px;
+    }
+    @media (max-width: 640px) {
+      .games-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    /* Game Card */
+    .game-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 18px -4px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+      cursor: pointer;
+    }
+    .game-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.10), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+      border-color: #CBD5E1;
+    }
+    .game-card:active {
+      transform: translateY(-2px);
+    }
+
+    /* Top Accent Line */
+    .game-card-accent-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+    }
+
+    /* Card Header Meta */
+    .game-card-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .game-age-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      color: #334155;
+    }
+    .game-category-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #64748B;
+    }
+
+    /* Card Visual Row */
+    .game-visual-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .game-icon-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.25s ease;
+    }
+    .game-card:hover .game-icon-box {
+      transform: scale(1.1) rotate(4deg);
+    }
+
+    .game-title-group {
+      flex: 1;
+    }
+    .game-title {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 21px;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.25;
+      margin-bottom: 3px;
+      transition: color 0.15s ease;
+    }
+    .game-card:hover .game-title {
+      color: #0284C7;
+    }
+    .game-play-type {
+      font-size: 12.5px;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    /* Card Description */
+    .game-desc {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.55;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    /* Skills Pill Tags */
+    .game-skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .game-skill-pill {
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #F1F5F9;
+      color: #475569;
+    }
+
+    /* CTA Launch Button */
+    .game-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 11px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #0F172A;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      transition: all 0.15s ease;
+      margin-top: auto;
+    }
+    .game-card:hover .game-cta-btn {
+      background: #0284C7;
+      border-color: #0284C7;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    }
+    .game-cta-arrow {
+      font-size: 16px;
+      transition: transform 0.15s ease;
+    }
+    .game-card:hover .game-cta-arrow {
+      transform: translateX(4px);
+    }
+
+    /* ── Trust & Parent Info Section ── */
+    .trust-section {
+      margin-top: 64px;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 24px;
+      padding: 36px 28px;
+      box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.04);
+    }
+    .trust-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .trust-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 8px;
+    }
+    .trust-subtitle {
+      font-size: 14.5px;
+      color: #64748B;
+      line-height: 1.5;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .trust-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .trust-card-icon {
+      font-size: 26px;
+      margin-bottom: 4px;
+    }
+    .trust-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #0F172A;
+    }
+    .trust-card-desc {
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    /* ── Support & Tip Coffee Bar ── */
+    .support-bar {
+      margin-top: 52px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .support-desc {
+      font-size: 13.5px;
+      color: #64748B;
+      max-width: 580px;
+      line-height: 1.6;
+    }
+    .bmc-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFDD00;
+      color: #000000;
+      font-weight: 700;
+      font-size: 14.5px;
+      padding: 11px 22px;
+      border-radius: 12px;
+      border: 1px solid #E2B714;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .bmc-pill-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(226, 183, 20, 0.35);
+    }
+
+    /* ── Cadence-X Footer Navigation (Pixel-perfect matching Footer.tsx & apps.html) ── */
+    .cx-footer {
+      width: 100%;
+      border-top: 1px solid rgba(226, 232, 240, 0.9);
+      background: rgba(255, 255, 255, 0.7);
+      padding: 32px 0;
+      margin-top: 48px;
+      position: relative;
+      z-index: 10;
+    }
+    .cx-footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 12px;
+      color: #64748B;
+    }
+    @media (min-width: 640px) {
+      .cx-footer-inner {
+        padding: 0 24px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .cx-footer-inner {
+        padding: 0 32px;
+      }
+    }
+    .cx-footer-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cx-footer-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #0EA5E9;
+      display: inline-block;
+    }
+    .cx-footer-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-weight: 500;
+    }
+    .cx-footer-link {
+      color: #475569;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .cx-footer-link:hover {
+      color: #0F172A;
+    }
+    @media (max-width: 640px) {
+      .cx-footer-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient background glow elements -->
+  <div class="ambient-bg">
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+    <div class="ambient-glow-3"></div>
+  </div>
+
+  <!-- ── Top Navigation Bar (Cadence-X Header) ── -->
+  <header class="cx-header">
+    <div class="cx-header-inner">
+      <!-- Left: Brand Lockup with Authentic Spinning Logo -->
+      <a href="https://cadence-x.com" id="brand-link" class="cx-brand" title="Cadence-X Home">
+        <div class="cx-logo-box" title="Cadence-X Rhythm Core">
+          <img src="assets/cadence-x-outer-ring.png" onerror="this.src='https://www.cadence-x.com/uploads/cadence-x-outer-ring.png'" class="cx-logo-ring" alt="" />
+          <img src="assets/cadence-x-static.png" onerror="this.src='https://www.cadence-x.com/uploads/cadence-x-static.png'" class="cx-logo-center" alt="Cadence-X Logo" />
+        </div>
+        <span class="cx-brand-title">CADENCE-X</span>
+      </a>
+
+      <!-- Center & Right Navigation -->
+      <div class="cx-nav-wrapper">
+        <nav class="cx-nav">
+          <a href="https://cadence-x.com/#services" id="nav-services" class="cx-nav-link">Services</a>
+          <a href="https://cadence-x.com/apps.html" id="nav-apps" class="cx-nav-link cx-nav-link-active" aria-current="page">Apps</a>
+          <a href="https://cadence-x.com/about.html" id="nav-about" class="cx-nav-link">About Me</a>
+        </nav>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="mobile-drawer">
+      <div class="mobile-drawer-links">
+        <a href="https://cadence-x.com/#services" id="mobile-nav-services" class="mobile-nav-link">Services</a>
+        <a href="https://cadence-x.com/apps.html" id="mobile-nav-apps" class="mobile-nav-link active">Apps</a>
+        <a href="https://cadence-x.com/about.html" id="mobile-nav-about" class="mobile-nav-link">About Me</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main Game Selection Page ── -->
+  <main class="main-content">
+    
+    <!-- Hero / Title Section -->
+    <section class="hero-section">
+      <!-- Breadcrumb: Otis Play is a sub menu within Apps -->
+      <nav class="cx-breadcrumb" aria-label="Breadcrumb">
+        <a href="https://cadence-x.com/apps.html" id="breadcrumb-apps" class="cx-breadcrumb-link">Apps</a>
+        <span class="cx-breadcrumb-sep">/</span>
+        <span class="cx-breadcrumb-current">Otis Play</span>
+      </nav>
+
+      <div class="hero-badge-pill">
+        <span>🎮</span>
+        <span>Early Days of Vibecoding · Kids Games</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span>Otis</span> <span class="hero-title-accent">Play</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Simple, colorful, and tactile web games crafted for young kids — zero accounts, no pop-up ads, and no clutter. Instant one-click play in any browser.
+      </p>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar" role="tablist" aria-label="Game age filters">
+        <button type="button" class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
+          <span>All Games</span>
+          <span class="filter-count">7</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="toddler" role="tab" aria-selected="false">
+          <span>⭐ Ages 2–3</span>
+          <span class="filter-count">4</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="preschool" role="tab" aria-selected="false">
+          <span>⭐⭐ Ages 4–5</span>
+          <span class="filter-count">3</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Interactive Game Cards Grid ── -->
+    <section class="games-grid" id="games-grid">
+      
+      <!-- 1. Shape Sorter -->
+      <a href="shape-sorter/index.html" class="game-card" data-age="toddler" style="border-top-color: #FF6B81;">
+        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #FF6B81, #FF8E9E);"></div>
+        <div class="game-card-meta-row">
+          <span class="game-age-badge" style="color:#BE185D; background:#FDF2F8; border-color:#FBCFE8;">⭐ Ages 2–3</span>
+          <span class="game-category-tag">Tactile Logic</span>
+        </div>
+        <div class="game-visual-row">
+          <div class="game-icon-box" style="background: #FFE4E8; color: #E11D48;">
+            <span>🔵</span>
+          </div>
+          <div class="game-title-group">
+            <h2 class="game-title">Shape Sorter</h2>
+            <div class="game-play-type">Drag &amp; Match Silhouettes</div>
+          </div>
+        </div>
+        <p class="game-desc">
+          Drag and drop vibrant geometric shapes onto matching silhouette shadows with satisfying audio snaps.
+        </p>
+        <div class="game-skills-list">
+          <span class="game-skill-pill">Motor Skills</span>
+          <span class="game-skill-pill">Shape Recognition</span>
+          <span class="game-skill-pill">Spatial Logic</span>
+        </div>
+        <div class="game-cta-btn">
+          <span>Play Shape Sorter</span>
+          <span class="game-cta-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 2. Color Splash -->
+      <a href="color-splash/index.html" class="game-card" data-age="toddler" style="border-top-color: #10B981;">
+        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #10B981, #34D399);"></div>
+        <div class="game-card-meta-row">
+          <span class="game-age-badge" style="color:#047857; background:#ECFDF5; border-color:#A7F3D0;">⭐ Ages 2–3</span>
+          <span class="game-category-tag">Creative Play</span>
+        </div>
+        <div class="game-visual-row">
+          <div class="game-icon-box" style="background: #D1FAE5; color: #059669;">
+            <span>🎨</span>
+          </div>
+          <div class="game-title-group">
+            <h2 class="game-title">Color Splash</h2>
+            <div class="game-play-type">Watercolor Tap Canvas</div>
+          </div>
+        </div>
+        <p class="game-desc">
+          Tap or click anywhere to splatter bright watercolor splashes on an open canvas with bubbling sounds.
+        </p>
+        <div class="game-skills-list">
+          <span class="game-skill-pill">Color Discovery</span>
+          <span class="game-skill-pill">Sensory Free-Play</span>
+          <span class="game-skill-pill">Finger Tapping</span>
+        </div>
+        <div class="game-cta-btn">
+          <span>Play Color Splash</span>
+          <span class="game-cta-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 3. Shape Pop -->
+      <a href="shape-pop/index.html" class="game-card" data-age="toddler" style="border-top-color: #0284C7;">
+        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #0284C7, #38BDF8);"></div>
+        <div class="game-card-meta-row">
+          <span class="game-age-badge" style="color:#0369A1; background:#F0F9FF; border-color:#BAE6FD;">⭐ Ages 2–3</span>
+          <span class="game-category-tag">Hand-Eye Timing</span>
+        </div>
+        <div class="game-visual-row">
+          <div class="game-icon-box" style="background: #E0F2FE; color: #0284C7;">
+            <span>💥</span>
+          </div>
+          <div class="game-title-group">
+            <h2 class="game-title">Shape Pop</h2>
+            <div class="game-play-type">Floating Bubble Popper</div>
+          </div>
+        </div>
+        <p class="game-desc">
+          Pop floating geometric balloons and drifting bubbles in mid-air with gentle chime acoustics.
+        </p>
+        <div class="game-skills-list">
+          <span class="game-skill-pill">Reaction Timing</span>
+          <span class="game-skill-pill">Bubble Physics</span>
+          <span class="game-skill-pill">Soft Audio</span>
+        </div>
+        <div class="game-cta-btn">
+          <span>Play Shape Pop</span>
+          <span class="game-cta-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 4. Count & Drop -->
+      <a href="count-drop/index.html" class="game-card" data-age="toddler" style="border-top-color: #14B8A6;">
+        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #14B8A6, #2DD4BF);"></div>
+        <div class="game-card-meta-row">
+          <span class="game-age-badge" style="color:#0F766E; background:#F0FDFA; border-color:#99F6E4;">⭐ Ages 2–3</span>
+          <span class="game-category-tag">Early Numbers</span>
+        </div>
+        <div class="game-visual-row">
+          <div class="game-icon-box" style="background: #CCFBF1; color: #0D9488;">
+            <span>🐱</span>
+          </div>
+          <div class="game-title-group">
+            <h2 class="game-title">Count &amp; Drop</h2>
+            <div class="game-play-type">Tactile Basket Counting</div>
+          </div>
+        </div>
+        <p class="game-desc">
+          Drop cute kitten friends into the basket one by one while hearing friendly spoken counts and cheerful chimes.
+        </p>
+        <div class="game-skills-list">
+          <span class="game-skill-pill">Numbers 1 to 5</span>
+          <span class="game-skill-pill">Gentle Physics</span>
+          <span class="game-skill-pill">Audio Phonics</span>
+        </div>
+        <div class="game-cta-btn">
+          <span>Play Count &amp; Drop</span>
+          <span class="game-cta-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 5. Otis Bird -->
+      <a href="otisbird/index.html" class="game-card" data-age="preschool" style="border-top-color: #F59E0B;">
+        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #F59E0B, #FBBF24);"></div>
+        <div class="game-card-meta-row">
+          <span class="game-age-badge" style="color:#B45309; background:#FFFBEB; border-color:#FDE68A;">⭐⭐ Ages 4–5</span>
+          <span class="game-category-tag">Arcade Flight</span>
+        </div>
+        <div class="game-visual-row">
+          <div class="game-icon-box" style="background: #FEF3C7; color: #D97706;">
+            <span>🐦</span>
+          </div>
+          <div class="game-title-group">
+            <h2 class="game-title">Otis Bird</h2>
+            <div class="game-play-type">Tap-to-Flap Adventure</div>
+          </div>
+        </div>
+        <p class="game-desc">
+          Flap Otis the bird gently through sunny skies and fluffy clouds in a friendly, non-punishing tap flight.
+        </p>
+        <div class="game-skills-list">
+          <span class="game-skill-pill">Rhythm &amp; Timing</span>
+          <span class="game-skill-pill">Spatial Sense</span>
+          <span class="game-skill-pill">Sunny Soundtrack</span>
+        </div>
+        <div class="game-cta-btn">
+          <span>Play Otis Bird</span>
+          <span class="game-cta-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 6. Memory Path -->
+      <a href="memory-path/index.html" class="game-card" data-age="preschool" style="border-top-color: #8B5CF6;">
+        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #8B5CF6, #A78BFA);"></div>
+        <div class="game-card-meta-row">
+          <span class="game-age-badge" style="color:#6D28D9; background:#F5F3FF; border-color:#DDD6FE;">⭐⭐ Ages 4–5</span>
+          <span class="game-category-tag">Memory &amp; Focus</span>
+        </div>
+        <div class="game-visual-row">
+          <div class="game-icon-box" style="background: #EDE9FE; color: #7C3AED;">
+            <span>💎</span>
+          </div>
+          <div class="game-title-group">
+            <h2 class="game-title">Memory Path</h2>
+            <div class="game-play-type">Musical Sequence Memory</div>
+          </div>
+        </div>
+        <p class="game-desc">
+          Watch sparkling gemstones illuminate in sequence and tap along to replay the soothing musical melody.
+        </p>
+        <div class="game-skills-list">
+          <span class="game-skill-pill">Working Memory</span>
+          <span class="game-skill-pill">Pattern Recall</span>
+          <span class="game-skill-pill">Musical Notes</span>
+        </div>
+        <div class="game-cta-btn">
+          <span>Play Memory Path</span>
+          <span class="game-cta-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 7. ABC Animal Stickers -->
+      <a href="alphabook/index.html" class="game-card" data-age="preschool" style="border-top-color: #EA580C;">
+        <div class="game-card-accent-bar" style="background: linear-gradient(90deg, #EA580C, #FB923C);"></div>
+        <div class="game-card-meta-row">
+          <span class="game-age-badge" style="color:#C2410C; background:#FFF7ED; border-color:#FED7AA;">⭐⭐ Ages 3–5</span>
+          <span class="game-category-tag">Letters &amp; Phonics</span>
+        </div>
+        <div class="game-visual-row">
+          <div class="game-icon-box" style="background: #FFEDD5; color: #EA580C;">
+            <span>🐊</span>
+          </div>
+          <div class="game-title-group">
+            <h2 class="game-title">ABC Animal Stickers</h2>
+            <div class="game-play-type">Interactive Alphabet Book</div>
+          </div>
+        </div>
+        <p class="game-desc">
+          Discover letters from Alligator to Zebra and paste interactive animal stickers while hearing gentle speech pronunciations.
+        </p>
+        <div class="game-skills-list">
+          <span class="game-skill-pill">Phonics &amp; ABCs</span>
+          <span class="game-skill-pill">Animal Names</span>
+          <span class="game-skill-pill">Speech Audio</span>
+        </div>
+        <div class="game-cta-btn">
+          <span>Play ABC Stickers</span>
+          <span class="game-cta-arrow">→</span>
+        </div>
+      </a>
+
+    </section>
+
+    <!-- ── Trust & Parent Info Strip ── -->
+    <section class="trust-section">
+      <div class="trust-header">
+        <h2 class="trust-title">Why Parents Love Otis Play</h2>
+        <p class="trust-subtitle">
+          Designed with intentional simplicity, sensory respect, and high engineering quality.
+        </p>
+      </div>
+
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-card-icon">🛡️</div>
+          <h3 class="trust-card-title">100% Free &amp; Zero Ads</h3>
+          <p class="trust-card-desc">
+            No accounts to create, no passwords, no hidden subscriptions, and no invasive video pop-ups. A completely clean digital sandbox.
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-card-icon">📱</div>
+          <h3 class="trust-card-title">Runs on Any Screen</h3>
+          <p class="trust-card-desc">
+            Built using modern web standards. Smooth on iPads, Android tablets, touchscreen laptops, and phones without downloading app store packages.
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-card-icon">🎈</div>
+          <h3 class="trust-card-title">Sensory-Friendly Design</h3>
+          <p class="trust-card-desc">
+            No high-stress timers or punishing loss states. Warm pastel colors, large hit targets for small fingers, and calming acoustic chimes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Support / Tip Coffee Section ── -->
+    <section class="support-bar">
+      <p class="support-desc">
+        Otis Play is crafted with love by Cadence-X as a collection of playful web micro-apps. If your little ones enjoy playing here, you can support future development below.
+      </p>
+      <a href="https://www.buymeacoffee.com/anushkaj" target="_blank" rel="noopener noreferrer" class="bmc-pill-btn">
+        <span>☕</span>
+        <span>Buy me a coffee</span>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ── Cadence-X Main Footer ── -->
+  <footer class="cx-footer">
+    <div class="cx-footer-inner">
+      <div class="cx-footer-left">
+        <span class="cx-footer-dot"></span>
+        <span>&copy; 2026 CADENCE-X &nbsp;·&nbsp; All rights reserved.</span>
+      </div>
+      <div class="cx-footer-right">
+        <a href="https://cadence-x.com/#services" id="footer-services" class="cx-footer-link">Services</a>
+        <a href="https://cadence-x.com/apps.html" id="footer-apps" class="cx-footer-link">Apps</a>
+        <a href="https://cadence-x.com/about.html" id="footer-about" class="cx-footer-link">About Me</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Audio and Shared Scripts -->
+  <script src="scripts/shared.js"></script>
+  <script>
+    (function() {
+      // 1. Smart Navigation links resolution for local testing vs production
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const isSubfolder = window.location.pathname.includes('/kidsgames');
+
+      if (isLocal && isSubfolder) {
+        // Point navigation relative to the root when running locally
+        const rootPath = window.location.pathname.substring(0, window.location.pathname.indexOf('/kidsgames'));
+        const prefix = rootPath || '';
+        
+        const updateHref = (id, target) => {
+          const el = document.getElementById(id);
+          if (el) el.setAttribute('href', prefix + target);
+        };
+
+        updateHref('brand-link', '/');
+        updateHref('nav-services', '/#services');
+        updateHref('nav-apps', '/apps.html');
+        updateHref('nav-about', '/about.html');
+        updateHref('mobile-nav-services', '/#services');
+        updateHref('mobile-nav-apps', '/apps.html');
+        updateHref('breadcrumb-apps', '/apps.html');
+        updateHref('mobile-nav-about', '/about.html');
+        updateHref('footer-services', '/#services');
+        updateHref('footer-apps', '/apps.html');
+        updateHref('footer-about', '/about.html');
+      }
+
+      // 2. Mobile Menu Drawer Toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileDrawer = document.getElementById('mobile-drawer');
+
+      if (mobileBtn && mobileDrawer) {
+        mobileBtn.addEventListener('click', () => {
+          mobileDrawer.classList.toggle('open');
+        });
+      }
+
+      // 3. Play gentle sound on card hover and tap
+      const gameCards = document.querySelectorAll('.game-card');
+      gameCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          if (soundEnabled) {
+            try { OtisAudio.playSparkle(); } catch(e) {}
+          }
+        });
+        card.addEventListener('click', () => {
+          if (soundEnabled) {
+            try { OtisAudio.playPop(); } catch(e) {}
+          }
+        });
+      });
+
+      // 5. Filter Games by Age Category
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+
+          const filterVal = btn.getAttribute('data-filter');
+          if (soundEnabled) {
+            try { OtisAudio.playPop(); } catch(e) {}
+          }
+
+          gameCards.forEach(card => {
+            const cardAge = card.getAttribute('data-age');
+            if (filterVal === 'all' || cardAge === filterVal) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
