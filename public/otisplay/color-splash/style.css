@@ -291,10 +291,8 @@
 }
 
 .cs-prompt-text .target-highlight {
-  color: var(--cs-accent);
   position: relative;
-  text-decoration: underline wavy var(--cs-accent);
-  text-underline-offset: 4px;
+  text-decoration: none;
 }
 
 /* Color Options / Splat Buttons Palette */

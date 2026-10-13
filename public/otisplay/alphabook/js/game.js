@@ -298,33 +298,73 @@ function showQuestCompleteCelebration() {
 }
 
 /**
- * Full Screen Image Preview Overlay
+ * Full Screen Image & Educational Fact Preview Overlay
  */
 function showImagePreview(animalStr) {
   closeImagePreview();
   const name = getAnimalName(animalStr);
   const emoji = getAnimalEmoji(animalStr);
   const letter = ANIMAL_TO_LETTER[animalStr] || 'A';
-  const soundType = getAnimalSoundType(name);
+  const factEntry = typeof getAnimalFactEntry === 'function' ? getAnimalFactEntry(letter, name) : null;
 
   const overlay = document.createElement('div');
   overlay.className = 'ab-preview-overlay';
   overlay.id = 'abImagePreviewOverlay';
   overlay.innerHTML = `
-    <div class="ab-preview-card" role="dialog" aria-label="${name} preview">
+    <div class="ab-preview-card" role="dialog" aria-label="${name} details">
       <button type="button" class="ab-preview-close" aria-label="Close preview">✕</button>
+
       <div class="ab-preview-header">
         <span class="ab-preview-letter">${letter}</span>
         <span class="ab-preview-name">${name}</span>
+        <button type="button" class="ab-speak-btn" id="btnPreviewPronounce" title="Hear Name" aria-label="Pronounce ${name}">
+          <span>🔊</span>
+        </button>
       </div>
+
       <div class="ab-preview-img-box" id="previewImgBox">
         ${getAnimalImageHtml(letter, name, emoji, 'ab-preview-large-img')}
       </div>
-      <div class="ab-preview-actions">
-        <button type="button" class="ab-preview-sound-btn" id="btnPreviewSound">
-          <span>🔊 Play Animal Sound</span>
-        </button>
-      </div>
+
+      ${factEntry ? `
+        <div class="ab-facts-card ab-preview-facts" id="previewFacts">
+          <div class="ab-facts-title">
+            <span>📖</span>
+            <span>Animal Encyclopedia</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">Type</span>
+            <span class="fact-value">${factEntry.type || '—'}</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">Home</span>
+            <span class="fact-value">${factEntry.native_to || '—'}</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">Size</span>
+            <span class="fact-value">${factEntry.size || '—'}</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">Diet</span>
+            <span class="fact-value">${factEntry.diet || '—'}</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">Loves</span>
+            <span class="fact-value">${factEntry.favorite_food || '—'}</span>
+          </div>
+          ${factEntry.fun_fact ? `
+            <div class="fact-fun-box">
+              <div class="fact-fun-header">
+                <span>⭐ Fun Fact</span>
+                <button type="button" class="ab-read-fact-btn" id="btnPreviewReadFact" title="Listen to fun fact">
+                  <span>🗣️ Read to Me</span>
+                </button>
+              </div>
+              <div class="fact-fun-text">${factEntry.fun_fact}</div>
+            </div>
+          ` : ''}
+        </div>
+      ` : ''}
     </div>
   `;
 
@@ -335,11 +375,21 @@ function showImagePreview(animalStr) {
     if (e.target === overlay) closeImagePreview();
   });
 
-  const soundBtn = overlay.querySelector('#btnPreviewSound');
-  if (soundBtn) {
-    soundBtn.addEventListener('click', () => {
-      AlphaAudio.playAnimalSound(soundType);
+  const pronounceBtn = overlay.querySelector('#btnPreviewPronounce');
+  if (pronounceBtn) {
+    pronounceBtn.addEventListener('click', () => {
+      AlphaAudio.playPop();
       AlphaSpeech.speak(`${letter} is for ${name}`);
+    });
+  }
+
+  const readFactBtn = overlay.querySelector('#btnPreviewReadFact');
+  if (readFactBtn && factEntry && factEntry.fun_fact) {
+    readFactBtn.addEventListener('click', () => {
+      AlphaAudio.playPop();
+      AlphaSpeech.speakFact(name, factEntry.fun_fact);
+      readFactBtn.classList.add('active');
+      setTimeout(() => readFactBtn.classList.remove('active'), 800);
     });
   }
 }

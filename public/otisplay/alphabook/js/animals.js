@@ -143,3 +143,22 @@ function getAnimalImageHtml(letter, name, emoji, extraClass = '') {
 
   return `<img src="${primaryPath}" alt="${altText}" class="ab-sticker-img ${extraClass}" loading="lazy" decoding="async" onerror="if(!this.dataset.asciiTried){this.dataset.asciiTried='1';this.src='${asciiPath}';}else{this.outerHTML='<span class=\\'ab-sticker-emoji ${extraClass}\\' role=\\'img\\' aria-label=\\'${name}\\'>${emoji}</span>';}">`;
 }
+
+/**
+ * Retrieves educational encyclopedia facts for an animal
+ */
+function getAnimalFactEntry(letter, animalName) {
+  const db = (typeof ANIMAL_FACTS !== 'undefined') ? ANIMAL_FACTS : (window.ANIMAL_FACTS || {});
+  const list = db[letter] || [];
+  const clean = (animalName || '').toLowerCase().trim();
+  if (!clean || list.length === 0) return null;
+
+  return list.find(f => f.name.toLowerCase() === clean) ||
+         list.find(f => f.name.toLowerCase().includes(clean) || clean.includes(f.name.toLowerCase())) ||
+         list[0] ||
+         null;
+}
+
+if (typeof window !== 'undefined') {
+  window.getAnimalFactEntry = getAnimalFactEntry;
+}
