@@ -161,22 +161,23 @@ h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
 .cx-game-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   text-decoration: none;
   cursor: pointer;
   user-select: none;
 }
 .cx-game-logo-box {
   position: relative;
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   border-radius: 9999px;
   overflow: hidden;
   flex-shrink: 0;
+  user-select: none;
   transition: transform 0.2s ease;
 }
 .cx-game-brand:hover .cx-game-logo-box {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 .cx-game-logo-ring {
   position: absolute;
@@ -185,6 +186,11 @@ h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
   height: 100%;
   object-fit: cover;
   animation: cx-spin-slow 40s linear infinite;
+  will-change: transform;
+  transition: animation-duration 0.3s ease;
+}
+.cx-game-brand:hover .cx-game-logo-ring {
+  animation-duration: 12s;
 }
 .cx-game-logo-center {
   position: absolute;
@@ -195,14 +201,30 @@ h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
   pointer-events: none;
 }
 .cx-game-brand-title {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 1.05rem;
+  font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
   letter-spacing: 0.05em;
   color: #0F172A;
+  font-weight: 400;
   transition: color 0.15s ease;
 }
 .cx-game-brand:hover .cx-game-brand-title {
   color: #0284C7;
+}
+
+@media (max-width: 480px) {
+  .cx-game-brand {
+    gap: 10px;
+  }
+  .cx-game-logo-box {
+    width: 32px;
+    height: 32px;
+  }
+  .cx-game-brand-title {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+  }
 }
 
 /* Nav links in top header: Services, Apps, About Me (NO Otis Play in top header!) */
