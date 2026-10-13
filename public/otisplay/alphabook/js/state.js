@@ -16,8 +16,8 @@ const state = {
   voiceEnabled: loadBool(STORAGE_KEYS.VOICE, true),
   caseMode: loadStr(STORAGE_KEYS.CASE, 'both'), // 'both' | 'upper' | 'lower'
 
-  // Current view mode
-  currentMode: 'album', // 'album' | 'quest'
+  // Current view mode (defaults to Quest)
+  currentMode: 'quest', // 'album' | 'quest'
 
   // Sticker Album state
   albumLetter: 'A',

@@ -12,8 +12,8 @@ function initApp() {
   bindKeyboardControls();
   initBookView();
 
-  // Restore initial view
-  showView('album');
+  // Restore initial view (starts in Quest mode)
+  showView('quest');
 }
 
 /**

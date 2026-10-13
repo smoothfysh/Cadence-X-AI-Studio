@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, viewport-fit=cover">
     <title>Otis Bird — Otis Play by Cadence-X</title>
     <link rel="stylesheet" href="../styles/main.css">
+    <script src="../scripts/shared.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -204,7 +205,7 @@
         // ─── Game Constants ─────────────────────────────────────────────────
         const GRAVITY = 0.55;
         const FLAP = -7.5;
-        const PIPE_SPEED = 2.2;
+        const BASE_PIPE_SPEED = 2.4;
         const MAX_PARTICLES = 40;
 
         let W, H, GY, BR, PW, DP = 2;
@@ -220,6 +221,7 @@
             state: 'menu',  // 'menu' | 'play' | 'over'
             frame: 0, ptimer: 0, flash: 0, scroll: 0,
             btn: null,
+            lastTop: null,
         };
 
         // ─── Resize ─────────────────────────────────────────────────────────
@@ -235,7 +237,7 @@
 
             W = r.width; H = r.height;
             BR = W * 0.06;
-            PW = Math.max(40, W * 0.08);
+            PW = Math.max(48, W * 0.10);
             GY = H * 0.92;
             S.bx = W * 0.25;
             S.br = BR;
@@ -416,10 +418,35 @@
         }
 
         // ─── Game Logic ─────────────────────────────────────────────────────
+        function getSpeed() {
+            // Smoothly accelerates as score increases (noticeable arcade progression)
+            const sm = 1 + Math.min(0.85, S.score * 0.03);
+            return BASE_PIPE_SPEED * sm;
+        }
+
         function spawnPipe() {
-            const gap = H * 0.28 + Math.random() * (H * 0.06);
-            const margin = 50;
-            const top = margin + Math.random() * (GY - gap - margin * 2);
+            // Fair, comfortable gap so pipes are never too narrow or punishing
+            // Starts at a generous ~35.5% of height and gently settles to min 32%
+            const gapRatio = Math.max(0.32, 0.355 - Math.min(0.035, S.score * 0.0015));
+            const gap = Math.max(175, H * gapRatio);
+
+            const margin = Math.max(65, H * 0.12);
+            const minTop = margin;
+            const maxTop = Math.max(minTop + 20, GY - gap - margin);
+
+            let top;
+            if (S.lastTop != null) {
+                // Limit vertical delta between consecutive pipes to prevent impossible jumps
+                const maxDelta = H * 0.22;
+                const targetTop = S.lastTop + (Math.random() * 2 - 1) * maxDelta;
+                top = Math.max(minTop, Math.min(maxTop, targetTop));
+            } else {
+                const mid = (minTop + maxTop) * 0.5;
+                top = mid + (Math.random() * 2 - 1) * (H * 0.08);
+                top = Math.max(minTop, Math.min(maxTop, top));
+            }
+            S.lastTop = top;
+
             S.pipes.push({ x: W + 10, top, bottom: top + gap, scored: false });
         }
 
@@ -428,13 +455,16 @@
             S.pipes = []; S.pn = 0;
             S.score = 0; S.frame = 0; S.ptimer = 0; S.flash = 0;
             S.scroll = 0;
+            S.lastTop = null;
             scoreEl.textContent = '0';
             scoreEl.className = '';
         }
 
         function collides() {
             const r = BR * 0.45;
-            if (S.by + r > GY || S.by - r < 0) return true;
+            // Ground collision
+            if (S.by + r > GY) return true;
+            // Pipe obstacle collision
             for (let i = 0; i < S.pipes.length; i++) {
                 const p = S.pipes[i];
                 if (S.bx + r > p.x && S.bx - r < p.x + PW) {
@@ -449,6 +479,7 @@
             S.flash = 6;
             spawnParticles(S.bx, S.by, 15);
             S.bvy = -2;
+            try { OtisAudio.playWobble(); } catch(e) {}
         }
 
         // ─── Tick ───────────────────────────────────────────────────────────
@@ -462,9 +493,16 @@
 
             S.frame++;
 
-            // Physics
-            S.bvy += GRAVITY;
+            // Physics with terminal velocity cap
+            S.bvy = Math.min(9.5, S.bvy + GRAVITY);
             S.by += S.bvy;
+
+            // Soft ceiling boundary: bonk gently instead of instant unfair death
+            if (S.by - BR * 0.45 < 0) {
+                S.by = BR * 0.45;
+                if (S.bvy < 0) S.bvy = 0;
+            }
+
             const tr = Math.max(-0.4, Math.min(1.2, S.bvy * 0.05));
             S.rot += (tr - S.rot) * 0.12;
 
@@ -473,32 +511,41 @@
                 if (S.state === 'play') { die(); return; }
             }
 
-            // Pipes
+            const currentSpeed = getSpeed();
+
+            // Pipes spawning: rhythm dynamically tuned to speed so spacing is consistent
             if (S.state === 'play') {
                 S.ptimer++;
-                const iv = Math.max(60, 95 - Math.min(30, S.score * 1.5));
+                const targetSpacing = Math.max(190, W * (0.56 - Math.min(0.06, S.score * 0.002)));
+                const iv = Math.max(45, Math.round(targetSpacing / currentSpeed));
                 if (S.ptimer >= iv) { spawnPipe(); S.ptimer = 0; }
             }
 
-            const sm = 1 + S.score * 0.008;
+            // Move pipes according to progressive speed
             for (let i = S.pipes.length - 1; i >= 0; i--) {
-                S.pipes[i].x -= PIPE_SPEED * sm;
+                S.pipes[i].x -= currentSpeed;
                 if (S.pipes[i].x + PW < -20) S.pipes.splice(i, 1);
             }
 
-            // Score
+            // Score & feedback
             for (let i = 0; i < S.pipes.length; i++) {
                 const p = S.pipes[i];
                 if (!p.scored && p.x + PW < S.bx - BR) {
                     p.scored = true;
                     S.score++;
                     scoreEl.textContent = S.score;
+                    try { OtisAudio.playChime(); } catch(e) {}
                     if (S.score > S.high) {
+                        const prevHigh = S.high;
                         S.high = S.score;
+                        localStorage.setItem('otisbird_high', S.high);
                         localStorage.setItem('fluxbird_high', S.high);
                         highScoreEl.textContent = 'BEST: ' + S.high;
+                        if (prevHigh > 0 && S.score === prevHigh + 1) {
+                            try { OtisAudio.playFanfare(); } catch(e) {}
+                        }
                     }
-                    spawnParticles(W * 0.3, p.top + H * 0.15, 8);
+                    spawnParticles(W * 0.3, p.top + (p.bottom - p.top) * 0.5, 8);
                 }
             }
 
@@ -510,7 +557,9 @@
                 c.x -= c.sp;
                 if (c.x + c.w < -20) c.x = W + 20;
             }
-            S.scroll += PIPE_SPEED * 0.5;
+
+            // Ground scrolls in perfect sync with progressive speed
+            S.scroll += currentSpeed * 0.55;
 
             updateParticles();
             render();
@@ -617,11 +666,13 @@
                 S.bvy = FLAP;
                 spawnParticles(S.bx - BR * 0.5, S.by, 5);
                 scoreEl.className = 'show';
+                try { OtisAudio.playPop(); } catch(e) {}
                 return;
             }
             if (S.state === 'play') {
                 S.bvy = FLAP;
                 spawnParticles(S.bx - BR * 0.5, S.by, 3);
+                try { OtisAudio.playPop(); } catch(e) {}
                 return;
             }
             if (S.state === 'over') {
@@ -681,14 +732,13 @@
         // ─── Init ───────────────────────────────────────────────────────────
         window.addEventListener('resize', resize);
         resize();
-        S.high = parseInt(localStorage.getItem('fluxbird_high')) || 0;
+        S.high = parseInt(localStorage.getItem('otisbird_high') || localStorage.getItem('fluxbird_high')) || 0;
         highScoreEl.textContent = 'BEST: ' + S.high;
         reset();
         S.state = 'menu';
         requestAnimationFrame(loop);
     </script>
     <div class="game-footer"><span style="color:#94A3B8;">● &copy; 2026 CADENCE-X &nbsp;·&nbsp; Otis Play</span></div>
-    <script src="../scripts/shared.js"></script>
     <script>
       (function() {
         const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';

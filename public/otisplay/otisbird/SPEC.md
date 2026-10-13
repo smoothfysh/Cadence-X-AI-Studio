@@ -57,7 +57,7 @@ Three game states: `'menu'` (title screen), `'play'` (active), `'over'` (collisi
 |---|---|---|
 | `GRAVITY` | 0.55 | Downward acceleration per tick |
 | `FLAP` | -7.5 | Upward velocity on tap |
-| `PIPE_SPEED` | 2.2 | Horizontal scroll speed |
+| `BASE_PIPE_SPEED` | 2.4 | Base horizontal scroll speed |
 | `MAX_PARTICLES` | 40 | Particle cap |
 
 ### State Object `S`
@@ -74,6 +74,7 @@ Three game states: `'menu'` (title screen), `'play'` (active), `'over'` (collisi
 | `frame` | Number | Frame counter |
 | `pn` | Number | Particle count |
 | `btn` | Object/null | "Play Again" button `{ x, y, w, h }` for hit detection |
+| `lastTop` | Number/null | Vertical anchor of previous pipe for smooth continuity |
 
 ### Key Functions
 
@@ -88,12 +89,16 @@ Three game states: `'menu'` (title screen), `'play'` (active), `'over'` (collisi
 - **`collides()`** — Hit test against pipes, ground, ceiling
 - **`loop(time)`** — requestAnimationFrame with 60fps accumulator
 
-### Physics
+### Physics & Progression
 
-- Bird velocity increased by GRAVITY each tick, reset to FLAP on input
+- Bird velocity increased by `GRAVITY` each tick, capped at terminal velocity (9.5), reset to `FLAP` on input
+- Soft ceiling boundary clamps bird at sky roof without unfair instant death
 - Rotation lerps toward velocity-based target (`-0.4` to `1.2` radians)
-- Pipe speed increases 0.8% per point (`1 + score * 0.008`)
-- Pipe spawn interval decreases with score (`max(60, 95 - score * 1.5)` ticks)
+- **Speed Progression:** Base speed (2.4) accelerates smoothly with score: `1 + Math.min(0.85, score * 0.03)` (up to 4.44 px/frame)
+- Ground scrolling scrolls in synchronized lockstep with current pipe speed (`speed * 0.55`)
+- **Pipe Spacing & Rhythm:** Dynamically tied to speed so horizontal distance is always comfortable and never bunched up
+- **Fair Pipe Clearances:** Generous vertical gap (~35.5% of height down to min 32% / 175px floor) guarantees pipes are never too narrow
+- Consecutive pipe heights are bounded by `maxDelta` (22% of screen height) to prevent unreachable vertical cliffs
 
 ### Particle System
 
@@ -104,11 +109,15 @@ Three game states: `'menu'` (title screen), `'play'` (active), `'over'` (collisi
 
 ### Audio
 
-- **No audio** — this game is fully silent (no Web Audio API usage)
+- Multi-sensory sound effects powered by shared `OtisAudio`:
+  - `OtisAudio.playPop()` on flap
+  - `OtisAudio.playChime()` on passing pipes
+  - `OtisAudio.playWobble()` on collision / game over
+  - `OtisAudio.playFanfare()` on new best score
 
 ## High Score
 
-- Persisted in `localStorage` key `'fluxbird_high'`
+- Persisted in `localStorage` keys `'otisbird_high'` and `'fluxbird_high'`
 - Displayed as "BEST: N" on the UI overlay
 - Updated in real-time when score exceeds high
 
