@@ -8,27 +8,48 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%2310B981'/><text x='16' y='22' font-size='16' text-anchor='middle'>🐱</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%2338BDF8'/><text x='16' y='22' font-size='16' text-anchor='middle'>🐱</text></svg>">
 </head>
 <body>
   <div class="count-drop">
-    <!-- Magical Cartoon Nature Sky Background -->
-    <div class="cd-bg-nature" aria-hidden="true">
-      <!-- Smiling Interactive Sun -->
+    <!-- Magical Cartoon Nature Backdrop: Sky, Clouds, Horizon & Smiling Sun -->
+    <div class="cd-sky-backdrop" aria-hidden="true">
+      <!-- Smiling Kawaii Sun (Top-Right) -->
       <div class="cd-sun" id="cdSun" title="Tap the Sun!" role="button" tabindex="0">
-        <div class="cd-sun-core">☀️</div>
+        <div class="cd-sun-rays"></div>
+        <div class="cd-sun-core">
+          <div class="cd-sun-eyes">
+            <span class="cd-sun-eye"></span>
+            <span class="cd-sun-eye"></span>
+          </div>
+          <div class="cd-sun-cheeks">
+            <span class="cd-sun-cheek"></span>
+            <span class="cd-sun-cheek"></span>
+          </div>
+          <div class="cd-sun-mouth"></div>
+        </div>
       </div>
+
       <!-- Puffy Cartoon Clouds -->
       <div class="cd-cloud cd-cloud-1"></div>
       <div class="cd-cloud cd-cloud-2"></div>
       <div class="cd-cloud cd-cloud-3"></div>
-      <!-- Fluttering Butterflies -->
-      <div class="cd-butterfly cd-butterfly-1">🦋</div>
-      <div class="cd-butterfly cd-butterfly-2">🌸</div>
+
+      <!-- Distant Rolling Tree Hills & Forest Horizon -->
+      <div class="cd-horizon-treeline" aria-hidden="true">
+        <svg viewBox="0 0 1200 100" preserveAspectRatio="none" class="cd-horizon-svg">
+          <!-- Distant Dark Green Forest Canopy -->
+          <path d="M0,100 L0,55 Q50,30 110,48 Q180,22 250,42 Q320,18 390,38 Q470,12 550,36 Q630,8 710,32 Q790,16 870,40 Q950,12 1030,36 Q1110,24 1170,45 L1200,50 L1200,100 Z" fill="#22543D" opacity="0.65"/>
+          <!-- Mid-Distance Green Tree Crowns -->
+          <path d="M0,100 L0,65 Q60,38 130,58 Q210,28 290,52 Q370,22 450,48 Q540,18 630,42 Q720,15 810,44 Q900,26 980,50 Q1060,28 1140,54 L1200,62 L1200,100 Z" fill="#276749" opacity="0.85"/>
+          <!-- Foreground Lush Rolling Tree Crests -->
+          <path d="M0,100 L0,75 Q80,45 180,68 Q280,35 380,64 Q490,28 600,60 Q710,24 820,62 Q930,35 1040,68 Q1130,50 1200,72 L1200,100 Z" fill="#2F855A"/>
+        </svg>
+      </div>
     </div>
 
-    <!-- Cadence-X Top Navigation & Otis Play Return Bar -->
+    <!-- Cadence-X Top Navigation (Desktop only; hidden on mobile per user instruction) -->
     <div class="cx-game-nav-container">
       <header class="cx-game-header">
         <a href="https://cadence-x.com" class="cx-game-brand" id="brand-link" title="Cadence-X Home">
@@ -78,111 +99,178 @@
       </div>
     </div>
 
-    <!-- Fun & Compact Top Bar: Game Title & Chunky Toy Controls -->
-    <div class="cd-top-bar">
+    <!-- Top Navigation Bar: Mascot Title & Chunky Toy Buttons -->
+    <header class="cd-top-bar">
+      <!-- Mobile Back Button (Clean floating pill, shown on mobile when top header is hidden) -->
+      <a href="../index.html" class="cd-mobile-back" id="mobileBackBtn" title="Back to All Games" onclick="try{OtisAudio.playPop();}catch(e){}">
+        <span class="cd-back-arrow">←</span>
+        <span>🎮</span>
+      </a>
+
+      <!-- Game Title with Mascot -->
       <div class="cd-title-box">
-        <h1 class="cd-game-title">
-          <span class="cd-icon-badge">🐱</span>
-          <span>Count &amp; Drop</span>
-        </h1>
+        <div class="cd-title-mascot" id="cdTitleMascot"></div>
+        <h1 class="cd-game-title">Count &amp; Drop</h1>
       </div>
 
+      <!-- Top Action Buttons (Quest, 1-5, Sound, Voice, Reset) -->
       <div class="cd-controls-group">
-        <button type="button" class="cd-toy-btn cd-btn-mode active" id="btnMode" title="Toggle Play Mode" aria-label="Toggle Play Mode">
+        <button type="button" class="cd-btn-quest active" id="btnMode" title="Toggle Play Mode" aria-label="Toggle Play Mode">
           <span>🎯 Quest</span>
         </button>
-        <button type="button" class="cd-toy-btn cd-btn-max" id="btnMaxCount" title="Change Number Range" aria-label="Change Number Range">
+        <button type="button" class="cd-btn-range" id="btnMaxCount" title="Number Range" aria-label="Number Range">
           <span>🔢 1–5</span>
         </button>
-        <button type="button" class="cd-toy-btn cd-btn-sound" id="btnSound" title="Toggle Sound FX" aria-label="Toggle Sound FX">
+        <button type="button" class="cd-icon-btn cd-btn-sound" id="btnSound" title="Toggle Sound FX" aria-label="Toggle Sound FX">
           <span>🎵</span>
         </button>
-        <button type="button" class="cd-toy-btn cd-btn-voice" id="btnVoice" title="Toggle Voice Speech" aria-label="Toggle Voice Speech">
-          <span>🗣️</span>
+        <button type="button" class="cd-icon-btn cd-btn-voice" id="btnVoice" title="Toggle Voice Speech" aria-label="Toggle Voice Speech">
+          <span>🔔</span>
         </button>
-        <button type="button" class="cd-toy-btn cd-btn-reset" id="btnReset" title="Restart Round" aria-label="Restart Round">
+        <button type="button" class="cd-icon-btn cd-btn-reset" id="btnReset" title="Restart Round" aria-label="Restart Round">
           <span>🔄</span>
         </button>
       </div>
-    </div>
+    </header>
 
-    <!-- Playful Mission / Goal Card (Montessori Stepping Stones) -->
+    <!-- Goal / Mission Floating Banner -->
     <div class="cd-mission-banner" id="cdMissionBanner" role="region" aria-label="Target Goal">
-      <!-- Target Mascot & Count Pill -->
-      <div class="cd-target-visual">
-        <div class="cd-target-badge" id="cdTargetBadge">
-          <span class="cd-target-emoji" id="cdTargetEmoji">🐱</span>
-          <span id="cdTargetNumber">× 3</span>
-        </div>
+      <!-- Mascot + Target Multiplier Pill (Orange Badge) -->
+      <div class="cd-target-badge" id="cdTargetBadge">
+        <div class="cd-target-avatar" id="cdTargetEmoji"></div>
+        <span class="cd-target-multiplier" id="cdTargetNumber">× 1</span>
       </div>
 
-      <!-- Spoken Audio Prompt Bubble -->
-      <div class="cd-prompt-bubble" id="cdPromptBubble" title="Tap to hear prompt" role="button" tabindex="0">
+      <!-- Spoken Audio Prompt Bubble (Green Pill) -->
+      <div class="cd-prompt-bubble" id="cdPromptBubble" role="button" tabindex="0" title="Tap to hear instruction">
         <span class="cd-prompt-speak-icon" aria-hidden="true">🔊</span>
-        <div class="cd-prompt-text" id="cdPromptText">Drop 3 Kittens into the meadow!</div>
+        <span class="cd-prompt-text" id="cdPromptText">Drop 1 Kitten into the meadow!</span>
       </div>
 
-      <!-- Montessori Glowing Star Stepping Stones -->
+      <!-- Montessori Star Stepping Stone Pods (Right) -->
       <div class="cd-counting-pods" id="cdCountingPods" title="Counting Stepping Stones"></div>
     </div>
 
-    <!-- Main Game Playground: Sunny Meadow & Toybox Basket -->
+    <!-- Main Game Arena: Rolling Meadow Hill & Wooden Toy Tray -->
     <main class="cd-play-arena" id="playArena">
-      <!-- Sunny Green Meadow Stage -->
-      <section class="cd-meadow-zone" id="cdMeadowZone" aria-label="Lush Grass Meadow">
-        <!-- Floating Meadow Counter Pill -->
-        <div class="cd-meadow-floating-badge" id="cdMeadowCountPill">0 in meadow</div>
+      <!-- Rolling Meadow Hill Stage -->
+      <section class="cd-meadow-zone" id="cdMeadowZone" aria-label="The Meadow">
+        <!-- Framing Foliage Bushes on Left & Right Edges (Matching Screenshot) -->
+        <div class="cd-side-bushes cd-side-bushes-left" aria-hidden="true">
+          <span class="bush-b b1"></span>
+          <span class="bush-b b2"></span>
+          <span class="bush-b b3"></span>
+          <span class="bush-b b4"></span>
+        </div>
+        <div class="cd-side-bushes cd-side-bushes-right" aria-hidden="true">
+          <span class="bush-b b1"></span>
+          <span class="bush-b b2"></span>
+          <span class="bush-b b3"></span>
+          <span class="bush-b b4"></span>
+        </div>
 
-        <!-- Meadow Drop Area -->
+        <!-- Wildflowers, Shamrocks & Bees Accents -->
+        <div class="cd-meadow-nature" aria-hidden="true">
+          <div class="cd-bee-item cd-bee-1">
+            <svg class="cd-bee-trail" viewBox="0 0 50 30"><path d="M5,25 Q25,5 45,15" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="2" stroke-dasharray="3,3.5"/></svg>
+            <span class="cd-bee-body">🐝</span>
+          </div>
+          <div class="cd-bee-item cd-bee-2">
+            <svg class="cd-bee-trail" viewBox="0 0 50 30"><path d="M5,10 Q25,28 45,12" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="2" stroke-dasharray="3,3.5"/></svg>
+            <span class="cd-bee-body">🐝</span>
+          </div>
+          <div class="cd-bee-item cd-bee-3">
+            <svg class="cd-bee-trail" viewBox="0 0 50 30"><path d="M5,20 Q20,5 45,22" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="2" stroke-dasharray="3,3.5"/></svg>
+            <span class="cd-bee-body">🐝</span>
+          </div>
+
+          <!-- Sweet Pastel Meadow Blossoms & 4-Leaf Clovers -->
+          <span class="cd-wildflower fl-pink-1">🌸</span>
+          <span class="cd-wildflower fl-purple-top">
+            <svg viewBox="0 0 32 32" width="28" height="28">
+              <circle cx="16" cy="7" r="6" fill="#C084FC"/>
+              <circle cx="25" cy="16" r="6" fill="#C084FC"/>
+              <circle cx="16" cy="25" r="6" fill="#C084FC"/>
+              <circle cx="7" cy="16" r="6" fill="#C084FC"/>
+              <circle cx="16" cy="16" r="6" fill="#A855F7"/>
+              <circle cx="16" cy="16" r="3.5" fill="#FACC15"/>
+            </svg>
+          </span>
+          <span class="cd-wildflower fl-yellow-left">🌼</span>
+          <span class="cd-wildflower fl-pink-bottom">🌸</span>
+          <span class="cd-wildflower fl-white-right">
+            <svg viewBox="0 0 28 28" width="22" height="22">
+              <circle cx="14" cy="6" r="4.5" fill="#FFFFFF"/>
+              <circle cx="22" cy="14" r="4.5" fill="#FFFFFF"/>
+              <circle cx="14" cy="22" r="4.5" fill="#FFFFFF"/>
+              <circle cx="6" cy="14" r="4.5" fill="#FFFFFF"/>
+              <circle cx="14" cy="14" r="4" fill="#FBBF24"/>
+            </svg>
+          </span>
+          <span class="cd-wildflower fl-shamrock-1">☘️</span>
+          <span class="cd-wildflower fl-shamrock-2">☘️</span>
+          <span class="cd-wildflower fl-shamrock-3">☘️</span>
+        </div>
+
+        <!-- Meadow Drop Area (Clean grass - NO dotted circles per user instruction) -->
         <div class="cd-meadow-drop-area" id="cdMeadowDropArea">
-          <!-- Empty State Illustration -->
+          <!-- Meadow Guidance Instruction in Center -->
           <div class="cd-meadow-empty" id="cdMeadowEmpty">
-            <span class="cd-meadow-empty-icon">🌼</span>
+            <span class="cd-meadow-empty-icon">🌸</span>
             <span class="cd-meadow-empty-text">Drop cute friends here!</span>
             <span class="cd-meadow-empty-hint">Tap any animal below to hop in! 👇</span>
           </div>
 
-          <!-- Placed Animals Playing in Meadow -->
+          <!-- Placed Animals Container inside the Meadow Grass -->
           <div class="cd-placed-container" id="cdPlacedContainer"></div>
         </div>
 
-        <!-- Integrated Celebration Banner (Pops up inside meadow when round succeeds) -->
+        <!-- Integrated Celebration Toast (Pops up when round is won) -->
         <div class="cd-feedback-banner" id="cdFeedbackBanner">
           <div class="cd-feedback-msg" id="cdFeedbackMsg"></div>
         </div>
-
-        <!-- Meadow Wildflowers Accent -->
-        <div class="cd-meadow-flowers" aria-hidden="true">
-          <span class="cd-flower cd-flower-1">🌼</span>
-          <span class="cd-flower cd-flower-2">🌸</span>
-          <span class="cd-flower cd-flower-3">🌼</span>
-        </div>
       </section>
 
-      <!-- Warm Picnic Blanket / Animal Toybox Basket -->
-      <section class="cd-tray-zone" id="cdTrayZone" aria-label="Animal Toy Basket">
-        <div class="cd-tray-header">
-          <span class="cd-tray-title">
-            <span>🧺</span>
-            <span>Animal Friends</span>
-          </span>
-          <span class="cd-tray-instruction" id="cdTrayInstruction">Tap to hop, or drag into grass!</span>
-        </div>
+      <!-- 3D Carved Wooden Toy Tray Container with Grass Tufts & Sandy Trail Backdrop -->
+      <div class="cd-tray-wrapper">
+        <section class="cd-tray-card" id="cdTrayZone" aria-label="Animal Toy Tray">
+          <div class="cd-tray-header">
+            <span class="cd-tray-title">
+              <span class="cd-tray-icon">🧺</span>
+              <span>ANIMAL FRIENDS</span>
+            </span>
+            <span class="cd-tray-instruction" id="cdTrayInstruction">
+              <span>👉</span>
+              <span>Tap to hop, or drag into grass!</span>
+            </span>
+          </div>
 
-        <!-- 3D Tactile Animal Cards -->
-        <div class="cd-tray-grid" id="cdTrayGrid"></div>
-      </section>
+          <!-- Inset 3D Carved Wooden Trough (Sculpted Rim & Recessed Wood Cavity) -->
+          <div class="cd-wood-trough" id="cdWoodTrough">
+            <div class="cd-tray-grid" id="cdTrayGrid"></div>
+          </div>
+
+          <!-- Bottom Edge Grass Tufts (Matching Reference Screenshot) -->
+          <div class="cd-tray-grass-tufts" aria-hidden="true">
+            <span class="tuft tuft-left">🌱</span>
+            <span class="tuft tuft-mid-left">🌿</span>
+            <span class="tuft tuft-mid-right">🌿</span>
+            <span class="tuft tuft-right">🌱</span>
+          </div>
+        </section>
+      </div>
     </main>
 
-    <!-- Bottom Milestone Stars Track -->
+    <!-- Bottom Milestone Stars Track resting on Sandy Trail -->
     <div class="cd-bottom-bar">
+      <!-- Organic Sandy Trail Backdrop Behind Stars -->
+      <div class="cd-sandy-trail-glow" aria-hidden="true"></div>
       <div class="cd-stars-track" id="cdStarsTrack" aria-label="Milestone Stars"></div>
-      <div class="cd-status-msg" id="cdStatusMsg"></div>
     </div>
 
     <!-- Minimal Clean Footer -->
     <footer class="game-footer">
-      <span>● &copy; 2026 CADENCE-X &nbsp;·&nbsp; Otis Play</span>
+      <span>• &copy; 2026 CADENCE-X • Otis Play</span>
     </footer>
   </div>
 

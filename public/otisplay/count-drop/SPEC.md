@@ -39,17 +39,17 @@ The modernized version features both smooth drag-and-drop and one-touch "Tap to 
 ## Layout Structure
 
 ```
-.count-drop (100dvh, flex column, vibrant sunny sky to green meadow)
-  .cd-bg-nature (interactive smiling sun, clouds, butterflies)
-  .cx-game-nav-container (Cadence-X header + return subbar)
-  .cd-top-bar (Title + chunky 3D toy buttons: Quest, 1-5, Sound, Voice, Reset)
-  .cd-mission-banner (Target mascot & count + prompt bubble + star stepping stones)
+.count-drop (100dvh, flex column, cartoon sky to rolling meadow hill)
+  .cd-sky-backdrop (kawaii smiling sun, puffy clouds, horizon tree hills)
+  .cx-game-nav-container (Cadence-X header + return subbar — hidden on mobile ≤ 768px)
+  .cd-top-bar (Mobile back button + Mascot & Title + Quest, 1-5, Sound, Voice, Reset)
+  .cd-mission-banner (Floating capsule: Target badge × N + green prompt pill + star pods)
   .cd-play-arena (flex:1 column / row in landscape)
-    .cd-meadow-zone (sunny green grassy hill with daisies, floating badge, placed animals)
-      .cd-feedback-banner (integrated celebratory pop-up banner inside meadow)
-    .cd-tray-zone (warm picnic blanket / toy shelf with squishy 3D animal cards)
-  .cd-bottom-bar (floating milestone gold stars)
-  .game-footer (Cadence-X footer)
+    .cd-meadow-zone (sunlit rolling green hill with horizon forest canopy, framing side bushes, wildflowers, bees, and guidance text — dotted circles removed)
+      .cd-feedback-banner (integrated celebratory toast on win)
+    .cd-tray-card (warm ivory card with 3D beveled carved wooden tray, recessed wood grain cavity, grass tufts, and active golden aura tile)
+  .cd-bottom-bar (8 milestone stars with green glowing ring on active round, resting on sandy trail backdrop)
+  .game-footer (clean footer beneath stars with zero overlap)
 ```
 
 ---
