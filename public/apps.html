@@ -19,7 +19,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<base href="/">
+<script>
+  // Clean URL: automatically remove .html and index.html from URL bar
+  (function() {
+    var p = window.location.pathname;
+    if (p.endsWith('.html') || p.endsWith('/index')) {
+      var clean = p.replace(/\.html$/, '').replace(/\/index$/, '') || '/';
+      window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+    }
+  })();
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -1257,7 +1267,7 @@
 <!-- Cadence-X Header Navigation (Preserved Exactly) -->
 <header class="cx-header">
   <div class="cx-header-inner">
-    <a href="index.html" class="cx-brand" title="Cadence-X Home">
+    <a href="/" class="cx-brand" title="Cadence-X Home">
       <div class="cx-logo-box">
         <img src="uploads/cadence-x-outer-ring.png" class="cx-logo-ring" alt="" />
         <img src="uploads/cadence-x-static.png" class="cx-logo-center" alt="Cadence-X Logo" />
@@ -1266,9 +1276,9 @@
     </a>
 
     <nav class="cx-nav">
-      <a href="index.html#services" class="cx-nav-link">Services</a>
-      <a href="apps.html" class="cx-nav-link cx-nav-link-active">Apps</a>
-      <a href="about.html" class="cx-nav-link">About Me</a>
+      <a href="/#services" class="cx-nav-link">Services</a>
+      <a href="/apps" class="cx-nav-link cx-nav-link-active">Apps</a>
+      <a href="/about" class="cx-nav-link">About Me</a>
     </nav>
   </div>
 </header>
@@ -1378,13 +1388,13 @@
           <span class="exp-details-item">No accounts</span>
           <span class="exp-details-item">Instant touch play</span>
         </div>
-        <a href="otisplay/index.html" class="exp-action-link">
+        <a href="/otisplay/" class="exp-action-link">
           <span>Visit Otis Play</span>
         </a>
       </div>
 
       <!-- Otis Play Visual Showcase -->
-      <a href="otisplay/index.html" class="otis-visual-frame" style="text-decoration: none;" title="Open Otis Play">
+      <a href="/otisplay/" class="otis-visual-frame" style="text-decoration: none;" title="Open Otis Play">
         <div class="otis-visual-header">
           <span>Tactile Kids Play &middot; Ad-Free</span>
           <span>7 Mini Games</span>
@@ -1487,9 +1497,9 @@
       <span>&copy; 2026 CADENCE-X &nbsp;&middot;&nbsp; All rights reserved.</span>
     </div>
     <div class="cx-footer-right">
-      <a href="index.html#services" class="cx-footer-link">Services</a>
-      <a href="apps.html" class="cx-footer-link">Apps</a>
-      <a href="about.html" class="cx-footer-link">About Me</a>
+      <a href="/#services" class="cx-footer-link">Services</a>
+      <a href="/apps" class="cx-footer-link">Apps</a>
+      <a href="/about" class="cx-footer-link">About Me</a>
     </div>
   </div>
 </footer>

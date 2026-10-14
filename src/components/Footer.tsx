@@ -28,13 +28,13 @@ export const Footer: React.FC = () => {
             Services
           </button>
           <a
-            href="apps.html"
+            href="/apps"
             className="hover:text-slate-900 transition-colors"
           >
             Apps
           </a>
           <a
-            href="about.html"
+            href="/about"
             className="hover:text-slate-900 transition-colors"
           >
             About

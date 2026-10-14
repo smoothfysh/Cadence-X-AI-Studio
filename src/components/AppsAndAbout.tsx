@@ -51,7 +51,7 @@ export const AppsAndAbout: React.FC = () => {
 
             {/* Action Link */}
             <a
-              href="apps.html"
+              href="/apps"
               className="inline-flex items-center text-sm font-semibold text-[#1D4ED8] hover:text-[#1E40AF] transition-colors"
             >
               <span>Open Apps</span>
@@ -96,7 +96,7 @@ export const AppsAndAbout: React.FC = () => {
 
             {/* Action Link */}
             <a
-              href="about.html"
+              href="/about"
               className="inline-flex items-center text-sm font-semibold text-[#1D4ED8] hover:text-[#1E40AF] transition-colors"
             >
               <span>Go to About Me</span>

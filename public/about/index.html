@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Anushka Jayawardana — Cadence-X</title>
+<meta name="description" content="About Anushka Jayawardana — product strategist, engineer, and creator of Cadence-X. 20+ years shipping software.">
+<meta name="keywords" content="personal site, portfolio, product management, Anushka Jayawardana, Cadence-X, about">
+<meta name="rating" content="general">
+<meta name="topic" content="Personal website and professional portfolio">
+<meta name="classification" content="personal">
+<meta name="category" content="personal site">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About Anushka Jayawardana — Cadence-X">
+<meta property="og:description" content="About Anushka Jayawardana — product strategist, engineer, and creator of Cadence-X.">
+<link rel="icon" type="image/png" href="uploads/logo_font-Norwester-Lazydog_TransBG.png">
+
+<!-- Google Fonts: Editorial Serif (Newsreader), Clean Sans (Hanken Grotesk), Monospace (JetBrains Mono), Display (Archivo Black), Cursive (Caveat) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@500;600;700&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<base href="/">
+<script>
+  // Clean URL: automatically remove .html and index.html from URL bar
+  (function() {
+    var p = window.location.pathname;
+    if (p.endsWith('.html') || p.endsWith('/index')) {
+      var clean = p.replace(/\.html$/, '').replace(/\/index$/, '') || '/';
+      window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+    }
+  })();
+</script>
+<script src="./support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  /* ── Design Tokens & Base Styles ── */
+  *, *::before, *::after { box-sizing: border-box; }
+
+  :root {
+    --bg-page: #FAF8F5;
+    --bg-surface: #FFFFFF;
+    --bg-surface-subtle: #F4F1EA;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    --border-subtle: #E8E4DA;
+    --border-medium: #D8D3C7;
+    --cobalt: #1D4ED8;
+    --cobalt-hover: #1E40AF;
+    --cobalt-soft: #EFF6FF;
+    --terracotta: #C2410C;
+    --terracotta-soft: #FFF7ED;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: var(--cobalt);
+    text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  a:hover {
+    color: var(--cobalt-hover);
+  }
+
+  /* ── Cadence-X Header Navigation ── */
+  .cx-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    background: rgba(250, 248, 245, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .cx-header-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 16px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  @media (min-width: 640px) {
+    .cx-header-inner {
+      padding: 0 24px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .cx-header-inner {
+      padding: 0 32px;
+    }
+  }
+  .cx-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    flex-shrink: 0;
+  }
+  .cx-logo-box {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 9999px;
+    overflow: hidden;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .cx-logo-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: cx-spin-slow 40s linear infinite;
+    will-change: transform;
+  }
+  .cx-logo-center {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  @keyframes cx-spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .cx-brand-title {
+    font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    font-weight: 400;
+    transition: color 0.15s ease;
+  }
+  .cx-brand:hover .cx-brand-title {
+    color: var(--cobalt);
+  }
+  .cx-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .cx-nav-link {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 4px 0;
+    transition: color 0.15s ease;
+    white-space: nowrap;
+  }
+  .cx-nav-link:hover {
+    color: var(--text-primary);
+  }
+  .cx-nav-link-active {
+    color: var(--cobalt);
+    font-weight: 600;
+  }
+  @media (max-width: 640px) {
+    .cx-nav {
+      gap: 14px;
+    }
+    .cx-nav-link {
+      font-size: 13.5px;
+    }
+  }
+  @media (max-width: 520px) {
+    .cx-header-inner {
+      padding: 0 12px;
+      gap: 6px;
+    }
+    .cx-brand {
+      gap: 7px;
+      flex-shrink: 0;
+    }
+    .cx-logo-box {
+      width: 28px;
+      height: 28px;
+    }
+    .cx-brand-title {
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+    }
+    .cx-nav {
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .cx-nav-link {
+      font-size: 12.5px;
+      white-space: nowrap;
+    }
+  }
+  @media (max-width: 380px) {
+    .cx-header-inner {
+      padding: 0 8px;
+    }
+    .cx-brand-title {
+      font-size: 0.85rem;
+    }
+    .cx-nav {
+      gap: 7px;
+    }
+    .cx-nav-link {
+      font-size: 11.5px;
+    }
+  }
+
+  /* ── Main Layout Container ── */
+  .about-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 20px 40px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 640px) {
+    .about-container {
+      padding: 60px 32px 50px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .about-container {
+      padding: 68px 40px 60px;
+    }
+  }
+
+  /* ── Hero / Intro Section ── */
+  .hero-intro {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 768px) {
+    .hero-intro {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+  }
+
+  /* ── Static B&W Portrait with Rotating Cadence-C Border ── */
+  .portrait-container {
+    position: relative;
+    width: 152px;
+    height: 152px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .portrait-photo {
+    width: 122px;
+    height: 122px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #FFFFFF url('uploads/Three Portrait Styles in Circles.png') 50% 50% / 300% 100% no-repeat;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
+    flex-shrink: 0;
+  }
+  .portrait-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transform-origin: center;
+    animation: portrait-ring-spin 9s linear infinite;
+    will-change: transform;
+  }
+  @keyframes portrait-ring-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .portrait-ring {
+      animation: none;
+    }
+  }
+  @media (max-width: 640px) {
+    .portrait-container {
+      width: 124px;
+      height: 124px;
+    }
+    .portrait-photo {
+      width: 98px;
+      height: 98px;
+    }
+  }
+
+  .hero-intro-text {
+    flex: 1;
+    min-width: 280px;
+  }
+  .hero-headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 38px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin: 0 0 12px;
+  }
+  @media (min-width: 640px) {
+    .hero-headline {
+      font-size: 44px;
+    }
+  }
+  .hero-description {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 680px;
+  }
+
+  /* ── Two-Column Editorial Spread ── */
+  .editorial-spread {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: start;
+    position: relative;
+  }
+  @media (min-width: 900px) {
+    .editorial-spread {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.18fr);
+      gap: 56px;
+    }
+  }
+
+  /* ── Left Column: TL;DR Story ── */
+  .tldr-column {
+    position: relative;
+    padding-bottom: 80px; /* Room for botanical branch doodle */
+  }
+  .eyebrow-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    display: block;
+    margin-bottom: 18px;
+  }
+  .editorial-story {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #334155;
+  }
+  .editorial-story p {
+    margin: 0 0 16px;
+  }
+  .editorial-story p:last-child {
+    margin-bottom: 0;
+  }
+  .traits-summary {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--cobalt);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #1E293B;
+    margin: 22px 0;
+  }
+  .traits-summary strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .traits-pipe {
+    color: var(--border-medium);
+    margin: 0 5px;
+  }
+
+  /* Action Links */
+  .action-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 26px;
+    margin-bottom: 20px;
+    font-size: 14.5px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+  }
+  .action-link {
+    font-weight: 600;
+    color: var(--cobalt);
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(29, 78, 216, 0.25);
+    padding-bottom: 2px;
+    transition: all 0.15s ease;
+  }
+  .action-link:hover {
+    color: var(--cobalt-hover);
+    border-bottom-color: var(--cobalt-hover);
+  }
+  .action-sep {
+    color: #94A3B8;
+    user-select: none;
+  }
+
+  /* Botanical Branch Doodle */
+  .doodle-branch {
+    position: absolute;
+    left: -8px;
+    bottom: 8px;
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.85;
+    z-index: 1;
+  }
+
+  /* ── Right Column: Milestones Timeline ── */
+  .milestones-column {
+    position: relative;
+    padding-bottom: 60px; /* Room for terracotta doodle */
+  }
+  .timeline-header {
+    text-align: center;
+    margin-bottom: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .timeline-heading {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  .timeline-subcaption {
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+  }
+  .timeline-subcaption-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00F0FF;
+    box-shadow: 0 0 6px #00F0FF;
+  }
+
+  /* Timeline Tree */
+  .timeline-tree {
+    position: relative;
+    padding: 10px 0 20px;
+  }
+  /* Central vertical rule (Static base track) */
+  .timeline-tree::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    bottom: 12px;
+    left: 50%;
+    width: 2px;
+    margin-left: -1px;
+    background: var(--cobalt);
+    border-radius: 2px;
+    opacity: 0.85;
+  }
+
+  /* ── Cadence Energy Flow Track Overlay ── */
+  .timeline-energy-track {
+    position: absolute;
+    top: 8px;
+    bottom: 12px;
+    left: 50%;
+    width: 28px;
+    margin-left: -14px;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  /* Moving Energy Beam Pulse (Ambient Whisper & Balanced Cadence) */
+  .energy-beam-pulse {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.5px;
+    height: 140px;
+    border-radius: 999px;
+    will-change: top, opacity;
+    animation: energyGlide 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    background: linear-gradient(
+      180deg,
+      rgba(2, 132, 199, 0) 0%,
+      rgba(0, 240, 255, 0.35) 60%,
+      #FFFFFF 100%
+    );
+    box-shadow: 0 0 6px rgba(0, 240, 255, 0.5);
+  }
+
+  .energy-head-spark {
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 
+      0 0 8px 2px #00F0FF,
+      0 0 16px 4px rgba(0, 240, 255, 0.5);
+  }
+
+  @keyframes energyGlide {
+    0% {
+      top: -140px;
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.95;
+    }
+    85% {
+      opacity: 0.95;
+    }
+    100% {
+      top: 100%;
+      opacity: 0;
+    }
+  }
+
+  .timeline-item {
+    position: relative;
+    width: 50%;
+    padding-bottom: 26px;
+    box-sizing: border-box;
+  }
+  .timeline-item.tl-left {
+    padding-right: 32px;
+    text-align: right;
+  }
+  .timeline-item.tl-right {
+    margin-left: 50%;
+    padding-left: 32px;
+    text-align: left;
+  }
+
+  /* Node circle on the center line */
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 18px;
+    width: 14px;
+    height: 14px;
+    z-index: 3;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 2.5px solid var(--cobalt);
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .timeline-item.tl-left::before {
+    right: 0;
+    transform: translateX(50%);
+  }
+  .timeline-item.tl-right::before {
+    left: 0;
+    transform: translateX(-50%);
+  }
+
+  /* Horizontal connecting stem from card to node */
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 24px;
+    height: 1.5px;
+    background: var(--cobalt);
+    z-index: 1;
+    pointer-events: none;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .timeline-item.tl-left::after {
+    right: 0;
+    width: 32px;
+  }
+  .timeline-item.tl-right::after {
+    left: 0;
+    width: 32px;
+  }
+
+  /* Current position node styling (Subtle slow organic pulsating) */
+  .timeline-item.tl-current::before {
+    background: var(--cobalt);
+    border-color: #00F0FF;
+    animation: currentPulseNode 3.4s ease-in-out infinite;
+  }
+  .timeline-item.tl-current:nth-last-child(2)::before {
+    animation-delay: 0s;
+  }
+  .timeline-item.tl-current:last-child::before {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes currentPulseNode {
+    0%, 100% {
+      background-color: #1D4ED8;
+      border-color: #1D4ED8;
+      box-shadow: 
+        0 0 0 3px rgba(29, 78, 216, 0.22),
+        0 0 6px 1px rgba(0, 240, 255, 0.25);
+    }
+    50% {
+      background-color: #0284C7;
+      border-color: #00F0FF;
+      box-shadow: 
+        0 0 0 5.5px rgba(0, 240, 255, 0.26),
+        0 0 16px 3px rgba(0, 240, 255, 0.65),
+        0 0 24px 6px rgba(2, 132, 199, 0.25);
+    }
+  }
+
+  /* Connecting horizontal stems for current milestones */
+  .timeline-item.tl-current::after {
+    background: linear-gradient(90deg, #1D4ED8, #00F0FF);
+    box-shadow: 0 0 5px rgba(0, 240, 255, 0.35);
+  }
+
+  /* Milestone Card */
+  .milestone-card {
+    display: inline-block;
+    text-align: left;
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 12px 18px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+    max-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .milestone-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.07);
+    border-color: var(--border-medium);
+  }
+
+  /* Subtle breathing ambient glow on current milestone cards */
+  .timeline-item.tl-current .milestone-card {
+    border-color: rgba(0, 240, 255, 0.4);
+    animation: cardCurrentBreathe 3.4s ease-in-out infinite;
+  }
+  .timeline-item.tl-current:nth-last-child(2) .milestone-card {
+    animation-delay: 0s;
+  }
+  .timeline-item.tl-current:last-child .milestone-card {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes cardCurrentBreathe {
+    0%, 100% {
+      border-color: rgba(29, 78, 216, 0.22);
+      box-shadow: 
+        0 1px 4px rgba(15, 23, 42, 0.05),
+        0 0 0 1px rgba(29, 78, 216, 0.06);
+    }
+    50% {
+      border-color: rgba(0, 240, 255, 0.55);
+      box-shadow: 
+        0 4px 16px rgba(0, 240, 255, 0.12),
+        0 0 0 1.5px rgba(0, 240, 255, 0.35);
+    }
+  }
+
+  .milestone-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Live Active Beacon indicator for CURRENT milestones */
+  .cx-live-beacon {
+    display: inline-flex;
+    position: relative;
+    width: 7px;
+    height: 7px;
+    vertical-align: middle;
+  }
+  .cx-live-beacon-ping {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background-color: #00F0FF;
+    opacity: 0.75;
+    animation: beaconPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  .cx-live-beacon-core {
+    position: relative;
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background-color: #0284C7;
+    box-shadow: 0 0 6px #00F0FF;
+  }
+  @keyframes beaconPing {
+    75%, 100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+  .milestone-company {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .milestone-flag {
+    width: 20px;
+    height: 14px;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+  }
+  .milestone-role {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    margin-top: 3px;
+  }
+  .milestone-country {
+    font-weight: 600;
+    font-size: 11.5px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .milestone-sep {
+    color: var(--border-medium);
+    margin: 0 3px;
+  }
+
+  /* Terracotta Doodle on Timeline */
+  .doodle-terracotta {
+    position: absolute;
+    right: 18px;
+    bottom: 0;
+    font-family: 'Caveat', cursive;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--terracotta);
+    letter-spacing: 4px;
+    transform: rotate(-12deg);
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.85;
+  }
+
+  /* Mobile Timeline Adjustments */
+  @media (max-width: 680px) {
+    .timeline-tree::before {
+      left: 12px;
+    }
+    .timeline-energy-track {
+      left: 12px;
+      margin-left: -14px;
+    }
+    .timeline-item, .timeline-item.tl-left, .timeline-item.tl-right {
+      width: 100%;
+      margin-left: 0;
+      text-align: left;
+      padding: 0 0 22px 38px;
+    }
+    .timeline-item.tl-left::before, .timeline-item.tl-right::before {
+      left: 12px;
+      right: auto;
+      transform: translateX(-50%);
+    }
+    .timeline-item.tl-left::after, .timeline-item.tl-right::after {
+      left: 12px;
+      right: auto;
+      width: 26px;
+    }
+    .timeline-header {
+      text-align: left;
+      align-items: flex-start;
+      padding-left: 38px;
+    }
+  }
+
+  /* ── Cadence-X Footer ── */
+  .cx-footer {
+    width: 100%;
+    border-top: 1px solid var(--border-subtle);
+    background: transparent;
+    padding: 32px 0;
+    margin-top: 60px;
+  }
+  .cx-footer-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+  @media (min-width: 640px) {
+    .cx-footer-inner {
+      padding: 0 24px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .cx-footer-inner {
+      padding: 0 32px;
+    }
+  }
+  .cx-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cx-footer-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #0ea5e9;
+    display: inline-block;
+  }
+  .cx-footer-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-weight: 500;
+  }
+  .cx-footer-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .cx-footer-link:hover {
+    color: var(--text-primary);
+  }
+  @media (max-width: 640px) {
+    .cx-footer-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+</helmet>
+
+<!-- Cadence-X Sticky Header Navigation -->
+<header class="cx-header">
+  <div class="cx-header-inner">
+    <a href="/" class="cx-brand" title="Cadence-X Home">
+      <div class="cx-logo-box">
+        <img src="uploads/cadence-x-outer-ring.png" class="cx-logo-ring" alt="" />
+        <img src="uploads/cadence-x-static.png" class="cx-logo-center" alt="Cadence-X Logo" />
+      </div>
+      <span class="cx-brand-title">CADENCE-X</span>
+    </a>
+
+    <nav class="cx-nav">
+      <a href="/#services" class="cx-nav-link">Services</a>
+      <a href="/apps" class="cx-nav-link">Apps</a>
+      <a href="/about" class="cx-nav-link cx-nav-link-active">About Me</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Main About Content Area -->
+<main class="about-container">
+
+  <!-- Hero Intro Section -->
+  <section class="hero-intro" aria-label="Introduction">
+    <div class="portrait-container">
+      <div class="portrait-photo" role="img" aria-label="Portrait of Anushka Jayawardana"></div>
+      <svg class="portrait-ring" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Grey arc base ring -->
+        <circle cx="100" cy="100" r="91" stroke="#9CA3AF" stroke-width="8" />
+        <!-- Black "C" shape with rounded caps (starts at 120deg, clockwise through 0deg) -->
+        <path d="M 178.8 145.5 A 91 91 0 1 1 100 9" stroke="#000000" stroke-width="8.2" stroke-linecap="round" />
+      </svg>
+    </div>
+    <div class="hero-intro-text" id="about-intro">
+      <h1 class="hero-headline">Hi, I’m Anushka Jayawardana.</h1>
+      <p class="hero-description">
+        I'm a seasoned product person by trade, engineer by training, and the reason a kids’ games site and a product manager's roadmap tool share a homepage. Turns out 20+ years of shipping software leaves you with some odd side projects.
+      </p>
+    </div>
+  </section>
+
+  <!-- Two-Column Editorial Spread -->
+  <div class="editorial-spread">
+
+    <!-- Left Column: Story & Philosophy -->
+    <section class="tldr-column" aria-label="About Story">
+      <span class="eyebrow-tag">THE QUICK TL;DR VERSION ABOUT ME</span>
+
+      <div class="editorial-story" id="about-card">
+        <p>
+          I’ve spent 20+ years bouncing between software design for mobile phones, e-commerce, martech and now digital real-estate — and I’ve worn most of the hats along the way: software engineer, product planner, product manager, strategist.
+        </p>
+        <p>
+          That mix has taught me how to navigate messy, ambiguous problems — the kind that show up when a company changes hands or a market shifts overnight — and still keep teams shipping. I care a lot more about getting the thing delivered than getting credit for it; execution is what actually moves the needle.
+        </p>
+        <p>
+          If I had to summarise myself, I’d say:
+        </p>
+        
+        <div class="traits-summary">
+          <strong>I’m Passionately curious</strong> <span class="traits-pipe">|</span> 
+          <strong>I strongly enjoy babysitting chaos</strong> <span class="traits-pipe">|</span> 
+          <strong>Obsessed about solving the problems my customers have</strong> <span class="traits-pipe">|</span> 
+          <strong>Nerd at heart</strong> <span class="traits-pipe">|</span> 
+          <strong>Product Strategist</strong> <span class="traits-pipe">|</span> 
+          <strong>Advisor and Consultant</strong>
+        </div>
+
+        <p>
+          If there’s a throughline, it’s this: I’m at my best translating technical innovation into something people can actually feel the benefit of. That’s as true for a roadmap tool a PM opens every morning as it is for a game simple enough for a five-year-old to figure out alone — which is more or less why Cadence–X exists. No grand unifying theory, just things I wanted to build, living under one roof.
+        </p>
+      </div>
+
+      <!-- Action Links -->
+      <div class="action-links">
+        <a href="https://www.linkedin.com/in/anushka/" target="_blank" rel="noopener noreferrer" class="action-link">Check out his LinkedIn</a>
+      </div>
+
+      <!-- Botanical Branch Doodle matching reference image -->
+      <div class="doodle-branch" aria-hidden="true">
+        <svg width="34" height="54" viewBox="0 0 28 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 44C14 28 12 12 18 4" stroke="#1D4ED8" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M14 34C9 33 4 28 5 22C11 22 14 28 14 34Z" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2" />
+          <path d="M13 24C17 22 22 16 21 10C15 11 13 18 13 24Z" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2" />
+          <path d="M14 16C10 14 6 9 8 4C13 5 14 11 14 16Z" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- Right Column: Professional Milestones Timeline -->
+    <section class="milestones-column" aria-label="Professional Milestones">
+      <div class="timeline-header">
+        <h2 class="timeline-heading">PROFESSIONAL MILESTONES</h2>
+        <div class="timeline-subcaption">
+          <span class="timeline-subcaption-dot"></span>
+          <span>Energy Flow Across 20+ Years</span>
+        </div>
+      </div>
+
+      <div class="timeline-tree" id="milestones">
+        <!-- Cadence Energy Flow Track Overlay -->
+        <div class="timeline-energy-track" aria-hidden="true">
+          <div class="energy-beam-pulse">
+            <div class="energy-head-spark"></div>
+          </div>
+        </div>
+
+        <!-- Pre-rendered Static Timeline (Instantly visible, no flash) -->
+        
+        <!-- 1. Barco (Belgium/UK) -->
+        <div class="timeline-item tl-left">
+          <div class="milestone-card">
+            <div class="milestone-year">2000-2003 (3 YEARS)</div>
+            <div class="milestone-company">
+              <span>Barco</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/be.png" alt="Belgium flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">UK</span>
+              <span class="milestone-sep">|</span>
+              Junior Software Engineer
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Domain Dynamics (UK) -->
+        <div class="timeline-item tl-right">
+          <div class="milestone-card">
+            <div class="milestone-year">2003-2004 (1 YEAR)</div>
+            <div class="milestone-company">
+              <span>Domain Dynamics</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/gb.png" alt="UK flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">UK</span>
+              <span class="milestone-sep">|</span>
+              Senior Software Engineer
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Sharp (UK) -->
+        <div class="timeline-item tl-left">
+          <div class="milestone-card">
+            <div class="milestone-year">2004-2013 (9.5 YEARS)</div>
+            <div class="milestone-company">
+              <span>Sharp</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/gb.png" alt="UK flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">UK</span>
+              <span class="milestone-sep">|</span>
+              Senior Product Manager
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Spreadshirt (Germany) -->
+        <div class="timeline-item tl-right">
+          <div class="milestone-card">
+            <div class="milestone-year">2013-2018 (5 YEARS)</div>
+            <div class="milestone-company">
+              <span>Spreadshirt</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/de.png" alt="Germany flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">Germany</span>
+              <span class="milestone-sep">|</span>
+              Director of Product Management
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Selligent (Belgium) -->
+        <div class="timeline-item tl-left">
+          <div class="milestone-card">
+            <div class="milestone-year">2018-2021 (3 YEARS)</div>
+            <div class="milestone-company">
+              <span>Selligent</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/be.png" alt="Belgium flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">Belgium</span>
+              <span class="milestone-sep">|</span>
+              Vice President, Product
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Infobip (Croatia) -->
+        <div class="timeline-item tl-right">
+          <div class="milestone-card">
+            <div class="milestone-year">2021-2024 (3.5 YEARS)</div>
+            <div class="milestone-company">
+              <span>Infobip</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/hr.png" alt="Croatia flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">Croatia</span>
+              <span class="milestone-sep">|</span>
+              Director of Products
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Aviv Group (Croatia/Germany) -->
+        <div class="timeline-item tl-left tl-current">
+          <div class="milestone-card">
+            <div class="milestone-year">
+              <span>2024 (CURRENT)</span>
+              <span class="cx-live-beacon" title="Active role in progress">
+                <span class="cx-live-beacon-ping"></span>
+                <span class="cx-live-beacon-core"></span>
+              </span>
+            </div>
+            <div class="milestone-company">
+              <span>Aviv Group</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/de.png" alt="Germany flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">Croatia</span>
+              <span class="milestone-sep">|</span>
+              Product Director
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Bind Technologies (Croatia) -->
+        <div class="timeline-item tl-right tl-current">
+          <div class="milestone-card">
+            <div class="milestone-year">
+              <span>2026 (CURRENT)</span>
+              <span class="cx-live-beacon" title="Active role in progress">
+                <span class="cx-live-beacon-ping"></span>
+                <span class="cx-live-beacon-core"></span>
+              </span>
+            </div>
+            <div class="milestone-company">
+              <span>Bind Technologies</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/hr.png" alt="Croatia flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">Croatia</span>
+              <span class="milestone-sep">|</span>
+              Product Consultant
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Terracotta Slash Doodle matching reference image -->
+      <div class="doodle-terracotta" aria-hidden="true">
+        ///
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Cadence-X Footer -->
+  <footer class="cx-footer">
+    <div class="cx-footer-inner">
+      <div class="cx-footer-left">
+        <span class="cx-footer-dot"></span>
+        <span>&copy; 2026 CADENCE-X &nbsp;·&nbsp; All rights reserved.</span>
+      </div>
+      <div class="cx-footer-right">
+        <a href="/#services" class="cx-footer-link">Services</a>
+        <a href="/apps" class="cx-footer-link">Apps</a>
+        <a href="/about" class="cx-footer-link">About Me</a>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+</x-dc>
+
+<!-- Optional dynamic markdown synchronization -->
+<script>
+(function() {
+  var FLAG_CODES = {
+    'uk': 'gb', 'united kingdom': 'gb', 'great britain': 'gb', 'england': 'gb',
+    'germany': 'de', 'belgium': 'be', 'croatia': 'hr', 'netherlands': 'nl',
+    'the netherlands': 'nl', 'france': 'fr', 'spain': 'es', 'italy': 'it',
+    'portugal': 'pt', 'austria': 'at', 'switzerland': 'ch', 'ireland': 'ie',
+    'usa': 'us', 'united states': 'us', 'india': 'in'
+  };
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // Fetch milestones.md only if served over HTTP/HTTPS
+  if (window.location.protocol.indexOf('http') === 0) {
+    fetch('milestones.md')
+      .then(function(r) { return r.ok ? r.text() : null; })
+      .then(function(md) {
+        if (!md) return;
+        var lines = md.replace(/\r\n/g, '\n').split('\n');
+        var entries = [];
+        var cur = null;
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i].trim();
+          if (!line) continue;
+          var h2 = line.match(/^##\s+(.+)/);
+          if (h2) {
+            if (cur) entries.push(cur);
+            var hp = h2[1].split('|');
+            cur = { year: (hp[0] || '').trim(), company: (hp[1] || '').trim(), country: '', role: '' };
+          } else if (cur) {
+            var pipe = line.indexOf('|');
+            var first = (pipe === -1 ? line : line.slice(0, pipe)).trim();
+            var rest = pipe === -1 ? '' : line.slice(pipe + 1).trim();
+            if (!cur.country) { cur.country = first; cur.role = rest; }
+            else if (rest) { cur.role = cur.role ? cur.role + ' ' + line : line; }
+          }
+        }
+        if (cur) entries.push(cur);
+        if (entries.length === 0) return;
+
+        var host = document.getElementById('milestones');
+        if (!host) return;
+
+        var energyTrackHtml = '<div class="timeline-energy-track" aria-hidden="true"><div class="energy-beam-pulse"><div class="energy-head-spark"></div></div></div>';
+        var html = '';
+        for (var j = 0; j < entries.length; j++) {
+          var e = entries[j];
+          var side = j % 2 === 0 ? 'tl-left' : 'tl-right';
+          var isCurrent = /current/i.test(e.year) ? ' tl-current' : '';
+          var countryNorm = e.country.toLowerCase();
+          var code = FLAG_CODES[countryNorm] || (e.company.toLowerCase() === 'barco' ? 'be' : '');
+          var flag = code ? '<img class="milestone-flag" src="https://flagcdn.com/w80/' + code + '.png" alt="' + esc(e.country) + ' flag" loading="lazy">' : '';
+          var beacon = isCurrent ? '<span class="cx-live-beacon" title="Active role in progress"><span class="cx-live-beacon-ping"></span><span class="cx-live-beacon-core"></span></span>' : '';
+
+          html += '<div class="timeline-item ' + side + isCurrent + '">'
+            + '<div class="milestone-card">'
+            + '<div class="milestone-year"><span>' + esc(e.year.toUpperCase()) + '</span>' + beacon + '</div>'
+            + '<div class="milestone-company"><span>' + esc(e.company) + '</span>' + flag + '</div>'
+            + '<div class="milestone-role">'
+            + (e.country ? '<span class="milestone-country">' + esc(e.country) + '</span>' : '')
+            + (e.country && e.role ? '<span class="milestone-sep">|</span>' : '')
+            + esc(e.role)
+            + '</div></div></div>';
+        }
+        host.innerHTML = energyTrackHtml + html;
+      })
+      .catch(function(e) { /* keep pre-rendered content */ });
+  }
+})();
+</script>
+
+<script type="text/x-dc" data-dc-script data-props="{}">
+// Backwards compatibility hook for dc-runtime environments
+class Component extends DCLogic {
+  componentDidMount() {}
+}
+</script>
+</body>
+</html>

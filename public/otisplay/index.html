@@ -20,6 +20,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="assets/logo_font-Norwester-Lazydog_TransBG.png">
+  <script>
+    // Clean URL: automatically remove index.html from URL bar
+    (function() {
+      var p = window.location.pathname;
+      if (p.endsWith('/index.html') || p.endsWith('/index')) {
+        var clean = p.replace(/\/index(\.html)?$/, '/') + window.location.search + window.location.hash;
+        window.history.replaceState(null, '', clean);
+      }
+    })();
+  </script>
 
   <script type="application/ld+json">
   {
@@ -1083,10 +1093,10 @@
   <header class="cx-header">
     <div class="cx-header-inner">
       <!-- Left: Brand Lockup with Authentic Spinning Logo -->
-      <a href="https://cadence-x.com" id="brand-link" class="cx-brand" title="Cadence-X Home">
+      <a href="/" id="brand-link" class="cx-brand" title="Cadence-X Home">
         <div class="cx-logo-box" title="Cadence-X Rhythm Core">
-          <img src="assets/cadence-x-outer-ring.png" onerror="this.src='https://www.cadence-x.com/uploads/cadence-x-outer-ring.png'" class="cx-logo-ring" alt="" />
-          <img src="assets/cadence-x-static.png" onerror="this.src='https://www.cadence-x.com/uploads/cadence-x-static.png'" class="cx-logo-center" alt="Cadence-X Logo" />
+          <img src="assets/cadence-x-outer-ring.png" onerror="this.src='/uploads/cadence-x-outer-ring.png'" class="cx-logo-ring" alt="" />
+          <img src="assets/cadence-x-static.png" onerror="this.src='/uploads/cadence-x-static.png'" class="cx-logo-center" alt="Cadence-X Logo" />
         </div>
         <span class="cx-brand-title">CADENCE-X</span>
       </a>
@@ -1094,9 +1104,9 @@
       <!-- Center & Right Navigation -->
       <div class="cx-nav-wrapper">
         <nav class="cx-nav">
-          <a href="https://cadence-x.com/#services" id="nav-services" class="cx-nav-link">Services</a>
-          <a href="https://cadence-x.com/apps.html" id="nav-apps" class="cx-nav-link cx-nav-link-active" aria-current="page">Apps</a>
-          <a href="https://cadence-x.com/about.html" id="nav-about" class="cx-nav-link">About Me</a>
+          <a href="/#services" id="nav-services" class="cx-nav-link">Services</a>
+          <a href="/apps" id="nav-apps" class="cx-nav-link cx-nav-link-active" aria-current="page">Apps</a>
+          <a href="/about" id="nav-about" class="cx-nav-link">About Me</a>
         </nav>
 
         <!-- Mobile Menu Toggle Button -->
@@ -1113,9 +1123,9 @@
     <!-- Mobile Drawer -->
     <div id="mobile-drawer" class="mobile-drawer">
       <div class="mobile-drawer-links">
-        <a href="https://cadence-x.com/#services" id="mobile-nav-services" class="mobile-nav-link">Services</a>
-        <a href="https://cadence-x.com/apps.html" id="mobile-nav-apps" class="mobile-nav-link active">Apps</a>
-        <a href="https://cadence-x.com/about.html" id="mobile-nav-about" class="mobile-nav-link">About Me</a>
+        <a href="/#services" id="mobile-nav-services" class="mobile-nav-link">Services</a>
+        <a href="/apps" id="mobile-nav-apps" class="mobile-nav-link active">Apps</a>
+        <a href="/about" id="mobile-nav-about" class="mobile-nav-link">About Me</a>
       </div>
     </div>
   </header>
@@ -1127,7 +1137,7 @@
     <section class="hero-section">
       <!-- Breadcrumb: Otis Play is a sub menu within Apps -->
       <nav class="cx-breadcrumb" aria-label="Breadcrumb">
-        <a href="https://cadence-x.com/apps.html" id="breadcrumb-apps" class="cx-breadcrumb-link">Apps</a>
+        <a href="/apps" id="breadcrumb-apps" class="cx-breadcrumb-link">Apps</a>
         <span class="cx-breadcrumb-sep">/</span>
         <span class="cx-breadcrumb-current">Otis Play</span>
       </nav>
@@ -1371,9 +1381,9 @@
         <span>&copy; 2026 CADENCE-X &nbsp;·&nbsp; All rights reserved.</span>
       </div>
       <div class="cx-footer-right">
-        <a href="https://cadence-x.com/#services" id="footer-services" class="cx-footer-link">Services</a>
-        <a href="https://cadence-x.com/apps.html" id="footer-apps" class="cx-footer-link">Apps</a>
-        <a href="https://cadence-x.com/about.html" id="footer-about" class="cx-footer-link">About Me</a>
+        <a href="/#services" id="footer-services" class="cx-footer-link">Services</a>
+        <a href="/apps" id="footer-apps" class="cx-footer-link">Apps</a>
+        <a href="/about" id="footer-about" class="cx-footer-link">About Me</a>
       </div>
     </div>
   </footer>
@@ -1400,15 +1410,15 @@
 
         updateHref('brand-link', '/');
         updateHref('nav-services', '/#services');
-        updateHref('nav-apps', '/apps.html');
-        updateHref('nav-about', '/about.html');
+        updateHref('nav-apps', '/apps');
+        updateHref('nav-about', '/about');
         updateHref('mobile-nav-services', '/#services');
-        updateHref('mobile-nav-apps', '/apps.html');
-        updateHref('breadcrumb-apps', '/apps.html');
-        updateHref('mobile-nav-about', '/about.html');
+        updateHref('mobile-nav-apps', '/apps');
+        updateHref('breadcrumb-apps', '/apps');
+        updateHref('mobile-nav-about', '/about');
         updateHref('footer-services', '/#services');
-        updateHref('footer-apps', '/apps.html');
-        updateHref('footer-about', '/about.html');
+        updateHref('footer-apps', '/apps');
+        updateHref('footer-about', '/about');
       }
 
       // 2. Mobile Menu Drawer Toggle

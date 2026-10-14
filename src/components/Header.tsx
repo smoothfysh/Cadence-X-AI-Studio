@@ -18,7 +18,16 @@ export const Header: React.FC = () => {
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Left: Brand Lockup with authentic spinning logo */}
         <a
-          href="index.html"
+          href="/"
+          onClick={(e) => {
+            if (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              if (window.location.pathname.endsWith('index.html')) {
+                window.history.replaceState(null, '', '/');
+              }
+            }
+          }}
           className="flex items-center gap-3.5 group select-none"
         >
           <SpinningLogo size="sm" interactive={false} className="shrink-0" />
@@ -36,13 +45,13 @@ export const Header: React.FC = () => {
             Services
           </button>
           <a
-            href="apps.html"
+            href="/apps"
             className="hover:text-slate-900 transition-colors py-1"
           >
             Apps
           </a>
           <a
-            href="about.html"
+            href="/about"
             className="hover:text-slate-900 transition-colors py-1"
           >
             About Me
@@ -72,13 +81,13 @@ export const Header: React.FC = () => {
               Services
             </button>
             <a
-              href="apps.html"
+              href="/apps"
               className="text-left py-2 hover:text-sky-600 transition-colors"
             >
               Apps
             </a>
             <a
-              href="about.html"
+              href="/about"
               className="text-left py-2 hover:text-sky-600 transition-colors"
             >
               About Me
