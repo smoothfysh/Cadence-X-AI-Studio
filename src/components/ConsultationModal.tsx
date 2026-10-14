@@ -74,20 +74,26 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
     setStatusMessage(null);
 
     const formData = new FormData(form);
-    formData.append("access_key", "4bd9817e-d021-4c8a-acd9-8abd9a1993ff");
-    if (!formData.get("h-captcha-response")) {
-      formData.append("h-captcha-response", finalCaptchaToken);
-    }
+    const object: Record<string, any> = Object.fromEntries(formData.entries());
+
+    // Explicitly guarantee access_key and hCaptcha token are clean, single string values
+    const ACCESS_KEY = "4bd9817e-d021-4c8a-acd9-8abd9a1993ff".trim();
+    object.access_key = ACCESS_KEY;
+    object["h-captcha-response"] = finalCaptchaToken.trim();
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(object)
       });
 
       const data = await response.json();
 
-      if (response.ok) {
+      if (response.ok && data.success) {
         alert("Success! Your message has been sent.");
         setStatusMessage({ type: 'success', text: 'Success! Your message has been sent.' });
         form.reset();
@@ -180,10 +186,8 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
 
           <form id="form" ref={formRef} onSubmit={handleSubmit} className="space-y-4">
             {/* Hidden Config Fields */}
-            <input type="hidden" name="access_key" value="4bd9817e-d021-4c8a-acd9-8abd9a1993ff" />
             <input type="hidden" name="subject" value="Cadence-X Consultation Inquiry" />
             <input type="hidden" name="from_name" value="Cadence-X Consultation Form" />
-            <input type="hidden" name="h-captcha-response" value={captchaToken} />
 
             {/* Grid: Name & Email */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
