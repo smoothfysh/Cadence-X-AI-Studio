@@ -1,7 +1,11 @@
 import React from 'react';
 import { SpinningLogo } from './SpinningLogo.tsx';
 
-export const Hero: React.FC = () => {
+export interface HeroProps {
+  onOpenConsultModal?: () => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({ onOpenConsultModal }) => {
   return (
     <section className="pt-10 sm:pt-14 pb-10 sm:pb-14 max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
       {/* Two-Column Desktop Editorial Grid */}
@@ -53,12 +57,13 @@ export const Hero: React.FC = () => {
           {/* Action Row: CTA, Email Link & Playful Handwritten Accent */}
           <div className="flex items-center gap-8 sm:gap-12 flex-wrap">
             <div>
-              <a
-                href="mailto:consult@cadence-x.com?subject=Cadence-X%20Consultation%20Inquiry"
+              <button
+                type="button"
+                onClick={onOpenConsultModal}
                 className="inline-flex items-center px-6 py-3 rounded-lg bg-[#0F172A] hover:bg-[#1E293B] text-white font-medium text-sm transition-all shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
                 <span>Book a Consultation</span>
-              </a>
+              </button>
 
               <a
                 href="mailto:consult@cadence-x.com"

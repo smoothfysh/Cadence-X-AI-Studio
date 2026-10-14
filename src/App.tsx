@@ -3,15 +3,18 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Header } from './components/Header.tsx';
 import { Hero } from './components/Hero.tsx';
 import { TempoVisualizer } from './components/TempoVisualizer.tsx';
 import { WhyCadenceMatters } from './components/WhyCadenceMatters.tsx';
 import { AppsAndAbout } from './components/AppsAndAbout.tsx';
 import { Footer } from './components/Footer.tsx';
+import { ConsultationModal } from './components/ConsultationModal.tsx';
 
 export default function App() {
+  const [isConsultModalOpen, setIsConsultModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-[#0B1C30] flex flex-col font-sans">
       {/* Top Navigation Bar with authentic spinning logo */}
@@ -20,7 +23,7 @@ export default function App() {
       {/* Main Content Layout */}
       <main className="flex-1">
         {/* Hero Section with Spinning Logo */}
-        <Hero />
+        <Hero onOpenConsultModal={() => setIsConsultModalOpen(true)} />
 
         {/* Interactive Multi-Track Tempo Alignment Waveform Visualizer */}
         <TempoVisualizer />
@@ -34,6 +37,12 @@ export default function App() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Web3Forms Consultation Modal with hCaptcha */}
+      <ConsultationModal
+        isOpen={isConsultModalOpen}
+        onClose={() => setIsConsultModalOpen(false)}
+      />
     </div>
   );
 }
