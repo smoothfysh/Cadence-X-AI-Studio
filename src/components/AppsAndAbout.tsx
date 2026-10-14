@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
 
 export const AppsAndAbout: React.FC = () => {
   return (
@@ -53,10 +52,9 @@ export const AppsAndAbout: React.FC = () => {
             {/* Action Link */}
             <a
               href="apps.html"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1D4ED8] hover:text-[#1E40AF] hover:gap-2 transition-all"
+              className="inline-flex items-center text-sm font-semibold text-[#1D4ED8] hover:text-[#1E40AF] transition-colors"
             >
               <span>Open Apps</span>
-              <ArrowRight className="w-4 h-4" />
             </a>
           </div>
         </div>
@@ -99,10 +97,9 @@ export const AppsAndAbout: React.FC = () => {
             {/* Action Link */}
             <a
               href="about.html"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1D4ED8] hover:text-[#1E40AF] hover:gap-2 transition-all"
+              className="inline-flex items-center text-sm font-semibold text-[#1D4ED8] hover:text-[#1E40AF] transition-colors"
             >
               <span>Go to About Me</span>
-              <ArrowRight className="w-4 h-4" />
             </a>
           </div>
 

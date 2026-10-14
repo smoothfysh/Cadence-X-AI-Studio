@@ -462,19 +462,11 @@
   .preview-top-bar {
     background: #FAF8F5;
     border-bottom: 1px solid var(--border-subtle);
-    padding: 12px 18px;
+    padding: 10px 16px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 10px;
-  }
-  @media (max-width: 640px) {
-    .preview-url-badge {
-      display: none;
-    }
-    .preview-top-bar {
-      padding: 10px 14px;
-    }
   }
   .preview-tabs {
     display: flex;
@@ -495,7 +487,7 @@
   }
   .preview-tab-btn:hover {
     color: var(--text-primary);
-    background: rgba(0, 0, 0, 0.03);
+    background: rgba(0, 0, 0, 0.04);
   }
   .preview-tab-btn.is-active {
     background: #FFFFFF;
@@ -503,66 +495,34 @@
     border-color: var(--border-subtle);
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
-  .preview-url-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--cobalt);
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  .preview-url-badge:hover {
-    text-decoration: underline;
-  }
-  @media (max-width: 640px) {
-    .preview-url-badge {
-      display: none !important;
-    }
-  }
   .preview-image-container {
     position: relative;
     width: 100%;
-    background: #FFFFFF;
+    height: 380px;
+    background: #FAF8F5;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     overflow: hidden;
-    cursor: pointer;
+    cursor: zoom-in;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  @media (max-width: 640px) {
+    .preview-image-container {
+      height: 260px;
+    }
   }
   .preview-img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
-    object-position: top;
-    max-height: 480px;
-    transition: opacity 0.22s ease;
+    object-position: top center;
+    transition: opacity 0.18s ease, transform 0.25s ease;
   }
-  .preview-overlay-tag {
-    position: absolute;
-    bottom: 14px;
-    right: 14px;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    color: #FFFFFF;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    padding: 6px 12px;
-    border-radius: 6px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    pointer-events: none;
-    opacity: 0.9;
-    transition: opacity 0.2s ease, background 0.2s ease;
-  }
-  .product-preview-frame:hover .preview-overlay-tag {
-    opacity: 1;
-    background: var(--cobalt);
+  .preview-image-container:hover .preview-img {
+    transform: scale(1.025);
   }
 
   /* ── Section Intro: Experiments ── */
@@ -1073,6 +1033,156 @@
     background: var(--border-subtle);
     color: var(--text-primary);
   }
+
+  /* ── Image Lightbox Modal ── */
+  .rm-img-modal-box {
+    background: #0B1120;
+    border-radius: 14px;
+    max-width: 96vw;
+    width: 1240px;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    animation: rmModalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+  .rm-img-modal-header {
+    padding: 12px 20px;
+    background: #111827;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .rm-img-modal-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #F8FAFC;
+    margin: 0;
+  }
+
+  /* ── Tab Styling in Dark Modal Header (Fixes Invisible Hover Text) ── */
+  .rm-img-modal-header .preview-tabs {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 3px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .rm-img-modal-header .preview-tab-btn {
+    color: #94A3B8 !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .rm-img-modal-header .preview-tab-btn:hover {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.16) !important;
+    border-color: rgba(255, 255, 255, 0.22) !important;
+  }
+  .rm-img-modal-header .preview-tab-btn.is-active {
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    font-weight: 600 !important;
+    border-color: #FFFFFF !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .rm-img-modal-body {
+    padding: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #070D18;
+    height: calc(92vh - 65px);
+    max-height: calc(92vh - 65px);
+    position: relative;
+  }
+  .rm-magnifier-stage {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    max-height: calc(92vh - 95px);
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+    background: #FFFFFF;
+    cursor: crosshair;
+    cursor: zoom-in;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .rm-modal-full-img {
+    max-width: 100%;
+    max-height: calc(92vh - 95px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+    background: #FFFFFF;
+    transform: scale(1);
+    transform-origin: center center;
+    will-change: transform, transform-origin;
+    transition: transform 0.22s cubic-bezier(0.2, 0, 0.2, 1);
+    pointer-events: none;
+  }
+  .rm-magnifier-stage.is-zoomed .rm-modal-full-img {
+    transform: scale(2.2);
+    transition: none;
+  }
+  .rm-magnifier-hint {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #F8FAFC;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 5;
+  }
+  .rm-magnifier-stage.is-zoomed .rm-magnifier-hint {
+    opacity: 0.15;
+  }
+  @media (max-width: 640px) {
+    .rm-img-modal-header {
+      padding: 10px 14px;
+    }
+    .rm-img-modal-title {
+      font-size: 16px;
+    }
+    .rm-img-modal-body {
+      padding: 8px;
+    }
+  }
   .rm-modal-body {
     padding: 28px 32px;
     overflow-y: auto;
@@ -1204,7 +1314,6 @@
         <div class="featured-actions">
           <a href="https://roadmap.cadence-x.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">
             <span>Launch Roadmap Tool</span>
-            <span>&rarr;</span>
           </a>
           <button type="button" id="open-roadmap-modal-btn" class="btn-secondary-link">
             <span>Learn more</span>
@@ -1225,27 +1334,18 @@
                 Timeline (Gantt)
               </button>
             </div>
-            <!-- Live link -->
-            <a href="https://roadmap.cadence-x.com/" target="_blank" rel="noopener noreferrer" class="preview-url-badge" title="Open live roadmap">
-              <span>roadmap.cadence-x.com</span>
-              <span>&#8599;</span>
-            </a>
           </div>
 
-          <!-- Interactive preview container -->
-          <a href="https://roadmap.cadence-x.com/" target="_blank" rel="noopener noreferrer" class="preview-image-container" title="Click to launch Roadmap">
+          <!-- Interactive preview container (Click to view full image in modal) -->
+          <div class="preview-image-container" id="open-roadmap-image-btn" role="button" tabindex="0" title="Click to view full preview">
             <img 
               id="roadmap-preview-img" 
               src="uploads/roadmap-preview.png" 
-              alt="Cadence-X Roadmap Tool Interface — Board and Timeline View" 
+              alt="Cadence-X Roadmap Tool Interface — Board View" 
               class="preview-img" 
               loading="eager"
             />
-            <div class="preview-overlay-tag">
-              <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:#10B981;"></span>
-              <span>Launch Live Tool &rarr;</span>
-            </div>
-          </a>
+          </div>
         </div>
       </div>
 
@@ -1280,10 +1380,6 @@
         </div>
         <a href="otisplay/index.html" class="exp-action-link">
           <span>Visit Otis Play</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
         </a>
       </div>
 
@@ -1362,10 +1458,6 @@
         </div>
         <a href="https://timer.cadence-x.com/" target="_blank" rel="noopener noreferrer" class="exp-action-link">
           <span>Start Timer</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
         </a>
       </div>
     </article>
@@ -1535,8 +1627,44 @@
         </button>
         <a href="https://roadmap.cadence-x.com/" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:9px 18px; font-size:14px; border-radius:8px;">
           <span>Open Roadmap</span>
-          <span>&rarr;</span>
         </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Roadmap Image Preview Lightbox Modal ── -->
+<div id="roadmap-img-modal" class="rm-modal-backdrop" aria-hidden="true" role="dialog" aria-labelledby="rm-img-modal-title">
+  <div class="rm-img-modal-box">
+    <div class="rm-img-modal-header">
+      <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;">
+        <h3 class="rm-img-modal-title" id="rm-img-modal-title">Roadmap — Board View</h3>
+        <span style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#94A3B8;">Full interface preview</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div class="preview-tabs">
+          <button type="button" class="preview-tab-btn is-active" id="modal-tab-kanban" data-view="kanban">
+            Board View
+          </button>
+          <button type="button" class="preview-tab-btn" id="modal-tab-gantt" data-view="gantt">
+            Timeline (Gantt)
+          </button>
+        </div>
+        <button type="button" class="rm-modal-close-btn" id="rm-img-modal-close-btn" aria-label="Close dialog" style="color:#FFFFFF; background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15);">&times;</button>
+      </div>
+    </div>
+    <div class="rm-img-modal-body">
+      <div class="rm-magnifier-stage" id="rm-magnifier-stage">
+        <img id="roadmap-modal-full-img" src="uploads/TIME_roadmap.cadence-x.com_.png" alt="Cadence-X Roadmap Tool Interface — Board View" class="rm-modal-full-img" />
+        <div class="rm-magnifier-hint" id="rm-magnifier-hint">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="11" y1="8" x2="11" y2="14"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+          <span>Move mouse to pan &amp; zoom</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1545,71 +1673,227 @@
 <!-- Modal & Tab Interaction Script -->
 <script>
   (function() {
-    // ── Roadmap Preview Tabs (Kanban vs Gantt View) ──
-    var tabKanban = document.getElementById('tab-kanban');
-    var tabGantt = document.getElementById('tab-gantt');
-    var previewImg = document.getElementById('roadmap-preview-img');
+    var currentView = 'kanban';
 
-    if (tabKanban && tabGantt && previewImg) {
-      tabKanban.addEventListener('click', function(e) {
-        e.preventDefault();
-        tabKanban.classList.add('is-active');
-        tabGantt.classList.remove('is-active');
+    var stage = document.getElementById('rm-magnifier-stage');
+    var fullImg = document.getElementById('roadmap-modal-full-img');
+
+    function resetMagnifier() {
+      if (stage && fullImg) {
+        stage.classList.remove('is-zoomed');
+        fullImg.style.transformOrigin = 'center center';
+        fullImg.style.transition = 'transform 0.25s cubic-bezier(0.2, 0, 0.2, 1)';
+        fullImg.style.transform = 'scale(1)';
+      }
+    }
+
+    if (stage && fullImg) {
+      function handleMove(e) {
+        var rect = stage.getBoundingClientRect();
+        if (rect.width === 0 || rect.height === 0) return;
+        var clientX = e.clientX;
+        var clientY = e.clientY;
+        if (e.touches && e.touches[0]) {
+          clientX = e.touches[0].clientX;
+          clientY = e.touches[0].clientY;
+        }
+        var x = ((clientX - rect.left) / rect.width) * 100;
+        var y = ((clientY - rect.top) / rect.height) * 100;
+        x = Math.max(0, Math.min(100, x));
+        y = Math.max(0, Math.min(100, y));
+
+        stage.classList.add('is-zoomed');
+        fullImg.style.transformOrigin = x.toFixed(2) + '% ' + y.toFixed(2) + '%';
+        fullImg.style.transform = 'scale(2.35)';
+      }
+
+      function handleLeave() {
+        resetMagnifier();
+      }
+
+      function handleEnter() {
+        if (fullImg) {
+          fullImg.style.transition = 'transform 0.15s ease-out';
+          fullImg.style.transform = 'scale(2.35)';
+        }
+      }
+
+      stage.addEventListener('mousemove', handleMove);
+      stage.addEventListener('mouseenter', handleEnter);
+      stage.addEventListener('mouseleave', handleLeave);
+
+      stage.addEventListener('touchmove', function(e) {
+        handleMove(e);
+      }, { passive: true });
+      stage.addEventListener('touchend', handleLeave);
+    }
+
+    function switchRoadmapView(view) {
+      currentView = view;
+      var isGantt = view === 'gantt';
+      resetMagnifier();
+
+      // 1. Update on-page tabs
+      var tabKanban = document.getElementById('tab-kanban');
+      var tabGantt = document.getElementById('tab-gantt');
+      if (tabKanban && tabGantt) {
+        if (isGantt) {
+          tabGantt.classList.add('is-active');
+          tabKanban.classList.remove('is-active');
+        } else {
+          tabKanban.classList.add('is-active');
+          tabGantt.classList.remove('is-active');
+        }
+      }
+
+      // 2. Update modal tabs
+      var modalTabKanban = document.getElementById('modal-tab-kanban');
+      var modalTabGantt = document.getElementById('modal-tab-gantt');
+      if (modalTabKanban && modalTabGantt) {
+        if (isGantt) {
+          modalTabGantt.classList.add('is-active');
+          modalTabKanban.classList.remove('is-active');
+        } else {
+          modalTabKanban.classList.add('is-active');
+          modalTabGantt.classList.remove('is-active');
+        }
+      }
+
+      // 3. Update modal title
+      var modalTitle = document.getElementById('rm-img-modal-title');
+      if (modalTitle) {
+        modalTitle.textContent = isGantt
+          ? 'Roadmap — Timeline (Gantt) View'
+          : 'Roadmap — Board View';
+      }
+
+      var modalSrc = isGantt ? 'uploads/GANTTVIEW_roadmap.cadence-x.com_.png' : 'uploads/TIME_roadmap.cadence-x.com_.png';
+      var previewSrc = isGantt ? 'uploads/roadmap-gantt-preview.png' : 'uploads/roadmap-preview.png';
+      var alt = isGantt ? 'Cadence-X Roadmap Tool Interface — Gantt Timeline View' : 'Cadence-X Roadmap Tool Interface — Board View';
+
+      // 4. Update preview image on page
+      var previewImg = document.getElementById('roadmap-preview-img');
+      if (previewImg) {
         previewImg.style.opacity = '0';
         setTimeout(function() {
-          previewImg.src = 'uploads/roadmap-preview.png';
-          previewImg.alt = 'Cadence-X Roadmap Tool Interface — Kanban Board View';
+          previewImg.src = previewSrc;
+          previewImg.alt = alt;
           previewImg.style.opacity = '1';
-        }, 150);
-      });
+        }, 120);
+      }
 
-      tabGantt.addEventListener('click', function(e) {
-        e.preventDefault();
-        tabGantt.classList.add('is-active');
-        tabKanban.classList.remove('is-active');
-        previewImg.style.opacity = '0';
-        setTimeout(function() {
-          previewImg.src = 'uploads/roadmap-gantt-preview.png';
-          previewImg.alt = 'Cadence-X Roadmap Tool Interface — Gantt Timeline View';
-          previewImg.style.opacity = '1';
-        }, 150);
-      });
+      // 5. Update full image in modal
+      if (fullImg) {
+        fullImg.src = modalSrc;
+        fullImg.alt = alt;
+      }
+    }
+
+    // ── Image Lightbox Modal ──
+    var imgModal = document.getElementById('roadmap-img-modal');
+
+    function openImageModal() {
+      switchRoadmapView(currentView);
+      if (imgModal) {
+        imgModal.classList.add('is-active');
+        imgModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeImageModal() {
+      resetMagnifier();
+      if (imgModal) {
+        imgModal.classList.remove('is-active');
+        imgModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
     }
 
     // ── Roadmap Feature Tour Modal ──
-    var modal = document.getElementById('roadmap-modal');
+    var tourModal = document.getElementById('roadmap-modal');
 
     function openRoadmapModal() {
-      if (modal) {
-        modal.classList.add('is-active');
-        modal.setAttribute('aria-hidden', 'false');
+      if (tourModal) {
+        tourModal.classList.add('is-active');
+        tourModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
       }
     }
 
     function closeRoadmapModal() {
-      if (modal) {
-        modal.classList.remove('is-active');
-        modal.setAttribute('aria-hidden', 'true');
+      if (tourModal) {
+        tourModal.classList.remove('is-active');
+        tourModal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
       }
     }
 
+    // ── Unified Delegated Click Handling (Resilient to DOM re-renders) ──
     document.addEventListener('click', function(e) {
-      if (e.target && e.target.closest('#open-roadmap-modal-btn')) {
+      if (!e.target) return;
+
+      // Tab switcher: Gantt
+      if (e.target.closest('#tab-gantt, #modal-tab-gantt')) {
+        e.preventDefault();
+        e.stopPropagation();
+        switchRoadmapView('gantt');
+        return;
+      }
+
+      // Tab switcher: Kanban
+      if (e.target.closest('#tab-kanban, #modal-tab-kanban')) {
+        e.preventDefault();
+        e.stopPropagation();
+        switchRoadmapView('kanban');
+        return;
+      }
+
+      // Open Image Lightbox (click on preview frame)
+      if (e.target.closest('#open-roadmap-image-btn, .preview-image-container')) {
+        e.preventDefault();
+        openImageModal();
+        return;
+      }
+
+      // Close Image Lightbox
+      if (e.target.closest('#rm-img-modal-close-btn') || e.target.id === 'roadmap-img-modal') {
+        e.preventDefault();
+        closeImageModal();
+        return;
+      }
+
+      // Open Feature Tour Modal
+      if (e.target.closest('#open-roadmap-modal-btn')) {
         e.preventDefault();
         openRoadmapModal();
-      } else if (e.target && (e.target.closest('.rm-modal-close-btn') || e.target.closest('#modal-close-footer-btn'))) {
+        return;
+      }
+
+      // Close Feature Tour Modal
+      if (e.target.closest('.rm-modal-close-btn, #modal-close-footer-btn')) {
         e.preventDefault();
         closeRoadmapModal();
-      } else if (e.target && e.target.id === 'roadmap-modal') {
+        return;
+      }
+
+      if (e.target.id === 'roadmap-modal') {
         closeRoadmapModal();
+        return;
       }
     });
 
+    // Keyboard support: Escape closes active modal; Enter/Space opens preview image
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal && modal.classList.contains('is-active')) {
-        closeRoadmapModal();
+      if (e.key === 'Escape') {
+        if (imgModal && imgModal.classList.contains('is-active')) {
+          closeImageModal();
+        } else if (tourModal && tourModal.classList.contains('is-active')) {
+          closeRoadmapModal();
+        }
+      } else if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.id === 'open-roadmap-image-btn') {
+        e.preventDefault();
+        openImageModal();
       }
     });
   })();
