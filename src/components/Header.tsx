@@ -14,7 +14,7 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[#F8F9FA]/90 backdrop-blur-md border-b border-slate-200/80 transition-colors">
+    <header className="sticky top-0 z-40 w-full bg-[#FAF8F5]/90 backdrop-blur-md border-b border-[#E8E4DA]/80 transition-colors">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Left: Brand Lockup with authentic spinning logo */}
         <a

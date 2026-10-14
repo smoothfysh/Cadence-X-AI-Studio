@@ -1,4 +1,4 @@
-# Hi, I’m Anushka.
+# Hi, I’m Anushka Jayawardana.
 
 I'm a seasoned product person by trade, engineer by training, and the reason a kids’ games site and a product manager's roadmap tool share a homepage. Turns out 20+ years of shipping software leaves you with some odd side projects.
 

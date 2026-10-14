@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 interface SpinningLogoProps {
-  size?: 'sm' | 'md' | 'lg' | 'hero';
+  size?: 'sm' | 'md' | 'lg' | 'hero' | 'hero-large';
   className?: string;
   interactive?: boolean;
 }
@@ -19,6 +19,7 @@ export const SpinningLogo: React.FC<SpinningLogoProps> = ({
     md: 'w-16 h-16',
     lg: 'w-24 h-24',
     hero: 'w-28 h-28 sm:w-32 sm:h-32',
+    'hero-large': 'w-36 h-36 sm:w-44 sm:h-44',
   }[size];
 
   // Primary local files with live fallback

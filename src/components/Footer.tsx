@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="w-full border-t border-slate-200/90 bg-white/60 py-8 px-4 sm:px-6 lg:px-8 mt-12 transition-colors">
+    <footer className="w-full border-t border-[#E8E4DA] bg-[#FAF8F5]/80 py-8 px-4 sm:px-6 lg:px-8 mt-12 transition-colors">
       <div className="max-w-[1240px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
         {/* Left: ● © 2026 CADENCE-X · All rights reserved. */}
         <div className="flex items-center gap-2">

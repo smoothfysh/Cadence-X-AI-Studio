@@ -13,7 +13,7 @@ import { Footer } from './components/Footer.tsx';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#F8F9FA] text-[#0B1C30] flex flex-col font-sans">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#0B1C30] flex flex-col font-sans">
       {/* Top Navigation Bar with authentic spinning logo */}
       <Header />
 

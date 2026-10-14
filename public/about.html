@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About Anushka J — Cadence-X</title>
-<meta name="description" content="About Anushka J — product strategist, engineer, and creator of Cadence-X. 20+ years shipping software.">
-<meta name="keywords" content="personal site, portfolio, product management, Anushka, Cadence-X, about">
+<title>About Anushka Jayawardana — Cadence-X</title>
+<meta name="description" content="About Anushka Jayawardana — product strategist, engineer, and creator of Cadence-X. 20+ years shipping software.">
+<meta name="keywords" content="personal site, portfolio, product management, Anushka Jayawardana, Cadence-X, about">
 <meta name="rating" content="general">
 <meta name="topic" content="Personal website and professional portfolio">
 <meta name="classification" content="personal">
 <meta name="category" content="personal site">
 <meta property="og:type" content="website">
-<meta property="og:title" content="About — Cadence-X">
-<meta property="og:description" content="About Anushka J — product strategist, engineer, and creator of Cadence-X.">
+<meta property="og:title" content="About Anushka Jayawardana — Cadence-X">
+<meta property="og:description" content="About Anushka Jayawardana — product strategist, engineer, and creator of Cadence-X.">
 <link rel="icon" type="image/png" href="uploads/logo_font-Norwester-Lazydog_TransBG.png">
 
-<!-- Google Fonts matching main page exactly in <head> -->
+<!-- Google Fonts: Editorial Serif (Newsreader), Clean Sans (Hanken Grotesk), Monospace (JetBrains Mono), Display (Archivo Black), Cursive (Caveat) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@500;600;700&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="./support.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
@@ -27,53 +27,94 @@
 <x-dc>
 <helmet>
 <style>
-  * { box-sizing: border-box; }
-  body { margin: 0; background: #F8F9FA; font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #0B1C30; }
-  a { color: #0284c7; text-decoration: none; }
-  a:hover { color: #0369a1; }
+  /* ── Design Tokens & Base Styles ── */
+  *, *::before, *::after { box-sizing: border-box; }
 
-  /* ── Cadence-X Main Header Navigation (Pixel-perfect matching Header.tsx) ── */
+  :root {
+    --bg-page: #FAF8F5;
+    --bg-surface: #FFFFFF;
+    --bg-surface-subtle: #F4F1EA;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    --border-subtle: #E8E4DA;
+    --border-medium: #D8D3C7;
+    --cobalt: #1D4ED8;
+    --cobalt-hover: #1E40AF;
+    --cobalt-soft: #EFF6FF;
+    --terracotta: #C2410C;
+    --terracotta-soft: #FFF7ED;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: var(--cobalt);
+    text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  a:hover {
+    color: var(--cobalt-hover);
+  }
+
+  /* ── Cadence-X Header Navigation ── */
   .cx-header {
     position: sticky;
     top: 0;
     z-index: 50;
     width: 100%;
-    background: rgba(248, 249, 250, 0.90);
+    background: rgba(250, 248, 245, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(226, 232, 240, 0.80);
+    border-bottom: 1px solid var(--border-subtle);
   }
   .cx-header-inner {
     max-width: 1240px;
     margin: 0 auto;
-    padding: 0 16px; /* px-4: default / mobile */
-    height: 80px; /* h-20 */
+    padding: 0 16px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   @media (min-width: 640px) {
     .cx-header-inner {
-      padding: 0 24px; /* sm:px-6 */
+      padding: 0 24px;
     }
   }
   @media (min-width: 1024px) {
     .cx-header-inner {
-      padding: 0 32px; /* lg:px-8: desktop exact match to Header.tsx */
+      padding: 0 32px;
     }
   }
   .cx-brand {
     display: flex;
     align-items: center;
-    gap: 14px; /* gap-3.5 = 14px */
+    gap: 12px;
     text-decoration: none;
     cursor: pointer;
     user-select: none;
+    flex-shrink: 0;
   }
   .cx-logo-box {
     position: relative;
-    width: 36px; /* w-9 = 36px */
-    height: 36px; /* h-9 = 36px */
+    width: 36px;
+    height: 36px;
     border-radius: 9999px;
     overflow: hidden;
     flex-shrink: 0;
@@ -85,7 +126,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    animation: cx-spin-slow 40s linear infinite; /* 40s matching main page */
+    animation: cx-spin-slow 40s linear infinite;
     will-change: transform;
   }
   .cx-logo-center {
@@ -102,113 +143,697 @@
   }
   .cx-brand-title {
     font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
-    font-size: 1.25rem; /* text-xl = 20px */
-    line-height: 1.75rem; /* 28px */
-    letter-spacing: 0.05em; /* tracking-wider */
-    color: #0f172a; /* text-slate-900 */
+    font-size: 1.15rem;
+    line-height: 1.75rem;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
     font-weight: 400;
     transition: color 0.15s ease;
   }
   .cx-brand:hover .cx-brand-title {
-    color: #0284c7; /* group-hover:text-sky-600 */
+    color: var(--cobalt);
   }
   .cx-nav {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 28px;
   }
   .cx-nav-link {
     font-size: 15px;
     font-weight: 500;
-    color: #475569;
+    color: var(--text-secondary);
     text-decoration: none;
     padding: 4px 0;
     transition: color 0.15s ease;
+    white-space: nowrap;
   }
   .cx-nav-link:hover {
-    color: #0f172a;
+    color: var(--text-primary);
   }
   .cx-nav-link-active {
-    color: #0284c7;
+    color: var(--cobalt);
     font-weight: 600;
   }
-
   @media (max-width: 640px) {
     .cx-nav {
-      gap: 16px;
+      gap: 14px;
     }
     .cx-nav-link {
-      font-size: 14px;
+      font-size: 13.5px;
+    }
+  }
+  @media (max-width: 520px) {
+    .cx-header-inner {
+      padding: 0 12px;
+      gap: 6px;
+    }
+    .cx-brand {
+      gap: 7px;
+      flex-shrink: 0;
+    }
+    .cx-logo-box {
+      width: 28px;
+      height: 28px;
+    }
+    .cx-brand-title {
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+    }
+    .cx-nav {
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .cx-nav-link {
+      font-size: 12.5px;
+      white-space: nowrap;
+    }
+  }
+  @media (max-width: 380px) {
+    .cx-header-inner {
+      padding: 0 8px;
+    }
+    .cx-brand-title {
+      font-size: 0.85rem;
+    }
+    .cx-nav {
+      gap: 7px;
+    }
+    .cx-nav-link {
+      font-size: 11.5px;
     }
   }
 
-  /* ── Animated Portrait ── */
-  @keyframes portrait-cycle {
-    0%, 30%   { background-position: 0% 50%; }
-    33%, 63%  { background-position: 50% 50%; }
-    66%, 100% { background-position: 100% 50%; }
+  /* ── Main Layout Container ── */
+  .about-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 20px 40px;
+    box-sizing: border-box;
   }
-  .portrait-cycle {
-    width: 160px;
-    height: 160px;
+  @media (min-width: 640px) {
+    .about-container {
+      padding: 60px 32px 50px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .about-container {
+      padding: 68px 40px 60px;
+    }
+  }
+
+  /* ── Hero / Intro Section ── */
+  .hero-intro {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 768px) {
+    .hero-intro {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+  }
+
+  /* ── Static B&W Portrait with Rotating Cadence-C Border ── */
+  .portrait-container {
+    position: relative;
+    width: 152px;
+    height: 152px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .portrait-photo {
+    width: 122px;
+    height: 122px;
     border-radius: 50%;
     overflow: hidden;
-    background: url('uploads/Three Portrait Styles in Circles.png') center / 300% 100%;
-    animation: portrait-cycle 12s infinite ease-in-out;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    background: #FFFFFF url('uploads/Three Portrait Styles in Circles.png') 50% 50% / 300% 100% no-repeat;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
+    flex-shrink: 0;
   }
-  #about-intro h1 { font-family:'Archivo Black', sans-serif; font-size:44px; margin:0 0 8px; color:oklch(0.2 0.005 90); }
-  #about-intro p { font-size:17px; line-height:1.6; color:oklch(0.4 0.005 90); margin:0; }
-  #about-card h2 { font-size:13px; font-weight:700; letter-spacing:1.5px; color:oklch(0.5 0.12 235); text-transform:uppercase; margin:0 0 16px; }
-  #about-card p { font-size:15px; line-height:1.75; color:oklch(0.35 0.005 90); margin:0 0 14px; }
-  #about-card p:last-child { margin-bottom:0; }
-  #about-card a { color: #0284c7; }
+  .portrait-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transform-origin: center;
+    animation: portrait-ring-spin 9s linear infinite;
+    will-change: transform;
+  }
+  @keyframes portrait-ring-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .portrait-ring {
+      animation: none;
+    }
+  }
+  @media (max-width: 640px) {
+    .portrait-container {
+      width: 124px;
+      height: 124px;
+    }
+    .portrait-photo {
+      width: 98px;
+      height: 98px;
+    }
+  }
 
-  /* ── Milestones timeline (rendered from milestones.md) ── */
-  #milestones { min-width:0; }
-  .tl-head { text-align:center; margin-bottom:30px; }
-  .tl-title {
-    display:inline-block; font-family:'Archivo Black', sans-serif; font-size:14px;
-    letter-spacing:1.5px; text-transform:uppercase; color:white;
-    background:oklch(0.42 0.1 240); padding:10px 22px; border-radius:10px; margin:0;
+  .hero-intro-text {
+    flex: 1;
+    min-width: 280px;
   }
-  .timeline { position:relative; padding:4px 0 8px; }
-  .timeline::before {
-    content:''; position:absolute; top:6px; bottom:6px; left:50%;
-    width:3px; margin-left:-1.5px; border-radius:2px; background:oklch(0.82 0.03 235);
+  .hero-headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 38px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin: 0 0 12px;
   }
-  .tl-item { position:relative; width:50%; box-sizing:border-box; padding:0 30px 26px; }
-  .tl-item.tl-left { text-align:right; }
-  .tl-item.tl-right { margin-left:50%; text-align:left; }
-  .tl-item::before {
-    content:''; position:absolute; top:16px; width:14px; height:14px; z-index:1;
-    border-radius:50%; background:white; border:3px solid oklch(0.55 0.12 235);
+  @media (min-width: 640px) {
+    .hero-headline {
+      font-size: 44px;
+    }
   }
-  .tl-item.tl-left::before { right:0; transform:translateX(50%); }
-  .tl-item.tl-right::before { left:0; transform:translateX(-50%); }
-  .tl-item.tl-current::before { background:oklch(61.659% 0.195 261.37); }
-  .tl-card {
-    display:inline-block; text-align:left; background:white; box-sizing:border-box; max-width:100%;
-    border:1px solid oklch(0.92 0.02 235); border-radius:14px; padding:12px 16px;
-    box-shadow:0 1px 3px oklch(0 0 0 / 0.08);
+  .hero-description {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 680px;
   }
-  .tl-year { font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:oklch(0.5 0.12 235); margin-bottom:3px; }
-  .tl-company { display:flex; align-items:center; gap:8px; font-family:'Archivo Black', sans-serif; font-size:16px; color:oklch(0.25 0.005 90); }
-  .tl-flag { width:20px; height:auto; border-radius:2px; box-shadow:0 0 0 1px oklch(0 0 0 / 0.1); flex-shrink:0; }
-  .tl-role { font-size:12.5px; line-height:1.45; color:oklch(0.45 0.005 90); margin-top:4px; }
-  .tl-role .tl-country { font-weight:700; font-size:11px; letter-spacing:0.5px; text-transform:uppercase; }
-  .tl-role .tl-sep { color:oklch(0.75 0.01 90); }
-  @media (max-width: 620px) {
-    .timeline::before { left:9px; }
-    .tl-item, .tl-item.tl-left, .tl-item.tl-right { width:100%; margin-left:0; text-align:left; padding:0 0 22px 34px; }
-    .tl-item.tl-left::before, .tl-item.tl-right::before { left:9px; right:auto; transform:translateX(-50%); }
+
+  /* ── Two-Column Editorial Spread ── */
+  .editorial-spread {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: start;
+    position: relative;
+  }
+  @media (min-width: 900px) {
+    .editorial-spread {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.18fr);
+      gap: 56px;
+    }
+  }
+
+  /* ── Left Column: TL;DR Story ── */
+  .tldr-column {
+    position: relative;
+    padding-bottom: 80px; /* Room for botanical branch doodle */
+  }
+  .eyebrow-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    display: block;
+    margin-bottom: 18px;
+  }
+  .editorial-story {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #334155;
+  }
+  .editorial-story p {
+    margin: 0 0 16px;
+  }
+  .editorial-story p:last-child {
+    margin-bottom: 0;
+  }
+  .traits-summary {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--cobalt);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #1E293B;
+    margin: 22px 0;
+  }
+  .traits-summary strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .traits-pipe {
+    color: var(--border-medium);
+    margin: 0 5px;
+  }
+
+  /* Action Links */
+  .action-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 26px;
+    margin-bottom: 20px;
+    font-size: 14.5px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+  }
+  .action-link {
+    font-weight: 600;
+    color: var(--cobalt);
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(29, 78, 216, 0.25);
+    padding-bottom: 2px;
+    transition: all 0.15s ease;
+  }
+  .action-link:hover {
+    color: var(--cobalt-hover);
+    border-bottom-color: var(--cobalt-hover);
+  }
+  .action-sep {
+    color: #94A3B8;
+    user-select: none;
+  }
+
+  /* Botanical Branch Doodle */
+  .doodle-branch {
+    position: absolute;
+    left: -8px;
+    bottom: 8px;
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.85;
+    z-index: 1;
+  }
+
+  /* ── Right Column: Milestones Timeline ── */
+  .milestones-column {
+    position: relative;
+    padding-bottom: 60px; /* Room for terracotta doodle */
+  }
+  .timeline-header {
+    text-align: center;
+    margin-bottom: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .timeline-heading {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  .timeline-subcaption {
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+  }
+  .timeline-subcaption-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00F0FF;
+    box-shadow: 0 0 6px #00F0FF;
+  }
+
+  /* Timeline Tree */
+  .timeline-tree {
+    position: relative;
+    padding: 10px 0 20px;
+  }
+  /* Central vertical rule (Static base track) */
+  .timeline-tree::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    bottom: 12px;
+    left: 50%;
+    width: 2px;
+    margin-left: -1px;
+    background: var(--cobalt);
+    border-radius: 2px;
+    opacity: 0.85;
+  }
+
+  /* ── Cadence Energy Flow Track Overlay ── */
+  .timeline-energy-track {
+    position: absolute;
+    top: 8px;
+    bottom: 12px;
+    left: 50%;
+    width: 28px;
+    margin-left: -14px;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  /* Moving Energy Beam Pulse (Ambient Whisper & Balanced Cadence) */
+  .energy-beam-pulse {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.5px;
+    height: 140px;
+    border-radius: 999px;
+    will-change: top, opacity;
+    animation: energyGlide 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    background: linear-gradient(
+      180deg,
+      rgba(2, 132, 199, 0) 0%,
+      rgba(0, 240, 255, 0.35) 60%,
+      #FFFFFF 100%
+    );
+    box-shadow: 0 0 6px rgba(0, 240, 255, 0.5);
+  }
+
+  .energy-head-spark {
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 
+      0 0 8px 2px #00F0FF,
+      0 0 16px 4px rgba(0, 240, 255, 0.5);
+  }
+
+  @keyframes energyGlide {
+    0% {
+      top: -140px;
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.95;
+    }
+    85% {
+      opacity: 0.95;
+    }
+    100% {
+      top: 100%;
+      opacity: 0;
+    }
+  }
+
+  .timeline-item {
+    position: relative;
+    width: 50%;
+    padding-bottom: 26px;
+    box-sizing: border-box;
+  }
+  .timeline-item.tl-left {
+    padding-right: 32px;
+    text-align: right;
+  }
+  .timeline-item.tl-right {
+    margin-left: 50%;
+    padding-left: 32px;
+    text-align: left;
+  }
+
+  /* Node circle on the center line */
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 18px;
+    width: 14px;
+    height: 14px;
+    z-index: 3;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 2.5px solid var(--cobalt);
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .timeline-item.tl-left::before {
+    right: 0;
+    transform: translateX(50%);
+  }
+  .timeline-item.tl-right::before {
+    left: 0;
+    transform: translateX(-50%);
+  }
+
+  /* Horizontal connecting stem from card to node */
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 24px;
+    height: 1.5px;
+    background: var(--cobalt);
+    z-index: 1;
+    pointer-events: none;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .timeline-item.tl-left::after {
+    right: 0;
+    width: 32px;
+  }
+  .timeline-item.tl-right::after {
+    left: 0;
+    width: 32px;
+  }
+
+  /* Current position node styling (Subtle slow organic pulsating) */
+  .timeline-item.tl-current::before {
+    background: var(--cobalt);
+    border-color: #00F0FF;
+    animation: currentPulseNode 3.4s ease-in-out infinite;
+  }
+  .timeline-item.tl-current:nth-last-child(2)::before {
+    animation-delay: 0s;
+  }
+  .timeline-item.tl-current:last-child::before {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes currentPulseNode {
+    0%, 100% {
+      background-color: #1D4ED8;
+      border-color: #1D4ED8;
+      box-shadow: 
+        0 0 0 3px rgba(29, 78, 216, 0.22),
+        0 0 6px 1px rgba(0, 240, 255, 0.25);
+    }
+    50% {
+      background-color: #0284C7;
+      border-color: #00F0FF;
+      box-shadow: 
+        0 0 0 5.5px rgba(0, 240, 255, 0.26),
+        0 0 16px 3px rgba(0, 240, 255, 0.65),
+        0 0 24px 6px rgba(2, 132, 199, 0.25);
+    }
+  }
+
+  /* Connecting horizontal stems for current milestones */
+  .timeline-item.tl-current::after {
+    background: linear-gradient(90deg, #1D4ED8, #00F0FF);
+    box-shadow: 0 0 5px rgba(0, 240, 255, 0.35);
+  }
+
+  /* Milestone Card */
+  .milestone-card {
+    display: inline-block;
+    text-align: left;
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 12px 18px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+    max-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .milestone-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.07);
+    border-color: var(--border-medium);
+  }
+
+  /* Subtle breathing ambient glow on current milestone cards */
+  .timeline-item.tl-current .milestone-card {
+    border-color: rgba(0, 240, 255, 0.4);
+    animation: cardCurrentBreathe 3.4s ease-in-out infinite;
+  }
+  .timeline-item.tl-current:nth-last-child(2) .milestone-card {
+    animation-delay: 0s;
+  }
+  .timeline-item.tl-current:last-child .milestone-card {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes cardCurrentBreathe {
+    0%, 100% {
+      border-color: rgba(29, 78, 216, 0.22);
+      box-shadow: 
+        0 1px 4px rgba(15, 23, 42, 0.05),
+        0 0 0 1px rgba(29, 78, 216, 0.06);
+    }
+    50% {
+      border-color: rgba(0, 240, 255, 0.55);
+      box-shadow: 
+        0 4px 16px rgba(0, 240, 255, 0.12),
+        0 0 0 1.5px rgba(0, 240, 255, 0.35);
+    }
+  }
+
+  .milestone-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Live Active Beacon indicator for CURRENT milestones */
+  .cx-live-beacon {
+    display: inline-flex;
+    position: relative;
+    width: 7px;
+    height: 7px;
+    vertical-align: middle;
+  }
+  .cx-live-beacon-ping {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background-color: #00F0FF;
+    opacity: 0.75;
+    animation: beaconPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  .cx-live-beacon-core {
+    position: relative;
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background-color: #0284C7;
+    box-shadow: 0 0 6px #00F0FF;
+  }
+  @keyframes beaconPing {
+    75%, 100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+  .milestone-company {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .milestone-flag {
+    width: 20px;
+    height: 14px;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+  }
+  .milestone-role {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    margin-top: 3px;
+  }
+  .milestone-country {
+    font-weight: 600;
+    font-size: 11.5px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .milestone-sep {
+    color: var(--border-medium);
+    margin: 0 3px;
+  }
+
+  /* Terracotta Doodle on Timeline */
+  .doodle-terracotta {
+    position: absolute;
+    right: 18px;
+    bottom: 0;
+    font-family: 'Caveat', cursive;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--terracotta);
+    letter-spacing: 4px;
+    transform: rotate(-12deg);
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.85;
+  }
+
+  /* Mobile Timeline Adjustments */
+  @media (max-width: 680px) {
+    .timeline-tree::before {
+      left: 12px;
+    }
+    .timeline-energy-track {
+      left: 12px;
+      margin-left: -14px;
+    }
+    .timeline-item, .timeline-item.tl-left, .timeline-item.tl-right {
+      width: 100%;
+      margin-left: 0;
+      text-align: left;
+      padding: 0 0 22px 38px;
+    }
+    .timeline-item.tl-left::before, .timeline-item.tl-right::before {
+      left: 12px;
+      right: auto;
+      transform: translateX(-50%);
+    }
+    .timeline-item.tl-left::after, .timeline-item.tl-right::after {
+      left: 12px;
+      right: auto;
+      width: 26px;
+    }
+    .timeline-header {
+      text-align: left;
+      align-items: flex-start;
+      padding-left: 38px;
+    }
   }
 
   /* ── Cadence-X Footer ── */
   .cx-footer {
     width: 100%;
-    border-top: 1px solid rgba(226, 232, 240, 0.9);
-    background: rgba(255, 255, 255, 0.6);
+    border-top: 1px solid var(--border-subtle);
+    background: transparent;
     padding: 32px 0;
     margin-top: 60px;
   }
@@ -221,8 +846,8 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    font-size: 12px;
-    color: #64748b;
+    font-size: 12.5px;
+    color: var(--text-muted);
   }
   @media (min-width: 640px) {
     .cx-footer-inner {
@@ -253,12 +878,12 @@
     font-weight: 500;
   }
   .cx-footer-link {
-    color: #475569;
+    color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.15s ease;
   }
   .cx-footer-link:hover {
-    color: #0f172a;
+    color: var(--text-primary);
   }
   @media (max-width: 640px) {
     .cx-footer-inner {
@@ -269,7 +894,7 @@
 </style>
 </helmet>
 
-<!-- Cadence-X Header Navigation matching main page exactly -->
+<!-- Cadence-X Sticky Header Navigation -->
 <header class="cx-header">
   <div class="cx-header-inner">
     <a href="index.html" class="cx-brand" title="Cadence-X Home">
@@ -288,33 +913,246 @@
   </div>
 </header>
 
-<div style="min-height: calc(100vh - 80px); display:flex; flex-direction:column; align-items:center; padding:48px 24px 20px; box-sizing:border-box;">
+<!-- Main About Content Area -->
+<main class="about-container">
 
-  <div style="display:flex; gap:36px; align-items:center; max-width:1160px; width:100%; flex-wrap:wrap; margin-bottom:56px;">
-    <div class="portrait-cycle" role="img" aria-label="Photo of Anushka"></div>
-    <div id="about-intro" style="flex:1 1 320px;">
-      <h1>Hi, I’m Anushka.</h1>
-      <p>Product person by trade, engineer by training, and the reason a kids’ games site and a roadmap tool share a homepage. Turns out 20+ years of shipping software leaves you with some odd side projects.</p>
+  <!-- Hero Intro Section -->
+  <section class="hero-intro" aria-label="Introduction">
+    <div class="portrait-container">
+      <div class="portrait-photo" role="img" aria-label="Portrait of Anushka Jayawardana"></div>
+      <svg class="portrait-ring" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Grey arc base ring -->
+        <circle cx="100" cy="100" r="91" stroke="#9CA3AF" stroke-width="8" />
+        <!-- Black "C" shape with rounded caps (starts at 120deg, clockwise through 0deg) -->
+        <path d="M 178.8 145.5 A 91 91 0 1 1 100 9" stroke="#000000" stroke-width="8.2" stroke-linecap="round" />
+      </svg>
     </div>
-  </div>
+    <div class="hero-intro-text" id="about-intro">
+      <h1 class="hero-headline">Hi, I’m Anushka Jayawardana.</h1>
+      <p class="hero-description">
+        I'm a seasoned product person by trade, engineer by training, and the reason a kids’ games site and a product manager's roadmap tool share a homepage. Turns out 20+ years of shipping software leaves you with some odd side projects.
+      </p>
+    </div>
+  </section>
 
-  <div style="display:flex; gap:36px; align-items:flex-start; max-width:1160px; width:100%; flex-wrap:wrap;">
-    <div style="flex:1 1 340px; min-width:280px;">
-      <div id="about-card" style="background:white; border-radius:20px; padding:36px 40px; box-shadow:0 1px 3px oklch(0 0 0 / 0.08); margin-bottom:32px; border-top:6px solid oklch(0.55 0.12 235); box-sizing:border-box;">
-        <h2>THE QUICK TL;DR VERSION ABOUT ME</h2>
-        <p style="font-size:15px; line-height:1.75; color:oklch(0.35 0.005 90); margin:0;">Loading…</p>
+  <!-- Two-Column Editorial Spread -->
+  <div class="editorial-spread">
+
+    <!-- Left Column: Story & Philosophy -->
+    <section class="tldr-column" aria-label="About Story">
+      <span class="eyebrow-tag">THE QUICK TL;DR VERSION ABOUT ME</span>
+
+      <div class="editorial-story" id="about-card">
+        <p>
+          I’ve spent 20+ years bouncing between software design for mobile phones, e-commerce, martech and now digital real-estate — and I’ve worn most of the hats along the way: software engineer, product planner, product manager, strategist.
+        </p>
+        <p>
+          That mix has taught me how to navigate messy, ambiguous problems — the kind that show up when a company changes hands or a market shifts overnight — and still keep teams shipping. I care a lot more about getting the thing delivered than getting credit for it; execution is what actually moves the needle.
+        </p>
+        <p>
+          If I had to summarise myself, I’d say:
+        </p>
+        
+        <div class="traits-summary">
+          <strong>I’m Passionately curious</strong> <span class="traits-pipe">|</span> 
+          <strong>I strongly enjoy babysitting chaos</strong> <span class="traits-pipe">|</span> 
+          <strong>Obsessed about solving the problems my customers have</strong> <span class="traits-pipe">|</span> 
+          <strong>Nerd at heart</strong> <span class="traits-pipe">|</span> 
+          <strong>Product Strategist</strong> <span class="traits-pipe">|</span> 
+          <strong>Advisor and Consultant</strong>
+        </div>
+
+        <p>
+          If there’s a throughline, it’s this: I’m at my best translating technical innovation into something people can actually feel the benefit of. That’s as true for a roadmap tool a PM opens every morning as it is for a game simple enough for a five-year-old to figure out alone — which is more or less why Cadence–X exists. No grand unifying theory, just things I wanted to build, living under one roof.
+        </p>
       </div>
 
-      <div style="display:flex; gap:20px; justify-content:center; font-size:14px; color:oklch(0.5 0.005 90); margin-top:8px; flex-wrap:wrap;">
-        <a href="mailto:anushka@cadence-x.com">Send this guy an email</a>
-        <span>·</span>
-        <a href="https://www.linkedin.com/in/anushka/" target="_blank">Check out his LinkedIn</a>
+      <!-- Action Links -->
+      <div class="action-links">
+        <a href="mailto:anushka@cadence-x.com" class="action-link">Send this guy an email</a>
+        <span class="action-sep">·</span>
+        <a href="https://www.linkedin.com/in/anushka/" target="_blank" rel="noopener noreferrer" class="action-link">Check out his LinkedIn</a>
       </div>
-    </div>
 
-    <div id="milestones" style="flex:1 1 460px; min-width:320px;">
-      <p style="font-size:15px; line-height:1.75; color:oklch(0.35 0.005 90); margin:0;">Loading…</p>
-    </div>
+      <!-- Botanical Branch Doodle matching reference image -->
+      <div class="doodle-branch" aria-hidden="true">
+        <svg width="34" height="54" viewBox="0 0 28 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 44C14 28 12 12 18 4" stroke="#1D4ED8" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M14 34C9 33 4 28 5 22C11 22 14 28 14 34Z" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2" />
+          <path d="M13 24C17 22 22 16 21 10C15 11 13 18 13 24Z" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2" />
+          <path d="M14 16C10 14 6 9 8 4C13 5 14 11 14 16Z" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- Right Column: Professional Milestones Timeline -->
+    <section class="milestones-column" aria-label="Professional Milestones">
+      <div class="timeline-header">
+        <h2 class="timeline-heading">PROFESSIONAL MILESTONES</h2>
+        <div class="timeline-subcaption">
+          <span class="timeline-subcaption-dot"></span>
+          <span>Energy Flow Across 20+ Years</span>
+        </div>
+      </div>
+
+      <div class="timeline-tree" id="milestones">
+        <!-- Cadence Energy Flow Track Overlay -->
+        <div class="timeline-energy-track" aria-hidden="true">
+          <div class="energy-beam-pulse">
+            <div class="energy-head-spark"></div>
+          </div>
+        </div>
+
+        <!-- Pre-rendered Static Timeline (Instantly visible, no flash) -->
+        
+        <!-- 1. Barco (Belgium/UK) -->
+        <div class="timeline-item tl-left">
+          <div class="milestone-card">
+            <div class="milestone-year">2000-2003 (3 YEARS)</div>
+            <div class="milestone-company">
+              <span>Barco</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/be.png" alt="Belgium flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">UK</span>
+              <span class="milestone-sep">|</span>
+              Junior Software Engineer
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Domain Dynamics (UK) -->
+        <div class="timeline-item tl-right">
+          <div class="milestone-card">
+            <div class="milestone-year">2003-2004 (1 YEAR)</div>
+            <div class="milestone-company">
+              <span>Domain Dynamics</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/gb.png" alt="UK flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">UK</span>
+              <span class="milestone-sep">|</span>
+              Senior Software Engineer
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Sharp (UK) -->
+        <div class="timeline-item tl-left">
+          <div class="milestone-card">
+            <div class="milestone-year">2004-2013 (9.5 YEARS)</div>
+            <div class="milestone-company">
+              <span>Sharp</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/gb.png" alt="UK flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">UK</span>
+              <span class="milestone-sep">|</span>
+              Senior Product Manager
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Spreadshirt (Germany) -->
+        <div class="timeline-item tl-right">
+          <div class="milestone-card">
+            <div class="milestone-year">2013-2018 (5 YEARS)</div>
+            <div class="milestone-company">
+              <span>Spreadshirt</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/de.png" alt="Germany flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">Germany</span>
+              <span class="milestone-sep">|</span>
+              Director of Product Management
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Selligent (Belgium) -->
+        <div class="timeline-item tl-left">
+          <div class="milestone-card">
+            <div class="milestone-year">2018-2021 (3 YEARS)</div>
+            <div class="milestone-company">
+              <span>Selligent</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/be.png" alt="Belgium flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">Belgium</span>
+              <span class="milestone-sep">|</span>
+              Vice President, Product
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Infobip (Croatia) -->
+        <div class="timeline-item tl-right">
+          <div class="milestone-card">
+            <div class="milestone-year">2021-2024 (3.5 YEARS)</div>
+            <div class="milestone-company">
+              <span>Infobip</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/hr.png" alt="Croatia flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">Croatia</span>
+              <span class="milestone-sep">|</span>
+              Director of Products
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Aviv Group (Croatia/Germany) -->
+        <div class="timeline-item tl-left tl-current">
+          <div class="milestone-card">
+            <div class="milestone-year">
+              <span>2024 (CURRENT)</span>
+              <span class="cx-live-beacon" title="Active role in progress">
+                <span class="cx-live-beacon-ping"></span>
+                <span class="cx-live-beacon-core"></span>
+              </span>
+            </div>
+            <div class="milestone-company">
+              <span>Aviv Group</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/de.png" alt="Germany flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">Croatia</span>
+              <span class="milestone-sep">|</span>
+              Product Director
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Bind Technologies (Croatia) -->
+        <div class="timeline-item tl-right tl-current">
+          <div class="milestone-card">
+            <div class="milestone-year">
+              <span>2026 (CURRENT)</span>
+              <span class="cx-live-beacon" title="Active role in progress">
+                <span class="cx-live-beacon-ping"></span>
+                <span class="cx-live-beacon-core"></span>
+              </span>
+            </div>
+            <div class="milestone-company">
+              <span>Bind Technologies</span>
+              <img class="milestone-flag" src="https://flagcdn.com/w80/hr.png" alt="Croatia flag" loading="lazy">
+            </div>
+            <div class="milestone-role">
+              <span class="milestone-country">Croatia</span>
+              <span class="milestone-sep">|</span>
+              Product Consultant
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Terracotta Slash Doodle matching reference image -->
+      <div class="doodle-terracotta" aria-hidden="true">
+        ///
+      </div>
+    </section>
+
   </div>
 
   <!-- Cadence-X Footer -->
@@ -332,182 +1170,88 @@
     </div>
   </footer>
 
-</div>
+</main>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{}">
-// The dc-runtime replaces <x-dc> with a fresh React render of the template,
-// so any DOM written before boot is discarded. Injecting the markdown here —
-// in the component lifecycle, after the real DOM is mounted — makes it stick.
-class Component extends DCLogic {
-  componentDidMount() {
-    this.__renderFromCache();
-    this.__fetchLatest();
-    this.__tlRenderFromCache();
-    this.__tlFetchLatest();
+
+<!-- Optional dynamic markdown synchronization -->
+<script>
+(function() {
+  var FLAG_CODES = {
+    'uk': 'gb', 'united kingdom': 'gb', 'great britain': 'gb', 'england': 'gb',
+    'germany': 'de', 'belgium': 'be', 'croatia': 'hr', 'netherlands': 'nl',
+    'the netherlands': 'nl', 'france': 'fr', 'spain': 'es', 'italy': 'it',
+    'portugal': 'pt', 'austria': 'at', 'switzerland': 'ch', 'ireland': 'ie',
+    'usa': 'us', 'united states': 'us', 'india': 'in'
+  };
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
-  componentDidUpdate() {
-    // If a template refresh swapped the card node, re-inject the markdown.
-    this.__renderFromCache();
-    this.__tlRenderFromCache();
-  }
-
-  __renderFromCache() {
-    var card = document.getElementById('about-card');
-    if (!card || card.getAttribute('data-md-rendered') === '1') return;
-    try {
-      var cached = localStorage.getItem('about-md-cache');
-      if (!cached) return;
-      var parsed = JSON.parse(cached);
-      if (parsed && parsed.md) this.__render(parsed.md);
-    } catch (e) { /* ignore */ }
-  }
-
-  __fetchLatest() {
-    var self = this;
-    fetch('about.md')
-      .then(function (res) { return res.ok ? res.text() : null; })
-      .then(function (text) {
-        if (!text) { self.__showError('Could not load about.md.'); return; }
-        self.__render(text);
-        try {
-          localStorage.setItem('about-md-cache', JSON.stringify({ md: text, ts: Date.now() }));
-        } catch (e) { /* ignore */ }
-      })
-      .catch(function () { self.__showError('Could not load about.md.'); });
-  }
-
-  __render(md) {
-    var intro = document.getElementById('about-intro');
-    var card = document.getElementById('about-card');
-    if (!intro || !card) return;
-    if (card.getAttribute('data-md-rendered') === '1' && this.state.__md === md) return;
-    if (typeof marked === 'undefined') {
-      this.__showError('Error: marked.js failed to load (check internet/CDN).');
-      return;
-    }
-
-    var text = md.replace(/\r\n/g, '\n').trim();
-    var lines = text.split('\n');
-    var introLines = [];
-    var cardLines = [];
-    var inCard = false;
-    for (var i = 0; i < lines.length; i++) {
-      if (/^##\s/.test(lines[i])) inCard = true;
-      (inCard ? cardLines : introLines).push(lines[i]);
-    }
-
-    intro.innerHTML = marked.parse(introLines.join('\n'), { breaks: true });
-    card.innerHTML = marked.parse(cardLines.join('\n'), { breaks: true });
-    card.setAttribute('data-md-rendered', '1');
-    this.state.__md = md;
-  }
-
-  __showError(msg) {
-    var card = document.getElementById('about-card');
-    if (!card || card.getAttribute('data-md-rendered') === '1') return;
-    card.innerHTML = '<p style="font-size:15px; line-height:1.75; color:oklch(0.6 0.1 20); margin:0;">' + msg + '</p>';
-  }
-
-  /* ── milestones.md → timeline ───────────────────────────── */
-
-  __tlRenderFromCache() {
-    var host = document.getElementById('milestones');
-    if (!host || host.getAttribute('data-tl-rendered') === '1') return;
-    try {
-      var cached = localStorage.getItem('milestones-md-cache');
-      if (!cached) return;
-      var parsed = JSON.parse(cached);
-      if (parsed && parsed.md) this.__tlRender(parsed.md);
-    } catch (e) { /* ignore */ }
-  }
-
-  __tlFetchLatest() {
-    var self = this;
+  // Fetch milestones.md only if served over HTTP/HTTPS
+  if (window.location.protocol.indexOf('http') === 0) {
     fetch('milestones.md')
-      .then(function (res) { return res.ok ? res.text() : null; })
-      .then(function (text) {
-        if (!text) { self.__tlShowError('Could not load milestones.md.'); return; }
-        self.__tlRender(text);
-        try {
-          localStorage.setItem('milestones-md-cache', JSON.stringify({ md: text, ts: Date.now() }));
-        } catch (e) { /* ignore */ }
-      })
-      .catch(function () { self.__tlShowError('Could not load milestones.md.'); });
-  }
-
-  __tlRender(md) {
-    var host = document.getElementById('milestones');
-    if (!host) return;
-    if (host.getAttribute('data-tl-rendered') === '1' && this.state.__tlmd === md) return;
-
-    // Country name → ISO code (flags served as images so they render on every OS/browser)
-    var FLAG_CODES = {
-      'uk': 'gb', 'united kingdom': 'gb', 'great britain': 'gb', 'england': 'gb',
-      'germany': 'de', 'belgium': 'be', 'croatia': 'hr', 'netherlands': 'nl',
-      'the netherlands': 'nl', 'france': 'fr', 'spain': 'es', 'italy': 'it',
-      'portugal': 'pt', 'austria': 'at', 'switzerland': 'ch', 'ireland': 'ie',
-      'usa': 'us', 'united states': 'us', 'india': 'in'
-    };
-    var esc = function (s) {
-      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-    };
-
-    // Format: "# Title" once, then per entry: "## year | company" + "country | role"
-    var lines = md.replace(/\r\n/g, '\n').split('\n');
-    var title = 'Professional Milestones';
-    var entries = [];
-    var cur = null;
-    for (var i = 0; i < lines.length; i++) {
-      var line = lines[i].trim();
-      if (!line) continue;
-      var h2 = line.match(/^##\s+(.+)/);
-      var h1 = line.match(/^#(?!#)\s+(.+)/);
-      if (h2) {
+      .then(function(r) { return r.ok ? r.text() : null; })
+      .then(function(md) {
+        if (!md) return;
+        var lines = md.replace(/\r\n/g, '\n').split('\n');
+        var entries = [];
+        var cur = null;
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i].trim();
+          if (!line) continue;
+          var h2 = line.match(/^##\s+(.+)/);
+          if (h2) {
+            if (cur) entries.push(cur);
+            var hp = h2[1].split('|');
+            cur = { year: (hp[0] || '').trim(), company: (hp[1] || '').trim(), country: '', role: '' };
+          } else if (cur) {
+            var pipe = line.indexOf('|');
+            var first = (pipe === -1 ? line : line.slice(0, pipe)).trim();
+            var rest = pipe === -1 ? '' : line.slice(pipe + 1).trim();
+            if (!cur.country) { cur.country = first; cur.role = rest; }
+            else if (rest) { cur.role = cur.role ? cur.role + ' ' + line : line; }
+          }
+        }
         if (cur) entries.push(cur);
-        var hp = h2[1].split('|');
-        cur = { year: (hp[0] || '').trim(), company: (hp[1] || '').trim(), country: '', role: '' };
-      } else if (h1) {
-        title = h1[1].trim();
-      } else if (cur) {
-        var pipe = line.indexOf('|');
-        var first = (pipe === -1 ? line : line.slice(0, pipe)).trim();
-        var rest = pipe === -1 ? '' : line.slice(pipe + 1).trim();
-        if (!cur.country) { cur.country = first; cur.role = rest; }
-        else if (rest) { cur.role = cur.role ? cur.role + ' ' + line : line; }
-      }
-    }
-    if (cur) entries.push(cur);
+        if (entries.length === 0) return;
 
-    var html = '<div class="tl-head"><h2 class="tl-title">' + esc(title) + '</h2></div><div class="timeline">';
-    for (var j = 0; j < entries.length; j++) {
-      var e = entries[j];
-      var side = j % 2 === 0 ? 'tl-left' : 'tl-right';
-      var isCurrent = /current/i.test(e.year) ? ' tl-current' : '';
-      var code = FLAG_CODES[e.country.toLowerCase()] || '';
-      var flag = code ? '<img class="tl-flag" src="https://flagcdn.com/w80/' + code + '.png" alt="' + esc(e.country) + ' flag" loading="lazy">' : '';
-      html += '<div class="tl-item ' + side + isCurrent + '">'
-        + '<div class="tl-card">'
-        + '<div class="tl-year">' + esc(e.year) + '</div>'
-        + '<div class="tl-company"><span>' + esc(e.company) + '</span>' + flag + '</div>'
-        + '<div class="tl-role">'
-        + (e.country ? '<span class="tl-country">' + esc(e.country) + '</span>' : '')
-        + (e.country && e.role ? ' <span class="tl-sep">|</span> ' : '')
-        + esc(e.role)
-        + '</div></div></div>';
-    }
-    html += '</div>';
-    host.innerHTML = html;
-    host.setAttribute('data-tl-rendered', '1');
-    this.state.__tlmd = md;
-  }
+        var host = document.getElementById('milestones');
+        if (!host) return;
 
-  __tlShowError(msg) {
-    var host = document.getElementById('milestones');
-    if (!host || host.getAttribute('data-tl-rendered') === '1') return;
-    host.innerHTML = '<p style="font-size:15px; line-height:1.75; color:oklch(0.6 0.1 20); margin:0;">' + msg + '</p>';
+        var energyTrackHtml = '<div class="timeline-energy-track" aria-hidden="true"><div class="energy-beam-pulse"><div class="energy-head-spark"></div></div></div>';
+        var html = '';
+        for (var j = 0; j < entries.length; j++) {
+          var e = entries[j];
+          var side = j % 2 === 0 ? 'tl-left' : 'tl-right';
+          var isCurrent = /current/i.test(e.year) ? ' tl-current' : '';
+          var countryNorm = e.country.toLowerCase();
+          var code = FLAG_CODES[countryNorm] || (e.company.toLowerCase() === 'barco' ? 'be' : '');
+          var flag = code ? '<img class="milestone-flag" src="https://flagcdn.com/w80/' + code + '.png" alt="' + esc(e.country) + ' flag" loading="lazy">' : '';
+          var beacon = isCurrent ? '<span class="cx-live-beacon" title="Active role in progress"><span class="cx-live-beacon-ping"></span><span class="cx-live-beacon-core"></span></span>' : '';
+
+          html += '<div class="timeline-item ' + side + isCurrent + '">'
+            + '<div class="milestone-card">'
+            + '<div class="milestone-year"><span>' + esc(e.year.toUpperCase()) + '</span>' + beacon + '</div>'
+            + '<div class="milestone-company"><span>' + esc(e.company) + '</span>' + flag + '</div>'
+            + '<div class="milestone-role">'
+            + (e.country ? '<span class="milestone-country">' + esc(e.country) + '</span>' : '')
+            + (e.country && e.role ? '<span class="milestone-sep">|</span>' : '')
+            + esc(e.role)
+            + '</div></div></div>';
+        }
+        host.innerHTML = energyTrackHtml + html;
+      })
+      .catch(function(e) { /* keep pre-rendered content */ });
   }
+})();
+</script>
+
+<script type="text/x-dc" data-dc-script data-props="{}">
+// Backwards compatibility hook for dc-runtime environments
+class Component extends DCLogic {
+  componentDidMount() {}
 }
 </script>
 </body>
