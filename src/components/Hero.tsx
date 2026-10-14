@@ -54,7 +54,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultModal }) => {
             I help scaling companies find their operational rhythm. Through Cadence-X, I offer Interim CPO, Product Advisory, and Consulting services drawn from 20+ years of engineering and product leadership. Whether you need strategic direction, alignment, or fractional executive leadership, I bring battle-tested frameworks to help your organization build and deliver relentlessly.
           </p>
 
-          {/* Action Row: CTA, Email Link & Playful Handwritten Accent */}
+          {/* Action Row: CTA & Playful Handwritten Accent */}
           <div className="flex items-center gap-8 sm:gap-12 flex-wrap">
             <div>
               <button
@@ -64,13 +64,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultModal }) => {
               >
                 <span>Book a Consultation</span>
               </button>
-
-              <a
-                href="mailto:consult@cadence-x.com"
-                className="text-xs text-slate-500 hover:text-slate-800 font-mono-tag tracking-wide block mt-3 transition-colors"
-              >
-                consult@cadence-X.com
-              </a>
             </div>
 
             {/* Handwritten script note matching attached reference */}

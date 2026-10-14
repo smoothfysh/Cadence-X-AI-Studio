@@ -278,11 +278,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
             </div>
 
             {/* Form Footer Action */}
-            <div className="pt-3 border-t border-[#E8E4DA] flex flex-col sm:flex-row items-center justify-between gap-3">
-              <span className="text-xs text-slate-500 font-mono-tag">
-                Direct: <a href="mailto:consult@cadence-x.com" className="text-slate-700 underline hover:text-[#1D4ED8]">consult@cadence-X.com</a>
-              </span>
-
+            <div className="pt-3 border-t border-[#E8E4DA] flex items-center justify-end">
               <button
                 type="submit"
                 disabled={isSubmitting}
