@@ -1,14 +1,16 @@
 /* Color Splash — Modernized Styles
-   Tactile Watercolor Studio Aesthetic for Toddlers & Young Children (Ages 2-4)
+   Tactile Cozy Pastel Art Studio Aesthetic for Toddlers & Young Children (Ages 2-4)
+   Matching Reference Images: Wooden Easel, Pastel Room Backdrop & 3D Cushion Buttons
 */
 
 :root {
-  --cs-bg-top: #FFFDF9;
-  --cs-bg-bot: #F5EFEB;
-  --cs-easel-bg: #FFFFFF;
-  --cs-easel-border: #E8DCCF;
-  --cs-easel-shadow: rgba(80, 50, 30, 0.08);
-  --cs-accent: #8B5CF6;
+  --cs-bg-room: linear-gradient(135deg, #E6F3EA 0%, #FAF5ED 50%, #FDF0E8 100%);
+  --cs-wood-light: #E7C99F;
+  --cs-wood-mid: #CF9D68;
+  --cs-wood-dark: #A6733D;
+  --cs-tray-bg: #FFF8E7;
+  --cs-tray-border: #F6E6C5;
+  --cs-accent: #EF4444;
   --cs-font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --cs-radius: 24px;
 }
@@ -20,7 +22,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background: radial-gradient(circle at 50% 20%, var(--cs-bg-top) 0%, var(--cs-bg-bot) 100%);
+  background: var(--cs-bg-room);
   overflow: hidden;
   padding-top: var(--header-h, 96px);
   user-select: none;
@@ -28,18 +30,150 @@
   touch-action: manipulation;
 }
 
-/* Background Splatter Canvas — Must NEVER block button clicks! */
-.cs-canvas {
+/* ===================================================
+   COZY PASTEL ART STUDIO ROOM BACKDROP (Matching Image 1)
+   =================================================== */
+.cs-studio-backdrop {
   position: absolute;
-  top: 0;
+  top: var(--header-h, 96px);
   left: 0;
   width: 100%;
-  height: 100%;
-  pointer-events: none !important;
-  z-index: 0 !important;
+  height: calc(100% - var(--header-h, 96px));
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
 }
 
-/* Top Bar: Title & Controls */
+/* Left Wall Art & Plants */
+.cs-decor-left {
+  position: absolute;
+  top: 18px;
+  left: clamp(12px, 3.5vw, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cs-frame {
+  width: clamp(52px, 6.5vw, 70px);
+  height: clamp(60px, 7.5vw, 80px);
+  background: #FFFFFF;
+  border: 3.5px solid #F2E8DC;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(160, 130, 90, 0.08);
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-frame-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-frame-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cs-plant-pot {
+  margin-top: clamp(24px, 7vh, 70px);
+  position: relative;
+  width: 68px;
+  height: 84px;
+}
+
+.cs-leaves-group {
+  position: absolute;
+  top: 0;
+  left: 6px;
+  width: 58px;
+  height: 54px;
+}
+
+.cs-leaf {
+  position: absolute;
+  background: linear-gradient(135deg, #81C784 0%, #4CAF50 100%);
+  border-radius: 50% 0 50% 50%;
+  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.2);
+}
+
+.cs-leaf.leaf-1 { width: 34px; height: 38px; top: 0; left: 6px; transform: rotate(-25deg); }
+.cs-leaf.leaf-2 { width: 32px; height: 36px; top: 8px; left: 24px; transform: rotate(35deg); border-radius: 0 50% 50% 50%; }
+.cs-leaf.leaf-3 { width: 36px; height: 42px; top: 12px; left: 10px; transform: rotate(5deg); }
+
+.cs-pot-base {
+  position: absolute;
+  bottom: 0;
+  left: 14px;
+  width: 42px;
+  height: 34px;
+  background: linear-gradient(180deg, #FFAB91 0%, #FF8A65 100%);
+  border-radius: 4px 4px 14px 14px;
+  box-shadow: 0 4px 10px rgba(180, 100, 60, 0.18);
+}
+
+/* Right Wall Floating Shelf & Mountain Art */
+.cs-decor-right {
+  position: absolute;
+  top: 18px;
+  right: clamp(12px, 3.5vw, 48px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.cs-wall-shelf {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cs-shelf-plank {
+  width: clamp(76px, 9.5vw, 98px);
+  height: 9px;
+  background: linear-gradient(180deg, var(--cs-wood-light) 0%, var(--cs-wood-mid) 100%);
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(120, 80, 40, 0.15);
+  margin-top: -3px;
+}
+
+.cs-donut-sculpture {
+  margin-top: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 10px solid #FFCCBC;
+  background: transparent;
+  box-shadow: 0 4px 10px rgba(220, 120, 90, 0.16);
+}
+
+.cs-trailing-plant {
+  position: relative;
+  width: 32px;
+  height: 52px;
+}
+
+.cs-trailing-plant .cs-vine {
+  position: absolute;
+  background: #81C784;
+  border-radius: 50%;
+  opacity: 0.85;
+}
+.cs-trailing-plant .vine-1 { width: 14px; height: 18px; top: 6px; right: 8px; transform: rotate(20deg); }
+.cs-trailing-plant .vine-2 { width: 12px; height: 16px; top: 24px; right: 14px; transform: rotate(-25deg); }
+
+/* ===================================================
+   TOP BAR & CONTROLS
+   =================================================== */
 .cs-top-bar {
   display: flex;
   align-items: center;
@@ -63,7 +197,7 @@
   font-family: var(--cs-font-display);
   font-size: clamp(1.35rem, 3.6vw, 2.1rem);
   font-weight: 800;
-  color: var(--cs-accent);
+  color: #7C3AED;
   line-height: 1.1;
   margin: 0;
   display: flex;
@@ -136,76 +270,171 @@
   color: #6D28D9;
 }
 
-/* Main Play Arena (Easel / Art Canvas) */
+/* ===================================================
+   MAIN PLAY ARENA
+   =================================================== */
 .cs-play-arena {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 20px;
-  max-width: 960px;
+  padding: 4px 20px 8px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   min-height: 0;
   position: relative;
-  z-index: 10;
+  z-index: 5;
 }
 
-/* Easel Stage Frame */
-.cs-easel-card {
-  width: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+/* Instruction Prompt Bubble (Centered above easel, matching Image 1) */
+.cs-prompt-bubble {
+  margin: 0 0 8px;
+  padding: 7px 20px;
+  background: #FFFFFF;
+  border-radius: 999px;
+  border: 2px solid #E8DFD0;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  display: inline-flex;
   align-items: center;
-  justify-content: space-around;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 2px solid var(--cs-easel-border);
-  border-radius: var(--cs-radius);
-  box-shadow: 0 10px 30px var(--cs-easel-shadow);
-  padding: 16px 20px;
+  gap: 10px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  touch-action: manipulation;
+}
+
+.cs-prompt-bubble:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.09);
+}
+
+.cs-prompt-bubble:active {
+  transform: scale(0.96);
+}
+
+.cs-prompt-speak-icon {
+  font-size: 1.25rem;
+  animation: csGentleBounce 2s ease-in-out infinite;
+}
+
+.cs-prompt-text {
+  font-family: var(--cs-font-display);
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  font-weight: 700;
+  color: #1E293B;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.cs-prompt-text .target-highlight {
   position: relative;
-  overflow: hidden;
-  min-height: 0;
-  z-index: 2;
+  text-decoration: none;
 }
 
-/* Subtle canvas splatter wallpaper behind characters */
-.cs-easel-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: 
-    radial-gradient(circle at 15% 25%, rgba(239, 68, 68, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(234, 179, 8, 0.06) 0%, transparent 45%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Character Section: Splishy the Paint Droplet */
-.cs-character-section {
+/* ===================================================
+   TABLETOP WOODEN EASEL & CANVAS ASSEMBLY (Matching Image 1)
+   =================================================== */
+.cs-easel-assembly {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 10;
+  z-index: 5;
+  margin-bottom: 6px;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  max-width: 1020px;
+}
+
+/* Top Wooden Mast & Clip */
+.cs-easel-top-mast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  margin-bottom: -6px;
+}
+
+.cs-easel-clip {
+  width: 44px;
+  height: 14px;
+  background: linear-gradient(180deg, #D4A373 0%, #BC8A5F 100%);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(90, 60, 30, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.cs-easel-clip::after {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 16px;
+  background: #C89B66;
+  border-radius: 4px 4px 0 0;
+}
+
+/* Artist's Canvas Stage — Maximized for immersive discovery */
+.cs-easel-card {
+  width: clamp(380px, 72vw, 940px);
+  height: clamp(280px, 48vh, 560px);
+  max-height: calc(100dvh - 300px);
+  background: #FFFDF7;
+  border: 4px solid #EADBCE;
+  border-radius: 26px;
+  box-shadow: 0 14px 38px rgba(160, 120, 80, 0.16);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  padding: 10px;
   cursor: pointer;
-  touch-action: manipulation;
-  margin-top: 4px;
+  touch-action: none; /* Fluid finger painting on touch screens */
+}
+
+/* Background Splatter Canvas — Must NEVER block button clicks! */
+.cs-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* Character Section: Splishy the Paint Droplet */
+.cs-character-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  pointer-events: none; /* Let canvas clicks pass through to easel card */
 }
 
 .cs-character-box {
-  width: clamp(130px, 22vw, 175px);
-  height: clamp(140px, 24vw, 190px);
+  width: clamp(140px, 18vw, 195px);
+  height: clamp(150px, 20vw, 210px);
   position: relative;
   animation: splishyFloat 3s ease-in-out infinite;
   transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.14));
+  pointer-events: auto; /* Only Splishy itself responds to direct taps */
+  cursor: pointer;
+  touch-action: manipulation;
 }
 
 .cs-character-box:active {
@@ -224,7 +453,6 @@
   animation: splishyGiggle 0.4s ease;
 }
 
-/* Character SVG */
 .cs-character-svg {
   width: 100%;
   height: 100%;
@@ -236,12 +464,11 @@
   animation: eyeBlink 4s infinite ease-in-out;
 }
 
-/* Splash Pod Behind Character */
 .cs-aura-glow {
   position: absolute;
-  width: 150px;
-  height: 60px;
-  bottom: -10px;
+  width: 140px;
+  height: 50px;
+  bottom: -6px;
   border-radius: 50%;
   background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
   filter: blur(8px);
@@ -250,120 +477,171 @@
   pointer-events: none;
 }
 
-/* Instruction Prompt */
-.cs-prompt-bubble {
-  margin: 10px 0 14px;
-  padding: 8px 22px;
-  background: #FFFFFF;
-  border-radius: 999px;
-  border: 2px solid #E2E8F0;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  z-index: 2;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  touch-action: manipulation;
-}
-
-.cs-prompt-bubble:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
-}
-
-.cs-prompt-bubble:active {
-  transform: scale(0.96);
-}
-
-.cs-prompt-speak-icon {
-  font-size: 1.25rem;
-  animation: csGentleBounce 2s ease-in-out infinite;
-}
-
-.cs-prompt-text {
-  font-family: var(--cs-font-display);
-  font-size: clamp(1.05rem, 2.7vw, 1.45rem);
-  font-weight: 700;
-  color: #1E293B;
-  letter-spacing: -0.01em;
-  text-align: center;
-}
-
-.cs-prompt-text .target-highlight {
-  position: relative;
-  text-decoration: none;
-}
-
-/* Color Options / Splat Buttons Palette */
-.cs-options-container {
+/* Decorative Canvas Floating Sparkles (Matching Image 1) */
+.cs-canvas-sparkles {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: clamp(14px, 3.2vw, 28px);
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 780px;
-  padding: 6px 10px;
-  position: relative;
-  z-index: 20;
+  gap: 12px;
+  pointer-events: none;
+  opacity: 0.85;
 }
 
-/* Individual Paint Splat Button */
-.cs-splat-btn {
-  position: relative;
-  width: clamp(86px, 16vw, 114px);
-  height: clamp(86px, 16vw, 114px);
-  border: none;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  touch-action: manipulation;
-  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s ease;
+.cs-sparkles-left { left: 16px; }
+.cs-sparkles-right { right: 16px; }
+
+.cs-sparkle-star {
+  font-size: 1.1rem;
+  color: #FF8A80;
+  animation: csGentleBounce 2.5s ease-in-out infinite;
+}
+
+.cs-sparkle-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFAB91;
+}
+
+/* Easel Bottom Horizontal Ledge */
+.cs-easel-ledge {
+  width: calc(100% + 48px);
+  max-width: 980px;
+  height: 16px;
+  background: linear-gradient(180deg, #DEB887 0%, #C89B66 100%);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(140, 95, 50, 0.22);
+  z-index: 4;
+  margin-top: -6px;
+}
+
+/* 3 Tabletop Wooden Legs */
+.cs-easel-legs {
+  display: flex;
+  justify-content: space-between;
+  width: clamp(200px, 30vw, 360px);
+  height: 38px;
+  z-index: 2;
+  margin-top: -2px;
+}
+
+.cs-easel-leg {
+  width: 15px;
+  height: 100%;
+  background: linear-gradient(180deg, #C89B66 0%, #B3824F 100%);
+  border-radius: 4px;
+  box-shadow: 0 3px 6px rgba(100, 70, 30, 0.2);
+}
+
+.cs-easel-leg.leg-left { transform: rotate(14deg); transform-origin: top center; }
+.cs-easel-leg.leg-center { width: 17px; }
+.cs-easel-leg.leg-right { transform: rotate(-14deg); transform-origin: top center; }
+
+/* ===================================================
+   WARM BUTTER-YELLOW CONSOLE TRAY & 3D CUSHION BUTTONS (Matching Image 1)
+   =================================================== */
+.cs-tray-panel {
+  width: 100%;
+  max-width: 860px;
+  background: var(--cs-tray-bg);
+  border: 3.5px solid var(--cs-tray-border);
+  box-shadow: 0 10px 28px rgba(180, 140, 80, 0.14);
+  border-radius: 26px;
+  padding: 12px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
+  position: relative;
+  z-index: 10;
+  margin-top: 0;
+}
+
+.cs-options-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 3.5vw, 36px);
+  width: 100%;
+  padding: 4px;
+  position: relative;
+  z-index: 20;
+}
+
+/* 3D Cushion Button with Paint Puddle Base */
+.cs-cushion-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  touch-action: manipulation;
+  width: clamp(96px, 14vw, 126px);
+  height: clamp(80px, 11vw, 102px);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 25;
   pointer-events: auto;
 }
 
-.cs-splat-btn:hover {
-  transform: scale(1.08) translateY(-4px);
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.18));
+.cs-cushion-btn:hover {
+  transform: scale(1.06) translateY(-3px);
 }
 
-.cs-splat-btn:active {
-  transform: scale(0.92);
+.cs-cushion-btn:active {
+  transform: scale(0.93);
 }
 
-.cs-splat-btn.wrong {
+.cs-cushion-btn.wrong {
   animation: csWobble 0.45s ease;
 }
 
-.cs-splat-btn.hint {
-  animation: csHintPulse 1.2s ease-in-out infinite;
+.cs-cushion-btn.hint {
+  animation: csCushionPulse 1.2s ease-in-out infinite;
 }
 
-.cs-splat-btn.matched {
-  animation: csSplatBurst 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+/* Organic Paint Puddle Base Underneath */
+.cs-puddle-base {
+  position: absolute;
+  width: 136%;
+  height: 126%;
+  top: -10%;
+  left: -18%;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
 }
 
-.cs-splat-svg {
+.cs-puddle-svg {
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
 }
 
-.cs-splat-label {
+/* 3D Cushion Beveled Squircle Face */
+.cs-cushion-face {
   position: relative;
   z-index: 2;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: 3.5px solid #FFFFFF;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.cs-cushion-label {
   font-family: var(--cs-font-display);
-  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  font-size: clamp(0.92rem, 2.2vw, 1.2rem);
   font-weight: 800;
   letter-spacing: -0.01em;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
@@ -371,21 +649,35 @@
   text-transform: capitalize;
 }
 
-/* Free Splash Studio Mode Layout */
+/* Target Button Golden Glow Ring (Matching Image 1 Red button) */
+.cs-cushion-btn.target-btn .cs-cushion-face {
+  border-color: #FEF08A;
+  box-shadow: 0 0 0 4px #FDE047, 0 8px 24px rgba(234, 179, 8, 0.38), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes csCushionPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); filter: drop-shadow(0 0 14px #FDE047); }
+}
+
+/* ===================================================
+   FREE SPLASH STUDIO MODE BAR (Fixing clipping issue permanently)
+   =================================================== */
 .cs-free-studio-bar {
   display: none;
   width: 100%;
   max-width: 820px;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 14px;
-  background: rgba(255, 255, 255, 0.95);
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.98);
   border-radius: 999px;
-  border: 2px solid #E2E8F0;
+  border: 2px solid #E8DFD0;
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
-  gap: 12px;
+  gap: 14px;
   z-index: 10;
-  margin-top: 8px;
+  min-height: 72px;
+  overflow: visible !important;
 }
 
 .cs-free-studio-bar.open {
@@ -395,9 +687,10 @@
 .cs-free-palette-scroll {
   display: flex;
   align-items: center;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 2px;
+  gap: 12px;
+  overflow: visible; /* Prevents vertical clipping on desktop/tablet */
+  padding: 14px 10px;
+  min-height: 64px;
   scrollbar-width: none;
 }
 
@@ -409,21 +702,27 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  border: 3px solid #FFFFFF;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 2.5px solid #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
   cursor: pointer;
   flex-shrink: 0;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  position: relative;
+  outline: none;
 }
 
 .cs-paint-well:hover {
-  transform: scale(1.15);
+  transform: scale(1.08);
 }
 
 .cs-paint-well.active {
-  transform: scale(1.25);
-  border-color: #1E293B;
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.4), 0 4px 10px rgba(0,0,0,0.2);
+  transform: scale(1.12);
+  /* Pure concentric rings: 2.5px white gap + 3px dark outer ring (2.5 to 5.5) + shadow */
+  box-shadow:
+    0 0 0 2.5px #FFFFFF,
+    0 0 0 5.5px #1E293B,
+    0 4px 12px rgba(0, 0, 0, 0.25);
+  outline: none;
 }
 
 .cs-paint-well.rainbow {
@@ -450,12 +749,14 @@
   transform: scale(0.92);
 }
 
-/* Bottom Stars & Status Track */
+/* ===================================================
+   BOTTOM STARS & STATUS TRACK
+   =================================================== */
 .cs-bottom-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 24px;
+  padding: 6px 24px;
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
@@ -504,21 +805,23 @@
 }
 
 .cs-status-msg span.highlight {
-  color: var(--cs-accent);
+  color: #7C3AED;
   font-weight: 700;
 }
 
-/* Animations */
+/* ===================================================
+   ANIMATIONS
+   =================================================== */
 @keyframes splishyFloat {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(-1.5deg); }
+  50% { transform: translateY(-7px) rotate(-1.5deg); }
 }
 
 @keyframes splishyBounce {
   0% { transform: scale(0.85) translateY(0); }
-  35% { transform: scale(1.22, 0.8) translateY(-24px); }
-  60% { transform: scale(0.92, 1.15) translateY(-32px) rotate(8deg); }
-  80% { transform: scale(1.08, 0.95) translateY(-6px); }
+  35% { transform: scale(1.22, 0.8) translateY(-22px); }
+  60% { transform: scale(0.92, 1.15) translateY(-30px) rotate(8deg); }
+  80% { transform: scale(1.08, 0.95) translateY(-5px); }
   100% { transform: scale(1) translateY(0) rotate(0deg); }
 }
 
@@ -531,20 +834,9 @@
 
 @keyframes csWobble {
   0%, 100% { transform: rotate(0deg) scale(1); }
-  25% { transform: rotate(-10deg) scale(0.96); }
-  50% { transform: rotate(10deg) scale(1.04); }
-  75% { transform: rotate(-6deg) scale(0.98); }
-}
-
-@keyframes csHintPulse {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12)); }
-  50% { transform: scale(1.12); filter: drop-shadow(0 0 16px var(--cs-accent)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.2)); }
-}
-
-@keyframes csSplatBurst {
-  0% { transform: scale(0.85); }
-  45% { transform: scale(1.28); }
-  100% { transform: scale(1); }
+  25% { transform: rotate(-8deg) scale(0.96); }
+  50% { transform: rotate(8deg) scale(1.04); }
+  75% { transform: rotate(-5deg) scale(0.98); }
 }
 
 @keyframes csGentleBounce {
@@ -563,81 +855,358 @@
   100% { transform: scale(1.12) rotate(0deg); }
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 768px) {
-  .cs-play-arena {
-    padding: 6px 12px;
+/* ===================================================
+   FOOTER OVERRIDE (Fixing Overlapping Text)
+   =================================================== */
+.game-footer {
+  display: none !important;
+}
+
+/* ===================================================
+   RESPONSIVE BREAKPOINTS (Desktop, Tablet & Mobile Optimization)
+   =================================================== */
+@media (max-width: 1100px) {
+  .cs-studio-backdrop {
+    opacity: 0.55;
   }
-  
+
+  .cs-decor-left,
+  .cs-decor-right {
+    transform: scale(0.85);
+    transform-origin: top;
+  }
+
   .cs-easel-card {
-    padding: 12px 14px;
-    border-radius: 18px;
-  }
-  
-  .cs-options-container {
-    gap: 12px;
-  }
-  
-  .cs-splat-btn {
-    width: clamp(78px, 20vw, 92px);
-    height: clamp(78px, 20vw, 92px);
+    width: clamp(360px, 76vw, 840px);
+    height: clamp(260px, 46vh, 480px);
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 900px) {
+  /* On narrower tablets, hide room decor so canvas has 100% unimpeded space */
+  .cs-studio-backdrop {
+    display: none !important;
+  }
+
+  .cs-easel-card {
+    width: calc(100% - 24px);
+    max-width: 740px;
+    height: clamp(260px, 46vh, 460px);
+  }
+}
+
+@media (max-width: 768px) {
+  /* 1. Hide Global Header & Mobile Drawer & Breadcrumbs on mobile view */
+  .cx-game-header,
+  .cx-game-mobile-drawer,
+  .cx-game-breadcrumb {
+    display: none !important;
+  }
+
+  /* Compact dedicated return bar only */
+  .cx-game-nav-container {
+    position: relative !important;
+    height: 38px !important;
+    z-index: 50 !important;
+  }
+
+  .cx-game-subbar {
+    height: 38px !important;
+    min-height: 38px !important;
+    padding: 0 10px !important;
+    justify-content: flex-start !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+  }
+
+  .cx-game-return-btn {
+    padding: 4px 11px !important;
+    font-size: 12px !important;
+    height: 28px !important;
+    gap: 5px !important;
+  }
+
+  .color-splash {
+    padding-top: 0 !important;
+    height: 100dvh;
+  }
+
+  /* 2. Hide Room Backdrop decor completely on mobile to give full stage to the canvas */
+  .cs-studio-backdrop {
+    display: none !important;
+  }
+
+  /* 3. Compact Top Bar */
   .cs-top-bar {
     padding: 4px 10px;
     gap: 8px;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
-  
+
+  .cs-game-title {
+    font-size: 1.15rem;
+  }
+
+  .cs-game-subtitle {
+    display: none; /* Hide subtitle on mobile to preserve vertical space */
+  }
+
+  .cs-controls-group {
+    gap: 5px;
+  }
+
   .cs-pill-btn {
-    padding: 5px 8px;
-    font-size: 0.74rem;
-    min-height: 32px;
+    padding: 4px 9px;
+    font-size: 0.76rem;
+    min-height: 30px;
     gap: 4px;
   }
-  
+
+  /* 4. Play Arena: Full vertical utilization */
+  .cs-play-arena {
+    padding: 4px 8px 6px;
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .cs-prompt-bubble {
-    padding: 6px 14px;
-    margin: 6px 0 10px;
+    margin: 0 0 6px;
+    padding: 5px 16px;
   }
-  
+
   .cs-prompt-text {
-    font-size: 1.05rem;
+    font-size: clamp(0.95rem, 3vw, 1.15rem);
   }
-  
+
+  /* 5. Maximize Easel & Canvas Stage */
+  .cs-easel-assembly {
+    flex: 1 1 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    margin-bottom: 4px;
+  }
+
+  .cs-easel-top-mast {
+    margin-bottom: -4px;
+    transform: scale(0.9);
+  }
+
+  .cs-easel-card {
+    width: 100% !important;
+    max-width: 540px !important;
+    flex: 1 1 auto !important;
+    height: auto !important;
+    min-height: 240px !important;
+    max-height: calc(100dvh - 220px) !important;
+    border-radius: 20px;
+    padding: 6px;
+  }
+
+  .cs-character-box {
+    width: clamp(110px, 24vw, 140px);
+    height: clamp(120px, 26vw, 155px);
+  }
+
+  .cs-easel-ledge {
+    width: min(96%, 520px);
+    height: 7px;
+    margin-top: -2px;
+  }
+
+  .cs-easel-legs {
+    height: 14px;
+    margin-top: -3px;
+  }
+
+  /* 6. Console Tray Panel */
+  .cs-tray-panel {
+    width: 100%;
+    max-width: 540px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    margin-top: 0;
+    flex-shrink: 0;
+  }
+
   .cs-options-container {
-    gap: 8px;
+    gap: clamp(8px, 2.5vw, 18px);
+    padding: 2px;
   }
-  
-  .cs-splat-btn {
-    width: 76px;
-    height: 76px;
+
+  .cs-cushion-btn {
+    width: clamp(72px, 20vw, 92px);
+    height: clamp(60px, 16vw, 76px);
   }
-  
+
+  .cs-cushion-label {
+    font-size: clamp(0.82rem, 2.4vw, 1rem);
+  }
+
+  .cs-free-studio-bar {
+    padding: 6px 14px;
+    min-height: 58px;
+    overflow: visible !important;
+  }
+
+  .cs-free-palette-scroll {
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 10px 4px;
+    min-height: 52px;
+    gap: 10px;
+  }
+
+  .cs-paint-well {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* 7. Bottom Bar */
   .cs-bottom-bar {
-    padding: 4px 12px;
+    padding: 4px 14px 6px;
+    max-width: 540px;
   }
-  
+
   .cs-star-badge {
     width: 30px;
     height: 30px;
     font-size: 0.95rem;
   }
-  
+
   .cs-status-msg {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
   }
 }
 
-@media (max-width: 360px) {
-  .cs-splat-btn {
-    width: 68px;
-    height: 68px;
+@media (max-width: 480px) {
+  .cx-game-subbar {
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 0 8px !important;
   }
-  
+
+  .cx-game-return-btn {
+    padding: 3px 9px !important;
+    font-size: 11.5px !important;
+    height: 26px !important;
+  }
+
+  .cs-top-bar {
+    padding: 3px 8px;
+    gap: 4px;
+  }
+
+  .cs-game-title {
+    font-size: 1.05rem;
+  }
+
+  .cs-pill-btn {
+    padding: 3px 7px;
+    font-size: 0.72rem;
+    min-height: 28px;
+    gap: 3px;
+  }
+
+  .cs-play-arena {
+    padding: 2px 6px 4px;
+  }
+
+  .cs-prompt-bubble {
+    padding: 4px 12px;
+    margin-bottom: 4px;
+  }
+
+  .cs-prompt-text {
+    font-size: 0.95rem;
+  }
+
+  .cs-easel-assembly {
+    margin-bottom: 2px;
+  }
+
+  .cs-easel-card {
+    width: calc(100% - 6px) !important;
+    min-height: 220px !important;
+    max-height: calc(100dvh - 200px) !important;
+    border-radius: 18px;
+    padding: 4px;
+  }
+
   .cs-character-box {
-    width: 110px;
-    height: 120px;
+    width: clamp(95px, 26vw, 125px);
+    height: clamp(105px, 28vw, 138px);
+  }
+
+  .cs-easel-legs {
+    height: 10px;
+  }
+
+  .cs-tray-panel {
+    padding: 6px 8px;
+    border-radius: 18px;
+  }
+
+  .cs-options-container {
+    gap: 6px;
+  }
+
+  .cs-cushion-btn {
+    width: clamp(66px, 21vw, 82px);
+    height: clamp(54px, 16vw, 68px);
+  }
+
+  .cs-cushion-label {
+    font-size: 0.8rem;
+  }
+
+  .cs-free-studio-bar {
+    padding: 4px 10px;
+    min-height: 52px;
+    gap: 8px;
+    overflow: visible !important;
+  }
+
+  .cs-free-palette-scroll {
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 8px 4px;
+    min-height: 46px;
+    gap: 8px;
+  }
+
+  .cs-paint-well {
+    width: 30px;
+    height: 30px;
+  }
+
+  .cs-clear-canvas-btn {
+    padding: 4px 10px;
+    font-size: 0.74rem;
+  }
+
+  .cs-bottom-bar {
+    padding: 2px 10px 4px;
+    gap: 8px;
+  }
+
+  .cs-star-badge {
+    width: 26px;
+    height: 26px;
+    font-size: 0.85rem;
+  }
+
+  .cs-status-msg {
+    font-size: 0.74rem;
   }
 }

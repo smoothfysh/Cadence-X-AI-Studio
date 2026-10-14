@@ -89,26 +89,116 @@
       </div>
     </div>
 
+    <!-- Cozy Pastel Art Studio Room Decor (Illustrated Vector Backdrop) -->
+    <div class="cs-studio-backdrop" aria-hidden="true">
+      <!-- Left Wall Decor: Framed Wall Art & Potted Houseplant -->
+      <div class="cs-decor-left">
+        <div class="cs-frame cs-frame-tulip" title="Framed Tulip">
+          <div class="cs-frame-inner">
+            <svg viewBox="0 0 40 40" class="cs-frame-svg">
+              <rect width="40" height="40" rx="4" fill="#E8F5E9"/>
+              <path d="M 20 22 Q 20 34 20 36" stroke="#4CAF50" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M 20 28 Q 14 26 13 22 Q 17 22 20 26" fill="#81C784"/>
+              <path d="M 14 16 C 14 10 17 8 20 12 C 23 8 26 10 26 16 C 26 21 20 23 20 23 C 20 23 14 21 14 16 Z" fill="#FF80AB"/>
+            </svg>
+          </div>
+        </div>
+        <div class="cs-frame cs-frame-cloud" title="Framed Blossom">
+          <div class="cs-frame-inner">
+            <svg viewBox="0 0 40 40" class="cs-frame-svg">
+              <rect width="40" height="40" rx="4" fill="#F3E5F5"/>
+              <circle cx="20" cy="20" r="10" fill="#CE93D8"/>
+              <circle cx="20" cy="20" r="4" fill="#FFF59D"/>
+            </svg>
+          </div>
+        </div>
+        <div class="cs-plant-pot" title="Potted Plant">
+          <div class="cs-leaves-group">
+            <span class="cs-leaf leaf-1"></span>
+            <span class="cs-leaf leaf-2"></span>
+            <span class="cs-leaf leaf-3"></span>
+          </div>
+          <div class="cs-pot-base"></div>
+        </div>
+      </div>
+
+      <!-- Right Wall Decor: Floating Shelf, Mountain Painting, Donut Sculpture -->
+      <div class="cs-decor-right">
+        <div class="cs-wall-shelf">
+          <div class="cs-frame cs-frame-mountain" title="Mountain Painting">
+            <div class="cs-frame-inner">
+              <svg viewBox="0 0 40 40" class="cs-frame-svg">
+                <rect width="40" height="40" rx="4" fill="#FFF9C4"/>
+                <circle cx="28" cy="14" r="5" fill="#FFA726"/>
+                <polygon points="6,34 18,18 28,34" fill="#66BB6A"/>
+                <polygon points="18,34 26,22 36,34" fill="#43A047"/>
+              </svg>
+            </div>
+          </div>
+          <div class="cs-shelf-plank"></div>
+        </div>
+        <div class="cs-donut-sculpture" title="Modern Ceramic Sculpture">
+          <div class="cs-donut-ring"></div>
+        </div>
+        <div class="cs-trailing-plant">
+          <span class="cs-vine vine-1"></span>
+          <span class="cs-vine vine-2"></span>
+        </div>
+      </div>
+    </div>
+
     <!-- Main Play Arena -->
     <main class="cs-play-arena" id="playArena">
-      <!-- Easel Card Stage -->
-      <section class="cs-easel-card" id="csEaselCard" aria-label="Color Canvas Stage">
-        <!-- Watercolor Splatter Canvas Layer (Background) -->
-        <canvas id="csSplashCanvas" class="cs-canvas"></canvas>
+      <!-- Instruction Prompt Bubble (Centered above easel, matching Image 1) -->
+      <div class="cs-prompt-bubble" id="csPromptBubble" title="Tap to hear prompt again" role="button" tabindex="0">
+        <span class="cs-prompt-speak-icon" aria-hidden="true">🔊</span>
+        <div class="cs-prompt-text" id="csPromptText">Tap the right color button!</div>
+      </div>
 
-        <!-- Interactive Character: Splishy the Paint Droplet -->
-        <div class="cs-character-section" id="csCharacterSection" title="Tap Splishy!" aria-label="Splishy Character">
-          <div class="cs-aura-glow" id="csAuraGlow"></div>
-          <div class="cs-character-box" id="csCharacterBox"></div>
+      <!-- Tabletop Wooden Easel & Artist Canvas Assembly (Matching Image 1) -->
+      <div class="cs-easel-assembly" id="csEaselAssembly">
+        <!-- Easel Mast & Top Clamp Clip -->
+        <div class="cs-easel-top-mast">
+          <div class="cs-easel-clip"></div>
         </div>
 
-        <!-- Spoken / Written Instruction Prompt -->
-        <div class="cs-prompt-bubble" id="csPromptBubble" title="Tap to hear prompt again" role="button" tabindex="0">
-          <span class="cs-prompt-speak-icon" aria-hidden="true">🔊</span>
-          <div class="cs-prompt-text" id="csPromptText">Tap the right color button!</div>
-        </div>
+        <!-- The Artist's Canvas Stage -->
+        <section class="cs-easel-card" id="csEaselCard" aria-label="Color Canvas Stage">
+          <!-- Watercolor Splatter Canvas Layer (Background) -->
+          <canvas id="csSplashCanvas" class="cs-canvas"></canvas>
 
-        <!-- Options Container: Paint Splat Buttons (Guided Mode) -->
+          <!-- Interactive Character: Splishy the Paint Droplet -->
+          <div class="cs-character-section" id="csCharacterSection" title="Tap Splishy!" aria-label="Splishy Character">
+            <div class="cs-aura-glow" id="csAuraGlow"></div>
+            <!-- Decorative Canvas Floating Sparkles (Matching Image 1) -->
+            <div class="cs-canvas-sparkles cs-sparkles-left" aria-hidden="true">
+              <span class="cs-sparkle-dot"></span>
+              <span class="cs-sparkle-star">✦</span>
+              <span class="cs-sparkle-dot"></span>
+            </div>
+            <div class="cs-character-box" id="csCharacterBox"></div>
+            <div class="cs-canvas-sparkles cs-sparkles-right" aria-hidden="true">
+              <span class="cs-sparkle-star">✦</span>
+              <span class="cs-sparkle-dot"></span>
+              <span class="cs-sparkle-dot"></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Honey Wood Easel Ledge Shelf -->
+        <div class="cs-easel-ledge"></div>
+
+        <!-- 3 Honey Wood Easel Legs -->
+        <div class="cs-easel-legs">
+          <div class="cs-easel-leg leg-left"></div>
+          <div class="cs-easel-leg leg-center"></div>
+          <div class="cs-easel-leg leg-right"></div>
+        </div>
+      </div>
+
+      <!-- Warm Butter-Yellow Console Tray (Matching Image 1) -->
+      <div class="cs-tray-panel" id="csTrayPanel">
+        <!-- Options Container: Paint Cushion Buttons on Puddles (Guided Mode) -->
         <div class="cs-options-container" id="csOptionsContainer" role="group" aria-label="Color Options"></div>
 
         <!-- Free Splash Studio Bar (Free Mode) -->
@@ -118,7 +208,7 @@
             <span>🧹</span><span>Clear</span>
           </button>
         </div>
-      </section>
+      </div>
     </main>
 
     <!-- Bottom Stars & Status Track -->

@@ -541,6 +541,33 @@
     `;
   }
 
+  // Organic Paint Puddle Base SVG (Underneath 3D cushion buttons, matching Image 1)
+  function buildPuddleSVG(color) {
+    let fillColor = color.hex;
+    if (color.isRainbow) fillColor = '#8B5CF6';
+
+    return `
+      <svg viewBox="0 0 130 90" class="cs-puddle-svg" aria-hidden="true">
+        <path d="M 24 45
+                 C 10 32, 12 18, 28 15
+                 C 45 12, 54 20, 65 15
+                 C 78 10, 95 12, 108 18
+                 C 122 25, 125 40, 116 52
+                 C 126 66, 116 80, 100 82
+                 C 88 84, 80 74, 68 76
+                 C 54 82, 42 84, 32 78
+                 C 20 72, 14 66, 12 55
+                 C 10 48, 16 46, 24 45 Z"
+              fill="${fillColor}"
+              opacity="0.95"/>
+        <circle cx="14" cy="62" r="3.5" fill="${fillColor}"/>
+        <circle cx="118" cy="72" r="4.2" fill="${fillColor}"/>
+        <circle cx="94" cy="85" r="3.2" fill="${fillColor}"/>
+        <circle cx="28" cy="12" r="2.8" fill="${fillColor}"/>
+      </svg>
+    `;
+  }
+
   // ==========================================
   // 4. WATERCOLOR CANVAS SPLATTER SYSTEM
   // ==========================================
@@ -551,13 +578,19 @@
       this.splats = [];
       this.resize();
       window.addEventListener('resize', () => this.resize());
+      if (window.ResizeObserver && this.canvas.parentElement) {
+        this.resizeObserver = new ResizeObserver(() => this.resize());
+        this.resizeObserver.observe(this.canvas.parentElement);
+      }
     }
 
     resize() {
+      if (!this.canvas.parentElement) return;
       const rect = this.canvas.parentElement.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
       const dpr = window.devicePixelRatio || 1;
-      this.canvas.width = rect.width * dpr;
-      this.canvas.height = rect.height * dpr;
+      this.canvas.width = Math.round(rect.width * dpr);
+      this.canvas.height = Math.round(rect.height * dpr);
       this.canvas.style.width = `${rect.width}px`;
       this.canvas.style.height = `${rect.height}px`;
       this.ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -571,29 +604,51 @@
       this.splats = [];
     }
 
-    addSplash(x, y, colorHex, baseRadius = 40, count = 12) {
-      // Paint an organic watercolor splatter
-      const splatData = {
-        x,
-        y,
-        colorHex,
-        baseRadius,
-        droplets: []
-      };
+    addSplash(x, y, colorHex, baseRadius = 40, count = 14) {
+      // Generate smooth harmonic boundary points (zero sharp edges!)
+      const numPoints = 16;
+      const points = [];
+      const phase = Math.random() * Math.PI * 2;
+      const waveFreq1 = 3;
+      const waveFreq2 = 5;
 
-      for (let i = 0; i < count; i++) {
-        const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.7;
-        const dist = baseRadius * (0.8 + Math.random() * 1.6);
-        const radius = Math.max(3, (baseRadius * 0.22) * (0.4 + Math.random() * 0.8));
-        splatData.droplets.push({
+      for (let i = 0; i < numPoints; i++) {
+        const angle = (Math.PI * 2 * i) / numPoints;
+        const lobe1 = Math.sin(angle * waveFreq1 + phase) * 0.28;
+        const lobe2 = Math.cos(angle * waveFreq2 + phase * 1.4) * 0.16;
+        const jitter = (Math.random() - 0.5) * 0.12;
+        const r = baseRadius * Math.max(0.65, (1.0 + lobe1 + lobe2 + jitter));
+        points.push({
+          x: x + Math.cos(angle) * r,
+          y: y + Math.sin(angle) * r
+        });
+      }
+
+      // Natural satellite droplets of varied sizes
+      const droplets = [];
+      const dropCount = Math.floor(count * (0.8 + Math.random() * 0.5));
+      for (let i = 0; i < dropCount; i++) {
+        const angle = (Math.PI * 2 * i) / dropCount + (Math.random() - 0.5) * 0.8;
+        const dist = baseRadius * (1.2 + Math.random() * 1.5);
+        const radius = Math.max(2, (baseRadius * 0.18) * (0.35 + Math.random() * 0.9));
+        droplets.push({
           x: x + Math.cos(angle) * dist,
           y: y + Math.sin(angle) * dist,
           r: radius
         });
       }
 
+      const splatData = {
+        x,
+        y,
+        colorHex,
+        baseRadius,
+        points,
+        droplets
+      };
+
       this.splats.push(splatData);
-      if (this.splats.length > 50) this.splats.shift(); // Limit canvas memory
+      if (this.splats.length > 60) this.splats.shift(); // Limit canvas memory
 
       this.drawSplat(splatData);
     }
@@ -601,24 +656,29 @@
     drawSplat(splat) {
       const ctx = this.ctx;
       ctx.save();
-      ctx.globalAlpha = 0.82;
+      ctx.globalAlpha = 0.84;
       ctx.fillStyle = splat.colorHex;
 
-      // Center Blob
-      ctx.beginPath();
-      const steps = 14;
-      for (let i = 0; i < steps; i++) {
-        const angle = (Math.PI * 2 * i) / steps;
-        const radius = splat.baseRadius * (0.8 + Math.random() * 0.4);
-        const px = splat.x + Math.cos(angle) * radius;
-        const py = splat.y + Math.sin(angle) * radius;
-        if (i === 0) ctx.moveTo(px, py);
-        else ctx.lineTo(px, py);
-      }
-      ctx.closePath();
-      ctx.fill();
+      // 1. Draw smooth organic central splash using quadratic bezier curve through midpoints (NO sharp edges!)
+      const pts = splat.points;
+      const len = pts.length;
+      if (len >= 3) {
+        ctx.beginPath();
+        const firstMidX = (pts[0].x + pts[len - 1].x) / 2;
+        const firstMidY = (pts[0].y + pts[len - 1].y) / 2;
+        ctx.moveTo(firstMidX, firstMidY);
 
-      // Satellite Droplets
+        for (let i = 0; i < len; i++) {
+          const next = pts[(i + 1) % len];
+          const midX = (pts[i].x + next.x) / 2;
+          const midY = (pts[i].y + next.y) / 2;
+          ctx.quadraticCurveTo(pts[i].x, pts[i].y, midX, midY);
+        }
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      // 2. Natural satellite droplets
       splat.droplets.forEach(d => {
         ctx.beginPath();
         ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
@@ -715,6 +775,7 @@
       if (this.btnReset) {
         this.btnReset.addEventListener('click', () => {
           SoundEngine.playBubblePop();
+          this.canvasEngine.clear(); // Wipes all splashes clean!
           this.turnInRound = 0;
           this.loadRound(this.currentRoundIndex);
         });
@@ -735,11 +796,11 @@
         });
       }
 
-      // Tapping Splishy directly -> giggle & wiggle!
-      if (this.charSection) {
-        this.charSection.addEventListener('click', (e) => {
+      // Tapping Splishy directly -> giggle & wiggle & splash in free mode!
+      if (this.charBox) {
+        this.charBox.addEventListener('pointerdown', (e) => {
           e.stopPropagation();
-          this.handleSplishyTap();
+          this.handleSplishyTap(e);
         });
       }
 
@@ -748,7 +809,7 @@
         this.promptBubble.addEventListener('click', () => {
           if (this.currentTargetColor) {
             SoundEngine.playBubblePop();
-            SoundEngine.speak(`Can you tap the ${this.currentTargetColor.spokenName} splash?`);
+            SoundEngine.speak(`Can you tap the ${this.currentTargetColor.spokenName} button?`);
           }
         });
       }
@@ -770,6 +831,7 @@
     toggleMode() {
       this.isFreeMode = !this.isFreeMode;
       SoundEngine.playBubblePop();
+      this.canvasEngine.clear(); // Clear canvas on mode toggle!
 
       if (this.isFreeMode) {
         this.btnMode.innerHTML = '<span>🎯</span><span>Match Game</span>';
@@ -785,6 +847,7 @@
         this.optionsContainer.style.display = 'flex';
         this.loadTurn();
       }
+      this.canvasEngine.resize();
     }
 
     setupFreePalette() {
@@ -817,57 +880,110 @@
     }
 
     setupCanvasInteractivity() {
-      // Tap anywhere on empty easel card space (outside buttons, character, prompt) to splash!
+      // Tap anywhere on easel card or drag finger in Free Mode to paint splashes!
       const easel = document.getElementById('csEaselCard') || this.canvasEl.parentElement;
       if (!easel) return;
 
-      const triggerSplash = (e) => {
-        // If clicking a button, the character, prompt bubble, or studio bar, let those elements handle their own click!
-        if (
-          e.target.closest('.cs-splat-btn') ||
-          e.target.closest('button') ||
-          e.target.closest('.cs-character-section') ||
-          e.target.closest('.cs-prompt-bubble') ||
-          e.target.closest('.cs-free-studio-bar')
-        ) {
-          return;
-        }
+      let isPointerDown = false;
+      let lastSplashX = -999;
+      let lastSplashY = -999;
+      let lastSplashTime = 0;
 
+      const doSplash = (clientX, clientY, isDrag = false) => {
         const rect = this.canvasEl.getBoundingClientRect();
-        const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-        const clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
         const x = clientX - rect.left;
         const y = clientY - rect.top;
+
+        if (x < 0 || x > rect.width || y < 0 || y > rect.height) return;
 
         if (this.isFreeMode) {
           const color = this.selectedFreeColor.isRainbow
             ? COLORS[Object.keys(COLORS)[Math.floor(Math.random() * (Object.keys(COLORS).length - 1))]]
             : this.selectedFreeColor;
-          this.canvasEngine.addSplash(x, y, color.hex, 36 + Math.random() * 20, 10);
+          const radius = isDrag ? 26 + Math.random() * 16 : 46 + Math.random() * 26;
+          const dropCount = isDrag ? 7 : 14;
+          this.canvasEngine.addSplash(x, y, color.hex, radius, dropCount);
           SoundEngine.playBubblePop();
           if (window.OtisParticles) {
-            window.OtisParticles.burst(clientX, clientY, color.hex, 8);
+            window.OtisParticles.burst(clientX, clientY, color.hex, isDrag ? 5 : 10);
           }
-        } else {
+        } else if (!isDrag) {
           // In Match Mode: background gentle ripple on empty canvas space
           if (this.currentTargetColor) {
-            this.canvasEngine.addSplash(x, y, this.currentTargetColor.hex, 24, 6);
+            this.canvasEngine.addSplash(x, y, this.currentTargetColor.hex, 30, 8);
             SoundEngine.playBubblePop();
           }
         }
         this.resetIdleTimer();
       };
 
-      easel.addEventListener('pointerdown', triggerSplash);
+      easel.addEventListener('pointerdown', (e) => {
+        // If clicking buttons or other interactive controls outside the canvas, ignore
+        if (
+          e.target.closest('button') ||
+          e.target.closest('.cs-prompt-bubble') ||
+          e.target.closest('.cs-free-studio-bar')
+        ) {
+          return;
+        }
+        // In match mode, don't double-trigger if clicking the character directly (charBox handles it)
+        if (!this.isFreeMode && e.target.closest('.cs-character-box')) {
+          return;
+        }
+
+        isPointerDown = true;
+        lastSplashX = e.clientX;
+        lastSplashY = e.clientY;
+        lastSplashTime = performance.now();
+        doSplash(e.clientX, e.clientY, false);
+      });
+
+      easel.addEventListener('pointermove', (e) => {
+        if (!isPointerDown || !this.isFreeMode) return;
+        const now = performance.now();
+        const dx = e.clientX - lastSplashX;
+        const dy = e.clientY - lastSplashY;
+        const dist = Math.hypot(dx, dy);
+        // Responsive finger-painting while dragging on easel
+        if (dist > 28 || (dist > 12 && now - lastSplashTime > 85)) {
+          lastSplashX = e.clientX;
+          lastSplashY = e.clientY;
+          lastSplashTime = now;
+          doSplash(e.clientX, e.clientY, true);
+        }
+      });
+
+      const endPointer = () => {
+        isPointerDown = false;
+      };
+      window.addEventListener('pointerup', endPointer);
+      window.addEventListener('pointercancel', endPointer);
     }
 
-    handleSplishyTap() {
+    handleSplishyTap(e) {
       if (this.isFreeMode) {
         SoundEngine.playGiggle();
         this.charBox.classList.remove('giggle', 'bounce');
         void this.charBox.offsetWidth; // Trigger reflow
         this.charBox.classList.add('giggle');
         SoundEngine.speak(`${this.selectedFreeColor.spokenName}! Tee-hee!`);
+
+        // Also splash paint at Splishy's position!
+        const rect = this.canvasEl.getBoundingClientRect();
+        const clientX = e && e.clientX ? e.clientX : (rect.left + rect.width / 2);
+        const clientY = e && e.clientY ? e.clientY : (rect.top + rect.height / 2);
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+
+        const color = this.selectedFreeColor.isRainbow
+          ? COLORS[Object.keys(COLORS)[Math.floor(Math.random() * (Object.keys(COLORS).length - 1))]]
+          : this.selectedFreeColor;
+        this.canvasEngine.addSplash(x, y, color.hex, 48 + Math.random() * 26, 14);
+        SoundEngine.playBubblePop();
+        if (window.OtisParticles) {
+          window.OtisParticles.burst(clientX, clientY, color.hex, 10);
+        }
+        this.resetIdleTimer();
         return;
       }
 
@@ -948,19 +1064,30 @@
       // Shuffle options row
       const finalOptions = window.shuffleArray ? window.shuffleArray(turnOptions) : turnOptions.sort(() => Math.random() - 0.5);
 
-      // Render Splat Buttons
+      // Render 3D Cushion Buttons on Paint Puddle Bases (Matching Image 1)
       this.optionsContainer.innerHTML = '';
       finalOptions.forEach((optColor) => {
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'cs-splat-btn';
+        btn.className = 'cs-cushion-btn';
         btn.dataset.colorId = optColor.id;
         btn.title = optColor.name;
         btn.setAttribute('aria-label', optColor.name);
 
+        const isTarget = optColor.id === this.currentTargetColor.id;
+        if (isTarget) {
+          btn.classList.add('target-btn');
+        }
+
         btn.innerHTML = `
-          ${buildSplatButtonSVG(optColor)}
-          <span class="cs-splat-label" style="color: ${optColor.textColor}">${optColor.name}</span>
+          <!-- Paint Puddle Splash Base Underneath (Matching Image 1) -->
+          <div class="cs-puddle-base">
+            ${buildPuddleSVG(optColor)}
+          </div>
+          <!-- 3D Cushion Beveled Squircle Face (Matching Image 1) -->
+          <div class="cs-cushion-face" style="background: linear-gradient(180deg, ${optColor.gradStops[0]} 0%, ${optColor.gradStops[1]} 100%);">
+            <span class="cs-cushion-label" style="color: ${optColor.textColor}">${optColor.name}</span>
+          </div>
         `;
 
         btn.addEventListener('click', (e) => {
@@ -984,7 +1111,7 @@
       this.resetIdleTimer();
 
       // Clear any hint pulses
-      this.optionsContainer.querySelectorAll('.cs-splat-btn').forEach(b => b.classList.remove('hint'));
+      this.optionsContainer.querySelectorAll('.cs-cushion-btn, .cs-splat-btn').forEach(b => b.classList.remove('hint'));
 
       if (tappedColor.id === this.currentTargetColor.id) {
         // === CORRECT TAP ===
