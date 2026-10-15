@@ -46,7 +46,7 @@ export const SpinningLogo: React.FC<SpinningLogoProps> = ({
           setSpeedMultiplier((prev) => (prev === 1 ? 2 : 1));
         }
       }}
-      title={interactive ? 'Cadence-X Rhythm Core — Click to boost cycle velocity' : 'Cadence-X'}
+      title={interactive ? 'Cadence-X Rhythm Core — Click to boost cycle velocity' : undefined}
       role="img"
       aria-label="Cadence-X spinning logo"
     >

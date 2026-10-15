@@ -15,7 +15,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultModal }) => {
         <div className="lg:col-span-5 flex flex-col items-center justify-center text-center py-4">
           <SpinningLogo
             size="hero-large"
-            interactive={true}
+            interactive={false}
             className="shadow-xl shadow-slate-900/5 ring-1 ring-slate-900/5"
           />
 
