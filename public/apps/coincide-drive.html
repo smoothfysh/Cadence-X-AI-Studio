@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Coincide Drive — Two-Way Folder Sync &amp; Privacy Policy | Cadence-X</title>
-  <meta name="description"
-    content="Coincide Drive by Cadence-X: Effortless two-way synchronization between Google Drive and a local folder on your Android phone. Built for Obsidian, Markdown notes, and total data ownership.">
-  <meta name="keywords"
-    content="Coincide Drive, Google Drive sync Android, Obsidian Android sync, 2-way folder sync, privacy policy, Cadence-X">
+  <meta name="description" content="Coincide Drive by Cadence-X: Effortless two-way synchronization between Google Drive and a local folder on your Android phone. Built for Obsidian, Markdown notes, and total data ownership.">
+  <meta name="keywords" content="Coincide Drive, Google Drive sync Android, Obsidian Android sync, 2-way folder sync, privacy policy, Cadence-X">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Coincide Drive — Two-Way Folder Sync &amp; Privacy Policy | Cadence-X">
-  <meta property="og:description"
-    content="Effortless two-way synchronization between Google Drive and a local folder on your Android phone. Zero external servers, lossless conflict protection, and full privacy transparency.">
+  <meta property="og:description" content="Effortless two-way synchronization between Google Drive and a local folder on your Android phone. Zero external servers, lossless conflict protection, and full privacy transparency.">
   <link rel="icon" type="image/png" href="/uploads/logo_font-Norwester-Lazydog_TransBG.png">
 
   <!-- Google Fonts: Editorial Serif (Newsreader), Clean Sans (Hanken Grotesk), Monospace (JetBrains Mono), Display (Archivo Black), Handwriting (Caveat), Cookie for BMC -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@500;600;700&family=Cookie&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@500;600;700&family=Cookie&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
     // Clean URL: automatically remove .html and index.html from URL bar
-    (function () {
+    (function() {
       var p = window.location.pathname;
       if (p.endsWith('.html') || p.endsWith('/index')) {
         var clean = p.replace(/\.html$/, '').replace(/\/index$/, '') || '/';
@@ -32,9 +26,9 @@
     })();
 
     // In-page shortcut smooth scrolling
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-        anchor.addEventListener('click', function (e) {
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
           var targetId = this.getAttribute('href').slice(1);
           if (!targetId) return;
           var targetEl = document.getElementById(targetId);
@@ -82,7 +76,7 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 140px;
+      scroll-padding-top: 148px;
     }
 
     body {
@@ -258,9 +252,15 @@
 
     /* ── Sub-navigation Jump Bar ── */
     .subnav-bar {
-      background: var(--bg-surface-subtle);
+      position: sticky;
+      top: 80px;
+      z-index: 40;
+      background: rgba(244, 241, 234, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-subtle);
       padding: 10px 16px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
     }
 
     .subnav-inner {
@@ -1371,7 +1371,7 @@
         </h1>
         <p class="hero-desc">
           A focused Android utility that keeps folders on your phone and folders in your Google Drive seamlessly
-          synchronized two ways (including all nested subfolders) and total
+          synchronized two ways (including all nested subfolders)—built for Obsidian vaults, Markdown notes, and total
           local file ownership.
         </p>
 
@@ -1384,7 +1384,7 @@
           <p>
             <strong>1 Folder Free Forever · Up to 5 Folders Unlocked:</strong> Sync 1 folder pair (and all its
             subfolders) completely free with no time limits. Support the project once via Buy Me a Coffee to unlock up
-            to 5 concurrent folder pairs across one or multiple Google accounts; no monthly or yearly renewals ever.
+            to 5 concurrent folder pairs across one or multiple Google accounts—no monthly or yearly renewals ever.
           </p>
           <p>
             <strong>Zero external servers:</strong> Coincide Drive runs 100% locally on your Android device,
@@ -1429,15 +1429,13 @@
 
         <div style="display: flex; align-items: center; justify-content: space-between; margin: 14px 2px 10px;">
           <span style="font-size: 13.5px; font-weight: 800; color: #101D38;">⇄ Synced Folders (1 / 5)</span>
-          <span
-            style="background: #1A68D9; color: #FFFFFF; font-size: 11px; font-weight: 700; padding: 5px 11px; border-radius: 999px;">+
+          <span style="background: #1A68D9; color: #FFFFFF; font-size: 11px; font-weight: 700; padding: 5px 11px; border-radius: 999px;">+
             Add Folder</span>
         </div>
 
         <div class="app-pair-card">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-            <span
-              style="background: #D4F5E1; color: #15803D; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">
+            <span style="background: #D4F5E1; color: #15803D; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">
               ▶ Folder #1 • Active
             </span>
             <span style="font-size: 11.5px; color: #64748B; font-weight: 600;">Pause / Edit / Unlink</span>
@@ -1633,7 +1631,7 @@
             <span class="plan-tier-badge free">✓ Free Forever · No Time Limits</span>
             <h3 class="plan-title">Standard Edition (1 Folder)</h3>
             <p class="plan-subtitle">
-              Everything you need to keep a primary workspace or documents folder, in
+              Everything you need to keep a primary workspace, such as an Obsidian vault or documents folder, in
               continuous 2-way sync.
             </p>
             <ul class="plan-feature-list">
@@ -1641,14 +1639,13 @@
                   Drive and your phone</span></li>
               <li><span class="plan-check">✓</span> <span><strong>Unlimited Subfolders &amp; Files</strong>
                   inside that synced folder</span></li>
-              <li><span class="plan-check">✓</span> <span><strong>No Time Limitations</strong>-free forever with
+              <li><span class="plan-check">✓</span> <span><strong>No Time Limitations</strong>—free forever with
                   zero ads or trackers</span></li>
               <li><span class="plan-check">✓</span> <span><strong>Full Background Sync</strong> &amp; lossless
                   "Keep Both" conflict protection</span></li>
             </ul>
           </div>
-          <div
-            style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--emerald); font-weight: 600;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--emerald); font-weight: 600;">
             INCLUDED BY DEFAULT IN EVERY INSTALL
           </div>
         </div>
@@ -1705,16 +1702,12 @@
                 transition: transform 0.15s ease, box-shadow 0.15s ease;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
               }
-
-              .bmc-btn:hover,
-              .bmc-btn:active,
-              .bmc-btn:focus {
+              .bmc-btn:hover, .bmc-btn:active, .bmc-btn:focus {
                 text-decoration: none !important;
                 cursor: pointer;
                 transform: translateY(-2px);
                 box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
               }
-
               .bmc-btn-text {
                 text-align: left;
                 display: inline-block;
@@ -1724,8 +1717,7 @@
               }
             </style>
             <div class="bmc-btn-container">
-              <a class="bmc-btn" target="_blank" rel="noopener noreferrer"
-                href="https://buymeacoffee.com/anushkaj">☕<span class="bmc-btn-text">Buy me a coffee</span></a>
+              <a class="bmc-btn" target="_blank" rel="noopener noreferrer" href="https://buymeacoffee.com/anushkaj">☕<span class="bmc-btn-text">Buy me a coffee</span></a>
             </div>
 
             <span style="font-size: 12.5px; color: var(--text-muted);">
@@ -1860,8 +1852,7 @@
           <h4>Google API Services User Data Policy (Limited Use Disclosure)</h4>
           <p>
             Coincide Drive’s use and transfer to any other app of information received from Google APIs will adhere to
-            the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank"
-              rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use
+            the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use
             requirements. Specifically, Coincide Drive accesses your Google Drive data solely on your device to perform
             user-configured two-way folder synchronization, never transfers your Google user data to any external
             developer server or third party, never uses your data for advertising, and never uses your data to train
@@ -1988,8 +1979,7 @@
             </li>
             <li>
               <strong>Revoking Google Account Permissions:</strong> You can revoke Coincide Drive’s access to your
-              Google Account at any time by visiting your <a href="https://myaccount.google.com/permissions"
-                target="_blank" rel="noopener noreferrer">Google Account Security &amp; Permissions page</a>.
+              Google Account at any time by visiting your <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">Google Account Security &amp; Permissions page</a>.
             </li>
           </ul>
         </div>
@@ -2018,11 +2008,9 @@
           <ul>
             <li><strong>Studio:</strong> Cadence-X (<a href="https://www.cadence-x.com/">https://www.cadence-x.com</a>)
             </li>
-            <li><strong>Email:</strong> <a href="mailto:support@cadence-x.com">support@cadence-x.com</a>
+            <li><strong>Email:</strong> <a href="mailto:coincidedrive@cadence-x.com">coincidedrive@cadence-x.com</a>
             </li>
-            <li><strong>Source Repository (if you buy me a coffee):</strong> <a
-                href="https://github.com/smoothfysh/Coincide-Drive" target="_blank"
-                rel="noopener noreferrer">github.com/smoothfysh/Coincide-Drive</a></li>
+            <li><strong>Source Repository:</strong> <a href="https://github.com/smoothfysh/Coincide-Drive" target="_blank" rel="noopener noreferrer">github.com/smoothfysh/Coincide-Drive</a></li>
           </ul>
         </div>
       </div>
@@ -2047,6 +2035,4 @@
 
 
 
-</body>
-
-</html>
+</body></html>

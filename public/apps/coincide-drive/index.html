@@ -76,7 +76,7 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 140px;
+      scroll-padding-top: 148px;
     }
 
     body {
@@ -252,9 +252,15 @@
 
     /* ── Sub-navigation Jump Bar ── */
     .subnav-bar {
-      background: var(--bg-surface-subtle);
+      position: sticky;
+      top: 80px;
+      z-index: 40;
+      background: rgba(244, 241, 234, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-subtle);
       padding: 10px 16px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
     }
 
     .subnav-inner {
