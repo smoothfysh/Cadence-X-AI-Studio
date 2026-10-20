@@ -1,0 +1,2032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coincide Drive — Two-Way Folder Sync &amp; Privacy Policy | Cadence-X</title>
+  <meta name="description" content="Coincide Drive by Cadence-X: Effortless two-way synchronization between Google Drive and a local folder on your Android phone. Built for Obsidian, Markdown notes, and total data ownership.">
+  <meta name="keywords" content="Coincide Drive, Google Drive sync Android, Obsidian Android sync, 2-way folder sync, privacy policy, Cadence-X">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Coincide Drive — Two-Way Folder Sync &amp; Privacy Policy | Cadence-X">
+  <meta property="og:description" content="Effortless two-way synchronization between Google Drive and a local folder on your Android phone. Zero external servers, lossless conflict protection, and full privacy transparency.">
+  <link rel="icon" type="image/png" href="/uploads/logo_font-Norwester-Lazydog_TransBG.png">
+
+  <!-- Google Fonts: Editorial Serif (Newsreader), Clean Sans (Hanken Grotesk), Monospace (JetBrains Mono), Display (Archivo Black), Handwriting (Caveat), Cookie for BMC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@500;600;700&family=Cookie&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    // Clean URL: automatically remove .html and index.html from URL bar
+    (function() {
+      var p = window.location.pathname;
+      if (p.endsWith('.html') || p.endsWith('/index')) {
+        var clean = p.replace(/\.html$/, '').replace(/\/index$/, '') || '/';
+        window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+      }
+    })();
+
+    // In-page shortcut smooth scrolling
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          var targetId = this.getAttribute('href').slice(1);
+          if (!targetId) return;
+          var targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+            if (window.history && window.history.pushState) {
+              window.history.pushState(null, '', '#' + targetId);
+            } else {
+              window.location.hash = '#' + targetId;
+            }
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    /* ── Reset & Cadence-X Editorial Studio Design System ── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-page: #FAF8F5;
+      --bg-surface: #FFFFFF;
+      --bg-surface-subtle: #F4F1EA;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --border-subtle: #E8E4DA;
+      --border-medium: #D8D3C7;
+      --cobalt: #1D4ED8;
+      --cobalt-hover: #1E40AF;
+      --cobalt-soft: #EFF6FF;
+      --terracotta: #C2410C;
+      --terracotta-soft: #FFF7ED;
+      --emerald: #15803D;
+      --emerald-soft: #F0FDF4;
+      --emerald-border: #BBF7D0;
+      --navy-dark: #080D1A;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 140px;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--cobalt);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: var(--cobalt-hover);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--cobalt);
+      outline-offset: 3px;
+    }
+
+    /* ── Cadence-X Main Header Navigation ── */
+    .cx-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      width: 100%;
+      background: rgba(250, 248, 245, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(232, 228, 218, 0.9);
+    }
+
+    .cx-header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 16px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @media (min-width: 640px) {
+      .cx-header-inner {
+        padding: 0 24px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .cx-header-inner {
+        padding: 0 32px;
+      }
+    }
+
+    .cx-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cx-logo-box {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .cx-logo-ring {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: cx-spin-slow 40s linear infinite;
+    }
+
+    .cx-logo-center {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    @keyframes cx-spin-slow {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .cx-brand-title {
+      font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      letter-spacing: 0.05em;
+      color: #0f172a;
+      font-weight: 400;
+      transition: color 0.15s ease;
+    }
+
+    .cx-brand:hover .cx-brand-title {
+      color: var(--cobalt);
+    }
+
+    .cx-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .cx-nav-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: #475569;
+      text-decoration: none;
+      padding: 4px 0;
+      transition: color 0.15s ease;
+    }
+
+    .cx-nav-link:hover {
+      color: #0f172a;
+    }
+
+    .cx-nav-link-active {
+      color: var(--cobalt);
+      font-weight: 600;
+      position: relative;
+    }
+
+    .cx-nav-link-active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 1.5px;
+      background-color: var(--cobalt);
+    }
+
+    @media (max-width: 640px) {
+      .cx-nav {
+        gap: 14px;
+      }
+
+      .cx-nav-link {
+        font-size: 13px;
+      }
+
+      .cx-brand-title {
+        font-size: 1.05rem;
+      }
+    }
+
+    /* ── Sub-navigation Jump Bar ── */
+    .subnav-bar {
+      background: var(--bg-surface-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 10px 16px;
+    }
+
+    .subnav-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .subnav-inner {
+        padding: 0 8px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .subnav-inner {
+        padding: 0 16px;
+      }
+    }
+
+    .subnav-crumb {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .subnav-crumb strong {
+      color: var(--text-primary);
+    }
+
+    .subnav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .subnav-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.15s ease;
+    }
+
+    .subnav-pill:hover {
+      color: var(--cobalt);
+      border-color: var(--cobalt);
+      background: #FFFFFF;
+    }
+
+    /* ── Main Editorial Studio Canvas ── */
+    .editorial-main {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 56px 20px 88px;
+      width: 100%;
+    }
+
+    @media (min-width: 640px) {
+      .editorial-main {
+        padding: 72px 28px 96px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .editorial-main {
+        padding: 84px 32px 112px;
+      }
+    }
+
+    /* ── Editorial Dividers ── */
+    .editorial-divider {
+      width: 100%;
+      height: 1px;
+      background-color: var(--border-subtle);
+      border: none;
+      margin: 64px 0;
+    }
+
+    @media (min-width: 1024px) {
+      .editorial-divider {
+        margin: 80px 0;
+      }
+    }
+
+    /* ── Hero Section ── */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: 64px;
+      }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 18px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--terracotta);
+    }
+
+    .hero-title {
+      font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+      font-size: clamp(2.35rem, 5vw, 4rem);
+      line-height: 1.08;
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+      margin: 0 0 22px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--cobalt);
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 0 28px;
+    }
+
+    .featured-notes {
+      border-left: 2px solid var(--border-medium);
+      padding-left: 18px;
+      margin: 0 0 32px;
+      max-width: 560px;
+    }
+
+    .featured-notes p {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0 0 8px;
+    }
+
+    .featured-notes p:last-child {
+      margin-bottom: 0;
+    }
+
+    .featured-notes strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--text-primary);
+      color: #FFFFFF !important;
+      font-size: 14.5px;
+      font-weight: 600;
+      padding: 12px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #1E293B;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--bg-surface);
+      color: var(--text-primary) !important;
+      border: 1px solid var(--border-medium);
+      font-size: 14.5px;
+      font-weight: 600;
+      padding: 11px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--cobalt);
+      color: var(--cobalt) !important;
+      background-color: var(--cobalt-soft);
+    }
+
+    .handwriting-note {
+      font-family: 'Caveat', cursive;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--cobalt);
+      line-height: 1.15;
+      transform: rotate(-5deg);
+      user-select: none;
+      margin-left: 8px;
+    }
+
+    /* ── App Preview Card (Right Column in Hero) ── */
+    .app-showcase-card {
+      background: #F4F8FC;
+      border: 1px solid #D4E6FA;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.08);
+      position: relative;
+    }
+
+    .app-mockup-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .app-mockup-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #101D38;
+      letter-spacing: -0.02em;
+    }
+
+    .app-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #D4F5E1;
+      color: #15803D;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    .app-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #16A34A;
+    }
+
+    .app-hero-banner {
+      background: linear-gradient(180deg, #EBF5FE 0%, #E2EFFF 100%);
+      border: 1px solid #D4E6FA;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .app-banner-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+
+    .app-sync-btn {
+      background: #1A68D9;
+      color: #FFFFFF;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .app-pair-card {
+      background: #FFFFFF;
+      border: 1px solid #E8EEF5;
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .app-folder-item {
+      background: #F1F5FA;
+      border-radius: 12px;
+      padding: 11px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .app-folder-item:last-of-type {
+      margin-bottom: 10px;
+    }
+
+    .app-folder-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #101D38;
+      line-height: 1.2;
+    }
+
+    .app-folder-sub {
+      font-size: 11.5px;
+      color: #6B7280;
+    }
+
+    .app-shield-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #E6F8EE;
+      color: #166534;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+
+    /* ── Section Headers ── */
+    .section-intro {
+      max-width: 720px;
+      margin-bottom: 44px;
+    }
+
+    .section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .section-eyebrow.terracotta {
+      color: var(--terracotta);
+    }
+
+    .section-title {
+      font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+      line-height: 1.15;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin: 0 0 14px;
+    }
+
+    .section-desc {
+      font-size: 16.5px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── How It Works: 3-Step Flow Cards ── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .steps-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 2px 12px rgba(15, 23, 42, 0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      background: var(--cobalt-soft);
+      border: 1px solid #DBEAFE;
+      padding: 4px 10px;
+      border-radius: 999px;
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .step-card h3 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin: 0 0 10px;
+    }
+
+    .step-card p {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── Dark Precision Architecture Block (Matches Cadence-X Services Block) ── */
+    .dark-architecture-box {
+      background: var(--navy-dark);
+      border-radius: 24px;
+      padding: 36px 28px;
+      color: #FFFFFF;
+      border: 1px solid rgba(30, 41, 59, 0.9);
+      box-shadow: 0 20px 45px -15px rgba(8, 13, 26, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .dark-architecture-box {
+        padding: 48px 44px;
+      }
+    }
+
+    .dark-header-flex {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+    }
+
+    @media (min-width: 768px) {
+      .dark-header-flex {
+        flex-direction: row;
+        align-items: flex-end;
+      }
+    }
+
+    .dark-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #22D3EE;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .dark-title {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      color: #FFFFFF;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .dark-sub {
+      font-size: 15px;
+      color: #94A3B8;
+      max-width: 580px;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .dark-handwriting {
+      font-family: 'Caveat', cursive;
+      font-size: 24px;
+      color: #38BDF8;
+      line-height: 1.15;
+      transform: rotate(-5deg);
+      user-select: none;
+    }
+
+    .dark-grid-4 {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+    }
+
+    @media (min-width: 640px) {
+      .dark-grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .dark-grid-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    .dark-feature-item .icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #0F172A;
+      border: 1px solid #1E293B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #22D3EE;
+      margin-bottom: 16px;
+      font-size: 18px;
+    }
+
+    .dark-feature-item h4 {
+      font-size: 16.5px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin: 0 0 8px;
+    }
+
+    .dark-feature-item p {
+      font-size: 13.5px;
+      color: #94A3B8;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── Sync Decision Table ── */
+    .editorial-table-wrap {
+      margin-top: 36px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.02);
+    }
+
+    .editorial-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14.5px;
+    }
+
+    .editorial-table th {
+      background: var(--bg-surface-subtle);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .editorial-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+
+    .editorial-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .editorial-table td strong {
+      color: var(--text-primary);
+    }
+
+    .badge-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .badge-tag.skip {
+      background: #F1F5F9;
+      color: #475569;
+    }
+
+    .badge-tag.up {
+      background: #EFF6FF;
+      color: #1D4ED8;
+    }
+
+    .badge-tag.down {
+      background: #F0FDF4;
+      color: #15803D;
+    }
+
+    .badge-tag.safe {
+      background: #FFF7ED;
+      color: #C2410C;
+    }
+
+    /* ── Plans & Supporter Unlock Section ── */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    @media (min-width: 860px) {
+      .plans-grid {
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      }
+    }
+
+    .plan-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+    }
+
+    .plan-card.supporter {
+      border: 2px solid var(--cobalt);
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFF 100%);
+      box-shadow: 0 14px 36px -8px rgba(29, 78, 216, 0.12);
+      position: relative;
+    }
+
+    .plan-tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      align-self: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .plan-tier-badge.free {
+      background: var(--emerald-soft);
+      color: var(--emerald);
+      border: 1px solid var(--emerald-border);
+    }
+
+    .plan-tier-badge.pro {
+      background: var(--cobalt-soft);
+      color: var(--cobalt);
+      border: 1px solid #BFDBFE;
+    }
+
+    .plan-title {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin: 0 0 6px;
+    }
+
+    .plan-subtitle {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      margin: 0 0 20px;
+      line-height: 1.55;
+    }
+
+    .plan-feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .plan-feature-list li {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .plan-feature-list li strong {
+      color: var(--text-primary);
+    }
+
+    .plan-check {
+      color: var(--emerald);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .email-instruction-box {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-left: 4px solid #D97706;
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 8px 0 22px;
+    }
+
+    .email-instruction-box h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #B45309;
+      margin: 0 0 6px;
+    }
+
+    .email-instruction-box p {
+      font-size: 13.5px;
+      color: #78350F;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .bmc-button-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    /* ── What Coincide Drive Has Access To (Permissions Grid) ── */
+    .permissions-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .permissions-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .perm-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .perm-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .perm-title {
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .perm-scope {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--cobalt);
+      background: var(--cobalt-soft);
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    .perm-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .perm-limit {
+      font-size: 13px;
+      color: var(--emerald);
+      background: var(--emerald-soft);
+      border: 1px solid var(--emerald-border);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    /* ── Google Play & OAuth Official Privacy Policy Document ── */
+    .privacy-policy-wrapper {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px 24px;
+      box-shadow: 0 8px 30px -6px rgba(15, 23, 42, 0.04);
+    }
+
+    @media (min-width: 768px) {
+      .privacy-policy-wrapper {
+        padding: 48px 52px;
+      }
+    }
+
+    .policy-meta-banner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .policy-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--emerald);
+      background: var(--emerald-soft);
+      border: 1px solid var(--emerald-border);
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    .policy-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .limited-use-callout {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-left: 4px solid var(--cobalt);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 24px 0 32px;
+    }
+
+    .limited-use-callout h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cobalt);
+      margin: 0 0 8px;
+    }
+
+    .limited-use-callout p {
+      font-size: 14.5px;
+      color: #1E3A8A;
+      line-height: 1.6;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .policy-block {
+      margin-bottom: 32px;
+    }
+
+    .policy-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .policy-block h3 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin: 0 0 10px;
+    }
+
+    .policy-block p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0 0 12px;
+    }
+
+    .policy-block ul {
+      margin: 8px 0 14px;
+      padding-left: 20px;
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .policy-block li {
+      margin-bottom: 8px;
+    }
+
+    .policy-block li strong {
+      color: var(--text-primary);
+    }
+
+    /* ── Data Safety Quick Summary Grid (Play Console Reference) ── */
+    .data-safety-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .safety-pill-card {
+      background: var(--bg-page);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .safety-pill-card .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .safety-pill-card .value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* ── Cadence-X Footer ── */
+    .cx-footer {
+      width: 100%;
+      border-top: 1px solid rgba(232, 228, 218, 0.9);
+      background: rgba(250, 248, 245, 0.7);
+      padding: 32px 0;
+      margin-top: 64px;
+    }
+
+    .cx-footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    @media (min-width: 640px) {
+      .cx-footer-inner {
+        padding: 0 24px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .cx-footer-inner {
+        padding: 0 32px;
+      }
+    }
+
+    .cx-footer-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cx-footer-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--cobalt);
+      display: inline-block;
+    }
+
+    .cx-footer-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-weight: 500;
+    }
+
+    .cx-footer-link {
+      color: #475569;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .cx-footer-link:hover {
+      color: #0f172a;
+    }
+
+    @media (max-width: 640px) {
+      .cx-footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Cadence-X Header Navigation ── -->
+  <header class="cx-header">
+    <div class="cx-header-inner">
+      <a href="/" class="cx-brand" title="Cadence-X Home">
+        <div class="cx-logo-box">
+          <img src="/uploads/cadence-x-outer-ring.png" class="cx-logo-ring" alt="">
+          <img src="/uploads/cadence-x-static.png" class="cx-logo-center" alt="Cadence-X Logo">
+        </div>
+        <span class="cx-brand-title">CADENCE-X</span>
+      </a>
+
+      <nav class="cx-nav">
+        <a href="/#services" class="cx-nav-link">Services</a>
+        <a href="/apps" class="cx-nav-link cx-nav-link-active">Apps</a>
+        <a href="/about" class="cx-nav-link">About Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Page Jump Bar ── -->
+  <div class="subnav-bar">
+    <div class="subnav-inner">
+      <div class="subnav-crumb">
+        <a href="/apps" style="color: inherit; text-decoration: none;">APPS</a>
+        <span>/</span>
+        <strong>COINCIDE DRIVE</strong>
+      </div>
+      <div class="subnav-pills">
+        <a href="#overview" class="subnav-pill">Overview</a>
+        <a href="#how-it-works" class="subnav-pill">How It Works</a>
+        <a href="#unlock-five-folders" class="subnav-pill">1 Free / 5 Folders</a>
+        <a href="#permissions" class="subnav-pill">Permissions &amp; Access</a>
+        <a href="#privacy-policy" class="subnav-pill">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main Editorial Content ── -->
+  <main class="editorial-main">
+
+    <!-- ── 1. Hero & Product Overview ── -->
+    <section id="overview" class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">ANDROID UTILITY · 2-WAY FOLDER SYNC</div>
+        <h1 class="hero-title">
+          Coincide Drive.<br>
+          <em>Your files, in both places.</em>
+        </h1>
+        <p class="hero-desc">
+          A focused Android utility that keeps folders on your phone and folders in your Google Drive seamlessly
+          synchronized two ways (including all nested subfolders)—built for Obsidian vaults, Markdown notes, and total
+          local file ownership.
+        </p>
+
+        <div class="featured-notes">
+          <p>
+            <strong>Why we built it:</strong> Google Drive’s official Android app streams files on demand, which means
+            third-party apps like Obsidian or local Markdown editors cannot open or edit a folder of notes directly on
+            your phone.
+          </p>
+          <p>
+            <strong>1 Folder Free Forever · Up to 5 Folders Unlocked:</strong> Sync 1 folder pair (and all its
+            subfolders) completely free with no time limits. Support the project once via Buy Me a Coffee to unlock up
+            to 5 concurrent folder pairs across one or multiple Google accounts—no monthly or yearly renewals ever.
+          </p>
+          <p>
+            <strong>Zero external servers:</strong> Coincide Drive runs 100% locally on your Android device,
+            communicating directly with your own Google Drive account. Only changed files are transferred.
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#how-it-works" class="btn-primary">See How Sync Works</a>
+          <a href="#unlock-five-folders" class="btn-secondary">☕ Unlock 5 Folders</a>
+          <a href="#privacy-policy" class="btn-secondary">Read Privacy Policy</a>
+          <div class="handwriting-note">
+            Local files.<br>
+            Zero bloat.
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual Mockup representing Coincide Drive Light Mode UI -->
+      <div class="app-showcase-card" aria-label="Coincide Drive App Interface Preview">
+        <div class="app-mockup-header">
+          <span class="app-mockup-title">Coincide Drive</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748B;">ANDROID</span>
+        </div>
+
+        <div class="app-hero-banner">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <span class="app-status-pill">
+              <span class="app-status-dot"></span>
+              Active &amp; Watching
+            </span>
+            <span style="font-size: 11.5px; color: #7B8798;">Automatic Sync</span>
+          </div>
+          <div class="app-banner-row">
+            <div>
+              <div style="font-size: 11.5px; color: #6B7280;">Last Synchronized</div>
+              <div style="font-size: 17px; font-weight: 800; color: #101D38;">Today at 09:15</div>
+            </div>
+            <span class="app-sync-btn">↻ Sync Now</span>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin: 14px 2px 10px;">
+          <span style="font-size: 13.5px; font-weight: 800; color: #101D38;">⇄ Synced Folders (1 / 5)</span>
+          <span style="background: #1A68D9; color: #FFFFFF; font-size: 11px; font-weight: 700; padding: 5px 11px; border-radius: 999px;">+
+            Add Folder</span>
+        </div>
+
+        <div class="app-pair-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <span style="background: #D4F5E1; color: #15803D; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">
+              ▶ Folder #1 • Active
+            </span>
+            <span style="font-size: 11.5px; color: #64748B; font-weight: 600;">Pause / Edit / Unlink</span>
+          </div>
+          <div class="app-folder-item">
+            <span style="font-size: 18px; color: #1A73E8;">☁</span>
+            <div>
+              <div class="app-folder-name">Obsidian Vault (+ Subfolders)</div>
+              <div class="app-folder-sub">Google Drive · Connected</div>
+            </div>
+          </div>
+          <div class="app-folder-item">
+            <span style="font-size: 18px; color: #16A34A;">📁</span>
+            <div>
+              <div class="app-folder-name">Internal Storage › Documents › Vault</div>
+              <div class="app-folder-sub">Phone Storage (Connected)</div>
+            </div>
+          </div>
+          <div class="app-shield-badge">
+            🛡 Conflict Protection: Keep both copies safely
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="editorial-divider">
+
+    <!-- ── 2. How Coincide Drive Works ── -->
+    <section id="how-it-works">
+      <div class="section-intro">
+        <span class="section-eyebrow">HOW IT WORKS</span>
+        <h2 class="section-title">Set it up once. Let it work quietly in the background.</h2>
+        <p class="section-desc">
+          Coincide Drive is designed for simplicity. You don’t need to manage individual file uploads or worry about
+          overwriting edits made on another device and every subfolder inside your chosen folder is synced
+          automatically.
+        </p>
+      </div>
+
+      <!-- 3-Step Setup Cards -->
+      <div class="steps-grid">
+        <div class="step-card">
+          <div>
+            <span class="step-num">Step 01</span>
+            <h3>Connect Google Drive</h3>
+            <p>
+              Sign in securely using Google’s official sign-in flow. You can even connect different Google accounts for
+              different folder pairs; Coincide Drive never sees your password.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div>
+            <span class="step-num">Step 02</span>
+            <h3>Link Your Folders</h3>
+            <p>
+              Choose a folder in your Google Drive and a folder on your phone. All files and nested subfolders are kept
+              in 2-way sync so apps like Obsidian, Markor, or PDF readers can edit them locally anytime.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div>
+            <span class="step-num">Step 03</span>
+            <h3>Control &amp; Monitor Live</h3>
+            <p>
+              Pause or resume individual folders with a single toggle, watch live file progress (e.g., <em>Syncing
+                12/40</em>), inspect detailed sync history logs, and set rules like "Only on Wi-Fi."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dark Precision Engine Section (Cadence-X Signature Style) -->
+      <div class="dark-architecture-box">
+        <div class="dark-header-flex">
+          <div>
+            <span class="dark-eyebrow">SMART DIFFERENTIAL SYNC ENGINE</span>
+            <h3 class="dark-title">Only Changed Files Are Transferred</h3>
+            <p class="dark-sub">
+              Coincide Drive never re-uploads or re-downloads your entire folder tree on every schedule. Instead, it
+              performs a fast, lightweight check across all subfolders and transfers only the exact files that changed.
+            </p>
+          </div>
+          <div class="dark-handwriting">
+            Fast checks.<br>
+            Zero wasted data.
+          </div>
+        </div>
+
+        <div class="dark-grid-4">
+          <div class="dark-feature-item">
+            <div class="icon-box">🔍</div>
+            <h4>1. Recursive Metadata Scan</h4>
+            <p>
+              At each sync interval, the app scans your linked folder and all nested subfolders, checking modification
+              times and MD5 checksums without downloading file contents.
+            </p>
+          </div>
+
+          <div class="dark-feature-item">
+            <div class="icon-box">🗃</div>
+            <h4>2. Local Snapshot Comparison</h4>
+            <p>
+              It compares the current phone and Drive states against a local cache stored privately on your phone to
+              pinpoint exactly what was added, edited, or deleted.
+            </p>
+          </div>
+
+          <div class="dark-feature-item">
+            <div class="icon-box">⚡</div>
+            <h4>3. Delta-Only Transfers</h4>
+            <p>
+              If you have 1,000 files and edit just 1 note, only that single note is uploaded or downloaded. If nothing
+              changed, 0 bytes of file content are transferred.
+            </p>
+          </div>
+
+          <div class="dark-feature-item">
+            <div class="icon-box">🛡</div>
+            <h4>4. "Keep Both" Safety</h4>
+            <p>
+              If a file was edited on both your phone and computer before a sync occurred, neither version is lost. Both
+              copies are saved side-by-side with a timestamp.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sync Behavior Matrix Table -->
+      <div class="editorial-table-wrap">
+        <table class="editorial-table">
+          <thead>
+            <tr>
+              <th>What Happened Since Last Sync</th>
+              <th>Action Taken by Coincide Drive</th>
+              <th>Data Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Unchanged on both Phone &amp; Google Drive</strong></td>
+              <td>File is skipped immediately.</td>
+              <td><span class="badge-tag skip">0 Bytes Transferred</span></td>
+            </tr>
+            <tr>
+              <td><strong>Added or edited on your Phone</strong></td>
+              <td>Uploads only that specific file to your Google Drive folder (creating any new subfolders
+                automatically).</td>
+              <td><span class="badge-tag up">Single File Upload</span></td>
+            </tr>
+            <tr>
+              <td><strong>Added or edited on Google Drive</strong></td>
+              <td>Downloads only that specific file to your phone folder (preserving the exact subfolder structure).
+              </td>
+              <td><span class="badge-tag down">Single File Download</span></td>
+            </tr>
+            <tr>
+              <td><strong>Deleted on one side (untouched on the other)</strong></td>
+              <td>Removes the file on the other side so both folders remain identical.</td>
+              <td><span class="badge-tag skip">Metadata Only</span></td>
+            </tr>
+            <tr>
+              <td><strong>Edited on BOTH sides before a sync ran</strong></td>
+              <td><strong>Keep Both Conflict Resolution:</strong> Preserves your phone version and saves the Google
+                Drive version with a <code>_conflict_timestamp</code> filename so zero work is lost.</td>
+              <td><span class="badge-tag safe">Lossless Protection</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <hr class="editorial-divider">
+
+    <!-- ── 3. Plans & Support (1 Folder Free Forever / Unlock Up to 5 Folders) ── -->
+    <section id="unlock-five-folders">
+      <div class="section-intro">
+        <span class="section-eyebrow">SIMPLE &amp; HONEST PRICING</span>
+        <h2 class="section-title">1 folder free forever. Sync up to 5 by supporting the project.</h2>
+        <p class="section-desc">
+          No subscriptions, no trial countdowns, and no recurring monthly or yearly renewals. Use Coincide Drive for
+          free with 1 folder pair for as long as you like, or support the project once to unlock up to 5 synced folders.
+        </p>
+      </div>
+
+      <div class="plans-grid">
+        <!-- Free Forever Card -->
+        <div class="plan-card">
+          <div>
+            <span class="plan-tier-badge free">✓ Free Forever · No Time Limits</span>
+            <h3 class="plan-title">Standard Edition (1 Folder)</h3>
+            <p class="plan-subtitle">
+              Everything you need to keep a primary workspace, such as an Obsidian vault or documents folder, in
+              continuous 2-way sync.
+            </p>
+            <ul class="plan-feature-list">
+              <li><span class="plan-check">✓</span> <span><strong>1 Synced Folder Pair</strong> between Google
+                  Drive and your phone</span></li>
+              <li><span class="plan-check">✓</span> <span><strong>Unlimited Subfolders &amp; Files</strong>
+                  inside that synced folder</span></li>
+              <li><span class="plan-check">✓</span> <span><strong>No Time Limitations</strong>—free forever with
+                  zero ads or trackers</span></li>
+              <li><span class="plan-check">✓</span> <span><strong>Full Background Sync</strong> &amp; lossless
+                  "Keep Both" conflict protection</span></li>
+            </ul>
+          </div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--emerald); font-weight: 600;">
+            INCLUDED BY DEFAULT IN EVERY INSTALL
+          </div>
+        </div>
+
+        <!-- Supporter 5-Folder Unlock Card -->
+        <div class="plan-card supporter">
+          <div>
+            <span class="plan-tier-badge pro">☕ Supporter Unlock · No Subscriptions</span>
+            <h3 class="plan-title">Multi-Folder Unlock (Up to 5 Folders)</h3>
+            <p class="plan-subtitle">
+              Support the independent development of Coincide Drive with a one-time coffee and receive a lifetime unlock
+              code for up to 5 folders—with <strong>zero monthly or yearly renewals</strong>.
+            </p>
+            <ul class="plan-feature-list">
+              <li><span class="plan-check">✓</span> <span><strong>Sync Up to 5 Independent Folder Pairs</strong>
+                  simultaneously</span></li>
+              <li><span class="plan-check">✓</span> <span><strong>Multi-Account Support:</strong> Link folders
+                  across different Google accounts (e.g., Personal + Work)</span></li>
+              <li><span class="plan-check">✓</span> <span><strong>Per-Folder Controls:</strong> Pause, resume,
+                  edit, or unlink each folder individually</span></li>
+              <li><span class="plan-check">✓</span> <span><strong>One-Time Support:</strong> Yours forever—no
+                  recurring charges or renewals</span></li>
+            </ul>
+
+            <div class="email-instruction-box">
+              <h4>✉ Important: Include Your Email in the Message Box</h4>
+              <p>
+                When supporting via <strong>Buy Me a Coffee</strong> below, please <strong>write your email address in
+                  the message section</strong>. We will generate your personal <code>CADX-YYYY-YYYY</code> unlock code
+                mathematically linked to your email address (so no one else can use it) and send it directly to you.
+              </p>
+            </div>
+          </div>
+
+          <div class="bmc-button-wrap">
+            <style>
+              .bmc-btn {
+                min-width: 210px;
+                color: #000000 !important;
+                background-color: #FFDD00 !important;
+                height: 60px;
+                border-radius: 12px;
+                font-size: 28px;
+                font-weight: normal;
+                border: none;
+                padding: 0px 24px;
+                line-height: 27px;
+                text-decoration: none !important;
+                display: inline-flex !important;
+                align-items: center;
+                gap: 8px;
+                font-family: 'Cookie', cursive !important;
+                box-sizing: border-box !important;
+                transition: transform 0.15s ease, box-shadow 0.15s ease;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+              }
+              .bmc-btn:hover, .bmc-btn:active, .bmc-btn:focus {
+                text-decoration: none !important;
+                cursor: pointer;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+              }
+              .bmc-btn-text {
+                text-align: left;
+                display: inline-block;
+                line-height: 0;
+                font-family: 'Cookie', cursive !important;
+                white-space: nowrap;
+              }
+            </style>
+            <div class="bmc-btn-container">
+              <a class="bmc-btn" target="_blank" rel="noopener noreferrer" href="https://buymeacoffee.com/anushkaj">☕<span class="bmc-btn-text">Buy me a coffee</span></a>
+            </div>
+
+            <span style="font-size: 12.5px; color: var(--text-muted);">
+              Enter your <code>CADX-YYYY-YYYY</code> code inside the app under <strong>+ Add Folder</strong> or
+              <strong>Settings &rarr; Folder Sync Limit</strong>.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="editorial-divider">
+
+    <!-- ── 4. Permissions & What Coincide Drive Has Access To ── -->
+    <section id="permissions">
+      <div class="section-intro">
+        <span class="section-eyebrow terracotta">TRANSPARENCY &amp; ACCESS</span>
+        <h2 class="section-title">What Coincide Drive has access to—and why.</h2>
+        <p class="section-desc">
+          We believe utilities should request only the permissions required to do their job and explain them in plain
+          language.
+        </p>
+      </div>
+
+      <div class="permissions-grid">
+        <!-- Permission 1 -->
+        <div class="perm-card">
+          <div class="perm-header">
+            <h3 class="perm-title">Google Account Identity</h3>
+            <span class="perm-scope">email · profile</span>
+          </div>
+          <p class="perm-desc">
+            Used to display your connected Google account name, email address, and profile avatar inside the app,
+            authenticate requests to your Google Drive for each configured folder pair, and verify your offline
+            <code>CADX-YYYY-YYYY</code> supporter unlock code.
+          </p>
+          <div class="perm-limit">
+            ✓ Stored only on your phone. Never sent to any external server or third party.
+          </div>
+        </div>
+
+        <!-- Permission 2 -->
+        <div class="perm-card">
+          <div class="perm-header">
+            <h3 class="perm-title">Google Drive File &amp; Folder Access</h3>
+            <span class="perm-scope">auth/drive</span>
+          </div>
+          <p class="perm-desc">
+            Required so you can browse your existing Google Drive folders to pick a sync target, and so the app can
+            list, download, upload, and update files and subfolders inside your chosen folder pairs (including files
+            created on your computer or other devices).
+          </p>
+          <div class="perm-limit">
+            ✓ Coincide Drive only syncs the specific folders you select during setup.
+          </div>
+        </div>
+
+        <!-- Permission 3 -->
+        <div class="perm-card">
+          <div class="perm-header">
+            <h3 class="perm-title">Selected Phone Folders</h3>
+            <span class="perm-scope">Android Storage Access Framework</span>
+          </div>
+          <p class="perm-desc">
+            Uses Android’s built-in system folder picker to grant access strictly to the local folder(s) you choose.
+            Coincide Drive cannot read your photos, messages, or any other unlinked folders on your phone.
+          </p>
+          <div class="perm-limit">
+            ✓ Scoped strictly to your chosen folders. You can pause or unlink any folder anytime.
+          </div>
+        </div>
+
+        <!-- Permission 4 -->
+        <div class="perm-card">
+          <div class="perm-header">
+            <h3 class="perm-title">Background Sync &amp; Network Status</h3>
+            <span class="perm-scope">WorkManager · Battery Saver</span>
+          </div>
+          <p class="perm-desc">
+            Checks whether you are on Wi-Fi or mobile data before syncing, restores your sync schedule when your phone
+            restarts, and optionally requests unrestricted background battery usage so Android doesn't pause your
+            scheduled syncs when the app is closed.
+          </p>
+          <div class="perm-limit">
+            ✓ Runs only on your configured schedule (e.g., every 15 mins or 1 hour).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="editorial-divider">
+
+    <!-- ── 5. Official Privacy Policy (Google Play Store & Google OAuth Verification Ready) ── -->
+    <section id="privacy-policy">
+      <div class="section-intro">
+        <span class="section-eyebrow">LEGAL &amp; PLAY STORE COMPLIANCE</span>
+        <h2 class="section-title">Privacy Policy</h2>
+        <p class="section-desc">
+          Complete privacy disclosure for Coincide Drive, structured to meet Google Play Store Data Safety requirements
+          and the Google API Services User Data Policy.
+        </p>
+      </div>
+
+      <div class="privacy-policy-wrapper">
+        <div class="policy-meta-banner">
+          <span class="policy-badge">✓ Google Play &amp; OAuth Limited Use Compliant</span>
+          <span class="policy-date">Effective Date: October 16, 2026 · Last Updated: October 16, 2026</span>
+        </div>
+
+        <!-- Quick Summary Cards for Users & Reviewers -->
+        <div class="data-safety-grid">
+          <div class="safety-pill-card">
+            <span class="label">External Servers</span>
+            <span class="value">None (100% On-Device)</span>
+          </div>
+          <div class="safety-pill-card">
+            <span class="label">Data Sold or Shared</span>
+            <span class="value">Zero Third-Party Sharing</span>
+          </div>
+          <div class="safety-pill-card">
+            <span class="label">Advertising &amp; Trackers</span>
+            <span class="value">No Ads · No Analytics SDKs</span>
+          </div>
+          <div class="safety-pill-card">
+            <span class="label">Encryption in Transit</span>
+            <span class="value">HTTPS / TLS 1.3 to Google</span>
+          </div>
+        </div>
+
+        <!-- Mandatory Google API Limited Use Disclosure -->
+        <div class="limited-use-callout">
+          <h4>Google API Services User Data Policy (Limited Use Disclosure)</h4>
+          <p>
+            Coincide Drive’s use and transfer to any other app of information received from Google APIs will adhere to
+            the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use
+            requirements. Specifically, Coincide Drive accesses your Google Drive data solely on your device to perform
+            user-configured two-way folder synchronization, never transfers your Google user data to any external
+            developer server or third party, never uses your data for advertising, and never uses your data to train
+            artificial intelligence or machine learning models.
+          </p>
+        </div>
+
+        <div class="policy-block">
+          <h3>1. Introduction &amp; Architecture</h3>
+          <p>
+            Coincide Drive ("the App") is developed and published by <strong>Cadence-X</strong> ("we", "us", or "our").
+            Coincide Drive is a client-side Android application that synchronizes files and subfolders between up to 5
+            user-selected folders in the user's Google Drive account(s) and corresponding user-selected directories on
+            the user's Android device.
+          </p>
+          <p>
+            <strong>We do not operate any backend servers for Coincide Drive.</strong> All authentication, file
+            scanning, unlock code verification, and file transfers occur directly on your Android device and between
+            your device and Google’s official servers over encrypted connections.
+          </p>
+        </div>
+
+        <div class="policy-block">
+          <h3>2. Information Accessed and Processed</h3>
+          <p>
+            To provide two-way file synchronization, Coincide Drive accesses and processes the following categories of
+            data strictly on your Android device:
+          </p>
+          <ul>
+            <li>
+              <strong>Google Account Profile Information:</strong> When you sign in with Google, the App receives your
+              email address, display name, and profile photo URL via Google Play Services. This information is displayed
+              in the App's interface so you know which account is linked to each folder pair and is stored locally in
+              your device's private application database/preferences.
+            </li>
+            <li>
+              <strong>Google Drive Files and Metadata:</strong> With your explicit authorization (via the
+              <code>https://www.googleapis.com/auth/drive</code> scope), the App lists folders so you can select sync
+              targets, queries storage quota information, and reads, uploads, downloads, updates, or deletes files
+              within the specific folder pair(s) you configure.
+            </li>
+            <li>
+              <strong>Local Device Files:</strong> Using Android’s Storage Access Framework (SAF), the App reads and
+              writes files exclusively inside the local phone folder(s) you explicitly grant permission to during setup.
+            </li>
+            <li>
+              <strong>Local Sync History, File Index &amp; Unlock Status:</strong> The App maintains a local SQLite
+              database (via Android Room) and DataStore preferences inside the App's private sandboxed storage on your
+              phone. This stores relative file paths, modification timestamps, MD5 checksums, recent sync history/error
+              logs, and your offline 5-folder unlock status (<code>CADX-YYYY-YYYY</code>).
+            </li>
+          </ul>
+        </div>
+
+        <div class="policy-block">
+          <h3>3. How Your Data Is Used</h3>
+          <p>
+            Your data is used exclusively to provide the user-facing functionality of the App:
+          </p>
+          <ul>
+            <li>Authenticating your session with the Google Drive API for each active folder pair.</li>
+            <li>Comparing file modification times and checksums between your selected Google Drive folder(s) and your
+              selected phone folder(s).</li>
+            <li>Uploading new or updated local files to your Google Drive folder(s), and downloading new or updated
+              Google Drive files to your phone folder(s).</li>
+            <li>Resolving edit conflicts losslessly by preserving both copies when a file is edited in both locations
+              simultaneously.</li>
+            <li>Displaying live file sync counts, recent sync history, and detailed error diagnostics on the App's home
+              screen.</li>
+          </ul>
+        </div>
+
+        <div class="policy-block">
+          <h3>4. Data Storage, Security &amp; Encryption</h3>
+          <ul>
+            <li>
+              <strong>On-Device Storage Only:</strong> All configuration settings, sync pair mappings, and baseline file
+              metadata are stored locally on your Android device within the operating system's private application
+              directory.
+            </li>
+            <li>
+              <strong>Encryption in Transit:</strong> All communication between Coincide Drive and Google APIs (Google
+              Sign-In and Google Drive REST API v3) is encrypted in transit using industry-standard HTTPS / TLS
+              protocols.
+            </li>
+            <li>
+              <strong>No Developer Access:</strong> Because Cadence-X does not operate intermediary servers or cloud
+              databases for Coincide Drive, we have no technical means to view, access, or recover your files,
+              filenames, or account tokens.
+            </li>
+          </ul>
+        </div>
+
+        <div class="policy-block">
+          <h3>5. Data Sharing &amp; Third-Party Disclosures</h3>
+          <p>
+            <strong>We do not sell, rent, trade, or share your personal data or Google Drive data with any third
+              parties.</strong>
+          </p>
+          <ul>
+            <li>The App contains <strong>no third-party advertising SDKs</strong>.</li>
+            <li>The App contains <strong>no third-party behavioral analytics or tracking SDKs</strong>.</li>
+            <li>No human at Cadence-X ever reads or accesses your Google Drive files.</li>
+          </ul>
+        </div>
+
+        <div class="policy-block">
+          <h3>6. Data Retention, Deletion &amp; Revoking Access</h3>
+          <p>
+            You retain full control over your data and permissions at all times:
+          </p>
+          <ul>
+            <li>
+              <strong>Unlinking Individual Folders or Deleting Local App Data:</strong> You can pause or unlink any
+              synced folder pair directly from the App's home screen at any time. Clearing the App's storage in Android
+              Settings (<em>Settings → Apps → Coincide Drive → Storage → Clear Storage</em>) or
+              uninstalling the App permanently and immediately deletes all local sync logs, cached file hashes, and
+              account preferences. Unlinking a folder or uninstalling the App does <strong>not</strong> delete your
+              actual files in Google Drive or in your phone's local folders.
+            </li>
+            <li>
+              <strong>Signing Out:</strong> You can sign out or switch Google accounts directly within Step 1 of the App
+              at any time.
+            </li>
+            <li>
+              <strong>Revoking Google Account Permissions:</strong> You can revoke Coincide Drive’s access to your
+              Google Account at any time by visiting your <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">Google Account Security &amp; Permissions page</a>.
+            </li>
+          </ul>
+        </div>
+
+        <div class="policy-block">
+          <h3>7. Children’s Privacy</h3>
+          <p>
+            Coincide Drive is a productivity and file-management utility not directed at children under the age of 13.
+            We do not knowingly collect any personal information from children.
+          </p>
+        </div>
+
+        <div class="policy-block">
+          <h3>8. Changes to This Privacy Policy</h3>
+          <p>
+            If we update this Privacy Policy to reflect new features or regulatory requirements, we will post the
+            updated policy on this page and revise the "Last Updated" date at the top of the document.
+          </p>
+        </div>
+
+        <div class="policy-block">
+          <h3>9. Contact Us</h3>
+          <p>
+            If you have any questions about Coincide Drive, its permissions, or this Privacy Policy, please contact us:
+          </p>
+          <ul>
+            <li><strong>Studio:</strong> Cadence-X (<a href="https://www.cadence-x.com/">https://www.cadence-x.com</a>)
+            </li>
+            <li><strong>Email:</strong> <a href="mailto:coincidedrive@cadence-x.com">coincidedrive@cadence-x.com</a>
+            </li>
+            <li><strong>Source Repository:</strong> <a href="https://github.com/smoothfysh/Coincide-Drive" target="_blank" rel="noopener noreferrer">github.com/smoothfysh/Coincide-Drive</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Cadence-X Footer ── -->
+  <footer class="cx-footer">
+    <div class="cx-footer-inner">
+      <div class="cx-footer-left">
+        <span class="cx-footer-dot"></span>
+        <span>© 2026 CADENCE-X &nbsp;·&nbsp; All rights reserved.</span>
+      </div>
+      <div class="cx-footer-right">
+        <a href="/#services" class="cx-footer-link">Services</a>
+        <a href="/apps" class="cx-footer-link">Apps</a>
+        <a href="/about" class="cx-footer-link">About</a>
+      </div>
+    </div>
+  </footer>
+
+
+
+</body></html>

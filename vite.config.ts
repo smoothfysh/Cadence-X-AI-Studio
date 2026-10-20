@@ -10,6 +10,8 @@ const cleanUrlsPlugin = () => ({
       const url = req.url ? req.url.split('?')[0] : '';
       if (url === '/apps' || url === '/apps/') {
         req.url = '/apps/index.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
+      } else if (url === '/apps/coincide-drive' || url === '/apps/coincide-drive/') {
+        req.url = '/apps/coincide-drive.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
       } else if (url === '/about' || url === '/about/') {
         req.url = '/about/index.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
       } else if (url === '/otisplay' || url === '/otisplay/') {
@@ -23,6 +25,8 @@ const cleanUrlsPlugin = () => ({
       const url = req.url ? req.url.split('?')[0] : '';
       if (url === '/apps' || url === '/apps/') {
         req.url = '/apps/index.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
+      } else if (url === '/apps/coincide-drive' || url === '/apps/coincide-drive/') {
+        req.url = '/apps/coincide-drive.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
       } else if (url === '/about' || url === '/about/') {
         req.url = '/about/index.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
       } else if (url === '/otisplay' || url === '/otisplay/') {

@@ -57,6 +57,13 @@ The Cadence-X `/apps` page is art-directed to feel like an **independent softwar
 - **Pillars**: Radial, Brutalist, and Editorial skins; interval presets; zero accounts.
 - **Destination**: [https://timer.cadence-x.com/](https://timer.cadence-x.com/)
 
+### 4. Coincide Drive (Experiment / 04)
+- **Label**: `EXPERIMENT / 04`
+- **Tagline**: *"Effortless two-way folder synchronization between Google Drive and a local folder on your Android phone."*
+- **Positioning**: Built for Obsidian vaults, Markdown notes, and total local file ownership. Solves the limitation where official cloud storage streams files on demand instead of keeping them directly accessible on disk for third-party Android apps.
+- **Pillars**: Android native, 2-way sync with recursive subfolders, 1 folder pair free forever, 100% local operation with zero intermediate cloud servers.
+- **Destination**: `/apps/coincide-drive`
+
 ---
 
 ## Support & Patronage

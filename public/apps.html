@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Apps &amp; Experiments — Cadence-X</title>
-<meta name="description" content="Small tools. Thoughtfully made. A collection of focused web tools and experiments crafted by Cadence-X: Roadmap PM tool, Otis Play for kids, and Timer app.">
-<meta name="keywords" content="apps, roadmap, timer, otis play, product management, independent software, Cadence-X">
+<meta name="description" content="Small tools. Thoughtfully made. A collection of focused tools and experiments crafted by Cadence-X: Roadmap PM tool, Otis Play for kids, Timer app, and Coincide Drive for Android.">
+<meta name="keywords" content="apps, roadmap, timer, otis play, coincide drive, android sync, 2-way sync, product management, independent software, Cadence-X">
 <meta name="rating" content="general">
 <meta name="topic" content="Tools and apps">
 <meta name="classification" content="application portfolio">
@@ -593,7 +593,8 @@
 
   .exp-content,
   .otis-visual-frame,
-  .timer-visual-frame {
+  .timer-visual-frame,
+  .coincide-visual-frame {
     min-width: 0;
   }
 
@@ -847,6 +848,192 @@
     border: 1px solid rgba(255, 255, 255, 0.12);
     padding: 4px 12px;
     border-radius: 9999px;
+  }
+
+  /* ── Experiment 04: Coincide Drive Android Utility Visual Showcase ── */
+  .coincide-visual-frame {
+    background: #F4F8FC;
+    border: 1px solid #D4E6FA;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 4px 20px -4px rgba(26, 104, 217, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+  .coincide-visual-frame:hover {
+    border-color: #93C5FD;
+    box-shadow: 0 8px 30px -4px rgba(26, 104, 217, 0.14);
+    transform: translateY(-2px);
+  }
+  .coincide-mockup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .coincide-mockup-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #101D38;
+    letter-spacing: -0.02em;
+  }
+  .coincide-mockup-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: #1D4ED8;
+    background: #EFF6FF;
+    border: 1px solid #DBEAFE;
+    padding: 2px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.08em;
+  }
+  .coincide-status-banner {
+    background: linear-gradient(180deg, #EBF5FE 0%, #E2EFFF 100%);
+    border: 1px solid #D4E6FA;
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .coincide-status-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .coincide-live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #D4F5E1;
+    color: #15803D;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .coincide-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #16A34A;
+  }
+  .coincide-mode-tag {
+    font-size: 11px;
+    color: #64748B;
+    font-weight: 500;
+  }
+  .coincide-banner-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .coincide-label-muted {
+    font-size: 11px;
+    color: #64748B;
+  }
+  .coincide-time-val {
+    font-size: 15px;
+    font-weight: 800;
+    color: #101D38;
+  }
+  .coincide-sync-btn {
+    background: #1A68D9;
+    color: #FFFFFF;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+  .coincide-folder-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #101D38;
+    margin-top: 2px;
+  }
+  .coincide-add-pill {
+    background: #1A68D9;
+    color: #FFFFFF;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+  .coincide-pair-box {
+    background: #FFFFFF;
+    border: 1px solid #E8EEF5;
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .coincide-pair-status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+  }
+  .coincide-active-pill {
+    background: #D4F5E1;
+    color: #15803D;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 10.5px;
+  }
+  .coincide-subtle-hint {
+    color: #64748B;
+    font-weight: 500;
+  }
+  .coincide-folder-line {
+    background: #F8FAFC;
+    border-radius: 8px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .coincide-folder-icon {
+    font-size: 16px;
+    line-height: 1;
+  }
+  .coincide-folder-icon.gdrive {
+    color: #1A73E8;
+  }
+  .coincide-folder-icon.phone {
+    color: #16A34A;
+  }
+  .coincide-folder-meta {
+    display: flex;
+    flex-direction: column;
+  }
+  .coincide-folder-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #101D38;
+    line-height: 1.25;
+  }
+  .coincide-folder-sub {
+    font-size: 10.5px;
+    color: #64748B;
+  }
+  .coincide-shield-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #E6F8EE;
+    color: #166534;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    align-self: flex-start;
+    margin-top: 2px;
   }
 
   /* ── Quiet Colophon / Support Section ── */
@@ -1470,6 +1657,87 @@
           <span>Start Timer</span>
         </a>
       </div>
+    </article>
+
+    <!-- Thin Divider between experiments -->
+    <hr class="editorial-divider" style="margin: 56px 0;" />
+
+    <!-- Experiment 04: Coincide Drive (Android 2-Way Sync Utility, Text Left / Visual Right) -->
+    <article class="experiment-row" id="coincide-drive">
+      <div class="exp-content">
+        <span class="exp-label">EXPERIMENT / 04</span>
+        <h3 class="exp-title">Coincide Drive</h3>
+        <p class="exp-desc">
+          Effortless two-way folder synchronization between Google Drive and a local folder on your Android phone. Built for Obsidian vaults, Markdown notes, and total local file ownership with zero middleman servers.
+        </p>
+        <div class="exp-details-list">
+          <span class="exp-details-item">Android Native</span>
+          <span class="exp-details-item">2-Way Sync + Subfolders</span>
+          <span class="exp-details-item">1 Folder Free Forever</span>
+          <span class="exp-details-item">Zero Cloud Intermediaries</span>
+        </div>
+        <a href="/apps/coincide-drive" class="exp-action-link">
+          <span>Explore Coincide Drive &amp; Privacy Policy</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Coincide Drive Visual Showcase -->
+      <a href="/apps/coincide-drive" class="coincide-visual-frame" style="text-decoration: none;" title="Open Coincide Drive Overview &amp; Privacy Policy">
+        <div class="coincide-mockup-header">
+          <span class="coincide-mockup-title">Coincide Drive</span>
+          <span class="coincide-mockup-badge">ANDROID</span>
+        </div>
+
+        <div class="coincide-status-banner">
+          <div class="coincide-status-top">
+            <span class="coincide-live-pill">
+              <span class="coincide-pulse-dot"></span>
+              Active &amp; Watching
+            </span>
+            <span class="coincide-mode-tag">Automatic Sync</span>
+          </div>
+          <div class="coincide-banner-row">
+            <div>
+              <div class="coincide-label-muted">Last Synchronized</div>
+              <div class="coincide-time-val">Today at 09:15</div>
+            </div>
+            <span class="coincide-sync-btn">&#8635; Sync Now</span>
+          </div>
+        </div>
+
+        <div class="coincide-folder-heading">
+          <span>&#8646; Synced Folders (1 / 5)</span>
+          <span class="coincide-add-pill">+ Add Folder</span>
+        </div>
+
+        <div class="coincide-pair-box">
+          <div class="coincide-pair-status-row">
+            <span class="coincide-active-pill">&#9654; Folder #1 &bull; Active</span>
+            <span class="coincide-subtle-hint">Obsidian Vault</span>
+          </div>
+          <div class="coincide-folder-line">
+            <span class="coincide-folder-icon gdrive">&#9729;</span>
+            <div class="coincide-folder-meta">
+              <div class="coincide-folder-name">Obsidian Vault (+ Subfolders)</div>
+              <div class="coincide-folder-sub">Google Drive &middot; Connected</div>
+            </div>
+          </div>
+          <div class="coincide-folder-line">
+            <span class="coincide-folder-icon phone">&#128193;</span>
+            <div class="coincide-folder-meta">
+              <div class="coincide-folder-name">Internal Storage &rsaquo; Documents &rsaquo; Vault</div>
+              <div class="coincide-folder-sub">Phone Storage (Connected)</div>
+            </div>
+          </div>
+          <div class="coincide-shield-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Conflict Shield Enabled &middot; Direct Sync</span>
+          </div>
+        </div>
+      </a>
     </article>
 
   </section>
