@@ -64,6 +64,13 @@ The Cadence-X `/apps` page is art-directed to feel like an **independent softwar
 - **Pillars**: Android native, 2-way sync with recursive subfolders, 1 folder pair free forever, 100% local operation with zero intermediate cloud servers.
 - **Destination**: `/apps/coincide-drive`
 
+### 5. Uncharted: Travel Log (Experiment / 05)
+- **Label**: `EXPERIMENT / 05`
+- **Tagline**: *"Your personal world passport and interactive travel tracker for Android."*
+- **Positioning**: Mark every country you've visited on a crisp interactive world map, track continent progress, collect country flag stamps, and export shareable travel summary cards — stored 100% privately on your device.
+- **Pillars**: Android native, interactive world map, flag stamps & continent stats, 100% on-device privacy with zero ads or trackers.
+- **Destination**: `/apps/uncharted`
+
 ---
 
 ## Support & Patronage

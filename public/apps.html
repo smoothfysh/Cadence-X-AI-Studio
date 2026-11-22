@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Apps &amp; Experiments — Cadence-X</title>
-<meta name="description" content="Small tools. Thoughtfully made. A collection of focused tools and experiments crafted by Cadence-X: Roadmap PM tool, Otis Play for kids, Timer app, and Coincide Drive for Android.">
-<meta name="keywords" content="apps, roadmap, timer, otis play, coincide drive, android sync, 2-way sync, product management, independent software, Cadence-X">
+<meta name="description" content="Small tools. Thoughtfully made. A collection of focused tools and experiments crafted by Cadence-X: Roadmap PM tool, Otis Play for kids, Timer app, Coincide Drive, and Uncharted: Travel Log for Android.">
+<meta name="keywords" content="apps, roadmap, timer, otis play, coincide drive, uncharted travel log, android sync, world passport, product management, independent software, Cadence-X">
 <meta name="rating" content="general">
 <meta name="topic" content="Tools and apps">
 <meta name="classification" content="application portfolio">
@@ -574,7 +574,8 @@
     align-items: center;
   }
   @media (max-width: 1023px) {
-    .experiment-row.reversed .timer-visual-frame {
+    .experiment-row.reversed .timer-visual-frame,
+    .experiment-row.reversed .uncharted-visual-frame {
       order: 2;
     }
     .experiment-row.reversed .exp-content {
@@ -594,7 +595,8 @@
   .exp-content,
   .otis-visual-frame,
   .timer-visual-frame,
-  .coincide-visual-frame {
+  .coincide-visual-frame,
+  .uncharted-visual-frame {
     min-width: 0;
   }
 
@@ -1034,6 +1036,84 @@
     border-radius: 999px;
     align-self: flex-start;
     margin-top: 2px;
+  }
+
+  /* ── Experiment 05: Uncharted: Travel Log Visual Showcase ── */
+  .uncharted-visual-frame {
+    background: #FFFFFF;
+    border: 1px solid #E8E4DA;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+  .uncharted-visual-frame:hover {
+    border-color: #93C5FD;
+    box-shadow: 0 8px 30px -4px rgba(29, 78, 216, 0.14);
+    transform: translateY(-2px);
+  }
+  .uncharted-visual-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px;
+  }
+  .uncharted-visual-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: #0F172A;
+    letter-spacing: -0.02em;
+  }
+  .uncharted-visual-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: #1D4ED8;
+    background: #EFF6FF;
+    border: 1px solid #DBEAFE;
+    padding: 2px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.08em;
+  }
+  .uncharted-banner-wrap {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #E8E4DA;
+    background: #0F172A;
+  }
+  .uncharted-banner-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .uncharted-visual-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 2px 4px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #475569;
+  }
+  .uncharted-privacy-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    color: #15803D;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
   }
 
   /* ── Quiet Colophon / Support Section ── */
@@ -1738,6 +1818,45 @@
           </div>
         </div>
       </a>
+    </article>
+
+    <!-- Thin Divider between experiments -->
+    <hr class="editorial-divider" style="margin: 56px 0;" />
+
+    <!-- Experiment 05: Uncharted: Travel Log (Android World Passport, Visual Left / Text Right) -->
+    <article class="experiment-row reversed" id="uncharted">
+      <!-- Uncharted Visual Showcase -->
+      <a href="/apps/uncharted" class="uncharted-visual-frame" style="text-decoration: none;" title="Open Uncharted: Travel Log Overview &amp; Privacy Policy">
+        <div class="uncharted-visual-header">
+          <span class="uncharted-visual-title">Uncharted: Travel Log</span>
+          <span class="uncharted-visual-badge">ANDROID</span>
+        </div>
+        <div class="uncharted-banner-wrap">
+          <img src="/apps/uncharted/images/hero-banner.jpg" alt="Uncharted: Travel Log interactive world map and visited country stamps on Android" loading="lazy" width="1024" height="500" />
+        </div>
+        <div class="uncharted-visual-meta">
+          <span class="uncharted-privacy-pill">&#10003; 100% On-Device &middot; Zero Ads</span>
+          <span>World Passport &amp; Atlas</span>
+        </div>
+      </a>
+
+      <div class="exp-content">
+        <span class="exp-label">EXPERIMENT / 05</span>
+        <h3 class="exp-title">Uncharted: Travel Log</h3>
+        <p class="exp-desc">
+          Your personal world passport and interactive travel tracker for Android. Mark every country you’ve visited, track continent progress, collect flag stamps, and export shareable travel summary cards.
+        </p>
+        <div class="exp-details-list">
+          <span class="exp-details-item">Android Native</span>
+          <span class="exp-details-item">Interactive World Map</span>
+          <span class="exp-details-item">Flag Stamps &amp; Stats</span>
+          <span class="exp-details-item">100% On-Device Privacy</span>
+        </div>
+        <a href="/apps/uncharted" class="exp-action-link">
+          <span>Explore Uncharted &amp; Privacy Policy</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
     </article>
 
   </section>

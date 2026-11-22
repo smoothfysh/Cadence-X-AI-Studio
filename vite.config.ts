@@ -12,6 +12,8 @@ const cleanUrlsPlugin = () => ({
         req.url = '/apps/index.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
       } else if (url === '/apps/coincide-drive' || url === '/apps/coincide-drive/') {
         req.url = '/apps/coincide-drive.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
+      } else if (url === '/apps/uncharted' || url === '/apps/uncharted/') {
+        req.url = '/apps/uncharted/index.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
       } else if (url === '/about' || url === '/about/') {
         req.url = '/about/index.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
       } else if (url === '/otisplay' || url === '/otisplay/') {
@@ -27,6 +29,8 @@ const cleanUrlsPlugin = () => ({
         req.url = '/apps/index.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
       } else if (url === '/apps/coincide-drive' || url === '/apps/coincide-drive/') {
         req.url = '/apps/coincide-drive.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
+      } else if (url === '/apps/uncharted' || url === '/apps/uncharted/') {
+        req.url = '/apps/uncharted/index.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
       } else if (url === '/about' || url === '/about/') {
         req.url = '/about/index.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
       } else if (url === '/otisplay' || url === '/otisplay/') {

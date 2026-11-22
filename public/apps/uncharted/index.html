@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Uncharted: Travel Log — World Passport, Interactive Map &amp; Privacy Policy | Cadence-X</title>
+  <meta name="description" content="Uncharted: Travel Log by Cadence-X — Mark every country you've visited on an interactive world map, track continent progress, collect country flag stamps, and export shareable travel summary cards. 100% private and on-device.">
+  <meta name="keywords" content="Uncharted Travel Log, visited countries map, travel tracker Android, world passport app, privacy policy, Cadence-X">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Uncharted: Travel Log — World Passport &amp; Privacy Policy | Cadence-X">
+  <meta property="og:description" content="Mark every country you've visited on an interactive world map, track continent progress, and share your travel story. Zero ads, zero tracking, 100% on-device.">
+  <link rel="icon" type="image/png" href="/uploads/logo_font-Norwester-Lazydog_TransBG.png">
+
+  <!-- Google Fonts: Editorial Serif (Newsreader), Clean Sans (Hanken Grotesk), Monospace (JetBrains Mono), Display (Archivo Black), Handwriting (Caveat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@500;600;700&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    // In-page shortcut smooth scrolling
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          var targetId = this.getAttribute('href').slice(1);
+          if (!targetId) return;
+          var targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+            if (window.history && window.history.pushState) {
+              window.history.pushState(null, '', '#' + targetId);
+            } else {
+              window.location.hash = '#' + targetId;
+            }
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    /* ── Reset & Cadence-X Editorial Studio Design System ── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-page: #FAF8F5;
+      --bg-surface: #FFFFFF;
+      --bg-surface-subtle: #F4F1EA;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --border-subtle: #E8E4DA;
+      --border-medium: #D8D3C7;
+      --cobalt: #1D4ED8;
+      --cobalt-hover: #1E40AF;
+      --cobalt-soft: #EFF6FF;
+      --terracotta: #C2410C;
+      --terracotta-soft: #FFF7ED;
+      --emerald: #15803D;
+      --emerald-soft: #F0FDF4;
+      --emerald-border: #BBF7D0;
+      --navy-dark: #080D1A;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 148px;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--cobalt);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: var(--cobalt-hover);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--cobalt);
+      outline-offset: 3px;
+    }
+
+    /* ── Cadence-X Main Header Navigation ── */
+    .cx-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      width: 100%;
+      background: rgba(250, 248, 245, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(232, 228, 218, 0.9);
+    }
+
+    .cx-header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 16px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @media (min-width: 640px) {
+      .cx-header-inner { padding: 0 24px; }
+    }
+
+    @media (min-width: 1024px) {
+      .cx-header-inner { padding: 0 32px; }
+    }
+
+    .cx-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cx-logo-box {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #0F172A;
+      display: grid;
+      place-items: center;
+    }
+
+    .cx-logo-ring {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: cx-spin-slow 40s linear infinite;
+    }
+
+    .cx-logo-center {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    @keyframes cx-spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .cx-brand-title {
+      font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      letter-spacing: 0.05em;
+      color: #0f172a;
+      font-weight: 400;
+      transition: color 0.15s ease;
+    }
+
+    .cx-brand:hover .cx-brand-title {
+      color: var(--cobalt);
+    }
+
+    .cx-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .cx-nav-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: #475569;
+      text-decoration: none;
+      padding: 4px 0;
+      transition: color 0.15s ease;
+    }
+
+    .cx-nav-link:hover {
+      color: #0f172a;
+    }
+
+    .cx-nav-link-active {
+      color: var(--cobalt);
+      font-weight: 600;
+      position: relative;
+    }
+
+    .cx-nav-link-active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 1.5px;
+      background-color: var(--cobalt);
+    }
+
+    @media (max-width: 640px) {
+      .cx-nav { gap: 14px; }
+      .cx-nav-link { font-size: 13px; }
+      .cx-brand-title { font-size: 1.05rem; }
+    }
+
+    /* ── Sub-navigation Jump Bar ── */
+    .subnav-bar {
+      position: sticky;
+      top: 80px;
+      z-index: 40;
+      background: rgba(244, 241, 234, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 10px 16px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+    }
+
+    .subnav-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .subnav-inner { padding: 0 8px; }
+    }
+
+    @media (min-width: 1024px) {
+      .subnav-inner { padding: 0 16px; }
+    }
+
+    .subnav-crumb {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .subnav-crumb strong {
+      color: var(--text-primary);
+    }
+
+    .subnav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .subnav-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.15s ease;
+    }
+
+    .subnav-pill:hover {
+      color: var(--cobalt);
+      border-color: var(--cobalt);
+      background: #FFFFFF;
+    }
+
+    /* ── Main Editorial Studio Canvas ── */
+    .editorial-main {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 48px 20px 88px;
+      width: 100%;
+    }
+
+    @media (min-width: 640px) {
+      .editorial-main { padding: 64px 28px 96px; }
+    }
+
+    @media (min-width: 1024px) {
+      .editorial-main { padding: 72px 32px 112px; }
+    }
+
+    .editorial-divider {
+      border: 0;
+      border-top: 1px solid var(--border-subtle);
+      margin: 68px 0;
+    }
+
+    /* ── Hero Section ── */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+        gap: 48px;
+      }
+    }
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      background: var(--cobalt-soft);
+      border: 1px solid #DBEAFE;
+      padding: 5px 12px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+      font-size: clamp(2.25rem, 4.4vw, 3.4rem);
+      line-height: 1.08;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+      margin: 0 0 18px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--cobalt);
+    }
+
+    .hero-lead {
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--cobalt);
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: 1px solid var(--cobalt);
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--cobalt-hover);
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: 1px solid var(--border-medium);
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--cobalt);
+      color: var(--cobalt);
+      transform: translateY(-1px);
+    }
+
+    .hero-trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .hero-trust-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-media-frame {
+      background: var(--navy-dark);
+      border-radius: 22px;
+      padding: 10px;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      box-shadow: 0 24px 50px -14px rgba(15, 23, 42, 0.25);
+    }
+
+    .hero-media-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+    }
+
+    /* ── Section Headers ── */
+    .section-intro {
+      max-width: 720px;
+      margin-bottom: 40px;
+    }
+
+    .section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .section-eyebrow.terracotta {
+      color: var(--terracotta);
+    }
+
+    .section-title {
+      font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+      line-height: 1.15;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin: 0 0 14px;
+    }
+
+    .section-desc {
+      font-size: 16.5px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── 3-Step Flow Cards ── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      margin-bottom: 44px;
+    }
+
+    @media (min-width: 768px) {
+      .steps-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 2px 12px rgba(15, 23, 42, 0.03);
+    }
+
+    .step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      background: var(--cobalt-soft);
+      border: 1px solid #DBEAFE;
+      padding: 4px 10px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .step-card h3 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin: 0 0 10px;
+    }
+
+    .step-card p {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── Dark Precision Architecture Block ── */
+    .dark-architecture-box {
+      background: var(--navy-dark);
+      border-radius: 24px;
+      padding: 36px 28px;
+      color: #FFFFFF;
+      border: 1px solid rgba(30, 41, 59, 0.9);
+      box-shadow: 0 20px 45px -15px rgba(8, 13, 26, 0.35);
+    }
+
+    @media (min-width: 768px) {
+      .dark-architecture-box { padding: 48px 44px; }
+    }
+
+    .dark-header-flex {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+    }
+
+    @media (min-width: 768px) {
+      .dark-header-flex {
+        flex-direction: row;
+        align-items: flex-end;
+      }
+    }
+
+    .dark-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #60A5FA;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .dark-title {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: clamp(1.65rem, 3vw, 2.25rem);
+      font-weight: 400;
+      margin: 0 0 10px;
+      color: #FFFFFF;
+    }
+
+    .dark-sub {
+      font-size: 15px;
+      color: #94A3B8;
+      max-width: 620px;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .dark-handwriting {
+      font-family: 'Caveat', cursive;
+      font-size: 26px;
+      color: #FBBF24;
+      line-height: 1.15;
+      flex-shrink: 0;
+      transform: rotate(-2deg);
+    }
+
+    .dark-grid-4 {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .dark-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 1024px) {
+      .dark-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    .dark-feature-item {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(51, 65, 85, 0.6);
+      border-radius: 16px;
+      padding: 22px 20px;
+    }
+
+    .dark-feature-item .icon-box {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .dark-feature-item h4 {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: #F8FAFC;
+      margin: 0 0 8px;
+    }
+
+    .dark-feature-item p {
+      font-size: 13.5px;
+      color: #94A3B8;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ── Screenshots Showcase Grid ── */
+    .screens-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+    }
+
+    @media (min-width: 768px) {
+      .screens-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .screen-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .screen-img-wrap {
+      background: var(--bg-surface-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .screen-img-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .screen-caption h3 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 21px;
+      font-weight: 500;
+      margin: 0 0 6px;
+      color: var(--text-primary);
+    }
+
+    .screen-caption p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ── Permissions Grid ── */
+    .permissions-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .permissions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    .perm-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .perm-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .perm-title {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 20px;
+      font-weight: 500;
+      margin: 0;
+      color: var(--text-primary);
+    }
+
+    .perm-scope {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--terracotta);
+      background: var(--terracotta-soft);
+      border: 1px solid #FED7AA;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    .perm-desc {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .perm-limit {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--emerald);
+      background: var(--emerald-soft);
+      border: 1px solid var(--emerald-border);
+      padding: 8px 12px;
+      border-radius: 10px;
+    }
+
+    /* ── Privacy Policy Section ── */
+    .privacy-policy-wrapper {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 28px 22px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+    }
+
+    @media (min-width: 768px) {
+      .privacy-policy-wrapper { padding: 44px 48px; }
+    }
+
+    .policy-meta-banner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 24px;
+    }
+
+    .policy-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--emerald);
+      background: var(--emerald-soft);
+      border: 1px solid var(--emerald-border);
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    .policy-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .data-safety-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .safety-pill-card {
+      background: var(--bg-page);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .safety-pill-card .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .safety-pill-card .value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .limited-use-callout {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-left: 4px solid var(--cobalt);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 24px 0 32px;
+    }
+
+    .limited-use-callout h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cobalt);
+      margin: 0 0 8px;
+    }
+
+    .limited-use-callout p {
+      font-size: 14.5px;
+      color: #1E3A8A;
+      line-height: 1.6;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .policy-block {
+      margin-bottom: 32px;
+    }
+
+    .policy-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .policy-block h3 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin: 0 0 10px;
+    }
+
+    .policy-block p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0 0 12px;
+    }
+
+    .policy-block ul {
+      margin: 8px 0 14px;
+      padding-left: 20px;
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .policy-block li {
+      margin-bottom: 8px;
+    }
+
+    .policy-block li strong {
+      color: var(--text-primary);
+    }
+
+    /* ── Cadence-X Footer ── */
+    .cx-footer {
+      width: 100%;
+      border-top: 1px solid rgba(232, 228, 218, 0.9);
+      background: rgba(250, 248, 245, 0.7);
+      padding: 32px 0;
+      margin-top: 64px;
+    }
+
+    .cx-footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    @media (min-width: 640px) {
+      .cx-footer-inner { padding: 0 24px; }
+    }
+
+    @media (min-width: 1024px) {
+      .cx-footer-inner { padding: 0 32px; }
+    }
+
+    .cx-footer-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cx-footer-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--cobalt);
+      display: inline-block;
+    }
+
+    .cx-footer-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-weight: 500;
+    }
+
+    .cx-footer-link {
+      color: #475569;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .cx-footer-link:hover {
+      color: #0f172a;
+    }
+
+    @media (max-width: 640px) {
+      .cx-footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Cadence-X Header Navigation ── -->
+  <header class="cx-header">
+    <div class="cx-header-inner">
+      <a href="/" class="cx-brand" title="Cadence-X Home">
+        <div class="cx-logo-box">
+          <img src="/uploads/cadence-x-outer-ring.png" class="cx-logo-ring" alt="">
+          <img src="/uploads/cadence-x-static.png" class="cx-logo-center" alt="Cadence-X Logo">
+        </div>
+        <span class="cx-brand-title">CADENCE-X</span>
+      </a>
+
+      <nav class="cx-nav">
+        <a href="/#services" class="cx-nav-link">Services</a>
+        <a href="/apps" class="cx-nav-link cx-nav-link-active">Apps</a>
+        <a href="/about" class="cx-nav-link">About Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Page Jump Bar ── -->
+  <div class="subnav-bar">
+    <div class="subnav-inner">
+      <div class="subnav-crumb">
+        <a href="/apps" style="color: inherit; text-decoration: none;">APPS</a>
+        <span>/</span>
+        <strong>UNCHARTED: TRAVEL LOG</strong>
+      </div>
+      <div class="subnav-pills">
+        <a href="#overview" class="subnav-pill">Overview</a>
+        <a href="#how-it-works" class="subnav-pill">Features</a>
+        <a href="#screenshots" class="subnav-pill">Screenshots</a>
+        <a href="#permissions" class="subnav-pill">Permissions</a>
+        <a href="#privacy-policy" class="subnav-pill">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main Editorial Content ── -->
+  <main class="editorial-main">
+
+    <!-- ── 1. Hero Section ── -->
+    <section id="overview" class="hero-grid">
+      <div>
+        <span class="hero-eyebrow">WORLD PASSPORT &amp; ATLAS · ANDROID</span>
+        <h1 class="hero-title">
+          Uncharted: <em>Travel Log</em>
+        </h1>
+        <p class="hero-lead">
+          Your personal world passport and interactive travel tracker. Mark every country you’ve visited on a crisp
+          world map, see your progress across all six continents, collect country flag stamps, and export shareable
+          travel summary cards—stored 100% privately on your device.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#screenshots" class="btn-primary">See App Screens</a>
+          <a href="#privacy-policy" class="btn-secondary">Privacy Policy</a>
+        </div>
+
+        <div class="hero-trust-row">
+          <span>✓ 100% On-Device Storage</span>
+          <span>✓ Zero Ads or Trackers</span>
+          <span>✓ Easy JSON Backup</span>
+        </div>
+      </div>
+
+      <div class="hero-media-frame">
+        <img
+          src="/apps/uncharted/images/hero-banner.jpg"
+          alt="Uncharted: Travel Log hero banner showing the interactive world map and visited country stamps on Android"
+          fetchpriority="high"
+          width="1024"
+          height="500">
+      </div>
+    </section>
+
+    <hr class="editorial-divider">
+
+    <!-- ── 2. How Uncharted Works ── -->
+    <section id="how-it-works">
+      <div class="section-intro">
+        <span class="section-eyebrow">BUILT FOR EXPLORERS</span>
+        <h2 class="section-title">Your travel history, mapped clearly and kept completely yours.</h2>
+        <p class="section-desc">
+          Uncharted: Travel Log turns your travels into a fast, interactive atlas without accounts, subscriptions, or
+          cloud lock-in.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">01 · Interactive Atlas</span>
+          <h3>Tap &amp; Zoom the World</h3>
+          <p>
+            Pinch to zoom smoothly into any region to reveal country codes and labels, jump straight to a continent with
+            quick focus pills, or tap any country directly on the map to mark it visited.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num">02 · Passport Stats</span>
+          <h3>Continents &amp; Flag Stamps</h3>
+          <p>
+            Track your world completion percentage at a glance, view progress bars for all 6 continents, and browse
+            your Visited Country Stamps filtered by region.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num">03 · Share &amp; Backup</span>
+          <h3>Export Cards &amp; JSON</h3>
+          <p>
+            Generate a clean, high-resolution JPEG travel card for social stories or your gallery, and back up or
+            restore your visited list anytime using portable JSON files.
+          </p>
+        </div>
+      </div>
+
+      <!-- Dark Precision Feature Block -->
+      <div class="dark-architecture-box">
+        <div class="dark-header-flex">
+          <div>
+            <span class="dark-eyebrow">ENGINEERED FOR SPEED &amp; PRIVACY</span>
+            <h3 class="dark-title">Everything Runs Locally on Your Phone</h3>
+            <p class="dark-sub">
+              Uncharted: Travel Log stores your visited countries in a private on-device database. There are no
+              developer servers, no mandatory sign-in, and no tracking SDKs.
+            </p>
+          </div>
+          <div class="dark-handwriting">
+            Your map.<br>
+            Your data.
+          </div>
+        </div>
+
+        <div class="dark-grid-4">
+          <div class="dark-feature-item">
+            <div class="icon-box">🗺️</div>
+            <h4>Batched Vector Map</h4>
+            <p>
+              High-detail Natural Earth map geometry rendered at smooth 60/120fps with crisp borders and continent
+              color coding.
+            </p>
+          </div>
+
+          <div class="dark-feature-item">
+            <div class="icon-box">🏳️</div>
+            <h4>197 Countries &amp; Flags</h4>
+            <p>
+              Searchable country manager and interactive flag stamp showcase organized across all 6 continents.
+            </p>
+          </div>
+
+          <div class="dark-feature-item">
+            <div class="icon-box">📸</div>
+            <h4>Story &amp; Gallery Export</h4>
+            <p>
+              One-tap JPEG summary export combining your world completion gauge, full world map, and continent stats.
+            </p>
+          </div>
+
+          <div class="dark-feature-item">
+            <div class="icon-box">💾</div>
+            <h4>Backup / Restore</h4>
+            <p>
+              Save a JSON backup anywhere on your phone or import saved places from Google Maps links and exports.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="editorial-divider">
+
+    <!-- ── 3. App Screenshots ── -->
+    <section id="screenshots">
+      <div class="section-intro">
+        <span class="section-eyebrow">INSIDE THE APP</span>
+        <h2 class="section-title">Designed for clarity on every screen.</h2>
+        <p class="section-desc">
+          Explore your travel progress from the interactive world map down to individual country stamps and shareable
+          passport cards.
+        </p>
+      </div>
+
+      <div class="screens-grid">
+        <article class="screen-card">
+          <div class="screen-img-wrap">
+            <img
+              src="/apps/uncharted/images/screen-map.jpg"
+              alt="Uncharted: Travel Log interactive world map with pinch-to-zoom, country codes, and continent focus pills"
+              loading="lazy"
+              width="464"
+              height="960">
+          </div>
+          <div class="screen-caption">
+            <h3>Interactive World Map</h3>
+            <p>
+              Zoom in to see country codes, pan across continents, or tap any country directly to toggle your visited
+              status.
+            </p>
+          </div>
+        </article>
+
+        <article class="screen-card">
+          <div class="screen-img-wrap">
+            <img
+              src="/apps/uncharted/images/screen-stamps.jpg"
+              alt="Continents Breakdown progress bars and Visited Country Stamps grid with national flags"
+              loading="lazy"
+              width="464"
+              height="960">
+          </div>
+          <div class="screen-caption">
+            <h3>Continents &amp; Flag Stamps</h3>
+            <p>
+              See your completion percentage across Asia, Europe, Africa, North America, South America, and Oceania, and
+              filter your collected flag stamps.
+            </p>
+          </div>
+        </article>
+
+        <article class="screen-card">
+          <div class="screen-img-wrap">
+            <img
+              src="/apps/uncharted/images/screen-export.jpg"
+              alt="Exported Share Story and Save JPEG summary card showing 37% world completion and full world map"
+              loading="lazy"
+              width="756"
+              height="980">
+          </div>
+          <div class="screen-caption">
+            <h3>Share Story &amp; Save JPEG</h3>
+            <p>
+              Export a clean, high-resolution summary card of your world progress directly to your photo gallery or
+              social apps.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <hr class="editorial-divider">
+
+    <!-- ── 4. Permissions & Transparency ── -->
+    <section id="permissions">
+      <div class="section-intro">
+        <span class="section-eyebrow terracotta">TRANSPARENCY &amp; ACCESS</span>
+        <h2 class="section-title">What Uncharted accesses—and why.</h2>
+        <p class="section-desc">
+          Uncharted: Travel Log only uses permissions directly needed for saving your travel card, backing up your
+          list, or importing places you choose to share with the app.
+        </p>
+      </div>
+
+      <div class="permissions-grid">
+        <div class="perm-card">
+          <div>
+            <div class="perm-header">
+              <h3 class="perm-title">On-Device Travel Database</h3>
+              <span class="perm-scope">Android Room · Local Storage</span>
+            </div>
+            <p class="perm-desc">
+              Your visited countries and preferences are stored strictly inside the app’s private database on your phone
+              so your map works instantly offline.
+            </p>
+          </div>
+          <div class="perm-limit">
+            ✓ Never uploaded to any Cadence-X server.
+          </div>
+        </div>
+
+        <div class="perm-card">
+          <div>
+            <div class="perm-header">
+              <h3 class="perm-title">Gallery Export (Save JPEG)</h3>
+              <span class="perm-scope">MediaStore · Storage ≤ API 28</span>
+            </div>
+            <p class="perm-desc">
+              Used only when you tap <strong>Save JPEG to Gallery</strong> so the app can write your exported travel
+              summary image to <code>Pictures/Travelog</code>.
+            </p>
+          </div>
+          <div class="perm-limit">
+            ✓ Write-only on demand when you choose to save an image.
+          </div>
+        </div>
+
+        <div class="perm-card">
+          <div>
+            <div class="perm-header">
+              <h3 class="perm-title">Backup / Restore Files</h3>
+              <span class="perm-scope">Android Document Picker</span>
+            </div>
+            <p class="perm-desc">
+              Uses Android’s built-in system file picker when you export or import a JSON backup, or when you import
+              Google Maps Takeout CSV/JSON files.
+            </p>
+          </div>
+          <div class="perm-limit">
+            ✓ Accesses only the specific file you select.
+          </div>
+        </div>
+
+        <div class="perm-card">
+          <div>
+            <div class="perm-header">
+              <h3 class="perm-title">Optional Network &amp; Maps Import</h3>
+              <span class="perm-scope">INTERNET · ACCESS_NETWORK_STATE</span>
+            </div>
+            <p class="perm-desc">
+              Used only if you explicitly choose to import places from a shared Google Maps link or optional Google
+              account import flow. Core map and country tracking work 100% offline.
+            </p>
+          </div>
+          <div class="perm-limit">
+            ✓ Zero background tracking, zero ad networks.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="editorial-divider">
+
+    <!-- ── 5. Official Privacy Policy (Google Play Store Ready) ── -->
+    <section id="privacy-policy">
+      <div class="section-intro">
+        <span class="section-eyebrow">LEGAL &amp; PLAY STORE COMPLIANCE</span>
+        <h2 class="section-title">Privacy Policy</h2>
+        <p class="section-desc">
+          Complete privacy disclosure for <strong>Uncharted: Travel Log</strong> (package
+          <code>com.cadencex.uncharted.app</code>), structured for Google Play Store Data Safety requirements.
+        </p>
+      </div>
+
+      <div class="privacy-policy-wrapper">
+        <div class="policy-meta-banner">
+          <span class="policy-badge">✓ Google Play Data Safety Compliant</span>
+          <span class="policy-date">Effective Date: November 22, 2026 · Last Updated: November 22, 2026</span>
+        </div>
+
+        <div class="data-safety-grid">
+          <div class="safety-pill-card">
+            <span class="label">Developer Servers</span>
+            <span class="value">None (100% On-Device)</span>
+          </div>
+          <div class="safety-pill-card">
+            <span class="label">Data Sold or Shared</span>
+            <span class="value">Zero Third-Party Sharing</span>
+          </div>
+          <div class="safety-pill-card">
+            <span class="label">Ads &amp; Analytics</span>
+            <span class="value">No Ads · No Tracking SDKs</span>
+          </div>
+          <div class="safety-pill-card">
+            <span class="label">Account Required</span>
+            <span class="value">No Account Needed</span>
+          </div>
+        </div>
+
+        <div class="limited-use-callout">
+          <h4>On-Device Privacy Commitment</h4>
+          <p>
+            Uncharted: Travel Log does not collect, transmit, sell, or store your personal travel history on any
+            developer-operated server. All visited countries, statistics, and generated summary images stay on your
+            Android device unless you explicitly choose to share or back them up.
+          </p>
+        </div>
+
+        <div class="policy-block">
+          <h3>1. Introduction</h3>
+          <p>
+            <strong>Uncharted: Travel Log</strong> ("the App", package ID <code>com.cadencex.uncharted.app</code>) is
+            developed and published by <strong>Cadence-X</strong> ("we", "us", or "our"). This Privacy Policy explains
+            how information is handled when you use the App on Android.
+          </p>
+          <p>
+            <strong>We do not operate any backend servers for Uncharted: Travel Log.</strong> Your travel log is stored
+            locally on your device.
+          </p>
+        </div>
+
+        <div class="policy-block">
+          <h3>2. Information Processed on Your Device</h3>
+          <p>
+            To provide the App’s features, Uncharted: Travel Log processes the following information locally on your
+            device:
+          </p>
+          <ul>
+            <li>
+              <strong>Visited Countries &amp; Travel Log Data:</strong> The list of countries you mark as visited, along
+              with continent statistics and display preferences, stored in a private on-device SQLite (Room) database.
+            </li>
+            <li>
+              <strong>User-Initiated Backup &amp; Import Files:</strong> When you choose <em>Backup / Restore</em> or
+              share a Google Maps link, CSV, JSON, or Takeout archive with the App, the App reads or writes only the
+              file or text you explicitly select.
+            </li>
+            <li>
+              <strong>Exported Summary Images:</strong> When you tap <em>Save JPEG to Gallery</em> or
+              <em>Share Story</em>, the App renders a JPEG image locally on your device and either saves it to your
+              device gallery (<code>Pictures/Travelog</code>) or hands it to the Android share sheet for the app you
+              choose.
+            </li>
+            <li>
+              <strong>Optional Google Sign-In / Maps Import:</strong> If you optionally use Google Sign-In or Maps
+              import features, authentication is handled via Google’s official Play Services / OAuth flow solely on your
+              device to import your saved places. We never see your Google password and never receive your data on any
+              external Cadence-X server.
+            </li>
+          </ul>
+        </div>
+
+        <div class="policy-block">
+          <h3>3. Data Sharing, Advertising &amp; Analytics</h3>
+          <p>
+            <strong>We do not sell, rent, trade, or share your data with third parties.</strong>
+          </p>
+          <ul>
+            <li>The App contains <strong>no third-party advertising SDKs</strong>.</li>
+            <li>The App contains <strong>no third-party analytics, crash-tracking, or behavioral tracking SDKs</strong>.</li>
+            <li>No human at Cadence-X has access to your visited country list or backup files.</li>
+          </ul>
+        </div>
+
+        <div class="policy-block">
+          <h3>4. Data Retention &amp; Deletion</h3>
+          <p>
+            You have complete control over your data at all times:
+          </p>
+          <ul>
+            <li>
+              <strong>Clear Inside the App:</strong> You can remove individual countries or use the <em>Clear All
+              Visited</em> option in the App menu at any time.
+            </li>
+            <li>
+              <strong>Clear App Storage or Uninstall:</strong> Clearing app storage in Android Settings
+              (<em>Settings → Apps → Uncharted → Storage → Clear Storage</em>) or uninstalling the App permanently
+              deletes all local App data from your device.
+            </li>
+            <li>
+              <strong>Manual Backups &amp; Saved Images:</strong> Any JSON backups or JPEG images you saved to your own
+              storage remain under your control and can be deleted anytime using your Files or Gallery app.
+            </li>
+          </ul>
+        </div>
+
+        <div class="policy-block">
+          <h3>5. Children’s Privacy</h3>
+          <p>
+            Uncharted: Travel Log is a general-audience travel utility and does not knowingly collect personal
+            information from children under the age of 13.
+          </p>
+        </div>
+
+        <div class="policy-block">
+          <h3>6. Changes to This Privacy Policy</h3>
+          <p>
+            If we update this Privacy Policy to reflect new features or legal requirements, we will publish the updated
+            policy on this page and update the "Last Updated" date above.
+          </p>
+        </div>
+
+        <div class="policy-block">
+          <h3>7. Contact Us</h3>
+          <p>
+            If you have any questions about Uncharted: Travel Log or this Privacy Policy, please contact Cadence-X:
+          </p>
+          <ul>
+            <li><strong>Studio:</strong> Cadence-X (<a href="https://www.cadence-x.com/">https://www.cadence-x.com</a>)</li>
+            <li><strong>App Package:</strong> <code>com.cadencex.uncharted.app</code></li>
+            <li><strong>Website:</strong> <a href="https://www.cadence-x.com/about">https://www.cadence-x.com/about</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Cadence-X Footer ── -->
+  <footer class="cx-footer">
+    <div class="cx-footer-inner">
+      <div class="cx-footer-left">
+        <span class="cx-footer-dot"></span>
+        <span>© 2026 CADENCE-X &nbsp;·&nbsp; All rights reserved.</span>
+      </div>
+      <div class="cx-footer-right">
+        <a href="/#services" class="cx-footer-link">Services</a>
+        <a href="/apps" class="cx-footer-link">Apps</a>
+        <a href="/about" class="cx-footer-link">About</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
